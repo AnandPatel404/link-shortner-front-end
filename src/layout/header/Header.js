@@ -4,6 +4,7 @@ import Toggle from "../sidebar/Toggle";
 import Logo from "../logo/Logo";
 import User from "./dropdown/user/User";
 import Notification from "./dropdown/notification/Notification";
+import Mode from "./dropdown/mode/mode";
 
 const Header = ({ fixed, theme, className, setVisibility, ...props }) => {
 	const headerClass = classNames({
@@ -30,6 +31,9 @@ const Header = ({ fixed, theme, className, setVisibility, ...props }) => {
 							</li>
 							<li className="notification-dropdown mr-n1" onClick={() => setVisibility(false)}>
 								<Notification />
+							</li>
+							<li className="notification-dropdown mr-n1" onClick={() => setVisibility(false)}>
+								<Mode />
 							</li>
 						</ul>
 					</div>
