@@ -5,18 +5,13 @@ import Head from "./head/Head";
 import Header from "./header/Header";
 import Footer from "./footer/Footer";
 import classNames from "classnames";
+import useUserMode from "../zustand/userMode/userMode";
 
 const Layout = () => {
 	//Sidebar
 	const [mobileView, setMobileView] = useState();
 	const [visibility, setVisibility] = useState(false);
-	const [Mode, setMode] = useState(false);
-	const [themeState] = useState({
-		main: "default",
-		sidebar: "white",
-		header: "white",
-		skin: "light",
-	});
+	const themeState = useUserMode((state) => state.mode);
 
 	useEffect(() => {
 		viewChange();
