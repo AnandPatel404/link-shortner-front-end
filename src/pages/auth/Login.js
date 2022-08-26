@@ -11,9 +11,9 @@ import { Link } from "react-router-dom";
 import useUserStore from "../../zustand/userStore/userStore";
 
 const Login = () => {
-	const [loading, setLoading] = useState(false);
+	const [loading] = useState(false);
 	const [passState, setPassState] = useState(false);
-	const [errorVal, setError] = useState("");
+	const [errorVal] = useState("");
 	const login = useUserStore((state) => state.loginUser);
 	const onFormSubmit = (formData) => {
 		login(formData);
