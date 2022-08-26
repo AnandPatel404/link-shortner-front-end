@@ -8,32 +8,15 @@ import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button, Icon, Pre
 import { Form, FormGroup, Spinner, Alert } from "reactstrap";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import useUserStore from "../../zustand/userStore/userStore";
 
 const Login = () => {
 	const [loading, setLoading] = useState(false);
 	const [passState, setPassState] = useState(false);
 	const [errorVal, setError] = useState("");
-
+	const login = useUserStore((state) => state.loginUser);
 	const onFormSubmit = (formData) => {
-		setLoading(true);
-		const loginName = "info@softnio.com";
-		const pass = "123456";
-		if (formData.name === loginName && formData.passcode === pass) {
-			localStorage.setItem("accessToken", "token");
-			setTimeout(() => {
-				window.history.pushState(
-					`${process.env.PUBLIC_URL ? process.env.PUBLIC_URL : "/"}`,
-					"auth-login",
-					`${process.env.PUBLIC_URL ? process.env.PUBLIC_URL : "/"}`
-				);
-				window.location.reload();
-			}, 2000);
-		} else {
-			setTimeout(() => {
-				setError("Cannot login with credentials");
-				setLoading(false);
-			}, 2000);
-		}
+		login(formData);
 	};
 
 	const { errors, register, handleSubmit } = useForm();
@@ -78,10 +61,9 @@ const Login = () => {
 									<input
 										type="text"
 										id="default-01"
-										name="name"
+										name="email"
 										ref={register({ required: "This field is required" })}
-										defaultValue="info@softnio.com"
-										placeholder="Enter your email address or username"
+										placeholder="Enter your email address"
 										className="form-control-lg form-control"
 									/>
 									{errors.name && <span className="invalid">{errors.name.message}</span>}
@@ -93,7 +75,7 @@ const Login = () => {
 										Password
 									</label>
 									<Link className="link link-primary link-sm" to={`${process.env.PUBLIC_URL}/auth-reset`}>
-										Forgot Code?
+										Forgot Password?
 									</Link>
 								</div>
 								<div className="form-control-wrap">
@@ -112,13 +94,12 @@ const Login = () => {
 									<input
 										type={passState ? "text" : "password"}
 										id="password"
-										name="passcode"
-										defaultValue="123456"
+										name="password"
 										ref={register({ required: "This field is required" })}
-										placeholder="Enter your passcode"
+										placeholder="Enter your password"
 										className={`form-control-lg form-control ${passState ? "is-hidden" : "is-shown"}`}
 									/>
-									{errors.passcode && <span className="invalid">{errors.passcode.message}</span>}
+									{errors.password && <span className="invalid">{errors.password.message}</span>}
 								</div>
 							</FormGroup>
 							<FormGroup>
