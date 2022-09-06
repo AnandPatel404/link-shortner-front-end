@@ -6,14 +6,14 @@ import UserProfileNotificationPage from "./UserProfileNotification";
 import UserProfileActivityPage from "./UserProfileActivity";
 import { Route, Switch, Link } from "react-router-dom";
 import { Icon, UserAvatar } from "../../../components/Component";
-import { findUpper } from "../../../utils/Utils";
-import { Card, DropdownItem, UncontrolledDropdown, DropdownMenu, DropdownToggle } from "reactstrap";
+import { Card } from "reactstrap";
+import useUserStore from "../../../zustand/userStore/userStore";
 
 const UserProfileLayout = () => {
 	const [sm, updateSm] = useState(false);
+	const userInfo = useUserStore((state) => state.user);
 	const [mobileView, setMobileView] = useState(false);
-	const [profileName, setProfileName] = useState("Abu Bin Ishtiak");
-
+	const [profileName, setProfileName] = useState(userInfo.name);
 	// function to change the design view under 990 px
 	const viewChange = () => {
 		if (window.innerWidth < 990) {
@@ -50,49 +50,14 @@ const UserProfileLayout = () => {
 							<div className="card-inner-group">
 								<div className="card-inner">
 									<div className="user-card">
-										<UserAvatar text={findUpper(profileName)} theme="primary" />
+										<UserAvatar text={profileName[0]} theme="primary" />
 										<div className="user-info">
 											<span className="lead-text">{profileName}</span>
-											<span className="sub-text">info@softnio.com</span>
-										</div>
-										<div className="user-action">
-											<UncontrolledDropdown>
-												<DropdownToggle tag="a" className="btn btn-icon btn-trigger mr-n2">
-													<Icon name="more-v"></Icon>
-												</DropdownToggle>
-												<DropdownMenu right>
-													<ul className="link-list-opt no-bdr">
-														<li>
-															<DropdownItem
-																tag="a"
-																href="#dropdownitem"
-																onClick={(ev) => {
-																	ev.preventDefault();
-																}}
-															>
-																<Icon name="camera-fill"></Icon>
-																<span>Change Photo</span>
-															</DropdownItem>
-														</li>
-														<li>
-															<DropdownItem
-																tag="a"
-																href="#dropdownitem"
-																onClick={(ev) => {
-																	ev.preventDefault();
-																}}
-															>
-																<Icon name="edit-fill"></Icon>
-																<span>Update Profile</span>
-															</DropdownItem>
-														</li>
-													</ul>
-												</DropdownMenu>
-											</UncontrolledDropdown>
+											<span className="sub-text">{userInfo.email}</span>
 										</div>
 									</div>
 								</div>
-								<div className="card-inner">
+								{/* <div className="card-inner">
 									<div className="user-account-info py-0">
 										<h6 className="overline-title-alt">Nio Wallet Account</h6>
 										<div className="user-balance">
@@ -105,7 +70,7 @@ const UserProfileLayout = () => {
 											</span>
 										</div>
 									</div>
-								</div>
+								</div> */}
 								<div className="card-inner p-0">
 									<ul className="link-list-menu">
 										<li onClick={() => updateSm(false)}>
