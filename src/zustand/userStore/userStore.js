@@ -23,7 +23,7 @@ const useUserStore = create(
 									`${process.env.PUBLIC_URL ? process.env.PUBLIC_URL : "/"}`
 								);
 								window.location.reload();
-							}, 2000);
+							}, 1000);
 						}
 					})
 					.catch((err) => {
