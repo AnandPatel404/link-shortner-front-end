@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "../../../layout/head/Head";
 import { Card } from "reactstrap";
-import { Block, BlockBetween, BlockDes, BlockHead, BlockHeadContent, BlockTitle, Icon, InputSwitch, Button } from "../../../components/Component";
+import { Block, BlockBetween, BlockDes, BlockHead, BlockHeadContent, BlockTitle, Icon, Button } from "../../../components/Component";
 
 const UserProfileSettingPage = ({ sm, updateSm }) => {
 	return (
