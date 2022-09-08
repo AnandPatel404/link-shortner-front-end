@@ -67,7 +67,7 @@ const InvestHomePage = () => {
 										</div>
 									</Col>
 									<Col lg="4">
-										<img src={firstSvg} alt="Total Shorten Link" />
+										<img src={firstSvg} alt="Total Shorten Link" className="d-none d-md-block" />
 									</Col>
 								</Row>
 							</PreviewAltCard>
@@ -87,7 +87,7 @@ const InvestHomePage = () => {
 										</div>
 									</Col>
 									<Col lg="4">
-										<img src={dashboardPaln} alt="Plan" />
+										<img src={dashboardPaln} alt="Plan" className="d-none d-md-block" />
 									</Col>
 								</Row>
 							</PreviewAltCard>
@@ -107,7 +107,7 @@ const InvestHomePage = () => {
 										</div>
 									</Col>
 									<Col lg="4">
-										<img src={dashboardlimit} alt="limit" />
+										<img src={dashboardlimit} alt="limit" className="d-none d-md-block" />
 									</Col>
 								</Row>
 							</PreviewAltCard>

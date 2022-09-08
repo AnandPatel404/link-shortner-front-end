@@ -171,7 +171,7 @@ $menu-main-sub-toggle-icon-rtl: $ni-chevron-left !default;
         }
         &:hover, .active > & {
             .is-light & {
-                color: $menu-link-color-hover;
+                color: #f4bd0e;
             }
             @if($menu_dark_theme_option==true) {
                 .is-theme & {
@@ -213,7 +213,7 @@ $menu-main-sub-toggle-icon-rtl: $ni-chevron-left !default;
             transition: color .4s, background-color .4s;
         }
         .nk-menu-link:hover &, .nk-menu-item.active > .nk-menu-link & , .nk-menu-item.current-menu > .nk-menu-link & {
-            color: $menu-link-color-hover;
+            color:#f4bd0e;
             @if($menu_dark_theme_option==true) {
                 .is-theme &{
                     color: $white;

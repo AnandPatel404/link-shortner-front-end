@@ -30,16 +30,16 @@ const User = () => {
 				}}
 			>
 				<div className="user-toggle">
-					<UserAvatar icon="user-alt" className="sm" />
+					<UserAvatar icon="user-alt" className="sm" theme="warning" />
 					<div className="user-info d-none d-md-block">
 						<div className="user-name dropdown-indicator">{user.name}</div>
 					</div>
 				</div>
 			</DropdownToggle>
-			<DropdownMenu right className="dropdown-menu-md dropdown-menu-s1">
+			<DropdownMenu right className="dropdown-menu-md ">
 				<div className="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
 					<div className="user-card sm">
-						<div className="user-avatar">
+						<div className="user-avatar bg-warning">
 							<span>AB</span>
 						</div>
 						<div className="user-info">

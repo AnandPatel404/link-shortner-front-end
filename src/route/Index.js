@@ -335,7 +335,7 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/email-template`} component={EmailTemplate}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/nioicon`} component={NioIconPage}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/svg-icons`} component={SVGIconPage}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/`} component={Homepage}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/`} component={Invest}></Route>
 				<Route component={RedirectAs404}></Route>
 			</Switch>
 		</Suspense>
