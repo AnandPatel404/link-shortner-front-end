@@ -4,11 +4,11 @@ const menu = [
 		text: "Default Dashboard",
 		link: "/",
 	},
-	{
-		icon: "bitcoin-cash",
-		text: "Crypto Dashboard",
-		link: "/crypto",
-	},
+	// {
+	// 	icon: "bitcoin-cash",
+	// 	text: "Crypto Dashboard",
+	// 	link: "/crypto",
+	// },
 	{
 		icon: "growth",
 		text: "Analytics Dashboard",
