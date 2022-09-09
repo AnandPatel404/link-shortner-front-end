@@ -15,6 +15,7 @@ import userStore from "../zustand/userStore/userStore";
 import firstSvg from "../images/svg/dashboard-one.svg";
 import dashboardPaln from "../images/svg/dashboard-paln.svg";
 import dashboardlimit from "../images/svg/dashboard-limite.svg";
+import allcatch from "../images/svg/allcatch.svg";
 
 const InvestHomePage = () => {
 	const userinfo = userStore((state) => state.user);
@@ -151,6 +152,11 @@ const InvestHomePage = () => {
 							<Card className="card-bordered h-100">
 								<Notifications />
 							</Card>
+						</Col>
+						<Col sm="12">
+							<div className="d-md-flex justify-content-md-center align-items-md-center">
+								<img src={allcatch} alt="" width={500} />
+							</div>
 						</Col>
 					</Row>
 				</Block>

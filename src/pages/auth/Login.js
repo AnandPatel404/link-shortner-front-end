@@ -28,10 +28,12 @@ const Login = () => {
 			<PageContainer>
 				<Row>
 					<Col xl="7">
-						<img src={l} alt="" />
+						<div className="d-md-flex justify-content-md-center align-items-md-center">
+							<img src={l} alt="" height={600} />
+						</div>
 					</Col>
 					<Col xl="5">
-						<Block className="nk-auth-body py-5 my-5 wide-s">
+						<Block className="nk-auth-body py-lg-5 my-lg-5 wide-s">
 							<PreviewCard className="border-0" bodyClass="card-inner-lg" style={{ backgroundColor: "#f5f6fa" }}>
 								<BlockHead>
 									<BlockContent>

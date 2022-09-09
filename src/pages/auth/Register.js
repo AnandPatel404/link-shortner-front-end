@@ -25,7 +25,9 @@ const Register = ({ history }) => {
 			<PageContainer>
 				<Row>
 					<Col xl="7">
-						<img src={r} alt="" />
+						<div className="d-md-flex justify-content-md-center align-items-md-center">
+							<img src={r} alt="" width={800} />
+						</div>
 					</Col>
 					<Col xl="5">
 						<Block className="nk-auth-body py-5 my-4 wide-s">
@@ -72,6 +74,25 @@ const Register = ({ history }) => {
 												placeholder="Enter your email address "
 											/>
 											{errors.email && <p className="invalid">This field is required</p>}
+										</div>
+									</FormGroup>
+									<FormGroup>
+										<div className="form-label-group">
+											<label className="form-label" htmlFor="default-01">
+												Mobile no (WhatsApp no)
+											</label>
+										</div>
+										<div className="form-control-wrap">
+											<input
+												type="number"
+												bssize="lg"
+												id="default-01"
+												name="number"
+												ref={register({ required: true })}
+												className="form-control-lg form-control"
+												placeholder="Enter your whatsApp number "
+											/>
+											{errors.number && <p className="invalid">This field is required</p>}
 										</div>
 									</FormGroup>
 									<FormGroup>
