@@ -3,6 +3,8 @@ import { Route, Redirect } from "react-router-dom";
 
 const auth = localStorage.getItem("user");
 
+//TODO : check the user id is right or not
+
 const PrivateRoute = ({ exact, component: Component, ...rest }) => (
 	<Route
 		exact={exact ? true : false}

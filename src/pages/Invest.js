@@ -140,14 +140,14 @@ const InvestHomePage = () => {
 						</Col>
 						<Col xl="12" xxl="8">
 							<Card className="card-bordered card-full p-3">
-								<label for="basic-url" className="form-label p-1">
+								<label htmlFor="basic-url" className="form-label p-1">
 									Quick Short
 								</label>
-								<div class="input-group mb-3">
+								<div className="input-group mb-3">
 									<div className="form-wrap">
 										<RSelect options={option} className="w-130px" placeholder="Your domain" />
 									</div>
-									<input type="text" class="form-control" aria-label="Text input with dropdown button" />
+									<input type="text" className="form-control" aria-label="Text input with dropdown button" />
 								</div>
 								<div>
 									<Button color="primary" className="">
@@ -168,7 +168,7 @@ const InvestHomePage = () => {
 							</PreviewAltCard>
 						</Col> */}
 						<Col md="6" xxl="3">
-							<PreviewAltCard className="h-100" bodyClass="h-100 stretch flex-column">
+							<PreviewAltCard className="h-100" bodyclassName="h-100 stretch flex-column">
 								<SessionDevice />
 							</PreviewAltCard>
 						</Col>

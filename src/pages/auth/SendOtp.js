@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "../../axios/axiosconfig";
 // import Logo from "../../images/logo.png";
 // import LogoDark from "../../images/logo-dark.png";
 import PageContainer from "../../layout/page-container/PageContainer";
 import Head from "../../layout/head/Head";
 import AuthFooter from "./AuthFooter";
-import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button, Icon, PreviewCard } from "../../components/Component";
+import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button, Icon, PreviewCard, RSelect } from "../../components/Component";
 import { Form, FormGroup, Spinner, Alert, Row, Col } from "reactstrap";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
@@ -14,6 +15,29 @@ import o from "../../images/svg/oo.svg";
 function SendOtp() {
 	const [loading] = useState(false);
 	const [errorVal] = useState("");
+	const [option, setOption] = useState([]);
+	const getCountryCode = async () => {
+		await axios({
+			method: "get",
+			url: "auth/country-code",
+		})
+			.then((res) => {
+				if (res.data.status === "Success") {
+					let a = [];
+					res.data.data.forEach((e) => {
+						a.push({ value: e.name, label: `${e.dial_code} ${e.name}` });
+					});
+					setOption(a);
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+	useEffect(() => {
+		getCountryCode();
+	}, []);
+
 	// const login = useUserStore((state) => state.loginUser);
 	const onFormSubmit = (formData) => {
 		// login(formData);
@@ -57,15 +81,7 @@ function SendOtp() {
 											</label>
 										</div>
 										<div className="form-control-wrap">
-											<input
-												type="text"
-												id="default-01"
-												name="CountryCode"
-												ref={register({ required: "This field is required" })}
-												placeholder="Enter your Country Code"
-												className="form-control-lg form-control"
-											/>
-											{errors.CountryCode && <span className="invalid">{errors.CountryCode.message}</span>}
+											<RSelect options={option} className="" placeholder="Country Code"></RSelect>
 										</div>
 									</FormGroup>
 									<FormGroup>
