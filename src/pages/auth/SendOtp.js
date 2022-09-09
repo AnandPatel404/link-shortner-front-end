@@ -8,28 +8,26 @@ import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button, Icon, Pre
 import { Form, FormGroup, Spinner, Alert, Row, Col } from "reactstrap";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import useUserStore from "../../zustand/userStore/userStore";
-import l from "../../images/svg/l.svg";
+// import useUserStore from "../../zustand/userStore/userStore";
+import o from "../../images/svg/oo.svg";
 
-const Login = () => {
+function SendOtp() {
 	const [loading] = useState(false);
-	const [passState, setPassState] = useState(false);
 	const [errorVal] = useState("");
-	const login = useUserStore((state) => state.loginUser);
+	// const login = useUserStore((state) => state.loginUser);
 	const onFormSubmit = (formData) => {
-		login(formData);
+		// login(formData);
 	};
 
 	const { errors, register, handleSubmit } = useForm();
-
 	return (
 		<React.Fragment>
-			<Head title="Login" />
+			<Head title="Send Otp" />
 			<PageContainer>
 				<Row>
 					<Col xl="7">
-						<div className="d-md-flex justify-content-md-center align-items-md-center">
-							<img src={l} alt="" height={600} />
+						<div className="d-md-flex justify-content-md-center align-items-md-center mt-4">
+							<img src={o} alt="" height={600} />
 						</div>
 					</Col>
 					<Col xl="5">
@@ -37,9 +35,9 @@ const Login = () => {
 							<PreviewCard className="border-0" bodyClass="card-inner-lg" style={{ backgroundColor: "#f5f6fa" }}>
 								<BlockHead>
 									<BlockContent>
-										<BlockTitle tag="h3">Sign-In</BlockTitle>
+										<BlockTitle tag="h3">Send Otp</BlockTitle>
 										<BlockDes>
-											<p>Access Shorterme using your email and password.</p>
+											<p>Otp will send to your WhatsApp number</p>
 										</BlockDes>
 									</BlockContent>
 								</BlockHead>
@@ -47,7 +45,7 @@ const Login = () => {
 									<div className="mb-3">
 										<Alert color="danger" className="alert-icon">
 											{" "}
-											<Icon name="alert-circle" /> Unable to login with credentials{" "}
+											<Icon name="alert-circle" /> Unable to Send Otp credentials{" "}
 										</Alert>
 									</div>
 								)}
@@ -55,71 +53,57 @@ const Login = () => {
 									<FormGroup>
 										<div className="form-label-group">
 											<label className="form-label" htmlFor="default-01">
-												Email
+												Country Code
 											</label>
 										</div>
 										<div className="form-control-wrap">
 											<input
 												type="text"
 												id="default-01"
-												name="email"
+												name="CountryCode"
 												ref={register({ required: "This field is required" })}
-												placeholder="Enter your email address"
+												placeholder="Enter your Country Code"
 												className="form-control-lg form-control"
 											/>
-											{errors.name && <span className="invalid">{errors.name.message}</span>}
+											{errors.CountryCode && <span className="invalid">{errors.CountryCode.message}</span>}
 										</div>
 									</FormGroup>
 									<FormGroup>
 										<div className="form-label-group">
 											<label className="form-label" htmlFor="password">
-												Password
+												Number
 											</label>
-											<Link className="link link-primary link-sm" to={`${process.env.PUBLIC_URL}/auth-reset`}>
-												Forgot Password?
-											</Link>
 										</div>
 										<div className="form-control-wrap">
-											<a
-												href="#password"
-												onClick={(ev) => {
-													ev.preventDefault();
-													setPassState(!passState);
-												}}
-												className={`form-icon lg form-icon-right passcode-switch ${passState ? "is-hidden" : "is-shown"}`}
-											>
-												<Icon name="eye" className="passcode-icon icon-show"></Icon>
-
-												<Icon name="eye-off" className="passcode-icon icon-hide"></Icon>
-											</a>
 											<input
-												type={passState ? "text" : "password"}
+												type="number"
 												id="password"
-												name="password"
+												name="number"
 												ref={register({ required: "This field is required" })}
-												placeholder="Enter your password"
-												className={`form-control-lg form-control ${passState ? "is-hidden" : "is-shown"}`}
+												placeholder="Enter your WhatsApp number"
+												className="form-control-lg form-control is-shown"
 											/>
-											{errors.password && <span className="invalid">{errors.password.message}</span>}
+											{errors.number && <span className="invalid">{errors.number.message}</span>}
 										</div>
 									</FormGroup>
 									<FormGroup>
 										<Button size="lg" className="btn-block" type="submit" color="primary">
-											{loading ? <Spinner size="sm" color="light" /> : "Sign in"}
+											{loading ? <Spinner size="sm" color="light" /> : "Send Otp"}
 										</Button>
 									</FormGroup>
 								</Form>
 								<div className="form-note-s2 text-center pt-4">
 									{" "}
-									New on our platform? <Link to={`${process.env.PUBLIC_URL}/auth-send-otp`}>Create an account</Link>
+									Already have an account? <Link to={`${process.env.PUBLIC_URL}/auth-login`}>Sign in instead</Link>
 								</div>
 							</PreviewCard>
 						</Block>
 					</Col>
 				</Row>
-				<AuthFooter />
 			</PageContainer>
+			<AuthFooter />
 		</React.Fragment>
 	);
-};
-export default Login;
+}
+
+export default SendOtp;

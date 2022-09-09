@@ -7,7 +7,6 @@ import AuthFooter from "./AuthFooter";
 import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button, Icon, PreviewCard } from "../../components/Component";
 import { Spinner, FormGroup, Row, Col } from "reactstrap";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
 import r from "../../images/svg/r.svg";
 
 const Register = ({ history }) => {
@@ -131,13 +130,6 @@ const Register = ({ history }) => {
 										</Button>
 									</FormGroup>
 								</form>
-								<div className="form-note-s2 text-center pt-4">
-									{" "}
-									Already have an account?{" "}
-									<Link to={`${process.env.PUBLIC_URL}/auth-login`}>
-										<strong>Sign in instead</strong>
-									</Link>
-								</div>
 							</PreviewCard>
 						</Block>
 					</Col>
