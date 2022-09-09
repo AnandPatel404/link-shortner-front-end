@@ -10,7 +10,19 @@ import BrowserUser from "../components/partials/analytics/browser-users/BrowserU
 import SessionDevice from "../components/partials/analytics/session-devices/SessionDevice";
 import UserMap from "../components/partials/analytics/user-map/UserMap";
 import { Card } from "reactstrap";
-import { Block, BlockBetween, BlockHead, BlockHeadContent, BlockTitle, Icon, Button, Row, Col, PreviewAltCard } from "../components/Component";
+import {
+	Block,
+	BlockBetween,
+	BlockHead,
+	BlockHeadContent,
+	BlockTitle,
+	Icon,
+	Button,
+	Row,
+	Col,
+	PreviewAltCard,
+	RSelect,
+} from "../components/Component";
 import userStore from "../zustand/userStore/userStore";
 import firstSvg from "../images/svg/dashboard-one.svg";
 import dashboardPaln from "../images/svg/dashboard-paln.svg";
@@ -18,8 +30,13 @@ import dashboardlimit from "../images/svg/dashboard-limite.svg";
 import allcatch from "../images/svg/allcatch.svg";
 
 const InvestHomePage = () => {
+	const option = [
+		{ value: "https://one.com", label: "https://one.com" },
+		{ value: "https://two.com", label: "https://two.com" },
+	];
 	const userinfo = userStore((state) => state.user);
 	const [sm, updateSm] = useState(false);
+
 	return (
 		<React.Fragment>
 			<Head title="Invest Dashboard" />
@@ -119,6 +136,25 @@ const InvestHomePage = () => {
 						<Col xl="12" xxl="8">
 							<Card className="card-bordered card-full">
 								<RecentInvest />
+							</Card>
+						</Col>
+						<Col xl="12" xxl="8">
+							<Card className="card-bordered card-full p-3">
+								<label for="basic-url" className="form-label p-1">
+									Quick Short
+								</label>
+								<div class="input-group mb-3">
+									<div className="form-wrap">
+										<RSelect options={option} className="w-130px" placeholder="Your domain" />
+									</div>
+									<input type="text" class="form-control" aria-label="Text input with dropdown button" />
+								</div>
+								<div>
+									<Button color="primary" className="">
+										<Icon name="link-alt"></Icon>
+										<span>cut</span>
+									</Button>
+								</div>
 							</Card>
 						</Col>
 						<Col xxl="6">
