@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import Content from "../layout/content/Content";
 import Head from "../layout/head/Head";
-import InvestOverview from "../components/partials/invest/invest-overview/InvestOverview";
-import InvestPlan from "../components/partials/invest/invest-plan/InvestPlan";
+// import InvestOverview from "../components/partials/invest/invest-overview/InvestOverview";
+// import InvestPlan from "../components/partials/invest/invest-plan/InvestPlan";
 import RecentInvest from "../components/partials/invest/recent-investment/RecentInvest";
 import RecentActivity from "../components/partials/default/recent-activity/Activity";
 import Notifications from "../components/partials/default/notification/Notification";
+import BrowserUser from "../components/partials/analytics/browser-users/BrowserUser";
+import SessionDevice from "../components/partials/analytics/session-devices/SessionDevice";
+import UserMap from "../components/partials/analytics/user-map/UserMap";
 import { Card } from "reactstrap";
 import { Block, BlockBetween, BlockHead, BlockHeadContent, BlockTitle, Icon, Button, Row, Col, PreviewAltCard } from "../components/Component";
 import userStore from "../zustand/userStore/userStore";
@@ -112,20 +115,31 @@ const InvestHomePage = () => {
 								</Row>
 							</PreviewAltCard>
 						</Col>
-
 						<Col xl="12" xxl="8">
 							<Card className="card-bordered card-full">
 								<RecentInvest />
 							</Card>
 						</Col>
-						<Col md="6" xxl="4">
+						<Col xxl="6">
+							<Card className="card-bordered h-100">
+								<BrowserUser />
+							</Card>
+						</Col>
+						{/* <Col md="6" xxl="4">
 							<PreviewAltCard className="card-full">
 								<InvestOverview />
 							</PreviewAltCard>
+						</Col> */}
+						<Col md="6" xxl="3">
+							<PreviewAltCard className="h-100" bodyClass="h-100 stretch flex-column">
+								<SessionDevice />
+							</PreviewAltCard>
 						</Col>
 
-						<Col md="6" xxl="4">
-							<InvestPlan />
+						<Col md="6" xxl="3">
+							<PreviewAltCard className="h-100">
+								<UserMap />
+							</PreviewAltCard>
 						</Col>
 
 						<Col md="6" xxl="4">
