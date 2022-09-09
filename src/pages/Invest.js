@@ -35,7 +35,7 @@ const InvestHomePage = () => {
 		{ value: "https://two.com", label: "https://two.com" },
 	];
 	const userinfo = userStore((state) => state.user);
-	const [sm, updateSm] = useState(false);
+	// const [sm, updateSm] = useState(false);
 
 	return (
 		<React.Fragment>
@@ -46,19 +46,19 @@ const InvestHomePage = () => {
 						<BlockHeadContent>
 							<BlockTitle page>{userinfo.name}'s Dashboard</BlockTitle>
 						</BlockHeadContent>
-						<BlockHeadContent>
+						{/* <BlockHeadContent>
 							<div className="toggle-wrap nk-block-tools-toggle">
 								<Button className={`btn-icon btn-trigger toggle-expand mr-n1 ${sm ? "active" : ""}`} onClick={() => updateSm(!sm)}>
 									<Icon name="more-v"></Icon>
 								</Button>
 								<div className="toggle-expand-content" style={{ display: sm ? "block" : "none" }}>
 									<ul className="nk-block-tools g-3">
-										{/* <li>
+										<li>
 											<Button color="primary" outline className="btn-dim btn-white">
 												<Icon name="download-cloud"></Icon>
 												<span>Export</span>
 											</Button>
-										</li> */}
+										</li>
 										<li>
 											<Button color="primary" outline className="btn-dim btn-white">
 												<Icon name="reports"></Icon>
@@ -68,7 +68,7 @@ const InvestHomePage = () => {
 									</ul>
 								</div>
 							</div>
-						</BlockHeadContent>
+						</BlockHeadContent> */}
 					</BlockBetween>
 				</BlockHead>
 
