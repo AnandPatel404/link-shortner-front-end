@@ -9,13 +9,14 @@ import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button, Icon, Pre
 import { Form, FormGroup, Spinner, Alert, Row, Col } from "reactstrap";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-// import useUserStore from "../../zustand/userStore/userStore";
+import useUserAuth from "../../zustand/auth/userAuth";
 import o from "../../images/svg/oo.svg";
 
 function SendOtp() {
 	const [loading] = useState(false);
 	const [errorVal] = useState("");
 	const [option, setOption] = useState([]);
+	const [CountryCodes, setCountryCodes] = useState("");
 	const getCountryCode = async () => {
 		await axios({
 			method: "get",
@@ -25,7 +26,7 @@ function SendOtp() {
 				if (res.data.status === "Success") {
 					let a = [];
 					res.data.data.forEach((e) => {
-						a.push({ value: e.name, label: `${e.dial_code} ${e.name}` });
+						a.push({ value: e.dial_code, label: `${e.dial_code} ${e.name}` });
 					});
 					setOption(a);
 				}
@@ -38,11 +39,18 @@ function SendOtp() {
 		getCountryCode();
 	}, []);
 
-	// const login = useUserStore((state) => state.loginUser);
-	const onFormSubmit = (formData) => {
-		// login(formData);
+	const sendOtp = useUserAuth((state) => state.sendOtp);
+	const onFormSubmit = async (formData) => {
+		const newCode = CountryCodes.slice(1);
+		const data = {
+			number: formData.number,
+			countryCode: newCode,
+		};
+		await sendOtp(data);
 	};
-
+	const countryCode = (e) => {
+		setCountryCodes(e.value);
+	};
 	const { errors, register, handleSubmit } = useForm();
 	return (
 		<React.Fragment>
@@ -81,7 +89,12 @@ function SendOtp() {
 											</label>
 										</div>
 										<div className="form-control-wrap">
-											<RSelect options={option} className="" placeholder="Country Code"></RSelect>
+											<RSelect
+												options={option}
+												className=""
+												placeholder="Country Code"
+												onChange={(e) => countryCode(e)}
+											></RSelect>
 										</div>
 									</FormGroup>
 									<FormGroup>
