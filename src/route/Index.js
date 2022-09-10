@@ -4,7 +4,7 @@ import { ProductContextProvider } from "../pages/pre-built/products/ProductConte
 import { UserContextProvider } from "../pages/pre-built/user-manage/UserContext";
 import { RedirectAs404 } from "../utils/Utils";
 
-import Homepage from "../pages/Homepage";
+// import Homepage from "../pages/Homepage";
 import Crypto from "../pages/Crypto";
 import Analytics from "../pages/Analytics";
 import Invest from "../pages/Invest";
@@ -103,6 +103,8 @@ import TinymcePreview from "../pages/components/forms/rich-editor/TinymcePreview
 import KnobPreview from "../pages/components/charts/KnobPreview";
 import { FileManagerContextProvider } from "../pages/app/file-manager/FileManagerContext";
 
+import ChangePassword from "../pages/auth/changePassword";
+
 const Pages = () => {
 	useLayoutEffect(() => {
 		window.scrollTo(0, 0);
@@ -151,6 +153,7 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-notification/`} component={UserProfileLayout}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-activity/`} component={UserProfileLayout}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-setting/`} component={UserProfileLayout}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-change-password/`} component={ChangePassword}></Route>
 				<Route //Context api added
 					exact
 					path={`${process.env.PUBLIC_URL}/user-contact-card`}

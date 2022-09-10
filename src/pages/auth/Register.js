@@ -5,18 +5,23 @@ import PageContainer from "../../layout/page-container/PageContainer";
 import Head from "../../layout/head/Head";
 import AuthFooter from "./AuthFooter";
 import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button, Icon, PreviewCard } from "../../components/Component";
-import { Spinner, FormGroup, Row, Col } from "reactstrap";
+import { FormGroup, Row, Col } from "reactstrap";
 import { useForm } from "react-hook-form";
-import r from "../../images/svg/r.svg";
+import r from "../../images/svg/rr.svg";
+import useUserAuth from "../../zustand/auth/userAuth";
 
 const Register = ({ history }) => {
 	const [passState, setPassState] = useState(false);
-	const [loading, setLoading] = useState(false);
 	const { errors, register, handleSubmit } = useForm();
 
-	const handleFormSubmit = () => {
-		setLoading(true);
-		setTimeout(() => history.push(`${process.env.PUBLIC_URL}/auth-success`), 2000);
+	const registerUser = useUserAuth((state) => state.Register);
+	const handleFormSubmit = async (formData) => {
+		const data = {
+			...formData,
+			number: localStorage.getItem("number"),
+			countryCode: localStorage.getItem("countryCode"),
+		};
+		await registerUser(data, history);
 	};
 	return (
 		<React.Fragment>
@@ -25,7 +30,7 @@ const Register = ({ history }) => {
 				<Row>
 					<Col xl="7">
 						<div className="d-md-flex justify-content-md-center align-items-md-center">
-							<img src={r} alt="" width={800} />
+							<img src={r} alt="" width={600} />
 						</div>
 					</Col>
 					<Col xl="5">
@@ -77,25 +82,6 @@ const Register = ({ history }) => {
 									</FormGroup>
 									<FormGroup>
 										<div className="form-label-group">
-											<label className="form-label" htmlFor="default-01">
-												Mobile no (WhatsApp no)
-											</label>
-										</div>
-										<div className="form-control-wrap">
-											<input
-												type="number"
-												bssize="lg"
-												id="default-01"
-												name="number"
-												ref={register({ required: true })}
-												className="form-control-lg form-control"
-												placeholder="Enter your whatsApp number "
-											/>
-											{errors.number && <p className="invalid">This field is required</p>}
-										</div>
-									</FormGroup>
-									<FormGroup>
-										<div className="form-label-group">
 											<label className="form-label" htmlFor="password">
 												Password
 											</label>
@@ -116,17 +102,17 @@ const Register = ({ history }) => {
 											<input
 												type={passState ? "text" : "password"}
 												id="password"
-												name="passcode"
+												name="password"
 												ref={register({ required: "This field is required" })}
-												placeholder="Enter your passcode"
+												placeholder="Enter your password"
 												className={`form-control-lg form-control ${passState ? "is-hidden" : "is-shown"}`}
 											/>
-											{errors.passcode && <span className="invalid">{errors.passcode.message}</span>}
+											{errors.password && <span className="invalid">{errors.password.message}</span>}
 										</div>
 									</FormGroup>
 									<FormGroup>
 										<Button type="submit" color="primary" size="lg" className="btn-block">
-											{loading ? <Spinner size="sm" color="light" /> : "Register"}
+											Register
 										</Button>
 									</FormGroup>
 								</form>

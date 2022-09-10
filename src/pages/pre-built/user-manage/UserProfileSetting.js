@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "../../../layout/head/Head";
 import { Card } from "reactstrap";
+import { Link } from "react-router-dom";
 import { Block, BlockBetween, BlockDes, BlockHead, BlockHeadContent, BlockTitle, Icon, Button } from "../../../components/Component";
 
 const UserProfileSettingPage = ({ sm, updateSm }) => {
@@ -36,7 +37,9 @@ const UserProfileSettingPage = ({ sm, updateSm }) => {
 								<div className="nk-block-actions flex-shrink-sm-0">
 									<ul className="align-center flex-wrap flex-sm-nowrap gx-3 gy-2">
 										<li className="order-md-last">
-											<Button color="primary">Change Password</Button>
+											<Link to={`${process.env.PUBLIC_URL}/user-profile-change-password/`} className="btn btn-primary">
+												Change Password
+											</Link>
 										</li>
 										<li>
 											<em className="text-soft text-date fs-12px">

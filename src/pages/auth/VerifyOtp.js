@@ -20,6 +20,14 @@ function VerifyOtp({ history }) {
 		};
 		await verifyOtp(data, history);
 	};
+	const ReSendOtp = useUserAuth((state) => state.ReSendOtp);
+	const reSendOtp = async () => {
+		const data = {
+			number: localStorage.getItem("number"),
+			countryCode: localStorage.getItem("countryCode"),
+		};
+		await ReSendOtp(data);
+	};
 	const { errors, register, handleSubmit } = useForm();
 	return (
 		<React.Fragment>
@@ -71,12 +79,12 @@ function VerifyOtp({ history }) {
 									</FormGroup>
 									<FormGroup>
 										<Button size="lg" className="btn-block" type="submit" color="primary">
-											{loading ? <Spinner size="sm" color="light" /> : "Send Otp"}
+											{loading ? <Spinner size="sm" color="light" /> : "Verify Otp"}
 										</Button>
 									</FormGroup>
 								</Form>
 								<div className="form-note-s2 text-center pt-2">
-									<Button size="lg" className="link link-primary" type="button">
+									<Button size="lg" className="link link-primary" type="button" onClick={reSendOtp}>
 										Resend Otp
 									</Button>
 								</div>
