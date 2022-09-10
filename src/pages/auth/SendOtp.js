@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import useUserAuth from "../../zustand/auth/userAuth";
 import o from "../../images/svg/oo.svg";
 
-function SendOtp() {
+function SendOtp({ history }) {
 	const [loading] = useState(false);
 	const [errorVal] = useState("");
 	const [option, setOption] = useState([]);
@@ -46,7 +46,7 @@ function SendOtp() {
 			number: formData.number,
 			countryCode: newCode,
 		};
-		await sendOtp(data);
+		await sendOtp(data, history);
 	};
 	const countryCode = (e) => {
 		setCountryCodes(e.value);
@@ -59,7 +59,7 @@ function SendOtp() {
 				<Row>
 					<Col xl="7">
 						<div className="d-md-flex justify-content-md-center align-items-md-center mt-4">
-							<img src={o} alt="" height={600} />
+							<img src={o} alt="" width={600} />
 						</div>
 					</Col>
 					<Col xl="5">

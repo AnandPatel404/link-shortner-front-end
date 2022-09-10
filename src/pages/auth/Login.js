@@ -29,7 +29,7 @@ const Login = () => {
 				<Row>
 					<Col xl="7">
 						<div className="d-md-flex justify-content-md-center align-items-md-center">
-							<img src={l} alt="" height={600} />
+							<img src={l} alt="" width={600} />
 						</div>
 					</Col>
 					<Col xl="5">
