@@ -1,3 +1,8 @@
+// import BrowserUser from "../components/partials/analytics/browser-users/BrowserUser";
+// import UserMap from "../components/partials/analytics/user-map/UserMap";
+// import SessionDevice from "../components/partials/analytics/session-devices/SessionDevice";
+// import TrafficDougnut from "../components/partials/analytics/traffic-dougnut/TrafficDoughnut";
+// import PageViewer from "../components/partials/analytics/page-view/PageView";
 import React, { useState } from "react";
 import Content from "../layout/content/Content";
 import Head from "../layout/head/Head";
@@ -5,11 +10,6 @@ import AudienceOverview from "../components/partials/analytics/audience-overview
 import ActiveUser from "../components/partials/analytics/active-user/ActiveUser";
 import WebsitePerformance from "../components/partials/analytics/website-perfomance/WebsitePerfomance";
 import TrafficChannel from "../components/partials/analytics/traffic-channel/Traffic";
-import TrafficDougnut from "../components/partials/analytics/traffic-dougnut/TrafficDoughnut";
-// import UserMap from "../components/partials/analytics/user-map/UserMap";
-// import BrowserUser from "../components/partials/analytics/browser-users/BrowserUser";
-import PageViewer from "../components/partials/analytics/page-view/PageView";
-// import SessionDevice from "../components/partials/analytics/session-devices/SessionDevice";
 import { DropdownToggle, DropdownMenu, Card, UncontrolledDropdown, DropdownItem } from "reactstrap";
 import { Block, BlockDes, BlockHead, BlockHeadContent, BlockTitle, Icon, Button, Row, Col, PreviewAltCard } from "../components/Component";
 
@@ -116,11 +116,11 @@ const AnalyticsHomePage = () => {
 								<TrafficChannel />
 							</Card>
 						</Col>
-						<Col md="6" xxl="3">
+						{/* <Col md="6" xxl="3">
 							<PreviewAltCard className="h-100">
 								<TrafficDougnut />
 							</PreviewAltCard>
-						</Col>
+						</Col> */}
 						{/* <Col md="6" xxl="3">
 							<PreviewAltCard className="h-100">
 								<UserMap />
@@ -131,11 +131,11 @@ const AnalyticsHomePage = () => {
                 <BrowserUser />
               </Card>
             </Col> */}
-						<Col md="6" xxl="3">
+						{/* <Col md="6" xxl="3">
 							<Card className="card-bordered h-100">
 								<PageViewer />
 							</Card>
-						</Col>
+						</Col> */}
 						{/* <Col md="6" xxl="3">
 							<PreviewAltCard className="h-100" bodyClass="h-100 stretch flex-column">
 								<SessionDevice />
