@@ -4,7 +4,7 @@ import React from "react";
 import PageContainer from "../../layout/page-container/PageContainer";
 import Head from "../../layout/head/Head";
 import AuthFooter from "./AuthFooter";
-import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button } from "../../components/Component";
+import { Block, BlockContent, BlockDes, BlockHead, BlockTitle } from "../../components/Component";
 import { Link } from "react-router-dom";
 import { Row, Col } from "reactstrap";
 import r from "../../images/svg/Completed.svg";

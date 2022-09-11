@@ -24,8 +24,8 @@ const ChangePassword = ({ history }) => {
 					</div>
 				</Col>
 				<Col xl="5">
-					<Block className="nk-auth-body pt-lg-5 wide-s">
-						<PreviewCard className="border-0 mt-5" bodyClass="card-inner-lg" style={{ backgroundColor: "#f5f6fa" }}>
+					<Block className="nk-auth-body pt-lg-5 mt-lg-4 wide-s">
+						<PreviewCard className="border-0 mt-5" bodyClass="card-inner-lg">
 							<BlockHead>
 								<BlockContent>
 									<BlockTitle tag="h4">Change Password</BlockTitle>
