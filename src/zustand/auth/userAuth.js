@@ -73,6 +73,27 @@ const useUserAuth = create((set) => ({
 				Swal.fire("error", err.response.data.message, "error");
 			});
 	},
+	LogOut: async () => {
+		await axios({
+			method: "post",
+			url: "auth/logout",
+		})
+			.then((res) => {
+				if (res.data.status === "Success") {
+					window.history.pushState(
+						`${process.env.PUBLIC_URL ? process.env.PUBLIC_URL : "/"}`,
+						"auth-login",
+						`${process.env.PUBLIC_URL ? process.env.PUBLIC_URL : "/"}`
+					);
+					localStorage.clear();
+					window.location.reload();
+				}
+			})
+			.catch((err) => {
+				console.log(err.response.data.message);
+				Swal.fire("error", err.response.data.message, "error");
+			});
+	},
 }));
 
 export default useUserAuth;

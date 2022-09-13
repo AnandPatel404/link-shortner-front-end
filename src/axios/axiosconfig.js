@@ -5,4 +5,18 @@ const instance = axios.create({
 	withCredentials: true,
 });
 
+/**
+ * Catch the AunAuthorized Request
+ */
+instance.interceptors.response.use(
+	(response) => response,
+	(error) => {
+		if (error.response.status === 401) {
+			window.location = `${process.env.PUBLIC_URL}/auth-login`;
+			return;
+		}
+		return Promise.reject(error);
+	}
+);
+
 export default instance;

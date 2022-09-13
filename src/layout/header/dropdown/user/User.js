@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
 import UserAvatar from "../../../../components/user/UserAvatar";
 import { DropdownToggle, DropdownMenu, Dropdown } from "reactstrap";
-import { Icon } from "../../../../components/Component";
+import { Button, Icon } from "../../../../components/Component";
 import { LinkList, LinkItem } from "../../../../components/links/Links";
 import useUserStore from "../../../../zustand/userStore/userStore";
+import useUserAuth from "../../../../zustand/auth/userAuth";
 
 const User = () => {
 	const userData = useUserStore((state) => state.user);
 	const [open, setOpen] = useState(false);
 	const [user, setuser] = useState({});
 	const toggle = () => setOpen((prevState) => !prevState);
-
-	const handleSignout = () => {
-		localStorage.removeItem("user");
+	const LogOut = useUserAuth((state) => state.LogOut);
+	const handleSignout = async () => {
+		await LogOut();
 	};
 
 	useEffect(() => {
@@ -63,10 +64,10 @@ const User = () => {
 				</div>
 				<div className="dropdown-inner">
 					<LinkList>
-						<a href={`${process.env.PUBLIC_URL}/auth-login`} onClick={handleSignout}>
+						<Button type="button" onClick={handleSignout} className="p-0">
 							<Icon name="signout"></Icon>
 							<span>Sign Out</span>
-						</a>
+						</Button>
 					</LinkList>
 				</div>
 			</DropdownMenu>

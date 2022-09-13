@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import useUserStore from "../../zustand/userStore/userStore";
 import l from "../../images/svg/l.svg";
 
-const Login = () => {
+const Login = ({ history }) => {
 	const [loading] = useState(false);
 	const [passState, setPassState] = useState(false);
 	const [errorVal] = useState("");
