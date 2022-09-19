@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../axios/axiosconfig";
-// import Logo from "../../images/logo.png";
-// import LogoDark from "../../images/logo-dark.png";
+import Logo from "../../images/only-charecter.svg";
+import LogoDark from "../../images/only-charecter.svg";
 import PageContainer from "../../layout/page-container/PageContainer";
 import Head from "../../layout/head/Head";
-import AuthFooter from "./AuthFooter";
 import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button, Icon, PreviewCard, RSelect } from "../../components/Component";
 import { Form, FormGroup, Spinner, Alert, Row, Col } from "reactstrap";
 import { useForm } from "react-hook-form";
@@ -57,14 +56,31 @@ function SendOtp({ history }) {
 			<Head title="Send Otp" />
 			<PageContainer>
 				<Row>
-					<Col xl="7">
-						<div className="d-md-flex justify-content-md-center align-items-md-center mt-4">
+					<Col xl="7" style={{ backgroundColor: "#f1c40f4a" }}>
+						<div className="d-md-flex justify-content-md-center align-items-md-center flex-column text-center">
 							<img src={o} alt="" width={600} />
+							<BlockHead>
+								<BlockContent>
+									<BlockTitle tag="h3">privacy & security 😊😊</BlockTitle>
+									<BlockDes>
+										<p>
+											feel free we do not share any details with anyone <br />
+											👉 Please enter your whatApp number for receive otp 👈
+										</p>
+									</BlockDes>
+								</BlockContent>
+							</BlockHead>
 						</div>
 					</Col>
 					<Col xl="5">
-						<Block className="nk-auth-body py-lg-5 my-lg-5 wide-s">
+						<Block className="nk-auth-body py-5 my-5 wide-s">
 							<PreviewCard className="border-0" bodyClass="card-inner-lg" style={{ backgroundColor: "#f5f6fa" }}>
+								<div className="brand-logo pb-4">
+									<Link to={process.env.PUBLIC_URL + "/"} className="logo-link">
+										<img className="logo-light logo-img logo-img-lg" src={Logo} alt="logo" width={130} />
+										<img className="logo-dark logo-img logo-img-lg" src={LogoDark} alt="logodark" />
+									</Link>
+								</div>
 								<BlockHead>
 									<BlockContent>
 										<BlockTitle tag="h3">Send Otp</BlockTitle>
@@ -130,7 +146,6 @@ function SendOtp({ history }) {
 					</Col>
 				</Row>
 			</PageContainer>
-			<AuthFooter />
 		</React.Fragment>
 	);
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-// import Logo from "../../images/logo.png";
-// import LogoDark from "../../images/logo-dark.png";
+import Logo from "../../images/only-charecter.svg";
+import LogoDark from "../../images/only-charecter.svg";
 import PageContainer from "../../layout/page-container/PageContainer";
 import Head from "../../layout/head/Head";
 import AuthFooter from "./AuthFooter";
@@ -8,6 +8,7 @@ import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button, Icon, Pre
 import { FormGroup, Row, Col } from "reactstrap";
 import { useForm } from "react-hook-form";
 import r from "../../images/svg/rr.svg";
+import { Link } from "react-router-dom";
 import useUserAuth from "../../zustand/auth/userAuth";
 
 const Register = ({ history }) => {
@@ -36,6 +37,12 @@ const Register = ({ history }) => {
 					<Col xl="5">
 						<Block className="nk-auth-body py-5 my-4 wide-s">
 							<PreviewCard className="border-0" bodyClass="card-inner-lg" style={{ backgroundColor: "#f5f6fa" }}>
+								<div className="brand-logo pb-4">
+									<Link to={process.env.PUBLIC_URL + "/"} className="logo-link">
+										<img className="logo-light logo-img logo-img-lg" src={Logo} alt="logo" width={160} />
+										<img className="logo-dark logo-img logo-img-lg" src={LogoDark} alt="logodark" />
+									</Link>
+								</div>
 								<BlockHead>
 									<BlockContent>
 										<BlockTitle tag="h3">Register</BlockTitle>
