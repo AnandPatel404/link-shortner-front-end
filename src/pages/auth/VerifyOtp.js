@@ -7,6 +7,7 @@ import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button, Icon, Pre
 import { Form, FormGroup, Spinner, Alert, Row, Col } from "reactstrap";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import fevIcon from "../../images/svg/fevicon-and-logo.svg";
 import useUserAuth from "../../zustand/auth/userAuth";
 import o from "../../images/svg/otp.svg";
 
@@ -35,9 +36,21 @@ function VerifyOtp({ history }) {
 			<Head title="Send Otp" />
 			<PageContainer>
 				<Row>
-					<Col xl="8">
-						<div className="d-md-flex justify-content-md-center align-items-md-center mt-lg-5 pt-lg-5">
+					<Col xl="8" className="position-relative" style={{ backgroundColor: "#f1c40f4a" }}>
+						<img src={fevIcon} alt="" width={50} className="position-absolute mt-3 ml-3  mt-md-5 ml-md-5" />
+						<div className="d-md-flex justify-content-md-center align-items-md-center mt-lg-3 pt-lg-5 flex-column text-center">
 							<img src={o} alt="" width={800} />
+							<BlockHead>
+								<BlockContent>
+									<BlockTitle tag="h3">Please enter your Otp</BlockTitle>
+									<BlockDes>
+										<p>
+											Please enter your otp to verify your account <br />
+											👉 feel free we do not share any details with anyone 👈
+										</p>
+									</BlockDes>
+								</BlockContent>
+							</BlockHead>
 						</div>
 					</Col>
 					<Col xl="4">

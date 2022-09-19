@@ -15,6 +15,7 @@ const useUserStore = create(
 				})
 					.then((res) => {
 						if (res.data.status === "Success") {
+							localStorage.setItem("id", res.data.data.id);
 							messageToast(`${res.data.message} ✅✅`, res.data.status);
 							set({ user: res.data.data });
 							setTimeout(() => {

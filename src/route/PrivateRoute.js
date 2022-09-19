@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-const auth = localStorage.getItem("user");
+const auth = localStorage.getItem("id");
 
 //TODO : check the user id is right or not
 

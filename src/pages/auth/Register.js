@@ -3,13 +3,13 @@ import Logo from "../../images/only-charecter.svg";
 import LogoDark from "../../images/only-charecter.svg";
 import PageContainer from "../../layout/page-container/PageContainer";
 import Head from "../../layout/head/Head";
-import AuthFooter from "./AuthFooter";
 import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button, Icon, PreviewCard } from "../../components/Component";
 import { FormGroup, Row, Col } from "reactstrap";
 import { useForm } from "react-hook-form";
 import r from "../../images/svg/rr.svg";
 import { Link } from "react-router-dom";
 import useUserAuth from "../../zustand/auth/userAuth";
+import fevIcon from "../../images/svg/fevicon-and-logo.svg";
 
 const Register = ({ history }) => {
 	const [passState, setPassState] = useState(false);
@@ -29,9 +29,21 @@ const Register = ({ history }) => {
 			<Head title="Register" />
 			<PageContainer>
 				<Row>
-					<Col xl="7">
-						<div className="d-md-flex justify-content-md-center align-items-md-center">
+					<Col xl="7" className="position-relative" style={{ backgroundColor: "#f1c40f4a" }}>
+						<img src={fevIcon} alt="" width={50} className="position-absolute mt-3 ml-3  mt-md-5 ml-md-5" />
+						<div className="d-md-flex justify-content-md-center align-items-md-center flex-column text-center">
 							<img src={r} alt="" width={600} />
+							<BlockHead>
+								<BlockContent>
+									<BlockTitle tag="h3">privacy & security 😊😊</BlockTitle>
+									<BlockDes>
+										<p>
+											feel free we do not share any details with anyone <br />
+											👉 Please enter your whatApp number for receive otp 👈
+										</p>
+									</BlockDes>
+								</BlockContent>
+							</BlockHead>
 						</div>
 					</Col>
 					<Col xl="5">
@@ -127,7 +139,6 @@ const Register = ({ history }) => {
 						</Block>
 					</Col>
 				</Row>
-				<AuthFooter />
 			</PageContainer>
 		</React.Fragment>
 	);
