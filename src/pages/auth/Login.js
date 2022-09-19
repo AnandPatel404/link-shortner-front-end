@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import useUserStore from "../../zustand/userStore/userStore";
 import l from "../../images/svg/l.svg";
-// import fevIcon from "../../images/svg/fevicon-and-logo.svg";
+import fevIcon from "../../images/svg/fevicon-and-logo.svg";
 
 const Login = ({ history }) => {
 	const [loading] = useState(false);
@@ -27,13 +27,7 @@ const Login = ({ history }) => {
 			<PageContainer>
 				<Row>
 					<Col xl="7" className="position-relative" style={{ backgroundColor: "#f1c40f4a" }}>
-						{/* <img
-							src={fevIcon}
-							alt=""
-							width={50}
-							className="position-absolute d-none d-lg-block"
-							style={{ top: 80 + "px", left: 220 + "px" }}
-						/> */}
+						<img src={fevIcon} alt="" width={50} className="position-absolute mt-3 ml-3  mt-md-5 ml-md-5" />
 						<div className="d-md-flex justify-content-md-center align-items-md-center flex-column text-center">
 							<img src={l} alt="" width={600} />
 							<BlockHead>
