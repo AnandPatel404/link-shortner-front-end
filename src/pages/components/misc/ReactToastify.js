@@ -13,8 +13,8 @@ const CloseButton = () => {
 const CustomToast = (props) => {
 	return (
 		<div className="toastr-text">
-			<h5>{props.msg}</h5>
-			{/* <p>Your profile has been successfully updated.</p> */}
+			<h5>{props.status}</h5>
+			<p>{props.msg}</p>
 		</div>
 	);
 };
@@ -71,9 +71,9 @@ export const infoToast = () => {
 	});
 };
 
-export const errorToast = () => {
-	toast.error("This is a note for error toast", {
-		position: "bottom-right",
+export const errorToast = (msg, status) => {
+	toast.error(<CustomToast msg={msg} status={status} />, {
+		position: "top-right",
 		autoClose: true,
 		hideProgressBar: true,
 		closeOnClick: true,
@@ -84,10 +84,10 @@ export const errorToast = () => {
 	});
 };
 
-export const messageToast = (msg) => {
-	toast.success(<CustomToast msg={msg} />, {
+export const messageToast = (msg, status) => {
+	toast.success(<CustomToast msg={msg} status={status} />, {
 		position: "top-right",
-		autoClose: false,
+		autoClose: true,
 		hideProgressBar: true,
 		closeOnClick: true,
 		pauseOnHover: true,

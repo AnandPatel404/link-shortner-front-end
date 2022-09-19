@@ -1,8 +1,7 @@
 import create from "zustand";
 import axios from "../../axios/axiosconfig";
 import { persist } from "zustand/middleware";
-import Swal from "sweetalert2";
-import { messageToast } from "../../pages/components/misc/ReactToastify";
+import { messageToast, errorToast } from "../../pages/components/misc/ReactToastify";
 
 const useUserStore = create(
 	persist(
@@ -16,7 +15,7 @@ const useUserStore = create(
 				})
 					.then((res) => {
 						if (res.data.status === "Success") {
-							Swal.fire("Success", res.data.message, "success");
+							messageToast(res.data.message, res.data.status);
 							set({ user: res.data.data });
 							setTimeout(() => {
 								window.history.pushState(
@@ -29,8 +28,7 @@ const useUserStore = create(
 						}
 					})
 					.catch((err) => {
-						// Swal.fire("error", err.response.data.message, "error");
-						messageToast(err.response.data.message);
+						errorToast(err.response.data.message, "Error");
 					});
 			},
 		}),
