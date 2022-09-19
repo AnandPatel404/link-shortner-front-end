@@ -15,7 +15,7 @@ const useUserStore = create(
 				})
 					.then((res) => {
 						if (res.data.status === "Success") {
-							messageToast(res.data.message, res.data.status);
+							messageToast(`${res.data.message} ✅✅`, res.data.status);
 							set({ user: res.data.data });
 							setTimeout(() => {
 								window.history.pushState(
@@ -28,7 +28,7 @@ const useUserStore = create(
 						}
 					})
 					.catch((err) => {
-						errorToast(err.response.data.message, "Error");
+						errorToast(`${err.response.data.message} ❌❌`, "Error");
 					});
 			},
 		}),

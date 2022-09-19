@@ -108,6 +108,7 @@ export const noIcon = () => {
 		progress: false,
 		icon: false,
 		closeButton: <CloseButton />,
+		className: "mt-5 pt-5 mt-md-0  pt-md-0",
 	});
 };
 

@@ -1,6 +1,7 @@
 import create from "zustand";
 import axios from "../../axios/axiosconfig";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
+import { messageToast, errorToast } from "../../pages/components/misc/ReactToastify";
 const useUserAuth = create((set) => ({
 	sendOtp: async (data, history) => {
 		await axios({
@@ -10,15 +11,14 @@ const useUserAuth = create((set) => ({
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
-					Swal.fire("Success", res.data.message, "success");
+					messageToast(`${res.data.message} ✅✅`, res.data.status);
 					history.push(`${process.env.PUBLIC_URL}/auth-verify-otp`);
 					localStorage.setItem("number", data.number);
 					localStorage.setItem("countryCode", data.countryCode);
 				}
 			})
 			.catch((err) => {
-				console.log(err.response.data.message);
-				Swal.fire("error", err.response.data.message, "error");
+				errorToast(`${err.response.data.message} ❌❌`, "Error");
 			});
 	},
 	verifyOtp: async (data, history) => {
@@ -29,13 +29,12 @@ const useUserAuth = create((set) => ({
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
-					Swal.fire("Success", res.data.message, "success");
+					messageToast(`${res.data.message} ✅✅`, res.data.status);
 					history.push(`${process.env.PUBLIC_URL}/auth-register`);
 				}
 			})
 			.catch((err) => {
-				console.log(err.response.data.message);
-				Swal.fire("error", err.response.data.message, "error");
+				errorToast(`${err.response.data.message} ❌❌`, "Error");
 			});
 	},
 	ReSendOtp: async (data) => {
@@ -46,12 +45,11 @@ const useUserAuth = create((set) => ({
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
-					Swal.fire("Success", res.data.message, "success");
+					messageToast(`${res.data.message} ✅✅`, res.data.status);
 				}
 			})
 			.catch((err) => {
-				console.log(err.response.data.message);
-				Swal.fire("error", err.response.data.message, "error");
+				errorToast(`${err.response.data.message} ❌❌`, "Error");
 			});
 	},
 	Register: async (data, history) => {
@@ -62,15 +60,14 @@ const useUserAuth = create((set) => ({
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
-					Swal.fire("Success", res.data.message, "success");
+					messageToast(`${res.data.message} ✅✅`, res.data.status);
 					history.push(`${process.env.PUBLIC_URL}/auth-success`);
 					localStorage.removeItem("number");
 					localStorage.removeItem("countryCode");
 				}
 			})
 			.catch((err) => {
-				console.log(err.response.data.message);
-				Swal.fire("error", err.response.data.message, "error");
+				errorToast(`${err.response.data.message} ❌❌`, "Error");
 			});
 	},
 	LogOut: async () => {
@@ -90,8 +87,7 @@ const useUserAuth = create((set) => ({
 				}
 			})
 			.catch((err) => {
-				console.log(err.response.data.message);
-				Swal.fire("error", err.response.data.message, "error");
+				errorToast(`${err.response.data.message} ❌❌`, "Error");
 			});
 	},
 }));
