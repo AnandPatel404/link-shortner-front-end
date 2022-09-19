@@ -15,7 +15,7 @@ const Success = () => {
 			<Head title="Success" />
 			<PageContainer>
 				<Row>
-					<Col xl="7" className="position-relative" style={{ backgroundColor: "#f1c40f4a" }}>
+					<Col xl="8" className="position-relative" style={{ backgroundColor: "#f1c40f4a" }}>
 						<img src={fevIcon} alt="" width={50} className="position-absolute mt-3 ml-3  mt-md-5 ml-md-5" />
 						<div className="d-md-flex justify-content-md-center align-items-md-center mt-lg-4 flex-column text-center">
 							<img src={r} alt="" width={600} />
@@ -32,7 +32,7 @@ const Success = () => {
 							</BlockHead>
 						</div>
 					</Col>
-					<Col xl="5" className="d-flex align-items-center">
+					<Col xl="4" className="d-flex align-items-center">
 						<Block className="nk-auth-body wide-s">
 							<div className="brand-logo pb-5">
 								<Link to={`${process.env.PUBLIC_URL}/`} className="logo-link">

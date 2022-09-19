@@ -36,7 +36,7 @@ function VerifyOtp({ history }) {
 			<Head title="Send Otp" />
 			<PageContainer>
 				<Row>
-					<Col xl="8" className="position-relative" style={{ backgroundColor: "#f1c40f4a" }}>
+					<Col lg="8" className="position-relative" style={{ backgroundColor: "#f1c40f4a" }}>
 						<img src={fevIcon} alt="" width={50} className="position-absolute mt-3 ml-3  mt-md-5 ml-md-5" />
 						<div className="d-md-flex justify-content-md-center align-items-md-center mt-lg-3 pt-lg-5 flex-column text-center">
 							<img src={o} alt="" width={800} />
@@ -53,7 +53,7 @@ function VerifyOtp({ history }) {
 							</BlockHead>
 						</div>
 					</Col>
-					<Col xl="4">
+					<Col lg="4">
 						<Block className="nk-auth-body pt-lg-5 mt-lg-5 wide-s">
 							<PreviewCard className="border-0 mt-lg-5" bodyClass="card-inner-lg" style={{ backgroundColor: "#f5f6fa" }}>
 								<div className="brand-logo pb-4">

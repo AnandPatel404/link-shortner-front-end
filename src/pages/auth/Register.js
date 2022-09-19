@@ -29,7 +29,7 @@ const Register = ({ history }) => {
 			<Head title="Register" />
 			<PageContainer>
 				<Row>
-					<Col xl="7" className="position-relative" style={{ backgroundColor: "#f1c40f4a" }}>
+					<Col lg="8" className="position-relative" style={{ backgroundColor: "#f1c40f4a" }}>
 						<img src={fevIcon} alt="" width={50} className="position-absolute mt-3 ml-3  mt-md-5 ml-md-5" />
 						<div className="d-md-flex justify-content-md-center align-items-md-center flex-column text-center">
 							<img src={r} alt="" width={600} />
@@ -46,7 +46,7 @@ const Register = ({ history }) => {
 							</BlockHead>
 						</div>
 					</Col>
-					<Col xl="5">
+					<Col lg="4">
 						<Block className="nk-auth-body py-5 my-4 wide-s">
 							<PreviewCard className="border-0" bodyClass="card-inner-lg" style={{ backgroundColor: "#f5f6fa" }}>
 								<div className="brand-logo pb-4">

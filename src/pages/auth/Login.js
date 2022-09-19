@@ -26,7 +26,7 @@ const Login = ({ history }) => {
 			<Head title="Login" />
 			<PageContainer>
 				<Row>
-					<Col xl="7" className="position-relative" style={{ backgroundColor: "#f1c40f4a" }}>
+					<Col lg="8" className="position-relative" style={{ backgroundColor: "#f1c40f4a" }}>
 						<img src={fevIcon} alt="" width={50} className="position-absolute mt-3 ml-3  mt-md-5 ml-md-5" />
 						<div className="d-md-flex justify-content-md-center align-items-md-center flex-column text-center">
 							<img src={l} alt="" width={600} />
@@ -43,7 +43,7 @@ const Login = ({ history }) => {
 							</BlockHead>
 						</div>
 					</Col>
-					<Col xl="5">
+					<Col lg="4">
 						<Block className="nk-auth-body py-lg-5 my-lg-5 wide-s">
 							<PreviewCard className="border-0" bodyClass="card-inner-lg" style={{ backgroundColor: "#f5f6fa" }}>
 								<div className="brand-logo pb-4">
