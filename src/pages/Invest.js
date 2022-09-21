@@ -1,9 +1,7 @@
-// import InvestPlan from "../components/partials/invest/invest-plan/InvestPlan";
-import React, { useState } from "react";
+import React from "react";
 import Content from "../layout/content/Content";
 import Head from "../layout/head/Head";
 import RecentInvest from "../components/partials/invest/recent-investment/RecentInvest";
-import RecentActivity from "../components/partials/default/recent-activity/Activity";
 import TrafficChannel from "../components/partials/analytics/traffic-channel/Traffic";
 import BrowserUser from "../components/partials/analytics/browser-users/BrowserUser";
 import SessionDevice from "../components/partials/analytics/session-devices/SessionDevice";
@@ -27,6 +25,7 @@ import firstSvg from "../images/svg/dashboard-one.svg";
 import dashboardPaln from "../images/svg/dashboard-paln.svg";
 import dashboardlimit from "../images/svg/dashboard-limite.svg";
 import allcatch from "../images/svg/allcatch.svg";
+import rocketSvg from "../images/svg/dashboard.svg";
 
 const InvestHomePage = () => {
 	const option = [
@@ -137,6 +136,16 @@ const InvestHomePage = () => {
 								<RecentInvest />
 							</Card>
 						</Col>
+						<Col md="6" lg="8" xxl="6">
+							<Card className="card-bordered h-100">
+								<TrafficChannel />
+							</Card>
+						</Col>
+						<Col md="6" lg="4" xxl="3">
+							<Card className="card-bordered card-full">
+								<img src={rocketSvg} alt="rocket" />
+							</Card>
+						</Col>
 						<Col xl="12" xxl="8">
 							<Card className="card-bordered card-full p-3">
 								<label htmlFor="basic-url" className="form-label p-1">
@@ -171,22 +180,6 @@ const InvestHomePage = () => {
 							<PreviewAltCard className="h-100">
 								<UserMap />
 							</PreviewAltCard>
-						</Col>
-
-						<Col lg="7" xxl="6">
-							<Card className="card-bordered h-100">
-								<TrafficChannel />
-							</Card>
-						</Col>
-						<Col md="6" lg="5" xxl="3">
-							<Card className="card-bordered card-full">
-								<RecentActivity />
-							</Card>
-						</Col>
-						<Col sm="12">
-							<div className="d-md-flex justify-content-md-center align-items-md-center">
-								<img src={allcatch} alt="" width={500} />
-							</div>
 						</Col>
 					</Row>
 				</Block>
