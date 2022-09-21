@@ -5,6 +5,7 @@ import Logo from "../logo/Logo";
 import User from "./dropdown/user/User";
 // import Notification from "./dropdown/notification/Notification";
 import Mode from "./dropdown/mode/mode";
+import "./style.css";
 
 const Header = ({ fixed, theme, className, setVisibility, ...props }) => {
 	const headerClass = classNames({
@@ -15,7 +16,7 @@ const Header = ({ fixed, theme, className, setVisibility, ...props }) => {
 		[`${className}`]: className,
 	});
 	return (
-		<div className={headerClass}>
+		<div className={`${headerClass} mt-2 borderReduis container`}>
 			<div className="container-fluid">
 				<div className="nk-header-wrap">
 					<div className="nk-menu-trigger d-xl-none ml-n1">

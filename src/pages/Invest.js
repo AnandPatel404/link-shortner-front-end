@@ -25,54 +25,22 @@ import firstSvg from "../images/svg/dashboard-one.svg";
 import dashboardPaln from "../images/svg/dashboard-paln.svg";
 import dashboardlimit from "../images/svg/dashboard-limite.svg";
 import rocketSvg from "../images/svg/dashboard.svg";
+import "./invest.css";
 
 const InvestHomePage = () => {
 	const option = [
 		{ value: "https://one.com", label: "https://one.com" },
 		{ value: "https://two.com", label: "https://two.com" },
 	];
-	const userinfo = userStore((state) => state.user);
-	// const [sm, updateSm] = useState(false);
 
 	return (
 		<React.Fragment>
 			<Head title="Invest Dashboard" />
 			<Content>
-				<BlockHead size="sm">
-					<BlockBetween>
-						<BlockHeadContent>
-							<BlockTitle page>{userinfo.name}'s Dashboard</BlockTitle>
-						</BlockHeadContent>
-						{/* <BlockHeadContent>
-							<div className="toggle-wrap nk-block-tools-toggle">
-								<Button className={`btn-icon btn-trigger toggle-expand mr-n1 ${sm ? "active" : ""}`} onClick={() => updateSm(!sm)}>
-									<Icon name="more-v"></Icon>
-								</Button>
-								<div className="toggle-expand-content" style={{ display: sm ? "block" : "none" }}>
-									<ul className="nk-block-tools g-3">
-										<li>
-											<Button color="primary" outline className="btn-dim btn-white">
-												<Icon name="download-cloud"></Icon>
-												<span>Export</span>
-											</Button>
-										</li>
-										<li>
-											<Button color="primary" outline className="btn-dim btn-white">
-												<Icon name="reports"></Icon>
-												<span>Reports</span>
-											</Button>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</BlockHeadContent> */}
-					</BlockBetween>
-				</BlockHead>
-
-				<Block>
+				<Block className="container">
 					<Row className="g-gs">
 						<Col md="4">
-							<PreviewAltCard className="card-full">
+							<PreviewAltCard className="card-full borderReduis">
 								<Row>
 									<Col lg="8">
 										<div className="card-title-group align-start mb-0">
@@ -92,7 +60,7 @@ const InvestHomePage = () => {
 						</Col>
 
 						<Col md="4">
-							<PreviewAltCard className="card-full">
+							<PreviewAltCard className="card-full borderReduis">
 								<Row>
 									<Col lg="8">
 										<div className="card-title-group align-start mb-0">
@@ -112,7 +80,7 @@ const InvestHomePage = () => {
 						</Col>
 
 						<Col md="4">
-							<PreviewAltCard className="card-full">
+							<PreviewAltCard className="card-full borderReduis">
 								<Row>
 									<Col lg="8">
 										<div className="card-title-group align-start mb-0">
@@ -131,22 +99,22 @@ const InvestHomePage = () => {
 							</PreviewAltCard>
 						</Col>
 						<Col xl="12" xxl="8">
-							<Card className="card-bordered card-full">
+							<Card className=" card-full borderReduis">
 								<RecentInvest />
 							</Card>
 						</Col>
 						<Col md="6" lg="8" xxl="6">
-							<Card className="card-bordered h-100">
+							<Card className="h-100 borderReduis">
 								<TrafficChannel />
 							</Card>
 						</Col>
 						<Col md="6" lg="4" xxl="3">
-							<Card className="card-bordered card-full">
+							<Card className="card-full borderReduis">
 								<img src={rocketSvg} alt="rocket" />
 							</Card>
 						</Col>
 						<Col xl="12" xxl="8">
-							<Card className="card-bordered card-full p-3">
+							<Card className="card-full p-3 borderReduis">
 								<label htmlFor="basic-url" className="form-label p-1">
 									Quick Short
 								</label>
@@ -165,18 +133,18 @@ const InvestHomePage = () => {
 							</Card>
 						</Col>
 						<Col xxl="6">
-							<Card className="card-bordered h-100">
+							<Card className=" h-100 borderReduis">
 								<BrowserUser />
 							</Card>
 						</Col>
 						<Col md="6" xxl="3">
-							<PreviewAltCard className="h-100" bodyclassName="h-100 stretch flex-column">
+							<PreviewAltCard className="h-100 borderReduis" bodyclassName="h-100 stretch flex-column">
 								<SessionDevice />
 							</PreviewAltCard>
 						</Col>
 
 						<Col md="6" xxl="3">
-							<PreviewAltCard className="h-100">
+							<PreviewAltCard className="h-100 borderReduis">
 								<UserMap />
 							</PreviewAltCard>
 						</Col>

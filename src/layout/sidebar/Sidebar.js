@@ -3,6 +3,7 @@ import classNames from "classnames";
 import SimpleBar from "simplebar-react";
 import Menu from "../menu/Menu";
 import Toggle from "./Toggle";
+import "./style.css";
 
 const Sidebar = ({ fixed, theme, className, sidebarToggle, mobileView, ...props }) => {
 	const [collapseSidebar, setSidebar] = useState(false);
@@ -26,8 +27,8 @@ const Sidebar = ({ fixed, theme, className, sidebarToggle, mobileView, ...props 
 	});
 
 	return (
-		<div className={classes}>
-			<div className="nk-sidebar-element nk-sidebar-head">
+		<div className={`${classes}`}>
+			<div className="nk-sidebar-element nk-sidebar-head borderReduis">
 				<div className="nk-menu-trigger">
 					<Toggle className="nk-nav-toggle nk-quick-nav-icon d-xl-none mr-n2" icon="arrow-left" click={sidebarToggle} />
 					<Toggle
