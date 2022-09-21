@@ -1,5 +1,5 @@
 import React from "react";
-import LogoLight2x from "../../images/only-charecter.svg";
+import LogoLight2x from "../../images/svg/darklogo.svg";
 import LogoDark2x from "../../images/only-charecter.svg";
 // import LogoLight2x from "../../images/logo.svg";
 // import LogoDark2x from "../../images/logo.svg";

@@ -24,7 +24,6 @@ import userStore from "../zustand/userStore/userStore";
 import firstSvg from "../images/svg/dashboard-one.svg";
 import dashboardPaln from "../images/svg/dashboard-paln.svg";
 import dashboardlimit from "../images/svg/dashboard-limite.svg";
-import allcatch from "../images/svg/allcatch.svg";
 import rocketSvg from "../images/svg/dashboard.svg";
 
 const InvestHomePage = () => {
