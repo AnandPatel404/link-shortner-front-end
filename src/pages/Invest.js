@@ -37,7 +37,7 @@ const InvestHomePage = () => {
 		<React.Fragment>
 			<Head title="Invest Dashboard" />
 			<Content>
-				<Block className="container">
+				<Block>
 					<Row className="g-gs">
 						<Col md="4">
 							<PreviewAltCard className="card-full borderReduis">

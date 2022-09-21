@@ -16,7 +16,7 @@ const Header = ({ fixed, theme, className, setVisibility, ...props }) => {
 		[`${className}`]: className,
 	});
 	return (
-		<div className={`${headerClass} mt-2 borderReduis container`}>
+		<div className={`${headerClass} mt-md-2 borderReduis mx-4`}>
 			<div className="container-fluid">
 				<div className="nk-header-wrap">
 					<div className="nk-menu-trigger d-xl-none ml-n1">
