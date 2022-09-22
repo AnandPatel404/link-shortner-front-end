@@ -32,11 +32,11 @@ export const execToast = (placement) => {
 	});
 };
 
-export const successToast = () => {
-	toast.success("This is a note for success toast", {
-		position: "bottom-right",
+export const successToast = (msg) => {
+	toast.success(msg, {
+		position: "top-center",
 		autoClose: true,
-		hideProgressBar: true,
+		hideProgressBar: false,
 		closeOnClick: true,
 		pauseOnHover: true,
 		draggable: true,

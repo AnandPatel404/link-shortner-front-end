@@ -2,9 +2,8 @@ import React from "react";
 import Icon from "../../../icon/Icon";
 import { DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from "reactstrap";
 import { DataTableHead, DataTableItem, DataTableRow } from "../../../table/DataTable";
-import { investData } from "./InvestData";
 
-const RecentInvest = () => {
+const RecentInvest = ({ links }) => {
 	return (
 		<React.Fragment>
 			{" "}
@@ -44,31 +43,29 @@ const RecentInvest = () => {
 						<span>&nbsp;</span>
 					</DataTableRow>
 				</DataTableHead>
-				{investData.map((item) => {
+				{links.map((item) => {
 					return (
 						<DataTableItem key={item.id}>
 							<DataTableRow>
 								<div className="align-center">
 									<span className="tb-sub">
-										{item.title} <span className="d-none d-md-inline">- {item.desc}</span>
+										{/* {item.protocol} <span className="d-none d-md-inline">- {`${item.domain}`}</span> */}
+										{`${item.protocol}://${item.domain}/${item.backlink}/`}
 									</span>
 								</div>
 							</DataTableRow>
 							<DataTableRow size="sm">
 								<div className="user-card">
 									<div className="user-name">
-										<span className="tb-lead">{item.who}</span>
+										<a className="tb-lead" href={`localhost:8000/${item.shorterLink}`} target="_blank" rel="noreferrer">
+											{`localhost:8000/${item.shorterLink}`}
+										</a>
 									</div>
 								</div>
 							</DataTableRow>
 							<DataTableRow size="lg">
-								<span className="tb-sub">{item.date}</span>
+								<span className="tb-sub">{new Date(item.createdAt).toLocaleTimeString()}</span>
 							</DataTableRow>
-							{/* <DataTableRow>
-								<span className="tb-sub tb-amount">
-									{item.amount} <span>BTC</span>
-								</span>
-							</DataTableRow> */}
 
 							<DataTableRow className="nk-tb-col-action">
 								<UncontrolledDropdown>

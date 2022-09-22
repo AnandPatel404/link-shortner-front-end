@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Content from "../layout/content/Content";
 import Head from "../layout/head/Head";
 import RecentInvest from "../components/partials/invest/recent-investment/RecentInvest";
@@ -6,19 +6,26 @@ import TrafficChannel from "../components/partials/analytics/traffic-channel/Tra
 import BrowserUser from "../components/partials/analytics/browser-users/BrowserUser";
 import SessionDevice from "../components/partials/analytics/session-devices/SessionDevice";
 import UserMap from "../components/partials/analytics/user-map/UserMap";
-import { Card } from "reactstrap";
-import { Block, Icon, Button, Row, Col, PreviewAltCard, RSelect } from "../components/Component";
+import { useForm } from "react-hook-form";
+import { Card, Form } from "reactstrap";
+import { Block, Icon, Button, Row, Col, PreviewAltCard } from "../components/Component";
 import firstSvg from "../images/svg/dashboard-one.svg";
 import dashboardPaln from "../images/svg/dashboard-paln.svg";
 import dashboardlimit from "../images/svg/dashboard-limite.svg";
 import rocketSvg from "../images/svg/dashboard.svg";
+import useQuickShortinglink from "../zustand/quickShortLink/quickShortLink";
 
 const InvestHomePage = () => {
-	const option = [
-		{ value: "https://one.com", label: "https://one.com" },
-		{ value: "https://two.com", label: "https://two.com" },
-	];
-
+	const getLinks = useQuickShortinglink((state) => state.getshortenLinks);
+	const link = useQuickShortinglink((state) => state.links);
+	useEffect(() => {
+		getLinks();
+	}, []);
+	const quickShortLink = useQuickShortinglink((state) => state.quickShort);
+	const onFormSubmit = (formData) => {
+		quickShortLink(formData);
+	};
+	const { register, handleSubmit } = useForm();
 	return (
 		<React.Fragment>
 			<Head title="Invest Dashboard" />
@@ -86,7 +93,7 @@ const InvestHomePage = () => {
 						</Col>
 						<Col xl="12" xxl="8">
 							<Card className="card-bordered card-full">
-								<RecentInvest />
+								<RecentInvest links={link} />
 							</Card>
 						</Col>
 						<Col md="6" lg="8" xxl="6">
@@ -100,23 +107,37 @@ const InvestHomePage = () => {
 							</Card>
 						</Col>
 						<Col xl="12" xxl="8">
-							<Card className="card-bordered card-full p-3">
-								<label htmlFor="basic-url" className="form-label p-1">
-									Quick Short
-								</label>
-								<div className="input-group mb-3">
-									<div className="form-wrap">
-										<RSelect options={option} className="w-130px" placeholder="Your domain" />
+							<Form className="is-alter" onSubmit={handleSubmit(onFormSubmit)}>
+								<Card className="card-bordered card-full p-3">
+									<label htmlFor="basic-url" className="form-label p-1">
+										Quick Short
+									</label>
+									<div className="input-group mb-3">
+										<div className="form-wrap">
+											<div className="input-group input-group-md">
+												<div className="input-group-prepend">
+													<span className="input-group-text" id="inputGroup-sizing-lg">
+														shorterMe.link
+													</span>
+												</div>
+											</div>
+										</div>
+										<input
+											type="text"
+											className="form-control"
+											name="link"
+											ref={register({ required: "This field is required" })}
+											placeholder="Enter your link"
+										/>
 									</div>
-									<input type="text" className="form-control" aria-label="Text input with dropdown button" />
-								</div>
-								<div>
-									<Button color="primary" className="">
-										<Icon name="link-alt"></Icon>
-										<span>cut</span>
-									</Button>
-								</div>
-							</Card>
+									<div>
+										<Button color="primary" type="submit">
+											<Icon name="link-alt"></Icon>
+											<span>cut</span>
+										</Button>
+									</div>
+								</Card>
+							</Form>
 						</Col>
 						<Col xxl="6">
 							<Card className="card-bordered h-100">
