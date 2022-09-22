@@ -4,7 +4,6 @@ import SimpleBar from "simplebar-react";
 import Menu from "../menu/Menu";
 import Toggle from "./Toggle";
 import Logo from "../logo/Logo";
-import "./style.css";
 
 const Sidebar = ({ fixed, theme, className, sidebarToggle, mobileView, ...props }) => {
 	const [collapseSidebar, setSidebar] = useState(false);
@@ -22,14 +21,14 @@ const Sidebar = ({ fixed, theme, className, sidebarToggle, mobileView, ...props 
 		"nk-sidebar-fixed": fixed,
 		"is-compact": collapseSidebar,
 		"has-hover": collapseSidebar && mouseEnter,
-		// [`is-light`]: theme === "white",
+		[`is-light`]: theme === "white",
 		[`is-${theme}`]: theme !== "white" && theme !== "light",
 		[`${className}`]: className,
 	});
 
 	return (
-		<div className={`${classes} mx-1`} style={{ borderRight: 0 }}>
-			<div className="nk-sidebar-element nk-sidebar-head borderReduis mt-xl-2 justify-content-between" style={{ backgroundColor: "#fff" }}>
+		<div className={`${classes}`}>
+			<div className="nk-sidebar-element nk-sidebar-head  mt-xl-2 justify-content-between">
 				<div className="nk-menu-trigger">
 					<Toggle className="nk-nav-toggle nk-quick-nav-icon d-xl-none mr-n2" icon="arrow-left" click={sidebarToggle} />
 					<Toggle
@@ -40,12 +39,7 @@ const Sidebar = ({ fixed, theme, className, sidebarToggle, mobileView, ...props 
 				</div>
 				<Logo />
 			</div>
-			<div
-				className="nk-sidebar-content mt-xl-4 borderReduis"
-				onMouseEnter={handleMouseEnter}
-				onMouseLeave={handleMouseLeave}
-				style={{ backgroundColor: "#fff" }}
-			>
+			<div className="nk-sidebar-content" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
 				<SimpleBar className="nk-sidebar-menu">
 					<Menu sidebarToggle={sidebarToggle} mobileView={mobileView} />
 				</SimpleBar>

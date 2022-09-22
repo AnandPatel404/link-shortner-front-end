@@ -85,22 +85,22 @@ const InvestHomePage = () => {
 							</PreviewAltCard>
 						</Col>
 						<Col xl="12" xxl="8">
-							<Card className=" card-full">
+							<Card className="card-bordered card-full">
 								<RecentInvest />
 							</Card>
 						</Col>
 						<Col md="6" lg="8" xxl="6">
-							<Card className="h-100">
+							<Card className="card-bordered h-100">
 								<TrafficChannel />
 							</Card>
 						</Col>
 						<Col md="6" lg="4" xxl="3">
-							<Card className="card-full">
+							<Card className="card-bordered card-full">
 								<img src={rocketSvg} alt="rocket" />
 							</Card>
 						</Col>
 						<Col xl="12" xxl="8">
-							<Card className="card-full p-3">
+							<Card className="card-bordered card-full p-3">
 								<label htmlFor="basic-url" className="form-label p-1">
 									Quick Short
 								</label>
@@ -119,7 +119,7 @@ const InvestHomePage = () => {
 							</Card>
 						</Col>
 						<Col xxl="6">
-							<Card className=" h-100">
+							<Card className="card-bordered h-100">
 								<BrowserUser />
 							</Card>
 						</Col>
