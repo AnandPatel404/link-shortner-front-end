@@ -1,24 +1,40 @@
 import create from "zustand";
 import axios from "../../axios/axiosconfig";
-import { successToast, errorToast } from "../../pages/components/misc/ReactToastify";
+import { errorToast } from "../../pages/components/misc/ReactToastify";
+import { toast } from "react-toastify";
 
 const useQuickShortinglink = create((set) => ({
 	links: [],
 	quickShort: async (data) => {
-		await axios({
-			url: "short/quick-short-link",
-			method: "post",
-			data,
-		})
-			.then((res) => {
-				if (res.data.status === "Success") {
-					successToast(res.data.message);
-					set((state) => ({ links: [...state.links, res.data.data] }));
-				}
-			})
-			.catch((err) => {
-				errorToast(`${err.response.data.message} ❌❌`, "Error");
-			});
+		const resolvePromis = new Promise((resolve) =>
+			resolve(
+				axios({
+					url: "short/quick-short-link",
+					method: "post",
+					data,
+				})
+			)
+		);
+		toast.promise(resolvePromis, {
+			pending: {
+				render() {
+					return "Link is shorting";
+				},
+				icon: "🤖",
+			},
+			success: {
+				render({ data }) {
+					return `${data.data.message}`;
+				},
+				icon: "🟢",
+			},
+			error: {
+				render({ data }) {
+					return `${data.response.data.message}`;
+				},
+				icon: "❌",
+			},
+		});
 	},
 	getshortenLinks: async () => {
 		await axios({
