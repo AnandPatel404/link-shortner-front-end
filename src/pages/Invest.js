@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import shallow from "zustand/shallow";
 import Content from "../layout/content/Content";
 import Head from "../layout/head/Head";
 import RecentInvest from "../components/partials/invest/recent-investment/RecentInvest";
@@ -16,19 +17,26 @@ import rocketSvg from "../images/svg/dashboard.svg";
 import useQuickShortinglink from "../zustand/quickShortLink/quickShortLink";
 
 const InvestHomePage = () => {
-	const getLinks = useQuickShortinglink((state) => state.getshortenLinks);
-	const link = useQuickShortinglink((state) => state.links);
+	const { links, quickShort, getshortenLinks } = useQuickShortinglink(
+		(state) => ({
+			links: state.links,
+			quickShort: state.quickShort,
+			getshortenLinks: state.getshortenLinks,
+		}),
+		shallow
+	);
+
 	useEffect(() => {
-		getLinks();
-	}, []);
-	const quickShortLink = useQuickShortinglink((state) => state.quickShort);
+		getshortenLinks();
+	}, [getshortenLinks]);
+
 	const onFormSubmit = (formData) => {
-		quickShortLink(formData);
+		quickShort(formData);
 	};
 	const { register, handleSubmit } = useForm();
 	return (
 		<React.Fragment>
-			<Head title="Invest Dashboard" />
+			<Head title="Dashboard" />
 			<Content>
 				<Block>
 					<Row className="g-gs">
@@ -42,7 +50,7 @@ const InvestHomePage = () => {
 											</div>
 										</div>
 										<div className="card-amount">
-											<span className="amount mt-2">0</span>
+											<span className="amount mt-2">{links.length}</span>
 										</div>
 									</Col>
 									<Col lg="4">
@@ -91,11 +99,6 @@ const InvestHomePage = () => {
 								</Row>
 							</PreviewAltCard>
 						</Col>
-						<Col xl="12" xxl="8">
-							<Card className="card-bordered card-full">
-								<RecentInvest links={link} />
-							</Card>
-						</Col>
 						<Col md="6" lg="8" xxl="6">
 							<Card className="card-bordered h-100">
 								<TrafficChannel />
@@ -138,6 +141,11 @@ const InvestHomePage = () => {
 									</div>
 								</Card>
 							</Form>
+						</Col>
+						<Col xl="12" xxl="8">
+							<Card className="card-bordered card-full">
+								<RecentInvest links={links} />
+							</Card>
 						</Col>
 						<Col xxl="6">
 							<Card className="card-bordered h-100">

@@ -2,6 +2,7 @@ import React from "react";
 import Icon from "../../../icon/Icon";
 import { DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from "reactstrap";
 import { DataTableHead, DataTableItem, DataTableRow } from "../../../table/DataTable";
+import {Link} from "react-router-dom"
 
 const RecentInvest = ({ links }) => {
 	return (
@@ -13,22 +14,19 @@ const RecentInvest = ({ links }) => {
 						<h6 className="title">Recent Shorten Link</h6>
 					</div>
 					<div className="card-tools">
-						<a
-							href="#all"
-							onClick={(ev) => {
-								ev.preventDefault();
-							}}
+						<Link
 							className="link"
+							to={process.env.PUBLIC_URL + "/product-list"}
 						>
 							View All
-						</a>
+						</Link>
 					</div>
 				</div>
 			</div>
 			<div className="nk-tb-list">
 				<DataTableHead>
 					<DataTableRow>
-						<span>Real Link</span>{" "}
+						<span>Real Link & title</span>{" "}
 					</DataTableRow>
 					<DataTableRow size="sm">
 						<span>Shorten Link</span>
@@ -36,9 +34,6 @@ const RecentInvest = ({ links }) => {
 					<DataTableRow size="lg">
 						<span>Date</span>
 					</DataTableRow>
-					{/* <DataTableRow>
-						<span>Amount</span>
-					</DataTableRow> */}
 					<DataTableRow>
 						<span>&nbsp;</span>
 					</DataTableRow>
@@ -47,11 +42,9 @@ const RecentInvest = ({ links }) => {
 					return (
 						<DataTableItem key={item.id}>
 							<DataTableRow>
-								<div className="align-center">
-									<span className="tb-sub">
-										{/* {item.protocol} <span className="d-none d-md-inline">- {`${item.domain}`}</span> */}
-										{`${item.protocol}://${item.domain}/${item.backlink}/`}
-									</span>
+								<div className="d-flex flex-column">
+									<span className="tb-sub">{`${item.protocol}://${item.domain}/${item.backlink}/`}</span>
+									<h6 className="my-1">{item.link_title ? item.link_title.slice(0, 60) + "..." : "No title"}</h6>
 								</div>
 							</DataTableRow>
 							<DataTableRow size="sm">
@@ -64,7 +57,7 @@ const RecentInvest = ({ links }) => {
 								</div>
 							</DataTableRow>
 							<DataTableRow size="lg">
-								<span className="tb-sub">{new Date(item.createdAt).toLocaleTimeString()}</span>
+								<span className="tb-sub">{new Date(item.createdAt).toLocaleString()}</span>
 							</DataTableRow>
 
 							<DataTableRow className="nk-tb-col-action">

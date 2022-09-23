@@ -13,6 +13,7 @@ const useQuickShortinglink = create((set) => ({
 			.then((res) => {
 				if (res.data.status === "Success") {
 					successToast(res.data.message);
+					set((state) => ({ links: [...state.links, res.data.data] }));
 				}
 			})
 			.catch((err) => {
