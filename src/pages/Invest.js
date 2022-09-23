@@ -15,6 +15,7 @@ import dashboardPaln from "../images/svg/dashboard-paln.svg";
 import dashboardlimit from "../images/svg/dashboard-limite.svg";
 import rocketSvg from "../images/svg/dashboard.svg";
 import useQuickShortinglink from "../zustand/quickShortLink/quickShortLink";
+import { Link } from "react-router-dom";
 
 const InvestHomePage = () => {
 	const { links, quickShort, getshortenLinks } = useQuickShortinglink(
@@ -107,6 +108,12 @@ const InvestHomePage = () => {
 						<Col md="6" lg="4" xxl="3">
 							<Card className="card-bordered card-full">
 								<img src={rocketSvg} alt="rocket" />
+								<div className="d-flex justify-content-center mb-4">
+									<Link className="btn btn-primary alin" style={{ width: 200 + "px" }}>
+										<Icon name="hot"></Icon>
+										<span>Get api credentials</span>
+									</Link>
+								</div>
 							</Card>
 						</Col>
 						<Col xl="12" xxl="8">
