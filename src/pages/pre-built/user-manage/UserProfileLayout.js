@@ -8,6 +8,8 @@ import { Route, Switch, Link } from "react-router-dom";
 import { Icon, UserAvatar } from "../../../components/Component";
 import { Card } from "reactstrap";
 import useUserStore from "../../../zustand/userStore/userStore";
+import WorkSvg from "../../../images/svg/work.svg";
+import avater from "../../../images/user.png";
 
 const UserProfileLayout = () => {
 	const [sm, updateSm] = useState(false);
@@ -50,7 +52,10 @@ const UserProfileLayout = () => {
 							<div className="card-inner-group">
 								<div className="card-inner">
 									<div className="user-card">
-										<UserAvatar text={profileName[0]} theme="primary" />
+										{/* <UserAvatar text={profileName[0]} theme="primary" /> */}
+										<div className="user-avatar">
+											<img src={avater} alt="" />
+										</div>
 										<div className="user-info">
 											<span className="lead-text">{profileName}</span>
 											<span className="sub-text">{userInfo.email}</span>
@@ -119,6 +124,9 @@ const UserProfileLayout = () => {
 										</li>
 									</ul>
 								</div>
+							</div>
+							<div className="d-flex justify-content-center mt-5 pt-5">
+								<img src={WorkSvg} alt="work" width={250} />
 							</div>
 						</div>
 						<div className="card-inner card-inner-lg">

@@ -2,7 +2,8 @@ import React from "react";
 import Icon from "../../../icon/Icon";
 import { DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from "reactstrap";
 import { DataTableHead, DataTableItem, DataTableRow } from "../../../table/DataTable";
-import {Link} from "react-router-dom"
+import Button from "../../../button/Button";
+import { Link } from "react-router-dom";
 
 const RecentInvest = ({ links }) => {
 	return (
@@ -14,10 +15,7 @@ const RecentInvest = ({ links }) => {
 						<h6 className="title">Recent Shorten Link</h6>
 					</div>
 					<div className="card-tools">
-						<Link
-							className="link"
-							to={process.env.PUBLIC_URL + "/product-list"}
-						>
+						<Link className="link" to={process.env.PUBLIC_URL + "/product-list"}>
 							View All
 						</Link>
 					</div>
@@ -49,10 +47,17 @@ const RecentInvest = ({ links }) => {
 							</DataTableRow>
 							<DataTableRow size="sm">
 								<div className="user-card">
-									<div className="user-name">
+									<div className="user-name d-flex align-items-center">
 										<a className="tb-lead" href={`localhost:8000/${item.shorterLink}`} target="_blank" rel="noreferrer">
 											{`localhost:8000/${item.shorterLink}`}
 										</a>
+										<Button
+											color="btn-dim"
+											type="submit"
+											onClick={() => navigator.clipboard.writeText(`localhost:8000/${item.shorterLink}`)}
+										>
+											copy
+										</Button>
 									</div>
 								</div>
 							</DataTableRow>

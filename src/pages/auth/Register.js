@@ -3,7 +3,7 @@ import Logo from "../../images/only-charecter.svg";
 import LogoDark from "../../images/only-charecter.svg";
 import PageContainer from "../../layout/page-container/PageContainer";
 import Head from "../../layout/head/Head";
-import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button, Icon, PreviewCard } from "../../components/Component";
+import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button, Icon, PreviewCard, RSelect } from "../../components/Component";
 import { FormGroup, Row, Col } from "reactstrap";
 import { useForm } from "react-hook-form";
 import r from "../../images/svg/rr.svg";
@@ -13,7 +13,12 @@ import fevIcon from "../../images/svg/fevicon-and-logo.svg";
 
 const Register = ({ history }) => {
 	const [passState, setPassState] = useState(false);
+	const [Gender, setGender] = useState("");
 	const { errors, register, handleSubmit } = useForm();
+	const option = [
+		{ value: "male", label: "male" },
+		{ value: "female", label: "female" },
+	];
 
 	const registerUser = useUserAuth((state) => state.Register);
 	const handleFormSubmit = async (formData) => {
@@ -21,6 +26,7 @@ const Register = ({ history }) => {
 			...formData,
 			number: localStorage.getItem("number"),
 			countryCode: localStorage.getItem("countryCode"),
+			gender: Gender,
 		};
 		await registerUser(data, history);
 	};
@@ -96,6 +102,17 @@ const Register = ({ history }) => {
 												className="form-control-lg form-control"
 												placeholder="Enter your email address "
 											/>
+											{errors.email && <p className="invalid">This field is required</p>}
+										</div>
+									</FormGroup>
+									<FormGroup>
+										<div className="form-label-group">
+											<label className="form-label" htmlFor="default-01">
+												Gender
+											</label>
+										</div>
+										<div className="form-control-wrap">
+											<RSelect options={option} onChange={(e) => setGender(e.value)} />
 											{errors.email && <p className="invalid">This field is required</p>}
 										</div>
 									</FormGroup>

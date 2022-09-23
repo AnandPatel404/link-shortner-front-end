@@ -24,6 +24,9 @@ const useQuickShortinglink = create((set) => ({
 			},
 			success: {
 				render({ data }) {
+					set((state) => ({
+						links: [...state.links, data.data.data],
+					}));
 					return `${data.data.message}`;
 				},
 				icon: "🟢",

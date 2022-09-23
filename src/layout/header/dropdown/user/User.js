@@ -5,6 +5,7 @@ import { Button, Icon } from "../../../../components/Component";
 import { LinkList, LinkItem } from "../../../../components/links/Links";
 import useUserStore from "../../../../zustand/userStore/userStore";
 import useUserAuth from "../../../../zustand/auth/userAuth";
+import avater from "../../../../images/user.png";
 
 const User = () => {
 	const userData = useUserStore((state) => state.user);
@@ -31,7 +32,9 @@ const User = () => {
 				}}
 			>
 				<div className="user-toggle">
-					<UserAvatar icon="user-alt" className="sm" theme="warning" />
+					<div className="user-avatar">
+						<img src={avater} alt="" />
+					</div>
 					<div className="user-info d-none d-md-block">
 						<div className="user-name dropdown-indicator">{user.name}</div>
 					</div>
@@ -40,8 +43,8 @@ const User = () => {
 			<DropdownMenu right className="dropdown-menu-md ">
 				<div className="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
 					<div className="user-card sm">
-						<div className="user-avatar bg-warning">
-							<span>AB</span>
+						<div className="user-avatar">
+							<img src={avater} alt="" />
 						</div>
 						<div className="user-info">
 							<span className="lead-text">{user.name}</span>
