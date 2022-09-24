@@ -185,11 +185,8 @@ const ProductList = () => {
 	};
 	// function to delete the selected item
 	const selectorDeleteProduct = () => {
-		const deleteManyLink = new Promise((resolve) => resolve(deleteMany(linkId)));
-		deleteManyLink.then(() => {
-			getUserAllShortenLink();
-			linkId = [];
-		});
+		deleteMany(linkId);
+		linkId = [];
 	};
 
 	// // onChange function for searching name

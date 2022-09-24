@@ -3,7 +3,7 @@ import axios from "../../axios/axiosconfig";
 import { toast } from "react-toastify";
 import { messageToast, errorToast } from "../../pages/components/misc/ReactToastify";
 
-const userActivity = create((set) => ({
+const userActivity = create((set, get) => ({
 	userActivitys: [],
 	links: [],
 	allLinks: [],
@@ -115,6 +115,8 @@ const userActivity = create((set) => ({
 			},
 			success: {
 				render({ data }) {
+					const getUserAllShortenLink = get().getUserAllShortenLink;
+					getUserAllShortenLink();
 					return `${data.data.message}`;
 				},
 				icon: "🟢",
