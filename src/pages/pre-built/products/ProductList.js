@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Head from "../../../layout/head/Head";
 import Content from "../../../layout/content/Content";
-import ProductH from "../../../images/product/h.png";
-import Dropzone from "react-dropzone";
-import SimpleBar from "simplebar-react";
+// import ProductH from "../../../images/product/h.png";
+// import Dropzone from "react-dropzone";
+// import SimpleBar from "simplebar-react";
 import {
 	Block,
 	BlockHead,
@@ -22,177 +22,187 @@ import {
 	PaginationComponent,
 } from "../../../components/Component";
 import { Card, DropdownItem, UncontrolledDropdown, DropdownMenu, DropdownToggle, Badge } from "reactstrap";
-import { productData, categoryOptions } from "./ProductData";
-import { useForm } from "react-hook-form";
-import { Modal, ModalBody } from "reactstrap";
-import { RSelect } from "../../../components/Component";
+// import { productData } from "./ProductData";
+// import { useForm } from "react-hook-form";
+// import { Modal, ModalBody } from "reactstrap";
+// import { RSelect } from "../../../components/Component";
+import userDashBoard from "../../../zustand/userDashBoard/userDashBoard";
 
 const ProductList = () => {
-	const [data, setData] = useState(productData);
+	const { data, getUserAllShortenLink, removeLink, deleteMany } = userDashBoard((state) => ({
+		data: state.allLinks,
+		getUserAllShortenLink: state.getUserAllShortenLink,
+		removeLink: state.removeLink,
+		deleteMany: state.deleteMany,
+	}));
+	useEffect(() => {
+		getUserAllShortenLink();
+	}, [getUserAllShortenLink]);
 	const [sm, updateSm] = useState(false);
-	const [formData, setFormData] = useState({
-		name: "",
-		img: null,
-		sku: "",
-		price: 0,
-		stock: 0,
-		category: [],
-		fav: false,
-		check: false,
-	});
-	const [editId, setEditedId] = useState();
+	// const [formData, setFormData] = useState({
+	// 	name: "",
+	// 	img: null,
+	// 	sku: "",
+	// 	price: 0,
+	// 	stock: 0,
+	// 	category: [],
+	// 	fav: false,
+	// 	check: false,
+	// });
+	// const [editId, setEditedId] = useState();
 	const [view, setView] = useState({
 		edit: false,
 		add: false,
 		details: false,
 	});
-	const [onSearchText, setSearchText] = useState("");
+	// const [onSearchText, setSearchText] = useState("");
 	const [currentPage, setCurrentPage] = useState(1);
 	const [itemPerPage] = useState(7);
-	const [files, setFiles] = useState([]);
+	// const [files, setFiles] = useState([]);
 
 	// Changing state value when searching name
-	useEffect(() => {
-		if (onSearchText !== "") {
-			const filteredObject = productData.filter((item) => {
-				return item.sku.toLowerCase().includes(onSearchText.toLowerCase());
-			});
-			setData([...filteredObject]);
-		} else {
-			setData([...productData]);
-		}
-	}, [onSearchText]);
+	// useEffect(() => {
+	// 	getUserAllShortenLink();
+	// 	if (onSearchText !== "") {
+	// 		const filteredObject = productData.filter((item) => {
+	// 			return item.sku.toLowerCase().includes(onSearchText.toLowerCase());
+	// 		});
+	// 		setData([...filteredObject]);
+	// 	} else {
+	// 		setData([...productData]);
+	// 	}
+	// }, [onSearchText]);
 
 	// OnChange function to get the input data
-	const onInputChange = (e) => {
-		setFormData({ ...formData, [e.target.name]: e.target.value });
-	};
+	// const onInputChange = (e) => {
+	// 	setFormData({ ...formData, [e.target.name]: e.target.value });
+	// };
 
-	// category change
-	const onCategoryChange = (value) => {
-		setFormData({ ...formData, category: value });
-	};
+	// // category change
+	// const onCategoryChange = (value) => {
+	// 	setFormData({ ...formData, category: value });
+	// };
 
-	// function to close the form modal
-	const onFormCancel = () => {
-		setView({ edit: false, add: false, details: false });
-		resetForm();
-	};
+	// // function to close the form modal
+	// const onFormCancel = () => {
+	// 	setView({ edit: false, add: false, details: false });
+	// 	resetForm();
+	// };
 
-	const resetForm = () => {
-		setFormData({
-			name: "",
-			img: null,
-			sku: "",
-			price: "",
-			stock: 0,
-			category: [],
-			fav: false,
-			check: false,
-		});
-	};
+	// const resetForm = () => {
+	// 	setFormData({
+	// 		name: "",
+	// 		img: null,
+	// 		sku: "",
+	// 		price: "",
+	// 		stock: 0,
+	// 		category: [],
+	// 		fav: false,
+	// 		check: false,
+	// 	});
+	// };
 
-	const onFormSubmit = (form) => {
-		const { title, price, sku, stock } = form;
-		let submittedData = {
-			id: data.length + 1,
-			name: title,
-			img: files.length > 0 ? files[0].preview : ProductH,
-			sku: sku,
-			price: price,
-			stock: stock,
-			category: formData.category,
-			fav: false,
-			check: false,
-		};
-		setData([submittedData, ...data]);
-		setView({ open: false });
-		setFiles([]);
-		resetForm();
-	};
+	// const onFormSubmit = (form) => {
+	// 	const { title, price, sku, stock } = form;
+	// 	let submittedData = {
+	// 		id: data.length + 1,
+	// 		name: title,
+	// 		img: files.length > 0 ? files[0].preview : ProductH,
+	// 		sku: sku,
+	// 		price: price,
+	// 		stock: stock,
+	// 		category: formData.category,
+	// 		fav: false,
+	// 		check: false,
+	// 	};
+	// 	setData([submittedData, ...data]);
+	// 	setView({ open: false });
+	// 	setFiles([]);
+	// 	resetForm();
+	// };
 
-	const onEditSubmit = () => {
-		let submittedData;
-		let newItems = data;
-		let index = newItems.findIndex((item) => item.id === editId);
+	// const onEditSubmit = () => {
+	// 	let submittedData;
+	// 	let newItems = data;
+	// 	let index = newItems.findIndex((item) => item.id === editId);
 
-		newItems.forEach((item) => {
-			if (item.id === editId) {
-				submittedData = {
-					id: editId,
-					name: formData.name,
-					img: files.length > 0 ? files[0].preview : item.img,
-					sku: formData.sku,
-					price: formData.price,
-					stock: formData.stock,
-					category: formData.category,
-					fav: false,
-					check: false,
-				};
-			}
-		});
-		newItems[index] = submittedData;
-		//setData(newItems);
-		resetForm();
-		setView({ edit: false, add: false });
-	};
+	// 	newItems.forEach((item) => {
+	// 		if (item.id === editId) {
+	// 			submittedData = {
+	// 				id: editId,
+	// 				name: formData.name,
+	// 				img: files.length > 0 ? files[0].preview : item.img,
+	// 				sku: formData.sku,
+	// 				price: formData.price,
+	// 				stock: formData.stock,
+	// 				category: formData.category,
+	// 				fav: false,
+	// 				check: false,
+	// 			};
+	// 		}
+	// 	});
+	// 	newItems[index] = submittedData;
+	// 	//setData(newItems);
+	// 	resetForm();
+	// 	setView({ edit: false, add: false });
+	// };
 
 	// function that loads the want to editted data
-	const onEditClick = (id) => {
-		data.forEach((item) => {
-			if (item.id === id) {
-				setFormData({
-					name: item.name,
-					img: item.img,
-					sku: item.sku,
-					price: item.price,
-					stock: item.stock,
-					category: item.category,
-					fav: false,
-					check: false,
-				});
-			}
-		});
-		setEditedId(id);
-		setFiles([]);
-		setView({ add: false, edit: true });
-	};
+	// const onEditClick = (id) => {
+	// 	data.forEach((item) => {
+	// 		if (item.id === id) {
+	// 			setFormData({
+	// 				name: item.name,
+	// 				img: item.img,
+	// 				sku: item.sku,
+	// 				price: item.price,
+	// 				stock: item.stock,
+	// 				category: item.category,
+	// 				fav: false,
+	// 				check: false,
+	// 			});
+	// 		}
+	// 	});
+	// 	setEditedId(id);
+	// 	setFiles([]);
+	// 	setView({ add: false, edit: true });
+	// };
 
 	// selects all the products
-	const selectorCheck = (e) => {
-		let newData;
-		newData = data.map((item) => {
-			item.check = e.currentTarget.checked;
-			return item;
-		});
-		setData([...newData]);
-	};
+	// const selectorCheck = (e) => {
+	// 	let newData;
+	// 	newData = data.map((item) => {
+	// 		item.check = e.currentTarget.checked;
+	// 		return item;
+	// 	});
+	// 	setData([...newData]);
+	// };
 
 	// selects one product
+	let linkId = [];
 	const onSelectChange = (e, id) => {
-		let newData = data;
-		let index = newData.findIndex((item) => item.id === id);
-		newData[index].check = e.currentTarget.checked;
-		setData([...newData]);
+		linkId.push(id);
 	};
-
-	// onChange function for searching name
-	const onFilterChange = (e) => {
-		setSearchText(e.target.value);
-	};
-
-	// function to delete a product
-	const deleteProduct = (id) => {
-		let defaultData = data;
-		defaultData = defaultData.filter((item) => item.id !== id);
-		setData([...defaultData]);
-	};
-
-	// function to delete the seletected item
+	// function to delete the selected item
 	const selectorDeleteProduct = () => {
-		let newData;
-		newData = data.filter((item) => item.check !== true);
-		setData([...newData]);
+		const deleteManyLink = new Promise((resolve) => resolve(deleteMany(linkId)));
+		deleteManyLink.then(() => {
+			getUserAllShortenLink();
+			linkId = [];
+		});
+	};
+
+	// // onChange function for searching name
+	// const onFilterChange = (e) => {
+	// 	setSearchText(e.target.value);
+	// };
+
+	// // function to delete a link
+	const deleteProduct = async (id) => {
+		const promise = new Promise((resolve) => resolve(removeLink(id)));
+		promise.then(() => {
+			getUserAllShortenLink();
+		});
 	};
 
 	// toggle function to view product details
@@ -205,15 +215,15 @@ const ProductList = () => {
 	};
 
 	// handles ondrop function of dropzone
-	const handleDropChange = (acceptedFiles) => {
-		setFiles(
-			acceptedFiles.map((file) =>
-				Object.assign(file, {
-					preview: URL.createObjectURL(file),
-				})
-			)
-		);
-	};
+	// const handleDropChange = (acceptedFiles) => {
+	// 	setFiles(
+	// 		acceptedFiles.map((file) =>
+	// 			Object.assign(file, {
+	// 				preview: URL.createObjectURL(file),
+	// 			})
+	// 		)
+	// 	);
+	// };
 
 	// Get current list, pagination
 	const indexOfLastItem = currentPage * itemPerPage;
@@ -223,7 +233,7 @@ const ProductList = () => {
 	// Change Page
 	const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-	const { errors, register, handleSubmit } = useForm();
+	// const { errors, register, handleSubmit } = useForm();
 
 	return (
 		<React.Fragment>
@@ -258,7 +268,7 @@ const ProductList = () => {
 													className="form-control"
 													id="default-04"
 													placeholder="Quick search by your link"
-													onChange={(e) => onFilterChange(e)}
+													// onChange={(e) => onFilterChange(e)}
 												/>
 											</div>
 										</li>
@@ -330,25 +340,19 @@ const ProductList = () => {
 													type="checkbox"
 													className="custom-control-input form-control"
 													id="uid_1"
-													onChange={(e) => selectorCheck(e)}
+													// onChange={(e) => selectorCheck(e)}
 												/>
 												<label className="custom-control-label" htmlFor="uid_1"></label>
 											</div>
 										</DataTableRow>
-										<DataTableRow size="sm">
-											<span>Name</span>
+										<DataTableRow sm>
+											<span>title</span>
 										</DataTableRow>
 										<DataTableRow>
-											<span>SKU</span>
+											<span>shorten</span>
 										</DataTableRow>
 										<DataTableRow>
-											<span>Price</span>
-										</DataTableRow>
-										<DataTableRow>
-											<span>Stock</span>
-										</DataTableRow>
-										<DataTableRow size="md">
-											<span>Category</span>
+											<span className="d-none d-md-inline-block">time&date</span>
 										</DataTableRow>
 										<DataTableRow className="nk-tb-col-tools">
 											<ul className="nk-tb-actions gx-1 my-n1">
@@ -383,18 +387,6 @@ const ProductList = () => {
 																		<span>Remove Selected</span>
 																	</DropdownItem>
 																</li>
-																<li>
-																	<DropdownItem tag="a" href="#stock" onClick={(ev) => ev.preventDefault()}>
-																		<Icon name="bar-c"></Icon>
-																		<span>Update Stock</span>
-																	</DropdownItem>
-																</li>
-																<li>
-																	<DropdownItem tag="a" href="#price" onClick={(ev) => ev.preventDefault()}>
-																		<Icon name="invest"></Icon>
-																		<span>Update Price</span>
-																	</DropdownItem>
-																</li>
 															</ul>
 														</DropdownMenu>
 													</UncontrolledDropdown>
@@ -419,27 +411,35 @@ const ProductList = () => {
 																<label className="custom-control-label" htmlFor={item.id + "uid1"}></label>
 															</div>
 														</DataTableRow>
-														<DataTableRow size="sm">
-															<span className="tb-product">
-																<span className="title">{item.name}</span>
+														<DataTableRow sm>
+															<span className="tb-product align-items-start d-flex flex-column">
+																<span className="title d-lg-none">
+																	{item.link_title ? item.link_title.slice(0, 25) + "..." : "No title"}
+																</span>
+																<span className="title d-none  d-lg-block">
+																	{item.link_title ? item.link_title.slice(0, 60) + "..." : "No title"}
+																</span>
+																<span className="tb-sub d-lg-none">{`${item.protocol}://${item.domain}/${
+																	item.backlink.slice(0, 25) + "..."
+																}`}</span>
+																<span className="tb-sub d-none  d-lg-block">{`${item.protocol}://${item.domain}/${
+																	item.backlink.slice(0, 60) + "..."
+																}`}</span>
 															</span>
 														</DataTableRow>
 														<DataTableRow>
-															<span className="tb-sub">{item.sku}</span>
+															<a
+																className="tb-lead"
+																href={`localhost:8000/${item.shorterLink}`}
+																target="_blank"
+																rel="noreferrer"
+															>
+																{`localhost:8000/${item.shorterLink}`}
+															</a>
 														</DataTableRow>
 														<DataTableRow>
-															<span className="tb-sub">$ {item.price}</span>
-														</DataTableRow>
-														<DataTableRow>
-															<span className="tb-sub">{item.stock}</span>
-														</DataTableRow>
-														<DataTableRow size="md">
-															<span className="tb-sub">
-																{item.category.map((cat) => {
-																	if (item.category[cat] + 1 === null || undefined) {
-																		return cat.label;
-																	} else return cat.label + ", ";
-																})}
+															<span className="tb-sub d-none d-md-inline-block">
+																{new Date(item.createdAt).toLocaleString()}
 															</span>
 														</DataTableRow>
 														<DataTableRow className="nk-tb-col-tools">
@@ -462,7 +462,7 @@ const ProductList = () => {
 																						href="#edit"
 																						onClick={(ev) => {
 																							ev.preventDefault();
-																							onEditClick(item.id);
+																							// onEditClick(item.id);
 																							toggle("edit");
 																						}}
 																					>
@@ -476,7 +476,7 @@ const ProductList = () => {
 																						href="#view"
 																						onClick={(ev) => {
 																							ev.preventDefault();
-																							onEditClick(item.id);
+																							// onEditClick(item.id);
 																							toggle("details");
 																						}}
 																					>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import UserAvatar from "../../../../components/user/UserAvatar";
 import { DropdownToggle, DropdownMenu, Dropdown } from "reactstrap";
 import { Button, Icon } from "../../../../components/Component";
 import { LinkList, LinkItem } from "../../../../components/links/Links";

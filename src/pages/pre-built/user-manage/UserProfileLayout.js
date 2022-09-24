@@ -5,7 +5,7 @@ import UserProfileSettingPage from "./UserProfileSetting";
 import UserProfileNotificationPage from "./UserProfileNotification";
 import UserProfileActivityPage from "./UserProfileActivity";
 import { Route, Switch, Link } from "react-router-dom";
-import { Icon, UserAvatar } from "../../../components/Component";
+import { Icon } from "../../../components/Component";
 import { Card } from "reactstrap";
 import useUserStore from "../../../zustand/userStore/userStore";
 import WorkSvg from "../../../images/svg/work.svg";
@@ -52,7 +52,6 @@ const UserProfileLayout = () => {
 							<div className="card-inner-group">
 								<div className="card-inner">
 									<div className="user-card">
-										{/* <UserAvatar text={profileName[0]} theme="primary" /> */}
 										<div className="user-avatar">
 											<img src={avater} alt="" />
 										</div>
@@ -62,20 +61,12 @@ const UserProfileLayout = () => {
 										</div>
 									</div>
 								</div>
-								{/* <div className="card-inner">
+								<div className="card-inner">
 									<div className="user-account-info py-0">
-										<h6 className="overline-title-alt">Nio Wallet Account</h6>
-										<div className="user-balance">
-											12.395769 <small className="currency currency-btc">BTC</small>
-										</div>
-										<div className="user-balance-sub">
-											Locked{" "}
-											<span>
-												0.344939 <span className="currency currency-btc">BTC</span>
-											</span>
-										</div>
+										<h6 className="overline-title-alt">Api limit left</h6>
+										<div className="user-balance">12</div>
 									</div>
-								</div> */}
+								</div>
 								<div className="card-inner p-0">
 									<ul className="link-list-menu">
 										<li onClick={() => updateSm(false)}>

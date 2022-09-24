@@ -14,22 +14,23 @@ import firstSvg from "../images/svg/dashboard-one.svg";
 import dashboardPaln from "../images/svg/dashboard-paln.svg";
 import dashboardlimit from "../images/svg/dashboard-limite.svg";
 import rocketSvg from "../images/svg/dashboard.svg";
-import useQuickShortinglink from "../zustand/quickShortLink/quickShortLink";
+import useUserDashBoard from "../zustand/userDashBoard/userDashBoard";
 import { Link } from "react-router-dom";
 
 const InvestHomePage = () => {
-	const { links, quickShort, getshortenLinks } = useQuickShortinglink(
+	const { links, quickShort, subscription, userDashBoard } = useUserDashBoard(
 		(state) => ({
 			links: state.links,
 			quickShort: state.quickShort,
-			getshortenLinks: state.getshortenLinks,
+			subscription: state.subscription,
+			userDashBoard: state.userDashBoard,
 		}),
 		shallow
 	);
 
 	useEffect(() => {
-		getshortenLinks();
-	}, [getshortenLinks]);
+		userDashBoard();
+	}, [userDashBoard]);
 
 	const onFormSubmit = (formData) => {
 		quickShort(formData);
@@ -71,7 +72,7 @@ const InvestHomePage = () => {
 											</div>
 										</div>
 										<div className="card-amount">
-											<span className="amount mt-2">No plan active</span>
+											<span className="amount mt-2">free plan</span>
 										</div>
 									</Col>
 									<Col lg="4">
@@ -108,7 +109,7 @@ const InvestHomePage = () => {
 						<Col md="6" lg="4" xxl="3">
 							<img src={rocketSvg} alt="rocket" />
 							<div className="d-flex justify-content-center mb-4">
-								<Link className="btn btn-primary alin" style={{ width: 200 + "px" }}>
+								<Link className="btn btn-primary alin" style={{ width: 200 + "px" }} to={process.env.PUBLIC_URL + "/product-list"}>
 									<Icon name="hot"></Icon>
 									<span>Get api credentials</span>
 								</Link>

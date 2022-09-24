@@ -1,6 +1,5 @@
 import create from "zustand";
 import axios from "../../axios/axiosconfig";
-// import Swal from "sweetalert2";
 import { messageToast, errorToast } from "../../pages/components/misc/ReactToastify";
 const useUserAuth = create((set) => ({
 	sendOtp: async (data, history) => {

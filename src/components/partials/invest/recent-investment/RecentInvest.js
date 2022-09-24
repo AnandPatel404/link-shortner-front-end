@@ -51,13 +51,7 @@ const RecentInvest = ({ links }) => {
 										<a className="tb-lead" href={`localhost:8000/${item.shorterLink}`} target="_blank" rel="noreferrer">
 											{`localhost:8000/${item.shorterLink}`}
 										</a>
-										<Button
-											color="btn-dim"
-											type="submit"
-											onClick={() => navigator.clipboard.writeText(`localhost:8000/${item.shorterLink}`)}
-										>
-											copy
-										</Button>
+										<Button onClick={() => navigator.clipboard.writeText(`localhost:8000/${item.shorterLink}`)}>copy</Button>
 									</div>
 								</div>
 							</DataTableRow>
