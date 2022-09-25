@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Head from "../../../layout/head/Head";
 import Content from "../../../layout/content/Content";
-// import ProductH from "../../../images/product/h.png";
 // import Dropzone from "react-dropzone";
 // import SimpleBar from "simplebar-react";
 import {
@@ -22,7 +21,6 @@ import {
 	PaginationComponent,
 } from "../../../components/Component";
 import { Card, DropdownItem, UncontrolledDropdown, DropdownMenu, DropdownToggle, Badge } from "reactstrap";
-// import { productData } from "./ProductData";
 // import { useForm } from "react-hook-form";
 // import { Modal, ModalBody } from "reactstrap";
 // import { RSelect } from "../../../components/Component";

@@ -1,19 +1,18 @@
 const menu = [
 	{
+		heading: "Dashboard",
+	},
+	{
 		icon: "home-alt",
 		text: "Dashboard",
 		link: "/",
 	},
-	// {
-	// 	icon: "bitcoin-cash",
-	// 	text: "Crypto Dashboard",
-	// 	link: "/crypto",
-	// },
-	// {
-	// 	icon: "growth",
-	// 	text: "Analytics Dashboard",
-	// 	link: "/analytics",
-	// },
+	{
+		text: "All shorten links",
+		link: "/all-shorten-links",
+		icon: "link",
+	},
+
 	{
 		heading: "Pre-built Pages",
 	},
@@ -118,25 +117,6 @@ const menu = [
 			{
 				text: "Kanban Board",
 				link: "/app-kanban",
-			},
-		],
-	},
-	{
-		icon: "card-view",
-		text: "Products",
-		active: false,
-		subMenu: [
-			{
-				text: "Product List",
-				link: "/product-list",
-			},
-			{
-				text: "Product Card",
-				link: "/product-card",
-			},
-			{
-				text: "Product Details",
-				link: "/product-details/0",
 			},
 		],
 	},

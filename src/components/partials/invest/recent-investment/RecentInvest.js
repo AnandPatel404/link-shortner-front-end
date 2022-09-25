@@ -15,7 +15,7 @@ const RecentInvest = ({ links }) => {
 						<h6 className="title">Recent Shorten Link</h6>
 					</div>
 					<div className="card-tools">
-						<Link className="link" to={process.env.PUBLIC_URL + "/product-list"}>
+						<Link className="link" to={process.env.PUBLIC_URL + "/all-shorten-links"}>
 							View All
 						</Link>
 					</div>
@@ -75,17 +75,6 @@ const RecentInvest = ({ links }) => {
 													}}
 												>
 													View
-												</DropdownItem>
-											</li>
-											<li>
-												<DropdownItem
-													tag="a"
-													href="#dropdownitem"
-													onClick={(ev) => {
-														ev.preventDefault();
-													}}
-												>
-													Delete Link
 												</DropdownItem>
 											</li>
 										</ul>

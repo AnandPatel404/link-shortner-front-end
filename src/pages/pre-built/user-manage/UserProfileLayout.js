@@ -9,7 +9,8 @@ import { Icon } from "../../../components/Component";
 import { Card } from "reactstrap";
 import useUserStore from "../../../zustand/userStore/userStore";
 import WorkSvg from "../../../images/svg/work.svg";
-import avater from "../../../images/user.png";
+import female from "../../../images/user.png";
+import male from "../../../images/user2.png";
 
 const UserProfileLayout = () => {
 	const [sm, updateSm] = useState(false);
@@ -53,7 +54,7 @@ const UserProfileLayout = () => {
 								<div className="card-inner">
 									<div className="user-card">
 										<div className="user-avatar">
-											<img src={avater} alt="" />
+											{userInfo.gender === "male" ? <img src={male} alt="avatar" /> : <img src={female} alt="avatar" />}
 										</div>
 										<div className="user-info">
 											<span className="lead-text">{profileName}</span>

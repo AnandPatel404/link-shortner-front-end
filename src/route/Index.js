@@ -1,6 +1,5 @@
 import React, { Suspense, useLayoutEffect } from "react";
 import { Switch, Route } from "react-router-dom";
-import { ProductContextProvider } from "../pages/pre-built/products/ProductContext";
 import { UserContextProvider } from "../pages/pre-built/user-manage/UserContext";
 import { RedirectAs404 } from "../utils/Utils";
 
@@ -73,9 +72,7 @@ import KycListRegular from "../pages/pre-built/kyc-list-regular/KycListRegular";
 import KycDetailsRegular from "../pages/pre-built/kyc-list-regular/kycDetailsRegular";
 import TransListBasic from "../pages/pre-built/trans-list/TransListBasic";
 import TransListCrypto from "../pages/pre-built/trans-list/TransListCrypto";
-import ProductCard from "../pages/pre-built/products/ProductCard";
 import ProductList from "../pages/pre-built/products/ProductList";
-import ProductDetails from "../pages/pre-built/products/ProductDetails";
 import InvoiceList from "../pages/pre-built/invoice/InvoiceList";
 import InvoiceDetails from "../pages/pre-built/invoice/InvoiceDetails";
 import PricingTable from "../pages/pre-built/pricing-table/PricingTable";
@@ -166,26 +163,8 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/kyc-details-regular/:id`} component={KycDetailsRegular}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/transaction-basic`} component={TransListBasic}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/transaction-crypto`} component={TransListCrypto}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/product-list`} component={ProductList}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/all-shorten-links`} component={ProductList}></Route>
 
-				<Route // context api added
-					exact
-					path={`${process.env.PUBLIC_URL}/product-card`}
-					render={(props) => (
-						<ProductContextProvider>
-							<ProductCard />
-						</ProductContextProvider>
-					)}
-				></Route>
-				<Route
-					exact
-					path={`${process.env.PUBLIC_URL}/product-details/:id`}
-					render={(props) => (
-						<ProductContextProvider>
-							<ProductDetails {...props} />
-						</ProductContextProvider>
-					)}
-				></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/invoice-list`} component={InvoiceList}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/invoice-details/:id`} component={InvoiceDetails}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/pricing-table`} component={PricingTable}></Route>
