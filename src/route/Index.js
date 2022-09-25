@@ -1,6 +1,5 @@
 import React, { Suspense, useLayoutEffect } from "react";
 import { Switch, Route } from "react-router-dom";
-import { UserContextProvider } from "../pages/pre-built/user-manage/UserContext";
 import { RedirectAs404 } from "../utils/Utils";
 
 // import Homepage from "../pages/Homepage";
@@ -63,10 +62,7 @@ import SVGIconPage from "../pages/components/crafted-icons/SvgIcons";
 
 import ProjectCardPage from "../pages/pre-built/projects/ProjectCard";
 import ProjectListPage from "../pages/pre-built/projects/ProjectList";
-import UserListRegularPage from "../pages/pre-built/user-manage/UserListRegular";
-import UserContactCardPage from "../pages/pre-built/user-manage/UserContactCard";
 import UserDetailsPage from "../pages/pre-built/user-manage/UserDetailsRegular";
-import UserListCompact from "../pages/pre-built/user-manage/UserListCompact";
 import UserProfileLayout from "../pages/pre-built/user-manage/UserProfileLayout";
 import KycListRegular from "../pages/pre-built/kyc-list-regular/KycListRegular";
 import KycDetailsRegular from "../pages/pre-built/kyc-list-regular/kycDetailsRegular";
@@ -118,47 +114,13 @@ const Pages = () => {
 				{/*Pre-built Pages*/}
 				<Route exact path={`${process.env.PUBLIC_URL}/project-card`} component={ProjectCardPage}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/project-list`} component={ProjectListPage}></Route>
-				<Route //Context Api added
-					exact
-					path={`${process.env.PUBLIC_URL}/user-list-regular`}
-					render={() => (
-						<UserContextProvider>
-							<UserListRegularPage />
-						</UserContextProvider>
-					)}
-				></Route>
-				<Route //Context Api added
-					exact
-					path={`${process.env.PUBLIC_URL}/user-list-compact`}
-					render={() => (
-						<UserContextProvider>
-							<UserListCompact />
-						</UserContextProvider>
-					)}
-				></Route>
-				<Route //Context Api added
-					exact
-					path={`${process.env.PUBLIC_URL}/user-details-regular/:id`}
-					render={(props) => (
-						<UserContextProvider>
-							<UserDetailsPage {...props} />
-						</UserContextProvider>
-					)}
-				></Route>
+
 				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-regular/`} component={UserProfileLayout}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-notification/`} component={UserProfileLayout}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-activity/`} component={UserProfileLayout}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-setting/`} component={UserProfileLayout}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-change-password/`} component={ChangePassword}></Route>
-				<Route //Context api added
-					exact
-					path={`${process.env.PUBLIC_URL}/user-contact-card`}
-					render={() => (
-						<UserContextProvider>
-							<UserContactCardPage />
-						</UserContextProvider>
-					)}
-				></Route>
+
 				<Route exact path={`${process.env.PUBLIC_URL}/kyc-list-regular`} component={KycListRegular}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/kyc-details-regular/:id`} component={KycDetailsRegular}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/transaction-basic`} component={TransListBasic}></Route>

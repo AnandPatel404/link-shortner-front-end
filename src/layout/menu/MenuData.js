@@ -32,33 +32,6 @@ const menu = [
 		],
 	},
 	{
-		icon: "users",
-		text: "User Manage",
-		active: false,
-		subMenu: [
-			{
-				text: "User List - Regular",
-				link: "/user-list-regular",
-			},
-			{
-				text: "User List - Compact",
-				link: "/user-list-compact",
-			},
-			{
-				text: "User Details - Regular",
-				link: "/user-details-regular/1",
-			},
-			{
-				text: "User Profile - Regular",
-				link: "/user-profile-regular",
-			},
-			{
-				text: "User Contact - Card",
-				link: "/user-contact-card",
-			},
-		],
-	},
-	{
 		icon: "file-docs",
 		text: "AML / KYCs",
 		active: false,

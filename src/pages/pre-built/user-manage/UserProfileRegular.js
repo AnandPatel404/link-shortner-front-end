@@ -3,10 +3,11 @@ import Head from "../../../layout/head/Head";
 import { Modal, ModalBody, FormGroup } from "reactstrap";
 import { Block, BlockBetween, BlockHead, BlockHeadContent, BlockTitle, Icon, Row, Col, Button } from "../../../components/Component";
 import useUserStore from "../../../zustand/userStore/userStore";
+import useUserDashBoard from "../../../zustand/userDashBoard/userDashBoard";
 
 const UserProfileRegularPage = ({ sm, updateSm, setProfileName }) => {
 	const userState = useUserStore((state) => state.user);
-
+	const sub = useUserDashBoard((state) => state.subscription);
 	const [modalTab, setModalTab] = useState("1");
 	const [userInfo] = useState(userState);
 	const [formData, setFormData] = useState({});
@@ -83,7 +84,7 @@ const UserProfileRegularPage = ({ sm, updateSm, setProfileName }) => {
 				<div className="data-item">
 					<div className="data-col">
 						<span className="data-label">plan expired date</span>
-						<span className="data-value">Date</span>
+						<span className="data-value">{new Date(sub.expireAt).toLocaleString()}</span>
 					</div>
 					<div className="data-col data-col-end"></div>
 				</div>
