@@ -506,7 +506,10 @@ const Accordion = ({ className, variation, ...props }) => {
 							that such measures will prevent unauthorized access to the information about you that is stored by Bitly. In the event we
 							experience a breach of security, we will promptly notify you if your personal information has been compromised, in
 							accordance with applicable law. If you have any questions about the security of your personal information, you can contact
-							us at<a href="https://shorterme.in">(shorterme.in)</a>
+							us at
+							<a href="https://shorterme.in" target="_blank" rel="noreferrer">
+								(shorterme.in)
+							</a>
 						</p>
 					</div>
 				</Collapse>
