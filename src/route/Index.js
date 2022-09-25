@@ -62,7 +62,7 @@ import SVGIconPage from "../pages/components/crafted-icons/SvgIcons";
 
 import ProjectCardPage from "../pages/pre-built/projects/ProjectCard";
 import ProjectListPage from "../pages/pre-built/projects/ProjectList";
-import UserDetailsPage from "../pages/pre-built/user-manage/UserDetailsRegular";
+// import UserDetailsPage from "../pages/pre-built/user-manage/UserDetailsRegular";
 import UserProfileLayout from "../pages/pre-built/user-manage/UserProfileLayout";
 import KycListRegular from "../pages/pre-built/kyc-list-regular/KycListRegular";
 import KycDetailsRegular from "../pages/pre-built/kyc-list-regular/kycDetailsRegular";
@@ -114,7 +114,6 @@ const Pages = () => {
 				{/*Pre-built Pages*/}
 				<Route exact path={`${process.env.PUBLIC_URL}/project-card`} component={ProjectCardPage}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/project-list`} component={ProjectListPage}></Route>
-
 				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-regular/`} component={UserProfileLayout}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-notification/`} component={UserProfileLayout}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-activity/`} component={UserProfileLayout}></Route>

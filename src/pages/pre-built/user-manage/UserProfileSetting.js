@@ -4,7 +4,9 @@ import { Card } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Block, BlockBetween, BlockDes, BlockHead, BlockHeadContent, BlockTitle, Icon, Button } from "../../../components/Component";
 
+import userStore from "../../../zustand/userStore/userStore";
 const UserProfileSettingPage = ({ sm, updateSm }) => {
+	const userDate = userStore((state) => state.user);
 	return (
 		<React.Fragment>
 			<Head title="User List - Profile"></Head>
@@ -43,7 +45,7 @@ const UserProfileSettingPage = ({ sm, updateSm }) => {
 										</li>
 										<li>
 											<em className="text-soft text-date fs-12px">
-												Last changed: <span>Oct 2, 2019</span>
+												Last changed: <span>{new Date(userDate.updatedAt).toLocaleString()}</span>
 											</em>
 										</li>
 									</ul>

@@ -77,7 +77,7 @@ const UserProfileRegularPage = ({ sm, updateSm, setProfileName }) => {
 				<div className="data-item">
 					<div className="data-col">
 						<span className="data-label">Active plan</span>
-						<span className="data-value">None</span>
+						<span className="data-value">{sub.planId?.plan_name}</span>
 					</div>
 					<div className="data-col data-col-end"></div>
 				</div>
@@ -132,7 +132,7 @@ const UserProfileRegularPage = ({ sm, updateSm, setProfileName }) => {
 												className="form-control"
 												name="name"
 												onChange={(e) => onInputChange(e)}
-												defaultValue={formData.name}
+												defaultValue={userInfo.name}
 												placeholder="Enter Full name"
 											/>
 										</FormGroup>
@@ -148,9 +148,22 @@ const UserProfileRegularPage = ({ sm, updateSm, setProfileName }) => {
 												className="form-control"
 												name="email"
 												onChange={(e) => onInputChange(e)}
-												defaultValue="info@softnio.com"
-												disabled
-												placeholder="Email"
+												defaultValue={userInfo.email}
+											/>
+										</FormGroup>
+									</Col>
+									<Col md="6">
+										<FormGroup>
+											<label className="form-label" htmlFor="phone-no">
+												Number
+											</label>
+											<input
+												type="email"
+												id="email"
+												className="form-control"
+												name="email"
+												onChange={(e) => onInputChange(e)}
+												defaultValue={userInfo.number}
 											/>
 										</FormGroup>
 									</Col>
