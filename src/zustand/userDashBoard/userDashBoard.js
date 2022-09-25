@@ -52,9 +52,11 @@ const userActivity = create((set, get) => ({
 			},
 			success: {
 				render({ data }) {
-					set((state) => ({
-						links: [...state.links, data.data.data],
-					}));
+					const reFetch = get().userDashBoard;
+					// set((state) => ({
+					// 	links: [...state.links, data.data.data],
+					// }));
+					reFetch();
 					return `${data.data.message}`;
 				},
 				icon: "🟢",
@@ -128,6 +130,23 @@ const userActivity = create((set, get) => ({
 				icon: "❌",
 			},
 		});
+	},
+	updateLink: async (data, linkId) => {
+		await axios({
+			method: "patch",
+			url: `short/${linkId}`,
+			data,
+		})
+			.then((res) => {
+				if (res.data.status === "Success") {
+					messageToast(`${res.data.message} ✅✅`, res.data.status);
+					const reFetch = get().getUserAllShortenLink;
+					reFetch();
+				}
+			})
+			.catch((err) => {
+				errorToast(`${err.response.data.message} ❌❌`, "Error");
+			});
 	},
 }));
 

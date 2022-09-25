@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Head from "../../../layout/head/Head";
 import Content from "../../../layout/content/Content";
-import Dropzone from "react-dropzone";
+// import Dropzone from "react-dropzone";
 import {
 	Block,
 	BlockHead,
 	BlockTitle,
 	BlockBetween,
 	BlockHeadContent,
-	BlockDes,
+	// BlockDes,
 	Icon,
 	Row,
 	Col,
@@ -19,19 +19,20 @@ import {
 	DataTableItem,
 	PaginationComponent,
 } from "../../../components/Component";
-import { Card, DropdownItem, UncontrolledDropdown, DropdownMenu, DropdownToggle, Badge } from "reactstrap";
+import { Card, DropdownItem, UncontrolledDropdown, DropdownMenu, DropdownToggle } from "reactstrap";
 import { useForm } from "react-hook-form";
 import { Modal, ModalBody } from "reactstrap";
-import { RSelect } from "../../../components/Component";
+// import { RSelect } from "../../../components/Component";
 import userDashBoard from "../../../zustand/userDashBoard/userDashBoard";
 import { Link } from "react-router-dom";
 
 const ProductList = () => {
-	const { data, getUserAllShortenLink, removeLink, deleteMany } = userDashBoard((state) => ({
+	const { data, getUserAllShortenLink, removeLink, deleteMany, updateLink } = userDashBoard((state) => ({
 		data: state.allLinks,
 		getUserAllShortenLink: state.getUserAllShortenLink,
 		removeLink: state.removeLink,
 		deleteMany: state.deleteMany,
+		updateLink: state.updateLink,
 	}));
 	useEffect(() => {
 		getUserAllShortenLink();
@@ -79,57 +80,26 @@ const ProductList = () => {
 
 	const resetForm = () => {
 		setFormData({
-			name: "",
-			img: null,
-			sku: "",
-			price: "",
-			stock: 0,
-			category: [],
-			fav: false,
-			check: false,
+			protocol: "",
+			domain: "",
+			backlink: "",
+			shorterLink: "",
+			link_title: "",
+			official_domain: "shorterme.link/",
+			createdAt: "",
 		});
 	};
 
-	// const onFormSubmit = (form) => {
-	// 	const { title, price, sku, stock } = form;
-	// 	let submittedData = {
-	// 		id: data.length + 1,
-	// 		name: title,
-	// 		img: files.length > 0 ? files[0].preview : ProductH,
-	// 		sku: sku,
-	// 		price: price,
-	// 		stock: stock,
-	// 		category: formData.category,
-	// 		fav: false,
-	// 		check: false,
-	// 	};
-	// 	setData([submittedData, ...data]);
-	// 	setView({ open: false });
-	// 	resetForm();
-	// };
-
-	const onEditSubmit = () => {
-		let submittedData;
-		let newItems = data;
-		let index = newItems.findIndex((item) => item.id === editId);
-
-		newItems.forEach((item) => {
-			if (item.id === editId) {
-				submittedData = {
-					id: editId,
-					name: formData.name,
-					sku: formData.sku,
-					price: formData.price,
-					stock: formData.stock,
-					category: formData.category,
-					fav: false,
-					check: false,
-				};
-			}
-		});
-		newItems[index] = submittedData;
-		//setData(newItems);
+	const onEditSubmit = async (data) => {
+		const submit = {
+			protocol: data.protocol,
+			link_title: data.title,
+			backlink: data.backlink,
+			domain: data.domain,
+		};
+		await updateLink(submit, editId);
 		resetForm();
+
 		setView({ edit: false, add: false });
 	};
 
@@ -172,11 +142,6 @@ const ProductList = () => {
 		deleteMany(linkId);
 		linkId = [];
 	};
-
-	// // onChange function for searching name
-	// const onFilterChange = (e) => {
-	// 	setSearchText(e.target.value);
-	// };
 
 	// // function to delete a link
 	const deleteProduct = async (id) => {
@@ -303,12 +268,6 @@ const ProductList = () => {
 														</DropdownToggle>
 														<DropdownMenu right>
 															<ul className="link-list-opt no-bdr">
-																<li>
-																	<DropdownItem tag="a" href="#edit" onClick={(ev) => ev.preventDefault()}>
-																		<Icon name="edit"></Icon>
-																		<span>Edit Selected</span>
-																	</DropdownItem>
-																</li>
 																<li>
 																	<DropdownItem
 																		tag="a"
@@ -564,6 +523,7 @@ const ProductList = () => {
 														name="official_domain"
 														ref={register({ required: "This is required" })}
 														defaultValue={formData.official_domain}
+														disabled
 													/>
 													{errors.official_domain && <span className="invalid">{errors.official_domain.message}</span>}
 												</div>
@@ -581,6 +541,7 @@ const ProductList = () => {
 														name="shorterLink"
 														ref={register({ required: "This is required" })}
 														defaultValue={formData.shorterLink}
+														disabled
 													/>
 													{errors.shorterLink && <span className="invalid">{errors.shorterLink.message}</span>}
 												</div>
