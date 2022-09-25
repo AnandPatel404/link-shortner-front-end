@@ -72,7 +72,7 @@ const InvestHomePage = () => {
 											</div>
 										</div>
 										<div className="card-amount">
-											<span className="amount mt-2">free plan</span>
+											<span className="amount mt-2">{`${subscription.planId?.plan_name} plan`}</span>
 										</div>
 									</Col>
 									<Col lg="4">
@@ -92,7 +92,7 @@ const InvestHomePage = () => {
 											</div>
 										</div>
 										<div className="card-amount">
-											<span className="amount mt-2">0</span>
+											<span className="amount mt-2">{subscription.link_creating_limit}</span>
 										</div>
 									</Col>
 									<Col lg="4">

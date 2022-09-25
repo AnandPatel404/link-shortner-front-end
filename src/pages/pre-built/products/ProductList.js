@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Head from "../../../layout/head/Head";
 import Content from "../../../layout/content/Content";
-// import Dropzone from "react-dropzone";
-// import SimpleBar from "simplebar-react";
+import Dropzone from "react-dropzone";
 import {
 	Block,
 	BlockHead,
@@ -21,10 +20,11 @@ import {
 	PaginationComponent,
 } from "../../../components/Component";
 import { Card, DropdownItem, UncontrolledDropdown, DropdownMenu, DropdownToggle, Badge } from "reactstrap";
-// import { useForm } from "react-hook-form";
-// import { Modal, ModalBody } from "reactstrap";
-// import { RSelect } from "../../../components/Component";
+import { useForm } from "react-hook-form";
+import { Modal, ModalBody } from "reactstrap";
+import { RSelect } from "../../../components/Component";
 import userDashBoard from "../../../zustand/userDashBoard/userDashBoard";
+import { Link } from "react-router-dom";
 
 const ProductList = () => {
 	const { data, getUserAllShortenLink, removeLink, deleteMany } = userDashBoard((state) => ({
@@ -37,17 +37,16 @@ const ProductList = () => {
 		getUserAllShortenLink();
 	}, [getUserAllShortenLink]);
 	const [sm, updateSm] = useState(false);
-	// const [formData, setFormData] = useState({
-	// 	name: "",
-	// 	img: null,
-	// 	sku: "",
-	// 	price: 0,
-	// 	stock: 0,
-	// 	category: [],
-	// 	fav: false,
-	// 	check: false,
-	// });
-	// const [editId, setEditedId] = useState();
+	const [formData, setFormData] = useState({
+		protocol: "",
+		domain: "",
+		backlink: "",
+		shorterLink: "",
+		link_title: "",
+		official_domain: "shorterme.link/",
+		createdAt: "",
+	});
+	const [editId, setEditedId] = useState();
 	const [view, setView] = useState({
 		edit: false,
 		add: false,
@@ -56,7 +55,6 @@ const ProductList = () => {
 	// const [onSearchText, setSearchText] = useState("");
 	const [currentPage, setCurrentPage] = useState(1);
 	const [itemPerPage] = useState(7);
-	// const [files, setFiles] = useState([]);
 
 	// Changing state value when searching name
 	// useEffect(() => {
@@ -72,33 +70,25 @@ const ProductList = () => {
 	// }, [onSearchText]);
 
 	// OnChange function to get the input data
-	// const onInputChange = (e) => {
-	// 	setFormData({ ...formData, [e.target.name]: e.target.value });
-	// };
-
-	// // category change
-	// const onCategoryChange = (value) => {
-	// 	setFormData({ ...formData, category: value });
-	// };
 
 	// // function to close the form modal
-	// const onFormCancel = () => {
-	// 	setView({ edit: false, add: false, details: false });
-	// 	resetForm();
-	// };
+	const onFormCancel = () => {
+		setView({ edit: false, add: false, details: false });
+		resetForm();
+	};
 
-	// const resetForm = () => {
-	// 	setFormData({
-	// 		name: "",
-	// 		img: null,
-	// 		sku: "",
-	// 		price: "",
-	// 		stock: 0,
-	// 		category: [],
-	// 		fav: false,
-	// 		check: false,
-	// 	});
-	// };
+	const resetForm = () => {
+		setFormData({
+			name: "",
+			img: null,
+			sku: "",
+			price: "",
+			stock: 0,
+			category: [],
+			fav: false,
+			check: false,
+		});
+	};
 
 	// const onFormSubmit = (form) => {
 	// 	const { title, price, sku, stock } = form;
@@ -115,56 +105,52 @@ const ProductList = () => {
 	// 	};
 	// 	setData([submittedData, ...data]);
 	// 	setView({ open: false });
-	// 	setFiles([]);
 	// 	resetForm();
 	// };
 
-	// const onEditSubmit = () => {
-	// 	let submittedData;
-	// 	let newItems = data;
-	// 	let index = newItems.findIndex((item) => item.id === editId);
+	const onEditSubmit = () => {
+		let submittedData;
+		let newItems = data;
+		let index = newItems.findIndex((item) => item.id === editId);
 
-	// 	newItems.forEach((item) => {
-	// 		if (item.id === editId) {
-	// 			submittedData = {
-	// 				id: editId,
-	// 				name: formData.name,
-	// 				img: files.length > 0 ? files[0].preview : item.img,
-	// 				sku: formData.sku,
-	// 				price: formData.price,
-	// 				stock: formData.stock,
-	// 				category: formData.category,
-	// 				fav: false,
-	// 				check: false,
-	// 			};
-	// 		}
-	// 	});
-	// 	newItems[index] = submittedData;
-	// 	//setData(newItems);
-	// 	resetForm();
-	// 	setView({ edit: false, add: false });
-	// };
+		newItems.forEach((item) => {
+			if (item.id === editId) {
+				submittedData = {
+					id: editId,
+					name: formData.name,
+					sku: formData.sku,
+					price: formData.price,
+					stock: formData.stock,
+					category: formData.category,
+					fav: false,
+					check: false,
+				};
+			}
+		});
+		newItems[index] = submittedData;
+		//setData(newItems);
+		resetForm();
+		setView({ edit: false, add: false });
+	};
 
 	// function that loads the want to editted data
-	// const onEditClick = (id) => {
-	// 	data.forEach((item) => {
-	// 		if (item.id === id) {
-	// 			setFormData({
-	// 				name: item.name,
-	// 				img: item.img,
-	// 				sku: item.sku,
-	// 				price: item.price,
-	// 				stock: item.stock,
-	// 				category: item.category,
-	// 				fav: false,
-	// 				check: false,
-	// 			});
-	// 		}
-	// 	});
-	// 	setEditedId(id);
-	// 	setFiles([]);
-	// 	setView({ add: false, edit: true });
-	// };
+	const onEditClick = (id) => {
+		data.forEach((item) => {
+			if (item.id === id) {
+				setFormData({
+					protocol: item.protocol,
+					domain: item.domain,
+					backlink: item.backlink,
+					shorterLink: item.shorterLink,
+					link_title: item.link_title,
+					official_domain: "shorterme.link/",
+					createdAt: new Date(item.createdAt).toLocaleString(),
+				});
+			}
+		});
+		setEditedId(id);
+		setView({ add: false, edit: true });
+	};
 
 	// selects all the products
 	// const selectorCheck = (e) => {
@@ -209,17 +195,6 @@ const ProductList = () => {
 		});
 	};
 
-	// handles ondrop function of dropzone
-	// const handleDropChange = (acceptedFiles) => {
-	// 	setFiles(
-	// 		acceptedFiles.map((file) =>
-	// 			Object.assign(file, {
-	// 				preview: URL.createObjectURL(file),
-	// 			})
-	// 		)
-	// 	);
-	// };
-
 	// Get current list, pagination
 	const indexOfLastItem = currentPage * itemPerPage;
 	const indexOfFirstItem = indexOfLastItem - itemPerPage;
@@ -228,7 +203,7 @@ const ProductList = () => {
 	// Change Page
 	const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-	// const { errors, register, handleSubmit } = useForm();
+	const { errors, register, handleSubmit } = useForm();
 
 	return (
 		<React.Fragment>
@@ -267,56 +242,21 @@ const ProductList = () => {
 												/>
 											</div>
 										</li>
-										{/* <li>
-											<UncontrolledDropdown>
-												<DropdownToggle
-													color="transparent"
-													className="dropdown-toggle dropdown-indicator btn btn-outline-light btn-white"
-												>
-													Status
-												</DropdownToggle>
-												<DropdownMenu right>
-													<ul className="link-list-opt no-bdr">
-														<li>
-															<DropdownItem tag="a" href="#dropdownitem" onClick={(ev) => ev.preventDefault()}>
-																<span>New Items</span>
-															</DropdownItem>
-														</li>
-														<li>
-															<DropdownItem tag="a" href="#dropdownitem" onClick={(ev) => ev.preventDefault()}>
-																<span>Featured</span>
-															</DropdownItem>
-														</li>
-														<li>
-															<DropdownItem tag="a" href="#dropdownitem" onClick={(ev) => ev.preventDefault()}>
-																<span>Out of Stock</span>
-															</DropdownItem>
-														</li>
-													</ul>
-												</DropdownMenu>
-											</UncontrolledDropdown>
-										</li> */}
-										{/* <li className="nk-block-tools-opt">
-											<Button
-												className="toggle btn-icon d-md-none"
-												color="primary"
-												onClick={() => {
-													toggle("add");
-												}}
+										<li className="nk-block-tools-opt">
+											<Link
+												className="toggle btn btn-primary d-md-none"
+												to={process.env.PUBLIC_URL + "/kyc-details-regular/UD01544"}
 											>
-												<Icon name="plus"></Icon>
-											</Button>
-											<Button
-												className="toggle d-none d-md-inline-flex"
-												color="primary"
-												onClick={() => {
-													toggle("add");
-												}}
+												<Icon name="link"></Icon>
+											</Link>
+											<Link
+												className="toggle btn btn-primary d-none d-md-inline-flex"
+												to={process.env.PUBLIC_URL + "/kyc-details-regular/UD01544"}
 											>
-												<Icon name="plus"></Icon>
-												<span>Add Product</span>
-											</Button>
-										</li> */}
+												<Icon name="link"></Icon>
+												<span>Short link</span>
+											</Link>
+										</li>
 									</ul>
 								</div>
 							</div>
@@ -344,7 +284,7 @@ const ProductList = () => {
 											<span>title</span>
 										</DataTableRow>
 										<DataTableRow>
-											<span>shorten</span>
+											<span className="d-none d-md-inline-block">shorten</span>
 										</DataTableRow>
 										<DataTableRow>
 											<span className="d-none d-md-inline-block">time&date</span>
@@ -424,7 +364,7 @@ const ProductList = () => {
 														</DataTableRow>
 														<DataTableRow>
 															<a
-																className="tb-lead"
+																className="tb-lead d-none d-md-inline-block"
 																href={`localhost:8000/${item.shorterLink}`}
 																target="_blank"
 																rel="noreferrer"
@@ -457,7 +397,7 @@ const ProductList = () => {
 																						href="#edit"
 																						onClick={(ev) => {
 																							ev.preventDefault();
-																							// onEditClick(item.id);
+																							onEditClick(item.id);
 																							toggle("edit");
 																						}}
 																					>
@@ -471,7 +411,7 @@ const ProductList = () => {
 																						href="#view"
 																						onClick={(ev) => {
 																							ev.preventDefault();
-																							// onEditClick(item.id);
+																							onEditClick(item.id);
 																							toggle("details");
 																						}}
 																					>
@@ -512,8 +452,11 @@ const ProductList = () => {
 											currentPage={currentPage}
 										/>
 									) : (
-										<div className="text-center">
-											<span className="text-silent">No products found</span>
+										<div className="text-center d-flex flex-column">
+											<span className="text-silent">No links found</span>
+											<div style={{ fontSize: 4 + "rem" }}>
+												<Icon name="inbox"></Icon>
+											</div>
 										</div>
 									)}
 								</div>
@@ -522,7 +465,7 @@ const ProductList = () => {
 					</Card>
 				</Block>
 
-				{/* <Modal isOpen={view.edit} toggle={() => onFormCancel()} className="modal-dialog-centered" size="lg">
+				<Modal isOpen={view.edit} toggle={() => onFormCancel()} className="modal-dialog-centered" size="lg">
 					<ModalBody>
 						<a href="#cancel" className="close">
 							{" "}
@@ -535,25 +478,24 @@ const ProductList = () => {
 							></Icon>
 						</a>
 						<div className="p-2">
-							<h5 className="title">Update Product</h5>
+							<h5 className="title">Update Link</h5>
 							<div className="mt-4">
 								<form noValidate onSubmit={handleSubmit(onEditSubmit)}>
 									<Row className="g-3">
 										<Col size="12">
 											<div className="form-group">
-												<label className="form-label" htmlFor="product-title">
-													Product Title
+												<label className="form-label" htmlFor="title">
+													Link title
 												</label>
 												<div className="form-control-wrap">
 													<input
 														type="text"
 														className="form-control"
-														name="name"
-														onChange={(e) => onInputChange(e)}
+														name="title"
 														ref={register({
 															required: "This field is required",
 														})}
-														defaultValue={formData.name}
+														defaultValue={formData.link_title}
 													/>
 													{errors.title && <span className="invalid">{errors.title.message}</span>}
 												</div>
@@ -561,122 +503,89 @@ const ProductList = () => {
 										</Col>
 										<Col md="6">
 											<div className="form-group">
-												<label className="form-label" htmlFor="regular-price">
-													Regular Price
-												</label>
-												<div className="form-control-wrap">
-													<input
-														type="number"
-														name="price"
-														ref={register({ required: "This is required" })}
-														className="form-control"
-														defaultValue={formData.price}
-													/>
-													{errors.price && <span className="invalid">{errors.price.message}</span>}
-												</div>
-											</div>
-										</Col>
-										<Col md="6">
-											<div className="form-group">
-												<label className="form-label" htmlFor="sale-price">
-													Sale Price
-												</label>
-												<div className="form-control-wrap">
-													<input
-														type="number"
-														className="form-control"
-														name="salePrice"
-														ref={register({ required: "This is required" })}
-														defaultValue={formData.price}
-													/>
-													{errors.salePrice && <span className="invalid">{errors.salePrice.message}</span>}
-												</div>
-											</div>
-										</Col>
-										<Col md="6">
-											<div className="form-group">
-												<label className="form-label" htmlFor="stock">
-													Stock
-												</label>
-												<div className="form-control-wrap">
-													<input
-														type="number"
-														className="form-control"
-														name="stock"
-														ref={register({ required: "This is required" })}
-														defaultValue={formData.stock}
-													/>
-													{errors.stock && <span className="invalid">{errors.stock.message}</span>}
-												</div>
-											</div>
-										</Col>
-										<Col md="6">
-											<div className="form-group">
-												<label className="form-label" htmlFor="SKU">
-													SKU
+												<label className="form-label" htmlFor="protocol">
+													Protocol
 												</label>
 												<div className="form-control-wrap">
 													<input
 														type="text"
 														className="form-control"
-														name="sku"
+														name="protocol"
 														ref={register({ required: "This is required" })}
-														defaultValue={formData.sku}
+														defaultValue={formData.protocol}
 													/>
-													{errors.sku && <span className="invalid">{errors.sku.message}</span>}
+													{errors.protocol && <span className="invalid">{errors.protocol.message}</span>}
 												</div>
 											</div>
 										</Col>
-										<Col size="12">
+										<Col md="6">
 											<div className="form-group">
-												<label className="form-label" htmlFor="category">
-													Category
+												<label className="form-label" htmlFor="domain">
+													domain
 												</label>
 												<div className="form-control-wrap">
-													<RSelect
-														isMulti
-														options={categoryOptions}
-														defaultValue={formData.category}
-														onChange={onCategoryChange}
-														//ref={register({ required: "This is required" })}
+													<input
+														type="text"
+														className="form-control"
+														name="domain"
+														ref={register({ required: "This is required" })}
+														defaultValue={formData.domain}
 													/>
-													{errors.category && <span className="invalid">{errors.category.message}</span>}
+													{errors.domain && <span className="invalid">{errors.domain.message}</span>}
 												</div>
 											</div>
 										</Col>
-										<Col size="6">
+										<Col md="6">
 											<div className="form-group">
-												<label className="form-label" htmlFor="category">
-													Product Image
+												<label className="form-label" htmlFor="backlink">
+													Back-link
 												</label>
 												<div className="form-control-wrap">
-													<img src={formData.img} alt=""></img>
+													<input
+														type="text"
+														className="form-control"
+														name="backlink"
+														ref={register({ required: "This is required" })}
+														defaultValue={formData.backlink}
+													/>
+													{errors.backlink && <span className="invalid">{errors.backlink.message}</span>}
 												</div>
 											</div>
 										</Col>
-										<Col size="6">
-											<Dropzone onDrop={(acceptedFiles) => handleDropChange(acceptedFiles)}>
-												{({ getRootProps, getInputProps }) => (
-													<section>
-														<div {...getRootProps()} className="dropzone upload-zone small bg-lighter my-2 dz-clickable">
-															<input {...getInputProps()} />
-															{files.length === 0 && <p>Drag 'n' drop some files here, or click to select files</p>}
-															{files.map((file) => (
-																<div
-																	key={file.name}
-																	className="dz-preview dz-processing dz-image-preview dz-error dz-complete"
-																>
-																	<div className="dz-image">
-																		<img src={file.preview} alt="preview" />
-																	</div>
-																</div>
-															))}
-														</div>
-													</section>
-												)}
-											</Dropzone>
+										<Col md="6">
+											<div className="form-group">
+												<label className="form-label" htmlFor="official_domain">
+													Official-domain
+												</label>
+												<div className="form-control-wrap">
+													<input
+														type="text"
+														className="form-control"
+														name="official_domain"
+														ref={register({ required: "This is required" })}
+														defaultValue={formData.official_domain}
+													/>
+													{errors.official_domain && <span className="invalid">{errors.official_domain.message}</span>}
+												</div>
+											</div>
 										</Col>
-
+										<Col md="6">
+											<div className="form-group">
+												<label className="form-label" htmlFor="shorterLink">
+													Shorted-link
+												</label>
+												<div className="form-control-wrap">
+													<input
+														type="text"
+														className="form-control"
+														name="shorterLink"
+														ref={register({ required: "This is required" })}
+														defaultValue={formData.shorterLink}
+													/>
+													{errors.shorterLink && <span className="invalid">{errors.shorterLink.message}</span>}
+												</div>
+											</div>
+										</Col>
 										<Col size="12">
 											<Button color="primary" type="submit">
 												<Icon className="plus"></Icon>
@@ -688,9 +597,9 @@ const ProductList = () => {
 							</div>
 						</div>
 					</ModalBody>
-				</Modal> */}
+				</Modal>
 
-				{/* <Modal isOpen={view.details} toggle={() => onFormCancel()} className="modal-dialog-centered" size="lg">
+				<Modal isOpen={view.details} toggle={() => onFormCancel()} className="modal-dialog-centered" size="lg">
 					<ModalBody>
 						<a href="#cancel" className="close">
 							{" "}
@@ -703,195 +612,42 @@ const ProductList = () => {
 							></Icon>
 						</a>
 						<div className="nk-modal-head">
-							<h4 className="nk-modal-title title">
-								Product <small className="text-primary">#{formData.sku}</small>
-							</h4>
-							<img src={formData.img} alt="" />
+							<h4 className="nk-modal-title title">Link details</h4>
 						</div>
 						<div className="nk-tnx-details mt-sm-3">
 							<Row className="gy-3">
 								<Col lg={6}>
-									<span className="sub-text">Product Name</span>
-									<span className="caption-text">{formData.name}</span>
+									<span className="sub-text">Link title</span>
+									<span className="caption-text"> {formData.link_title}</span>
 								</Col>
 								<Col lg={6}>
-									<span className="sub-text">Product Price</span>
-									<span className="caption-text">$ {formData.price}</span>
+									<span className="sub-text">protocol</span>
+									<span className="caption-text">{formData.protocol}</span>
 								</Col>
 								<Col lg={6}>
-									<span className="sub-text">Product Category</span>
-									<span className="caption-text">
-										{formData.category.map((item, index) => (
-											<Badge key={index} className="mr-1" color="secondary">
-												{item.value}
-											</Badge>
-										))}
-									</span>
+									<span className="sub-text">domain</span>
+									<span className="caption-text">{formData.domain}</span>
 								</Col>
 								<Col lg={6}>
-									<span className="sub-text">Stock</span>
-									<span className="caption-text"> {formData.stock}</span>
+									<span className="sub-text">Back-link</span>
+									<span className="caption-text"> {formData.backlink}</span>
+								</Col>
+								<Col lg={6}>
+									<span className="sub-text">Official-domain</span>
+									<span className="caption-text"> {formData.official_domain}</span>
+								</Col>
+								<Col lg={6}>
+									<span className="sub-text">Shorted-link</span>
+									<span className="caption-text"> {formData.shorterLink}</span>
+								</Col>
+								<Col lg={6}>
+									<span className="sub-text">time & date</span>
+									<span className="caption-text"> {formData.createdAt}</span>
 								</Col>
 							</Row>
 						</div>
 					</ModalBody>
-				</Modal> */}
-
-				{/* <SimpleBar className={`nk-add-product toggle-slide toggle-slide-right toggle-screen-any ${view.add ? "content-active" : ""}`}>
-					<BlockHead>
-						<BlockHeadContent>
-							<BlockTitle tag="h5">Add Product</BlockTitle>
-							<BlockDes>
-								<p>Add information or update product.</p>
-							</BlockDes>
-						</BlockHeadContent>
-					</BlockHead>
-					<Block>
-						<form onSubmit={handleSubmit(onFormSubmit)}>
-							<Row className="g-3">
-								<Col size="12">
-									<div className="form-group">
-										<label className="form-label" htmlFor="product-title">
-											Product Title
-										</label>
-										<div className="form-control-wrap">
-											<input
-												type="text"
-												className="form-control"
-												name="title"
-												onChange={(e) => onInputChange(e)}
-												ref={register({
-													required: "This field is required",
-												})}
-												defaultValue={formData.name}
-											/>
-											{errors.title && <span className="invalid">{errors.title.message}</span>}
-										</div>
-									</div>
-								</Col>
-								<Col md="6">
-									<div className="form-group">
-										<label className="form-label" htmlFor="regular-price">
-											Regular Price
-										</label>
-										<div className="form-control-wrap">
-											<input
-												type="number"
-												name="price"
-												ref={register({ required: "This is required" })}
-												onChange={(e) => onInputChange(e)}
-												className="form-control"
-												defaultValue={formData.price}
-											/>
-											{errors.price && <span className="invalid">{errors.price.message}</span>}
-										</div>
-									</div>
-								</Col>
-								<Col md="6">
-									<div className="form-group">
-										<label className="form-label" htmlFor="sale-price">
-											Sale Price
-										</label>
-										<div className="form-control-wrap">
-											<input
-												type="number"
-												className="form-control"
-												name="salePrice"
-												onChange={(e) => onInputChange(e)}
-												ref={register({ required: "This is required" })}
-												defaultValue={formData.price}
-											/>
-											{errors.salePrice && <span className="invalid">{errors.salePrice.message}</span>}
-										</div>
-									</div>
-								</Col>
-								<Col md="6">
-									<div className="form-group">
-										<label className="form-label" htmlFor="stock">
-											Stock
-										</label>
-										<div className="form-control-wrap">
-											<input
-												type="number"
-												className="form-control"
-												name="stock"
-												onChange={(e) => onInputChange(e)}
-												ref={register({ required: "This is required" })}
-												defaultValue={formData.stock}
-											/>
-											{errors.stock && <span className="invalid">{errors.stock.message}</span>}
-										</div>
-									</div>
-								</Col>
-								<Col md="6">
-									<div className="form-group">
-										<label className="form-label" htmlFor="SKU">
-											SKU
-										</label>
-										<div className="form-control-wrap">
-											<input
-												type="text"
-												className="form-control"
-												name="sku"
-												onChange={(e) => onInputChange(e)}
-												ref={register({ required: "This is required" })}
-												defaultValue={formData.sku}
-											/>
-											{errors.sku && <span className="invalid">{errors.sku.message}</span>}
-										</div>
-									</div>
-								</Col>
-								<Col size="12">
-									<div className="form-group">
-										<label className="form-label" htmlFor="category">
-											Category
-										</label>
-										<div className="form-control-wrap">
-											<RSelect
-												name="category"
-												isMulti
-												options={categoryOptions}
-												onChange={onCategoryChange}
-												//ref={register({ required: "This is required" })}
-											/>
-											{errors.category && <span className="invalid">{errors.category.message}</span>}
-										</div>
-									</div>
-								</Col>
-								<Col size="12">
-									<Dropzone onDrop={(acceptedFiles) => handleDropChange(acceptedFiles)}>
-										{({ getRootProps, getInputProps }) => (
-											<section>
-												<div {...getRootProps()} className="dropzone upload-zone small bg-lighter my-2 dz-clickable">
-													<input {...getInputProps()} />
-													{files.length === 0 && <p>Drag 'n' drop some files here, or click to select files</p>}
-													{files.map((file) => (
-														<div
-															key={file.name}
-															className="dz-preview dz-processing dz-image-preview dz-error dz-complete"
-														>
-															<div className="dz-image">
-																<img src={file.preview} alt="preview" />
-															</div>
-														</div>
-													))}
-												</div>
-											</section>
-										)}
-									</Dropzone>
-								</Col>
-
-								<Col size="12">
-									<Button color="primary" type="submit">
-										<Icon className="plus"></Icon>
-										<span>Add Product</span>
-									</Button>
-								</Col>
-							</Row>
-						</form>
-					</Block>
-				</SimpleBar> */}
-
+				</Modal>
 				{view.add && <div className="toggle-overlay" onClick={toggle}></div>}
 			</Content>
 		</React.Fragment>
