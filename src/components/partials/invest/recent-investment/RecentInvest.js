@@ -38,7 +38,7 @@ const RecentInvest = ({ links }) => {
 				</DataTableHead>
 				{links.map((item) => {
 					return (
-						<DataTableItem key={item.id}>
+						<DataTableItem key={item.id + "uuid"}>
 							<DataTableRow>
 								<div className="d-flex flex-column">
 									<span className="tb-sub">{`${item.protocol}://${item.domain}/${item.backlink.slice(0, 60) + "..."}`}</span>

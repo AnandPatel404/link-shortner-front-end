@@ -5,13 +5,16 @@ import Head from "../../layout/head/Head";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import o from "../../images/svg/changePassword.svg";
+import useUserAuth from "../../zustand/auth/userAuth";
 
 const ChangePassword = ({ history }) => {
 	const [loading] = useState(false);
 	const [passState, setPassState] = useState(false);
 	const [errorVal] = useState("");
-	const onFormSubmit = async (formData) => {};
-
+	const changePassword = useUserAuth((state) => state.changePassword);
+	const onFormSubmit = async (formData) => {
+		changePassword(formData);
+	};
 	const { errors, handleSubmit, register } = useForm();
 
 	return (

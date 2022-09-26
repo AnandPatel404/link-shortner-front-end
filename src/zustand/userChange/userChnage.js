@@ -23,7 +23,7 @@ const useUserChange = create((set) => ({
 				errorToast(`${err.response.data.message} ❌❌`, "Error");
 			});
 	},
-	deleteAccount: async (data) => {
+	deleteAccount: async (data, history) => {
 		await axios({
 			method: "delete",
 			url: "auth/delete-account",
@@ -37,6 +37,8 @@ const useUserChange = create((set) => ({
 						text: `${res.data.message} ✅✅`,
 						focusConfirm: false,
 					});
+					localStorage.clear();
+					window.location.reload();
 				}
 			})
 			.catch((err) => {

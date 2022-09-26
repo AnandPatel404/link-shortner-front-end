@@ -76,13 +76,23 @@ const useUserAuth = create((set) => ({
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
-					window.history.pushState(
-						`${process.env.PUBLIC_URL ? process.env.PUBLIC_URL : "/"}`,
-						"auth-login",
-						`${process.env.PUBLIC_URL ? process.env.PUBLIC_URL : "/"}`
-					);
 					localStorage.clear();
 					window.location.reload();
+				}
+			})
+			.catch((err) => {
+				errorToast(`${err.response.data.message} ❌❌`, "Error");
+			});
+	},
+	changePassword: async (data) => {
+		await axios({
+			method: "patch",
+			url: "auth/change-password",
+			data,
+		})
+			.then((res) => {
+				if (res.data.status === "Success") {
+					messageToast(`${res.data.message} ✅✅`, res.data.status);
 				}
 			})
 			.catch((err) => {

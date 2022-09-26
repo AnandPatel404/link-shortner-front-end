@@ -11,8 +11,8 @@ import { useForm } from "react-hook-form";
 import { Card, Form } from "reactstrap";
 import { Block, Icon, Button, Row, Col, PreviewAltCard } from "../components/Component";
 import firstSvg from "../images/svg/dashboard-one.svg";
-import dashboardPaln from "../images/svg/dashboard-paln.svg";
-import dashboardlimit from "../images/svg/dashboard-limite.svg";
+import b from "../images/svg/dashboard-paln.svg";
+import a from "../images/svg/dashboard-limite.svg";
 import rocketSvg from "../images/svg/dashboard.svg";
 import useUserDashBoard from "../zustand/userDashBoard/userDashBoard";
 import { Link } from "react-router-dom";
@@ -76,7 +76,7 @@ const InvestHomePage = () => {
 										</div>
 									</Col>
 									<Col lg="4">
-										<img src={dashboardPaln} alt="Plan" className="d-none d-md-block" />
+										<img src={b} alt="Plan" className="d-none d-md-block" />
 									</Col>
 								</Row>
 							</PreviewAltCard>
@@ -96,7 +96,7 @@ const InvestHomePage = () => {
 										</div>
 									</Col>
 									<Col lg="4">
-										<img src={dashboardlimit} alt="limit" className="d-none d-md-block" />
+										<img src={a} alt="limit" className="d-none d-md-block" />
 									</Col>
 								</Row>
 							</PreviewAltCard>

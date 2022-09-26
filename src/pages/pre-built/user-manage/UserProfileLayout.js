@@ -62,12 +62,6 @@ const UserProfileLayout = () => {
 										</div>
 									</div>
 								</div>
-								<div className="card-inner">
-									<div className="user-account-info py-0">
-										<h6 className="overline-title-alt">Api limit left</h6>
-										<div className="user-balance">12</div>
-									</div>
-								</div>
 								<div className="card-inner p-0">
 									<ul className="link-list-menu">
 										<li onClick={() => updateSm(false)}>

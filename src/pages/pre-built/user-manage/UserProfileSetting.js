@@ -6,7 +6,7 @@ import { Block, BlockBetween, BlockDes, BlockHead, BlockHeadContent, BlockTitle,
 import Swal from "sweetalert2";
 import userStore from "../../../zustand/userStore/userStore";
 import userChnage from "../../../zustand/userChange/userChnage";
-const UserProfileSettingPage = ({ sm, updateSm }) => {
+const UserProfileSettingPage = ({ sm, updateSm, history }) => {
 	const userDate = userStore((state) => state.user);
 	const deleteUserAccount = userChnage((state) => state.deleteAccount);
 	const deleteAccount = () => {
@@ -28,9 +28,12 @@ const UserProfileSettingPage = ({ sm, updateSm }) => {
 					confirmButtonText: "Look up",
 					showLoaderOnConfirm: true,
 					preConfirm: (data) => {
-						deleteUserAccount({
-							password: data,
-						});
+						deleteUserAccount(
+							{
+								password: data,
+							},
+							history
+						);
 					},
 					allowOutsideClick: () => !Swal.isLoading(),
 				});
