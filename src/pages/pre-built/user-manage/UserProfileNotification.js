@@ -11,8 +11,15 @@ import {
 	InputSwitch,
 	Button,
 } from "../../../components/Component";
+import useUserChange from "../../../zustand/userChange/userChnage";
+import useUserStore from "../../../zustand/userStore/userStore";
 
 const UserProfileNotificationPage = ({ sm, updateSm }) => {
+	const notification = useUserStore((state) => state.user);
+	const changeNotification = useUserChange((state) => state.onNotification);
+	const changeNotificationfn = () => {
+		changeNotification();
+	};
 	return (
 		<React.Fragment>
 			<Head title="User List - Profile"></Head>
@@ -48,7 +55,12 @@ const UserProfileNotificationPage = ({ sm, updateSm }) => {
 				<div className="gy-3">
 					<div className="g-item">
 						<div className="custom-control custom-switch">
-							<InputSwitch id="feature-update" label="Email me about new features and updates" />
+							<InputSwitch
+								id="feature-update"
+								label="Email me about new features and updates"
+								checked={notification.notification}
+								onClick={changeNotificationfn}
+							/>
 						</div>
 					</div>
 				</div>

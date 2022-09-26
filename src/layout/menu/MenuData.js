@@ -12,6 +12,11 @@ const menu = [
 		link: "/all-shorten-links",
 		icon: "link",
 	},
+	{
+		text: "Short with functionality",
+		link: "/project-list",
+		icon: "brick-fill",
+	},
 
 	{
 		heading: "Pre-built Pages",
