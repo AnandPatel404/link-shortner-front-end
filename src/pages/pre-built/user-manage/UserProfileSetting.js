@@ -3,10 +3,41 @@ import Head from "../../../layout/head/Head";
 import { Card } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Block, BlockBetween, BlockDes, BlockHead, BlockHeadContent, BlockTitle, Icon, Button } from "../../../components/Component";
-
+import Swal from "sweetalert2";
 import userStore from "../../../zustand/userStore/userStore";
+import userChnage from "../../../zustand/userChange/userChnage";
 const UserProfileSettingPage = ({ sm, updateSm }) => {
 	const userDate = userStore((state) => state.user);
+	const deleteUserAccount = userChnage((state) => state.deleteAccount);
+	const deleteAccount = () => {
+		Swal.fire({
+			title: "Are you sure?",
+			text: "You won't be able to revert this!",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonText: "Yes, delete it!",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				Swal.fire({
+					title: "Enter Your password",
+					input: "text",
+					inputAttributes: {
+						autocapitalize: "off",
+					},
+					showCancelButton: true,
+					confirmButtonText: "Look up",
+					showLoaderOnConfirm: true,
+					preConfirm: (data) => {
+						deleteUserAccount({
+							password: data,
+						});
+					},
+					allowOutsideClick: () => !Swal.isLoading(),
+				});
+			}
+		});
+	};
+	// Swal.fire("Deleted!", "Your file has been deleted.", "success");
 	return (
 		<React.Fragment>
 			<Head title="User List - Profile"></Head>
@@ -47,6 +78,25 @@ const UserProfileSettingPage = ({ sm, updateSm }) => {
 											<em className="text-soft text-date fs-12px">
 												Last changed: <span>{new Date(userDate.updatedAt).toLocaleString()}</span>
 											</em>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div className="card-inner">
+							<div className="between-center flex-wrap g-3">
+								<div className="nk-block-text">
+									<h6>Delete your Account </h6>
+									<p>
+										<b>Note : </b> if you delete your account then it delete all your work and all links
+									</p>
+								</div>
+								<div className="nk-block-actions flex-shrink-sm-0">
+									<ul className="align-center flex-wrap flex-sm-nowrap gx-3 gy-2">
+										<li className="order-md-last">
+											<Button className="btn btn-danger" type="button" onClick={deleteAccount}>
+												Delete Account
+											</Button>
 										</li>
 									</ul>
 								</div>

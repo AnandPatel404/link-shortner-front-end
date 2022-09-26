@@ -53,9 +53,6 @@ const userActivity = create((set, get) => ({
 			success: {
 				render({ data }) {
 					const reFetch = get().userDashBoard;
-					// set((state) => ({
-					// 	links: [...state.links, data.data.data],
-					// }));
 					reFetch();
 					return `${data.data.message}`;
 				},
