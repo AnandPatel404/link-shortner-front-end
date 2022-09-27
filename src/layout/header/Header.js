@@ -18,7 +18,7 @@ const Header = ({ fixed, theme, className, setVisibility, ...props }) => {
 	const sub = userActivity((state) => state.subscription);
 	const date = new Date(sub.expireAt).setDate(new Date(sub.expireAt).getDate() - 6);
 	return (
-		<div className={`${headerClass} mt-md-2 borderReduis mx-md-4`}>
+		<div className={`${headerClass} mt-md-2 borderReduis mx-md-4 `}>
 			<div className="container-fluid">
 				<div className="nk-header-wrap">
 					<div className="nk-menu-trigger d-xl-none ml-n1">

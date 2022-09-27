@@ -17,7 +17,30 @@ const menu = [
 		link: "/project-list",
 		icon: "brick-fill",
 	},
+	{
+		icon: "view-col",
+		text: "Pricing",
+		link: "/pricing-table",
+	},
 
+	{
+		heading: "Api webhook",
+	},
+	{
+		icon: "code",
+		text: "Api webhook",
+		active: false,
+		subMenu: [
+			{
+				text: "Project Cards",
+				link: "/project-card",
+			},
+			{
+				text: "Project List",
+				link: "/project-list",
+			},
+		],
+	},
 	{
 		heading: "Pre-built Pages",
 	},
@@ -113,11 +136,7 @@ const menu = [
 			},
 		],
 	},
-	{
-		icon: "view-col",
-		text: "Pricing Table",
-		link: "/pricing-table",
-	},
+
 	{
 		icon: "img",
 		text: "Image Gallery",

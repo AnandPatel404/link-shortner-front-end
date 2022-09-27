@@ -6,16 +6,16 @@ import RecentInvest from "../components/partials/invest/recent-investment/Recent
 import TrafficChannel from "../components/partials/analytics/traffic-channel/Traffic";
 import BrowserUser from "../components/partials/analytics/browser-users/BrowserUser";
 import SessionDevice from "../components/partials/analytics/session-devices/SessionDevice";
-import UserMap from "../components/partials/analytics/user-map/UserMap";
 import { useForm } from "react-hook-form";
 import { Card, Form } from "reactstrap";
 import { Block, Icon, Button, Row, Col, PreviewAltCard } from "../components/Component";
 import firstSvg from "../images/svg/dashboard-one.svg";
 import b from "../images/svg/dashboard-paln.svg";
 import a from "../images/svg/dashboard-limite.svg";
-import rocketSvg from "../images/svg/dashboard.svg";
+// import rocketSvg from "../images/svg/dashboard.svg";
+import AudienceOverview from "../components/partials/analytics/audience-overview/AudienceOverview";
 import useUserDashBoard from "../zustand/userDashBoard/userDashBoard";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const InvestHomePage = () => {
 	const { links, quickShort, subscription, userDashBoard } = useUserDashBoard(
@@ -42,10 +42,10 @@ const InvestHomePage = () => {
 			<Content>
 				<Block>
 					<Row className="g-gs">
-						<Col md="4">
+						<Col md="4" lg="4" xl="4" xxl="4">
 							<PreviewAltCard className="card-full">
 								<Row>
-									<Col lg="8">
+									<Col lg="8" xl="6">
 										<div className="card-title-group align-start mb-0">
 											<div className="card-title">
 												<h4>Total Shorten Link</h4>
@@ -55,14 +55,14 @@ const InvestHomePage = () => {
 											<span className="amount mt-2">{links.length}</span>
 										</div>
 									</Col>
-									<Col lg="4">
+									<Col lg="4" xl="6">
 										<img src={firstSvg} alt="Total Shorten Link" className="d-none d-md-block" />
 									</Col>
 								</Row>
 							</PreviewAltCard>
 						</Col>
 
-						<Col md="4">
+						<Col md="4" lg="4" xl="4" xxl="4">
 							<PreviewAltCard className="card-full">
 								<Row>
 									<Col lg="8">
@@ -82,7 +82,7 @@ const InvestHomePage = () => {
 							</PreviewAltCard>
 						</Col>
 
-						<Col md="4">
+						<Col md="4" lg="4" xl="4" xxl="4">
 							<PreviewAltCard className="card-full">
 								<Row>
 									<Col lg="8">
@@ -101,21 +101,21 @@ const InvestHomePage = () => {
 								</Row>
 							</PreviewAltCard>
 						</Col>
-						<Col md="6" lg="8" xxl="6">
+						<Col md="12">
 							<Card className="card-bordered h-100">
 								<TrafficChannel />
 							</Card>
 						</Col>
-						<Col md="6" lg="4" xxl="3">
+						{/* <Col md="6" lg="4" xl="4" xxl="6">
 							<img src={rocketSvg} alt="rocket" />
 							<div className="d-flex justify-content-center mb-4">
-								<Link className="btn btn-primary alin" style={{ width: 200 + "px" }} to={process.env.PUBLIC_URL + "/product-list"}>
+								<Link className="btn btn-primary" style={{ width: 200 + "px" }} to={process.env.PUBLIC_URL + "/product-list"}>
 									<Icon name="hot"></Icon>
 									<span>Get api credentials</span>
 								</Link>
 							</div>
-						</Col>
-						<Col xl="12" xxl="8">
+						</Col> */}
+						<Col xl="12" xxl="12">
 							<Form className="is-alter" onSubmit={handleSubmit(onFormSubmit)}>
 								<Card className="card-bordered card-full p-3">
 									<label htmlFor="basic-url" className="form-label p-1">
@@ -148,26 +148,25 @@ const InvestHomePage = () => {
 								</Card>
 							</Form>
 						</Col>
-						<Col xl="12" xxl="8">
+						<Col xl="12" xxl="12">
 							<Card className="card-bordered card-full">
 								<RecentInvest links={links} />
 							</Card>
 						</Col>
-						<Col xxl="6">
-							<Card className="card-bordered h-100">
-								<BrowserUser />
-							</Card>
-						</Col>
-						<Col md="6" xxl="3">
+						<Col lg="5" xxl="6">
 							<PreviewAltCard className="h-100" bodyclassName="h-100 stretch flex-column">
 								<SessionDevice />
 							</PreviewAltCard>
 						</Col>
-
-						<Col md="6" xxl="3">
+						<Col lg="7" xxl="6">
 							<PreviewAltCard className="h-100">
-								<UserMap />
+								<AudienceOverview />
 							</PreviewAltCard>
+						</Col>
+						<Col xxl="12">
+							<Card className="card-bordered h-100">
+								<BrowserUser />
+							</Card>
 						</Col>
 					</Row>
 				</Block>

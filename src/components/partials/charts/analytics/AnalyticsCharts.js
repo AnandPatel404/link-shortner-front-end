@@ -313,7 +313,7 @@ export const SessionDoughnut = ({ state, className }) => {
 			data={data}
 			options={{
 				legend: {
-					display: false,
+					display: true,
 				},
 				rotation: -1.5,
 				cutoutPercentage: 70,
