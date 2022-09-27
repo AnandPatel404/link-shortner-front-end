@@ -1,17 +1,38 @@
-import React, { useState } from "react";
-import { SessionDoughnut } from "../../charts/analytics/AnalyticsCharts";
-import { DropdownToggle, DropdownMenu, UncontrolledDropdown, DropdownItem } from "reactstrap";
+import React, { useEffect } from "react";
+// import { SessionDoughnut } from "../../charts/analytics/AnalyticsCharts";
+// import { DropdownToggle, DropdownMenu, UncontrolledDropdown, DropdownItem } from "reactstrap";
+import { Doughnut } from "react-chartjs-2";
 import { Icon } from "../../../Component";
+import userDashBoard from "../../../../zustand/userDashBoard/userDashBoard";
 
 const SessionDevice = () => {
-	const [sessionDevice, setSessionDevices] = useState("30");
+	const { getUserChart, chart } = userDashBoard((state) => ({
+		getUserChart: state.getUserChart,
+		chart: state.chart,
+	}));
+
+	useEffect(() => {
+		getUserChart();
+	}, [getUserChart]);
+	const data = {
+		labels: ["Desktop", "Mobile"],
+		dataUnit: "People",
+		legend: false,
+		datasets: [
+			{
+				borderColor: "#fff",
+				backgroundColor: ["#f1c40f", "#b8acff"],
+				data: [chart.android, chart.desktop],
+			},
+		],
+	};
 	return (
 		<React.Fragment>
 			<div className="card-title-group">
 				<div className="card-title card-title-sm">
 					<h6 className="title">Allover Clicks</h6>
 				</div>
-				<UncontrolledDropdown>
+				{/* <UncontrolledDropdown>
 					<DropdownToggle className="dropdown-toggle dropdown-indicator btn btn-sm btn-outline-light btn-white">
 						{sessionDevice} Days
 					</DropdownToggle>
@@ -55,39 +76,56 @@ const SessionDevice = () => {
 							</li>
 						</ul>
 					</DropdownMenu>
-				</UncontrolledDropdown>
+				</UncontrolledDropdown> */}
 			</div>
 			<div className="device-status my-auto">
 				<div className="device-status-ck">
-					<SessionDoughnut className="analytics-doughnut" state={sessionDevice} />
+					<Doughnut
+						data={data}
+						options={{
+							legend: {
+								display: true,
+							},
+							rotation: -1.5,
+							cutoutPercentage: 70,
+							maintainAspectRatio: false,
+							tooltips: {
+								enabled: true,
+								backgroundColor: "#fff",
+								borderColor: "#eff6ff",
+								borderWidth: 2,
+								titleFontSize: 13,
+								titleFontColor: "#6783b8",
+								titleMarginBottom: 6,
+								bodyFontColor: "#9eaecf",
+								bodyFontSize: 12,
+								bodySpacing: 4,
+								yPadding: 10,
+								xPadding: 10,
+								footerMarginTop: 0,
+								displayColors: false,
+							},
+						}}
+					></Doughnut>
 				</div>
 				<div className="device-status-group">
 					<div className="device-status-data">
 						<Icon style={{ color: "#798bff" }} name="monitor"></Icon>
 						<div className="title">Desktop</div>
-						<div className="amount"> {sessionDevice === "7" ? "50.5" : sessionDevice === "15" ? "70.5" : "84.5"}%</div>
-						<div className="change up text-danger">
+						<div className="amount"> {chart.android}%</div>
+						{/* <div className="change up text-danger">
 							<Icon name="arrow-long-up"></Icon>
 							{sessionDevice === "7" ? "2.5" : sessionDevice === "15" ? "4.5" : "10.5"}%
-						</div>
+						</div> */}
 					</div>
 					<div className="device-status-data">
 						<Icon style={{ color: "#baaeff" }} name="mobile"></Icon>
 						<div className="title">Mobile</div>
-						<div className="amount"> {sessionDevice === "7" ? "32.2" : sessionDevice === "15" ? "25.2" : "14.2"}%</div>
-						<div className="change up text-danger">
+						<div className="amount"> {chart.desktop}%</div>
+						{/* <div className="change up text-danger">
 							<Icon name="arrow-long-up"></Icon>
 							{sessionDevice === "7" ? "12.5" : sessionDevice === "15" ? "114.5" : "110.5"}%
-						</div>
-					</div>
-					<div className="device-status-data">
-						<Icon style={{ color: "#7de1f8" }} name="tablet"></Icon>
-						<div className="title">Tablet</div>
-						<div className="amount"> {sessionDevice === "7" ? "10.3" : sessionDevice === "15" ? "4.3" : "1.3"}%</div>
-						<div className="change up text-danger">
-							<Icon name="arrow-long-up"></Icon>
-							{sessionDevice === "7" ? "25.5" : sessionDevice === "15" ? "14.5" : "15.5"}%
-						</div>
+						</div> */}
 					</div>
 				</div>
 			</div>

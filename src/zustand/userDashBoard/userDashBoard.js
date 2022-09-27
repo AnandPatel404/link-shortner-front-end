@@ -8,6 +8,8 @@ const userActivity = create((set, get) => ({
 	links: [],
 	allLinks: [],
 	subscription: {},
+	plan: [],
+	chart: {},
 	getuserActivity: async () => {
 		await axios({
 			method: "get",
@@ -139,6 +141,35 @@ const userActivity = create((set, get) => ({
 					messageToast(`${res.data.message} ✅✅`, res.data.status);
 					const reFetch = get().getUserAllShortenLink;
 					reFetch();
+				}
+			})
+			.catch((err) => {
+				errorToast(`${err.response.data.message} ❌❌`, "Error");
+			});
+	},
+
+	getAllPlan: async () => {
+		await axios({
+			method: "get",
+			url: `logged-user/plans`,
+		})
+			.then((res) => {
+				if (res.data.status === "Success") {
+					set({ plan: res.data.data });
+				}
+			})
+			.catch((err) => {
+				errorToast(`${err.response.data.message} ❌❌`, "Error");
+			});
+	},
+	getUserChart: async () => {
+		await axios({
+			method: "get",
+			url: `chart-data`,
+		})
+			.then((res) => {
+				if (res.data.status === "Success") {
+					set({ chart: res.data.data });
 				}
 			})
 			.catch((err) => {

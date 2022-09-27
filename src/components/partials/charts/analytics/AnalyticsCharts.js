@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Line, Bar, Doughnut } from "react-chartjs-2";
-import { VectorMap } from "react-jvectormap";
 import {
 	analyticOvData,
 	analyticAuData,
-	worldMap,
 	analyticOvDataSet2,
 	analyticOvDataSet3,
 	TrafficChannelDoughnutData,
@@ -294,90 +292,20 @@ export const TCDoughnut = ({ state, className }) => {
 	);
 };
 
-export const SessionDoughnut = ({ state, className }) => {
-	const [data, setData] = useState(deviceStatusData);
-	useEffect(() => {
-		let filteredData;
-		if (state === "7") {
-			filteredData = deviceStatusDataSet2;
-		} else if (state === "15") {
-			filteredData = deviceStatusDataSet3;
-		} else {
-			filteredData = deviceStatusDataSet4;
-		}
-		setData(filteredData);
-	}, [state]);
-	return (
-		<Doughnut
-			className={className}
-			data={data}
-			options={{
-				legend: {
-					display: true,
-				},
-				rotation: -1.5,
-				cutoutPercentage: 70,
-				maintainAspectRatio: false,
-				tooltips: {
-					enabled: true,
-					backgroundColor: "#fff",
-					borderColor: "#eff6ff",
-					borderWidth: 2,
-					titleFontSize: 13,
-					titleFontColor: "#6783b8",
-					titleMarginBottom: 6,
-					bodyFontColor: "#9eaecf",
-					bodyFontSize: 12,
-					bodySpacing: 4,
-					yPadding: 10,
-					xPadding: 10,
-					footerMarginTop: 0,
-					displayColors: false,
-				},
-			}}
-		></Doughnut>
-	);
-};
+// export const SessionDoughnut = ({ state, className }) => {
+// 	const [data, setData] = useState(deviceStatusData);
+// 	useEffect(() => {
+// 		let filteredData;
+// 		if (state === "7") {
+// 			filteredData = deviceStatusDataSet2;
+// 		} else if (state === "15") {
+// 			filteredData = deviceStatusDataSet3;
+// 		} else {
+// 			filteredData = deviceStatusDataSet4;
+// 		}
+// 		setData(filteredData);
+// 	}, [state]);
+// 	return (
 
-export const Map = ({ set }) => {
-	return (
-		<VectorMap
-			map={"world_mill"}
-			backgroundColor="transparent"
-			borderColor="#dee6ed"
-			borderOpacity={1}
-			height={250}
-			borderWidth={1}
-			color="#ccd7e2"
-			containerClassName="vector-map"
-			zoomButtons={false}
-			zoomOnScroll={false}
-			tooltip={true}
-			regionStyle={{
-				initial: {
-					fill: "#e4e4e4",
-					"fill-opacity": 0.9,
-					stroke: "none",
-					"stroke-width": 0,
-					"stroke-opacity": 0,
-				},
-				hover: {
-					"fill-opacity": 0.8,
-					hoverColor: "#9cabff",
-					hoverOpacity: null,
-					cursor: "pointer",
-				},
-				selectedHover: {},
-			}}
-			series={{
-				regions: [
-					{
-						values: set === "30" ? worldMap.data2 : set === "7" ? worldMap.data3 : worldMap.data4,
-						scale: ["#ccd7e2", "#798bff"],
-						normalizeFunction: "polynomial",
-					},
-				],
-			}}
-		></VectorMap>
-	);
-};
+// 	);
+// };
