@@ -10,6 +10,7 @@ const userActivity = create((set, get) => ({
 	subscription: {},
 	plan: [],
 	chart: {},
+	browser: [],
 	getuserActivity: async () => {
 		await axios({
 			method: "get",
@@ -28,9 +29,10 @@ const userActivity = create((set, get) => ({
 			url: "dashboard",
 		})
 			.then((res) => {
-				set({ links: res.data.data.recentShortedLink });
+				set({ links: res.data.data.links.slice(0, 5) });
 				set({ subscription: res.data.data.Subscriptions });
 				set({ chart: res.data.data.chart });
+				set({ browser: res.data.data.browser });
 			})
 			.catch((err) => {
 				console.log(err);

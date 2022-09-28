@@ -21,7 +21,6 @@ const SessionDevice = () => {
 			},
 		],
 	};
-	console.log(chart);
 	return (
 		<React.Fragment>
 			<div className="card-title-group">

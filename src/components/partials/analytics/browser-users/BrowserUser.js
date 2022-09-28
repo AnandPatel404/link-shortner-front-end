@@ -76,9 +76,6 @@ const BrowserUser = () => {
 					<DataTableRow>
 						<span>Browser</span>
 					</DataTableRow>
-					<DataTableRow className="text-right">
-						<span>Users</span>
-					</DataTableRow>
 					<DataTableRow>
 						<span>% Users</span>
 					</DataTableRow>
@@ -91,11 +88,6 @@ const BrowserUser = () => {
 									<Icon className={`text-${item.theme}`} name="globe"></Icon>
 									<span className="tb-lead">{item.browser}</span>
 								</div>
-							</DataTableRow>
-							<DataTableRow className="text-right">
-								<span className="tb-sub tb-amount">
-									<span>{item.users}</span>
-								</span>
 							</DataTableRow>
 							<DataTableRow>
 								<Progress value={item.userPercentage} size="md" className="progress-alt bg-transparent" />
