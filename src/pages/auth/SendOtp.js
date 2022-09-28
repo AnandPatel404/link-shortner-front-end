@@ -117,14 +117,14 @@ function SendOtp({ history }) {
 									</FormGroup>
 									<FormGroup>
 										<div className="form-label-group">
-											<label className="form-label" htmlFor="password">
+											<label className="form-label" htmlFor="number">
 												Number
 											</label>
 										</div>
 										<div className="form-control-wrap">
 											<input
 												type="number"
-												id="password"
+												id="number"
 												name="number"
 												ref={register({ required: "This field is required" })}
 												placeholder="Enter your WhatsApp number"

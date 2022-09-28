@@ -99,6 +99,61 @@ const useUserAuth = create((set) => ({
 				errorToast(`${err.response.data.message} ❌❌`, "Error");
 			});
 	},
+
+	forgotPassword: async (data, history) => {
+		await axios({
+			method: "post",
+			url: "auth/forgot-password",
+			data,
+		})
+			.then((res) => {
+				if (res.data.status === "Success") {
+					messageToast(`${res.data.message} ✅✅`, res.data.status);
+					history.push(`${process.env.PUBLIC_URL}/auth-verify-otp-for-reset-password`);
+					localStorage.setItem("number", data.number);
+					localStorage.setItem("countryCode", data.countryCode);
+				}
+			})
+			.catch((err) => {
+				errorToast(`${err.response.data.message} ❌❌`, "Error");
+			});
+	},
+
+	verifyOtpForResetPassword: async (data, history) => {
+		await axios({
+			method: "post",
+			url: "auth/verify-otp",
+			data,
+		})
+			.then((res) => {
+				if (res.data.status === "Success") {
+					messageToast(`${res.data.message} ✅✅`, res.data.status);
+					history.push(`${process.env.PUBLIC_URL}/auth-reset-password`);
+				}
+			})
+			.catch((err) => {
+				errorToast(`${err.response.data.message} ❌❌`, "Error");
+			});
+	},
+
+	setNewPassword: async (data, history) => {
+		await axios({
+			method: "post",
+			url: "auth/reset-password",
+			data,
+		})
+			.then((res) => {
+				if (res.data.status === "Success") {
+					messageToast(`${res.data.message} ✅✅`, res.data.status);
+					history.push(`${process.env.PUBLIC_URL}/auth-login`);
+					localStorage.removeItem("number");
+					localStorage.removeItem("countryCode");
+				}
+			})
+			.catch((err) => {
+				errorToast(`${err.response.data.message} ❌❌`, "Error");
+			});
+	},
 }));
 
 export default useUserAuth;

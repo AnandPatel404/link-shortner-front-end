@@ -18,6 +18,8 @@ import Register from "./pages/auth/Register";
 import SendOtp from "./pages/auth/SendOtp";
 import VerifyOtp from "./pages/auth/VerifyOtp";
 import ForgotPassword from "./pages/auth/ForgotPassword";
+import verifyOtpForResetPassword from "./pages/auth/verifyOtpForResetPassword";
+import ResetPassword from "./pages/auth/reSetPassword";
 import Success from "./pages/auth/Success";
 import InvoicePrint from "./pages/pre-built/invoice/InvoicePrint";
 
@@ -31,6 +33,8 @@ const App = () => {
 			<Route exact path={`${process.env.PUBLIC_URL}/auth-login`} component={Login}></Route>
 			<Route exact path={`${process.env.PUBLIC_URL}/auth-send-otp`} component={SendOtp}></Route>
 			<Route exact path={`${process.env.PUBLIC_URL}/auth-verify-otp`} component={VerifyOtp}></Route>
+			<Route exact path={`${process.env.PUBLIC_URL}/auth-verify-otp-for-reset-password`} component={verifyOtpForResetPassword}></Route>
+			<Route exact path={`${process.env.PUBLIC_URL}/auth-reset-password`} component={ResetPassword}></Route>
 
 			{/* Print Pages */}
 			<Route exact path={`${process.env.PUBLIC_URL}/invoice-print/:id`} component={InvoicePrint}></Route>
