@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 // import { SessionDoughnut } from "../../charts/analytics/AnalyticsCharts";
 // import { DropdownToggle, DropdownMenu, UncontrolledDropdown, DropdownItem } from "reactstrap";
 import { Doughnut } from "react-chartjs-2";
@@ -6,14 +6,9 @@ import { Icon } from "../../../Component";
 import userDashBoard from "../../../../zustand/userDashBoard/userDashBoard";
 
 const SessionDevice = () => {
-	const { getUserChart, chart } = userDashBoard((state) => ({
-		getUserChart: state.getUserChart,
+	const { chart } = userDashBoard((state) => ({
 		chart: state.chart,
 	}));
-
-	useEffect(() => {
-		getUserChart();
-	}, [getUserChart]);
 	const data = {
 		labels: ["Desktop", "Mobile"],
 		dataUnit: "People",
@@ -26,57 +21,13 @@ const SessionDevice = () => {
 			},
 		],
 	};
+	console.log(chart);
 	return (
 		<React.Fragment>
 			<div className="card-title-group">
 				<div className="card-title card-title-sm">
 					<h6 className="title">Allover Clicks</h6>
 				</div>
-				{/* <UncontrolledDropdown>
-					<DropdownToggle className="dropdown-toggle dropdown-indicator btn btn-sm btn-outline-light btn-white">
-						{sessionDevice} Days
-					</DropdownToggle>
-					<DropdownMenu right className=" dropdown-menu-xs">
-						<ul className="link-list-opt no-bdr">
-							<li className={sessionDevice === "7" ? "active" : ""}>
-								<DropdownItem
-									tag="a"
-									href="#dropdownitem"
-									onClick={(e) => {
-										e.preventDefault();
-										setSessionDevices("7");
-									}}
-								>
-									<span>7 Days</span>
-								</DropdownItem>
-							</li>
-							<li className={sessionDevice === "15" ? "active" : ""}>
-								<DropdownItem
-									tag="a"
-									href="#dropdownitem"
-									onClick={(e) => {
-										e.preventDefault();
-										setSessionDevices("15");
-									}}
-								>
-									<span>15 Days</span>
-								</DropdownItem>
-							</li>
-							<li className={sessionDevice === "30" ? "active" : ""}>
-								<DropdownItem
-									tag="a"
-									href="#dropdownitem"
-									onClick={(e) => {
-										e.preventDefault();
-										setSessionDevices("30");
-									}}
-								>
-									<span>30 Days</span>
-								</DropdownItem>
-							</li>
-						</ul>
-					</DropdownMenu>
-				</UncontrolledDropdown> */}
 			</div>
 			<div className="device-status my-auto">
 				<div className="device-status-ck">

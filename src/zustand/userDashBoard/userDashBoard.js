@@ -30,6 +30,7 @@ const userActivity = create((set, get) => ({
 			.then((res) => {
 				set({ links: res.data.data.recentShortedLink });
 				set({ subscription: res.data.data.Subscriptions });
+				set({ chart: res.data.data.chart });
 			})
 			.catch((err) => {
 				console.log(err);
@@ -156,20 +157,6 @@ const userActivity = create((set, get) => ({
 			.then((res) => {
 				if (res.data.status === "Success") {
 					set({ plan: res.data.data });
-				}
-			})
-			.catch((err) => {
-				errorToast(`${err.response.data.message} ❌❌`, "Error");
-			});
-	},
-	getUserChart: async () => {
-		await axios({
-			method: "get",
-			url: `chart-data`,
-		})
-			.then((res) => {
-				if (res.data.status === "Success") {
-					set({ chart: res.data.data });
 				}
 			})
 			.catch((err) => {
