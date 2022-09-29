@@ -98,6 +98,8 @@ const userActivity = create((set, get) => ({
 			.then((res) => {
 				if (res.data.status === "Success") {
 					messageToast(`${res.data.message} ✅✅`, res.data.status);
+					const getUserAllShortenLink = get().getUserAllShortenLink;
+					getUserAllShortenLink();
 				}
 			})
 			.catch((err) => {
