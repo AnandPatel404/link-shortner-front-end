@@ -47,30 +47,24 @@ const ProductList = () => {
 		updateLink: state.updateLink,
 		AllLinksLength: state.AllLinksLength,
 	}));
+	const [onSearchText, setSearchText] = useState("");
 	const [currentPage, setCurrentPage] = useState(1);
 	const [itemPerPage] = useState(10);
 	let params = {
 		currentPage,
 		sortBy: shortBy,
+		shorterLink: onSearchText,
 	};
 	useEffect(() => {
+		if (params.shorterLink === undefined || params.shorterLink === "") {
+			delete params.shorterLink;
+		}
 		getUserAllShortenLink(params);
-	}, [getUserAllShortenLink, shortBy, currentPage]);
-	const [sm, updateSm] = useState(false);
-	// const [onSearchText, setSearchText] = useState("");
-	// Changing state value when searching name
-	// useEffect(() => {
-	// 	getUserAllShortenLink();
-	// 	if (onSearchText !== "") {
-	// 		const filteredObject = productData.filter((item) => {
-	// 			return item.sku.toLowerCase().includes(onSearchText.toLowerCase());
-	// 		});
-	// 		setData([...filteredObject]);
-	// 	} else {
-	// 		setData([...productData]);
-	// 	}
-	// }, [onSearchText]);
+	}, [getUserAllShortenLink, shortBy, currentPage, onSearchText]);
 
+	const [sm, updateSm] = useState(false);
+
+	console.log(onSearchText);
 	// selects one product
 	let linkId = [];
 	const onSelectChange = (e, id) => {
@@ -92,8 +86,6 @@ const ProductList = () => {
 			getUserAllShortenLink();
 		});
 	};
-
-	console.log(AllLinksLength);
 	const currentItems = data;
 
 	// Change Page
@@ -132,7 +124,7 @@ const ProductList = () => {
 													className="form-control"
 													id="default-04"
 													placeholder="Quick search by your link"
-													// onChange={(e) => onFilterChange(e)}
+													onChange={(e) => setSearchText(e.target.value)}
 												/>
 											</div>
 										</li>

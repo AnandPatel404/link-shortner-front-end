@@ -78,18 +78,16 @@ const userActivity = create((set, get) => ({
 	getUserAllShortenLink: async ({ currentPage = 1, sortBy, ...rest }) => {
 		await axios({
 			method: "get",
-			// url: `logged-user/get-all-links?sortBy=${shortBy}`,
 			url: `logged-user/get-all-links?page=${currentPage}&sortBy=${sortBy}&${Object.keys(rest)
 				.map((key) => `${key}=${rest[key]}`)
 				.join("&")}`,
 		})
 			.then((res) => {
-				console.log(res);
 				set({ allLinks: res.data.data.results });
 				set({ AllLinksLength: res.data.data.totalResults });
 			})
 			.catch((err) => {
-				console.log(err);
+				errorToast(`${err.response.data.message} ❌❌`, "Error");
 			});
 	},
 	removeLink: async (linkId) => {
