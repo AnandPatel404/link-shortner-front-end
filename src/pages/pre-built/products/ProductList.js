@@ -14,13 +14,30 @@ import {
 	DataTableRow,
 	DataTableItem,
 	PaginationComponent,
+	Button,
+	RSelect,
 } from "../../../components/Component";
-import { Card, DropdownItem, UncontrolledDropdown, DropdownMenu, DropdownToggle } from "reactstrap";
+import { Card, DropdownItem, UncontrolledDropdown, DropdownMenu, DropdownToggle, Row, Col, FormGroup } from "reactstrap";
 import userDashBoard from "../../../zustand/DashBoard/userDashBoard";
 import { errorToast } from "../../../pages/components/misc/ReactToastify";
 import { Link } from "react-router-dom";
 
 const ProductList = () => {
+	const [shortBy, setShortBy] = useState("");
+	const sortBy = [
+		{
+			value: "asc",
+			label: "asc",
+		},
+		{
+			value: "desc",
+			label: "desc",
+		},
+	];
+	const protocols = [
+		{ value: "https", label: "https" },
+		{ value: "http", label: "http" },
+	];
 	const { data, getUserAllShortenLink, removeLink, deleteMany } = userDashBoard((state) => ({
 		data: state.allLinks,
 		getUserAllShortenLink: state.getUserAllShortenLink,
@@ -29,14 +46,17 @@ const ProductList = () => {
 		getLinkById: state.getLinkById,
 		updateLink: state.updateLink,
 	}));
+	const [currentPage, setCurrentPage] = useState(1);
+	const [itemPerPage] = useState(10);
+	let params = {
+		currentPage,
+		sortBy: shortBy,
+	};
 	useEffect(() => {
-		getUserAllShortenLink();
-	}, [getUserAllShortenLink]);
+		getUserAllShortenLink(params);
+	}, [getUserAllShortenLink, shortBy]);
 	const [sm, updateSm] = useState(false);
 	// const [onSearchText, setSearchText] = useState("");
-	const [currentPage, setCurrentPage] = useState(1);
-	const [itemPerPage] = useState(7);
-
 	// Changing state value when searching name
 	// useEffect(() => {
 	// 	getUserAllShortenLink();
@@ -72,10 +92,7 @@ const ProductList = () => {
 		});
 	};
 
-	// Get current list, pagination
-	const indexOfLastItem = currentPage * itemPerPage;
-	const indexOfFirstItem = indexOfLastItem - itemPerPage;
-	const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+	const currentItems = data;
 
 	// Change Page
 	const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -117,20 +134,60 @@ const ProductList = () => {
 												/>
 											</div>
 										</li>
-										<li className="nk-block-tools-opt">
-											<Link
-												className="toggle btn btn-primary d-md-none"
-												to={process.env.PUBLIC_URL + "/kyc-details-regular/UD01544"}
-											>
-												<Icon name="link"></Icon>
-											</Link>
-											<Link
-												className="toggle btn btn-primary d-none d-md-inline-flex"
-												to={process.env.PUBLIC_URL + "/kyc-details-regular/UD01544"}
-											>
-												<Icon name="link"></Icon>
-												<span>Short link</span>
-											</Link>
+										<li>
+											<UncontrolledDropdown>
+												<DropdownToggle tag="a" className="btn btn-trigger btn-icon dropdown-toggle">
+													<div className="dot dot-primary"></div>
+													<Icon name="filter-alt"></Icon>
+												</DropdownToggle>
+												<DropdownMenu right className="filter-wg dropdown-menu-xl" style={{ overflow: "visible" }}>
+													<div className="dropdown-head">
+														<span className="sub-title dropdown-title">Advanced Filter</span>
+													</div>
+													<div className="dropdown-body dropdown-body-rg">
+														<Row>
+															<Col size="6">
+																<FormGroup>
+																	<label className="overline-title overline-title-alt">short-by</label>
+																	<RSelect options={sortBy} onChange={(e) => setShortBy(e.value)} />
+																</FormGroup>
+															</Col>
+															<Col size="6">
+																<FormGroup>
+																	<label className="overline-title overline-title-alt">protocol</label>
+																	<RSelect options={protocols} />
+																</FormGroup>
+															</Col>
+															{/* <Col size="12">
+																<FormGroup className="mt-4">
+																	<Button type="button" color="secondary">
+																		Filter
+																	</Button>
+																</FormGroup>
+															</Col> */}
+														</Row>
+													</div>
+													<div className="dropdown-foot between">
+														<a
+															className="clickable"
+															href="#reset"
+															onClick={(ev) => {
+																ev.preventDefault();
+															}}
+														>
+															Reset Filter
+														</a>
+														<a
+															href="#save"
+															onClick={(ev) => {
+																ev.preventDefault();
+															}}
+														>
+															Save Filter
+														</a>
+													</div>
+												</DropdownMenu>
+											</UncontrolledDropdown>
 										</li>
 									</ul>
 								</div>

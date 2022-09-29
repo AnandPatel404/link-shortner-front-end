@@ -72,13 +72,16 @@ const userActivity = create((set, get) => ({
 		});
 	},
 	// TODO : this is west in further delete this
-	getUserAllShortenLink: async () => {
+	getUserAllShortenLink: async ({ currentPage = 1, sortBy, ...rest }) => {
 		await axios({
 			method: "get",
-			url: "logged-user/get-all-links",
+			// url: `logged-user/get-all-links?sortBy=${shortBy}`,
+			url: `logged-user/get-all-links?page=${currentPage}&sortBy=${sortBy}&${Object.keys(rest)
+				.map((key) => `${key}=${rest[key]}`)
+				.join("&")}`,
 		})
 			.then((res) => {
-				set({ allLinks: res.data.data });
+				set({ allLinks: res.data.data.results });
 			})
 			.catch((err) => {
 				console.log(err);
