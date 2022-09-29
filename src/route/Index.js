@@ -96,6 +96,7 @@ import TinymcePreview from "../pages/components/forms/rich-editor/TinymcePreview
 import KnobPreview from "../pages/components/charts/KnobPreview";
 
 import ChangePassword from "../pages/auth/changePassword";
+import Editlink from "../pages/pre-built/editLink/editlink";
 
 const Pages = () => {
 	useLayoutEffect(() => {
@@ -110,6 +111,7 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/analytics`} component={Analytics}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/_blank`} component={Blank}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/kyc-details-regular/:id`} component={KycDetailsRegular}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/link-details/:id`} component={Editlink}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/all-shorten-links`} component={ProductList}></Route>
 
 				{/*Pre-built Pages*/}

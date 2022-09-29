@@ -136,7 +136,7 @@ const userActivity = create((set, get) => ({
 			},
 		});
 	},
-	updateLink: async (data, linkId) => {
+	updateLink: async (data, linkId, history) => {
 		await axios({
 			method: "patch",
 			url: `short/${linkId}`,
@@ -145,8 +145,7 @@ const userActivity = create((set, get) => ({
 			.then((res) => {
 				if (res.data.status === "Success") {
 					messageToast(`${res.data.message} ✅✅`, res.data.status);
-					const reFetch = get().getUserAllShortenLink;
-					reFetch();
+					history.push(`${process.env.PUBLIC_URL}/all-shorten-links`);
 				}
 			})
 			.catch((err) => {
@@ -174,14 +173,6 @@ const userActivity = create((set, get) => ({
 			method: "get",
 			url: `short/${id}`,
 		});
-		// .then((res) => {
-		// 	if (res.data.status === "Success") {
-		// 		set({ linkById: res.data.data });
-		// 	}
-		// })
-		// .catch((err) => {
-		// 	errorToast(`${err.response.data.message} ❌❌`, "Error");
-		// });
 		return link;
 	},
 }));

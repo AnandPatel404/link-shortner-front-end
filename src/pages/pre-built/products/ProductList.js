@@ -8,11 +8,7 @@ import {
 	BlockTitle,
 	BlockBetween,
 	BlockHeadContent,
-	// BlockDes,
 	Icon,
-	Row,
-	Col,
-	Button,
 	DataTableHead,
 	DataTableBody,
 	DataTableRow,
@@ -20,14 +16,12 @@ import {
 	PaginationComponent,
 } from "../../../components/Component";
 import { Card, DropdownItem, UncontrolledDropdown, DropdownMenu, DropdownToggle } from "reactstrap";
-import { useForm } from "react-hook-form";
-import { Modal, ModalBody } from "reactstrap";
 import userDashBoard from "../../../zustand/DashBoard/userDashBoard";
 import { errorToast } from "../../../pages/components/misc/ReactToastify";
 import { Link } from "react-router-dom";
 
 const ProductList = () => {
-	const { data, getUserAllShortenLink, removeLink, deleteMany, updateLink, getLinkById } = userDashBoard((state) => ({
+	const { data, getUserAllShortenLink, removeLink, deleteMany } = userDashBoard((state) => ({
 		data: state.allLinks,
 		getUserAllShortenLink: state.getUserAllShortenLink,
 		removeLink: state.removeLink,
@@ -39,21 +33,6 @@ const ProductList = () => {
 		getUserAllShortenLink();
 	}, [getUserAllShortenLink]);
 	const [sm, updateSm] = useState(false);
-	const [formData, setFormData] = useState({
-		id: "",
-		protocol: "",
-		domain: "",
-		backlink: "",
-		shorterLink: "",
-		link_title: "",
-		official_domain: "shorterme.link/",
-		createdAt: "",
-	});
-	const [view, setView] = useState({
-		edit: false,
-		add: false,
-		details: false,
-	});
 	// const [onSearchText, setSearchText] = useState("");
 	const [currentPage, setCurrentPage] = useState(1);
 	const [itemPerPage] = useState(7);
@@ -70,56 +49,6 @@ const ProductList = () => {
 	// 		setData([...productData]);
 	// 	}
 	// }, [onSearchText]);
-
-	// OnChange function to get the input data
-
-	// // function to close the form modal
-	const onFormCancel = () => {
-		resetForm();
-		setView({ edit: false, add: false, details: false });
-	};
-
-	const resetForm = () => {
-		setFormData({
-			id: "",
-			protocol: "",
-			domain: "",
-			backlink: "",
-			shorterLink: "",
-			link_title: "",
-			official_domain: "shorterme.link/",
-			createdAt: "",
-		});
-	};
-
-	const onEditSubmit = async (data) => {
-		const submit = {
-			protocol: data.protocol,
-			link_title: data.title,
-			backlink: data.backlink,
-			domain: data.domain,
-		};
-		await updateLink(submit, formData.id);
-		resetForm();
-
-		setView({ edit: false, add: false });
-	};
-
-	// function that loads the want to editted data
-	const onEditClick = async (id) => {
-		const data = await getLinkById(id);
-		setFormData({
-			id: data.data.data.id,
-			protocol: data.data.data.protocol,
-			domain: data.data.data.domain,
-			backlink: data.data.data.backlink,
-			shorterLink: data.data.data.shorterLink,
-			link_title: data.data.data.link_title,
-			official_domain: "shorterme.link/",
-			createdAt: new Date(data.data.data.createdAt).toLocaleString(),
-		});
-		setView({ add: false, edit: true });
-	};
 
 	// selects one product
 	let linkId = [];
@@ -143,15 +72,6 @@ const ProductList = () => {
 		});
 	};
 
-	// toggle function to view product details
-	const toggle = (type) => {
-		setView({
-			edit: type === "edit" ? true : false,
-			add: type === "add" ? true : false,
-			details: type === "details" ? true : false,
-		});
-	};
-
 	// Get current list, pagination
 	const indexOfLastItem = currentPage * itemPerPage;
 	const indexOfFirstItem = indexOfLastItem - itemPerPage;
@@ -159,8 +79,6 @@ const ProductList = () => {
 
 	// Change Page
 	const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-	const { errors, register, handleSubmit } = useForm();
 
 	return (
 		<React.Fragment>
@@ -283,18 +201,12 @@ const ProductList = () => {
 														<DataTableRow sm>
 															{/* <Link to={`${process.env.PUBLIC_URL}/kyc-details-regular/${item.id}`}> */}
 															<span className="tb-product align-items-start d-flex flex-column">
-																<Link
-																	to={`${process.env.PUBLIC_URL}/kyc-details-regular/${item.id}`}
-																	className="title d-lg-none"
-																>
+																<span className="title d-lg-none">
 																	{item.link_title ? item.link_title.slice(0, 25) + "..." : "No title"}
-																</Link>
-																<Link
-																	to={`${process.env.PUBLIC_URL}/kyc-details-regular/${item.id}`}
-																	className="title d-none  d-lg-block"
-																>
+																</span>
+																<span className="title d-none  d-lg-block">
 																	{item.link_title ? item.link_title.slice(0, 60) + "..." : "No title"}
-																</Link>
+																</span>
 																<span className="tb-sub d-lg-none">{`${item.protocol}://${item.domain}/${
 																	item.backlink.slice(0, 25) + "..."
 																}`}</span>
@@ -334,26 +246,24 @@ const ProductList = () => {
 																		<DropdownMenu right>
 																			<ul className="link-list-opt no-bdr">
 																				<li>
-																					<DropdownItem
-																						tag="a"
-																						href="#edit"
-																						onClick={(ev) => {
-																							onEditClick(item.id);
-																							toggle("edit");
-																						}}
-																					>
-																						<Icon name="edit"></Icon>
-																						<span>Edit Product</span>
+																					<DropdownItem>
+																						<Link
+																							to={`${process.env.PUBLIC_URL}/link-details/${item.id}`}
+																							className=""
+																						>
+																							<Icon name="edit"></Icon>
+																							<span>Edit Product</span>
+																						</Link>
 																					</DropdownItem>
 																				</li>
 																				<li>
 																					<DropdownItem
-																						tag="a"
 																						href="#remove"
 																						onClick={(ev) => {
 																							ev.preventDefault();
 																							deleteProduct(item.id);
 																						}}
+																						className="ml-2"
 																					>
 																						<Icon name="trash"></Icon>
 																						<span>Remove Product</span>
@@ -391,144 +301,6 @@ const ProductList = () => {
 						</div>
 					</Card>
 				</Block>
-
-				<Modal isOpen={view.edit} toggle={() => onFormCancel()} className="modal-dialog-centered" size="lg">
-					<ModalBody>
-						<a href="#cancel" className="close">
-							{" "}
-							<Icon
-								name="cross-sm"
-								onClick={(ev) => {
-									ev.preventDefault();
-									onFormCancel();
-								}}
-							></Icon>
-						</a>
-						<div className="p-2">
-							<h5 className="title">Update Link</h5>
-							<div className="mt-4">
-								<form onSubmit={handleSubmit(onEditSubmit)}>
-									<Row className="g-3">
-										<Col size="12">
-											<div className="form-group">
-												<label className="form-label" htmlFor="title">
-													Link title
-												</label>
-												<div className="form-control-wrap">
-													<input
-														type="text"
-														className="form-control"
-														name="title"
-														ref={register({
-															required: "This field is required",
-														})}
-														defaultValue={formData.link_title}
-													/>
-													{errors.title && <span className="invalid">{errors.title.message}</span>}
-												</div>
-											</div>
-										</Col>
-										<Col md="6">
-											<div className="form-group">
-												<label className="form-label" htmlFor="protocol">
-													Protocol
-												</label>
-												<div className="form-control-wrap">
-													<input
-														type="text"
-														className="form-control"
-														name="protocol"
-														ref={register({ required: "This is required" })}
-														defaultValue={formData.protocol}
-													/>
-													{errors.protocol && <span className="invalid">{errors.protocol.message}</span>}
-												</div>
-											</div>
-										</Col>
-										<Col md="6">
-											<div className="form-group">
-												<label className="form-label" htmlFor="domain">
-													domain
-												</label>
-												<div className="form-control-wrap">
-													<input
-														type="text"
-														className="form-control"
-														name="domain"
-														ref={register({ required: "This is required" })}
-														defaultValue={formData.domain}
-													/>
-													{errors.domain && <span className="invalid">{errors.domain.message}</span>}
-												</div>
-											</div>
-										</Col>
-										<Col md="6">
-											<div className="form-group">
-												<label className="form-label" htmlFor="backlink">
-													Back-link
-												</label>
-												<div className="form-control-wrap">
-													<input
-														type="text"
-														className="form-control"
-														name="backlink"
-														ref={register({ required: "This is required" })}
-														defaultValue={formData.backlink}
-													/>
-													{errors.backlink && <span className="invalid">{errors.backlink.message}</span>}
-												</div>
-											</div>
-										</Col>
-										<Col md="6">
-											<div className="form-group">
-												<label className="form-label" htmlFor="official_domain">
-													Official-domain
-												</label>
-												<div className="form-control-wrap">
-													<input
-														type="text"
-														className="form-control"
-														name="official_domain"
-														ref={register({ required: "This is required" })}
-														defaultValue={formData.official_domain}
-														disabled
-													/>
-													{errors.official_domain && <span className="invalid">{errors.official_domain.message}</span>}
-												</div>
-											</div>
-										</Col>
-										<Col md="6">
-											<div className="form-group">
-												<label className="form-label" htmlFor="shorterLink">
-													Shorted-link
-												</label>
-												<div className="form-control-wrap">
-													<input
-														type="text"
-														className="form-control"
-														name="shorterLink"
-														ref={register({ required: "This is required" })}
-														defaultValue={formData.shorterLink}
-														disabled
-													/>
-													{errors.shorterLink && <span className="invalid">{errors.shorterLink.message}</span>}
-												</div>
-											</div>
-										</Col>
-										<Col size="12">
-											<Button color="primary" type="submit">
-												<Icon className="plus"></Icon>
-												<span>Update Product</span>
-											</Button>
-										</Col>
-									</Row>
-								</form>
-							</div>
-						</div>
-					</ModalBody>
-				</Modal>
-
-				{view.add && <div className="toggle-overlay" onClick={toggle}></div>}
 			</Content>
 		</React.Fragment>
 	);
