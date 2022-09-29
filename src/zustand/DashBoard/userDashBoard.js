@@ -5,6 +5,8 @@ import { messageToast, errorToast } from "../../pages/components/misc/ReactToast
 
 const userActivity = create((set, get) => ({
 	userActivitys: [],
+	linksLength: "",
+	AllLinksLength: "",
 	links: [],
 	allLinks: [],
 	subscription: {},
@@ -29,6 +31,7 @@ const userActivity = create((set, get) => ({
 			url: "dashboard",
 		})
 			.then((res) => {
+				set({ linksLength: res.data.data.links.length });
 				set({ links: res.data.data.links.slice(0, 5) });
 				set({ subscription: res.data.data.Subscriptions });
 				set({ chart: res.data.data.chart });
@@ -71,7 +74,7 @@ const userActivity = create((set, get) => ({
 			},
 		});
 	},
-	// TODO : this is west in further delete this
+
 	getUserAllShortenLink: async ({ currentPage = 1, sortBy, ...rest }) => {
 		await axios({
 			method: "get",
@@ -81,7 +84,9 @@ const userActivity = create((set, get) => ({
 				.join("&")}`,
 		})
 			.then((res) => {
+				console.log(res);
 				set({ allLinks: res.data.data.results });
+				set({ AllLinksLength: res.data.data.totalResults });
 			})
 			.catch((err) => {
 				console.log(err);

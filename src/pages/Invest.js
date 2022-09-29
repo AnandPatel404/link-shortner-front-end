@@ -18,8 +18,9 @@ import useUserDashBoard from "../zustand/DashBoard/userDashBoard";
 // import { Link } from "react-router-dom";
 
 const InvestHomePage = () => {
-	const { links, quickShort, subscription, userDashBoard } = useUserDashBoard(
+	const { linksLength, links, quickShort, subscription, userDashBoard } = useUserDashBoard(
 		(state) => ({
+			linksLength: state.linksLength,
 			links: state.links,
 			quickShort: state.quickShort,
 			subscription: state.subscription,
@@ -52,7 +53,7 @@ const InvestHomePage = () => {
 											</div>
 										</div>
 										<div className="card-amount">
-											<span className="amount mt-2">{links.length}</span>
+											<span className="amount mt-2">{linksLength}</span>
 										</div>
 									</Col>
 									<Col lg="4" xl="6">

@@ -38,13 +38,14 @@ const ProductList = () => {
 		{ value: "https", label: "https" },
 		{ value: "http", label: "http" },
 	];
-	const { data, getUserAllShortenLink, removeLink, deleteMany } = userDashBoard((state) => ({
+	const { data, getUserAllShortenLink, removeLink, deleteMany, AllLinksLength } = userDashBoard((state) => ({
 		data: state.allLinks,
 		getUserAllShortenLink: state.getUserAllShortenLink,
 		removeLink: state.removeLink,
 		deleteMany: state.deleteMany,
 		getLinkById: state.getLinkById,
 		updateLink: state.updateLink,
+		AllLinksLength: state.AllLinksLength,
 	}));
 	const [currentPage, setCurrentPage] = useState(1);
 	const [itemPerPage] = useState(10);
@@ -54,7 +55,7 @@ const ProductList = () => {
 	};
 	useEffect(() => {
 		getUserAllShortenLink(params);
-	}, [getUserAllShortenLink, shortBy]);
+	}, [getUserAllShortenLink, shortBy, currentPage]);
 	const [sm, updateSm] = useState(false);
 	// const [onSearchText, setSearchText] = useState("");
 	// Changing state value when searching name
@@ -92,6 +93,7 @@ const ProductList = () => {
 		});
 	};
 
+	console.log(AllLinksLength);
 	const currentItems = data;
 
 	// Change Page
@@ -341,7 +343,7 @@ const ProductList = () => {
 									{data.length > 0 ? (
 										<PaginationComponent
 											itemPerPage={itemPerPage}
-											totalItems={data.length}
+											totalItems={AllLinksLength}
 											paginate={paginate}
 											currentPage={currentPage}
 										/>
