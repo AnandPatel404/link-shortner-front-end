@@ -3,10 +3,10 @@ import React from "react";
 // import { DropdownToggle, DropdownMenu, UncontrolledDropdown, DropdownItem } from "reactstrap";
 import { Doughnut } from "react-chartjs-2";
 import { Icon } from "../../../Component";
-import userDashBoard from "../../../../zustand/userDashBoard/userDashBoard";
+import DashBoard from "../../../../zustand/DashBoard/userDashBoard";
 
 const SessionDevice = () => {
-	const { chart } = userDashBoard((state) => ({
+	const { chart } = DashBoard((state) => ({
 		chart: state.chart,
 	}));
 	const data = {

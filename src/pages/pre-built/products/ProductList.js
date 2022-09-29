@@ -22,7 +22,6 @@ import {
 import { Card, DropdownItem, UncontrolledDropdown, DropdownMenu, DropdownToggle } from "reactstrap";
 import { useForm } from "react-hook-form";
 import { Modal, ModalBody } from "reactstrap";
-// import { RSelect } from "../../../components/Component";
 import userDashBoard from "../../../zustand/userDashBoard/userDashBoard";
 import { Link } from "react-router-dom";
 
@@ -306,20 +305,22 @@ const ProductList = () => {
 															</div>
 														</DataTableRow>
 														<DataTableRow sm>
-															<span className="tb-product align-items-start d-flex flex-column">
-																<span className="title d-lg-none">
-																	{item.link_title ? item.link_title.slice(0, 25) + "..." : "No title"}
+															<Link to={`${process.env.PUBLIC_URL}/kyc-details-regular/${item.id}`}>
+																<span className="tb-product align-items-start d-flex flex-column">
+																	<span className="title d-lg-none">
+																		{item.link_title ? item.link_title.slice(0, 25) + "..." : "No title"}
+																	</span>
+																	<span className="title d-none  d-lg-block">
+																		{item.link_title ? item.link_title.slice(0, 60) + "..." : "No title"}
+																	</span>
+																	<span className="tb-sub d-lg-none">{`${item.protocol}://${item.domain}/${
+																		item.backlink.slice(0, 25) + "..."
+																	}`}</span>
+																	<span className="tb-sub d-none  d-lg-block">{`${item.protocol}://${item.domain}/${
+																		item.backlink.slice(0, 60) + "..."
+																	}`}</span>
 																</span>
-																<span className="title d-none  d-lg-block">
-																	{item.link_title ? item.link_title.slice(0, 60) + "..." : "No title"}
-																</span>
-																<span className="tb-sub d-lg-none">{`${item.protocol}://${item.domain}/${
-																	item.backlink.slice(0, 25) + "..."
-																}`}</span>
-																<span className="tb-sub d-none  d-lg-block">{`${item.protocol}://${item.domain}/${
-																	item.backlink.slice(0, 60) + "..."
-																}`}</span>
-															</span>
+															</Link>
 														</DataTableRow>
 														<DataTableRow>
 															<a

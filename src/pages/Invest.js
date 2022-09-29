@@ -14,7 +14,7 @@ import b from "../images/svg/dashboard-paln.svg";
 import a from "../images/svg/dashboard-limite.svg";
 // import rocketSvg from "../images/svg/dashboard.svg";
 import AudienceOverview from "../components/partials/analytics/audience-overview/AudienceOverview";
-import useUserDashBoard from "../zustand/userDashBoard/userDashBoard";
+import useUserDashBoard from "../zustand/DashBoard/userDashBoard";
 // import { Link } from "react-router-dom";
 
 const InvestHomePage = () => {

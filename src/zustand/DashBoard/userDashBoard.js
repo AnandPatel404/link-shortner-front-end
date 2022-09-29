@@ -71,6 +71,7 @@ const userActivity = create((set, get) => ({
 			},
 		});
 	},
+	// TODO : this is west in further delete this
 	getUserAllShortenLink: async () => {
 		await axios({
 			method: "get",
@@ -164,6 +165,22 @@ const userActivity = create((set, get) => ({
 			.catch((err) => {
 				errorToast(`${err.response.data.message} ❌❌`, "Error");
 			});
+	},
+
+	getLinkById: async (id) => {
+		const link = await axios({
+			method: "get",
+			url: `short/${id}`,
+		});
+		// .then((res) => {
+		// 	if (res.data.status === "Success") {
+		// 		set({ linkById: res.data.data });
+		// 	}
+		// })
+		// .catch((err) => {
+		// 	errorToast(`${err.response.data.message} ❌❌`, "Error");
+		// });
+		return link;
 	},
 }));
 

@@ -4,7 +4,7 @@ const menu = [
 	},
 	{
 		icon: "home-alt",
-		text: "Dashboard",
+		text: "Home",
 		link: "/",
 	},
 	{
@@ -24,7 +24,7 @@ const menu = [
 	},
 
 	{
-		heading: "Api webhook",
+		heading: "Api",
 	},
 	{
 		icon: "code",
@@ -89,38 +89,38 @@ const menu = [
 			},
 		],
 	},
-	{
-		icon: "grid-alt",
-		text: "Applications",
-		active: false,
-		subMenu: [
-			{
-				text: "Messages",
-				link: "/app-messages",
-			},
-			{
-				text: "Chats / Messenger",
-				link: "/app-chat",
-			},
-			{
-				text: "Inbox / Mail",
-				link: "/app-inbox",
-			},
-			{
-				text: "Calendar",
-				link: "/app-calender",
-			},
-			{
-				text: "File Manager",
-				link: "/app-file-manager",
-				badge: "new",
-			},
-			{
-				text: "Kanban Board",
-				link: "/app-kanban",
-			},
-		],
-	},
+	// {
+	// 	icon: "grid-alt",
+	// 	text: "Applications",
+	// 	active: false,
+	// 	subMenu: [
+	// 		{
+	// 			text: "Messages",
+	// 			link: "/app-messages",
+	// 		},
+	// 		{
+	// 			text: "Chats / Messenger",
+	// 			link: "/app-chat",
+	// 		},
+	// 		{
+	// 			text: "Inbox / Mail",
+	// 			link: "/app-inbox",
+	// 		},
+	// 		{
+	// 			text: "Calendar",
+	// 			link: "/app-calender",
+	// 		},
+	// 		{
+	// 			text: "File Manager",
+	// 			link: "/app-file-manager",
+	// 			badge: "new",
+	// 		},
+	// 		{
+	// 			text: "Kanban Board",
+	// 			link: "/app-kanban",
+	// 		},
+	// 	],
+	// },
 	{
 		icon: "file-docs",
 		text: "Invoice",

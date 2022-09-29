@@ -1,8 +1,15 @@
+// import GoogleMapPage from "../pages/components/misc/GoogleMap";
+// import UserDetailsPage from "../pages/pre-built/user-manage/UserDetailsRegular";
+// import AppMessages from "../pages/app/messages/Messages";
+// import Chat from "../pages/app/chat/ChatContainer";
+// import Calender from "../pages/app/calender/Calender";
+// import FileManager from "../pages/app/file-manager/FileManager";
+// import { FileManagerContextProvider } from "../pages/app/file-manager/FileManagerContext";
+// import Homepage from "../pages/Homepage";
 import React, { Suspense, useLayoutEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import { RedirectAs404 } from "../utils/Utils";
 
-// import Homepage from "../pages/Homepage";
 import Crypto from "../pages/Crypto";
 import Analytics from "../pages/Analytics";
 import Invest from "../pages/Invest";
@@ -62,7 +69,6 @@ import SVGIconPage from "../pages/components/crafted-icons/SvgIcons";
 
 import ProjectCardPage from "../pages/pre-built/projects/ProjectCard";
 import ProjectListPage from "../pages/pre-built/projects/ProjectList";
-// import UserDetailsPage from "../pages/pre-built/user-manage/UserDetailsRegular";
 import UserProfileLayout from "../pages/pre-built/user-manage/UserProfileLayout";
 import KycListRegular from "../pages/pre-built/kyc-list-regular/KycListRegular";
 import KycDetailsRegular from "../pages/pre-built/kyc-list-regular/kycDetailsRegular";
@@ -74,10 +80,6 @@ import InvoiceDetails from "../pages/pre-built/invoice/InvoiceDetails";
 import PricingTable from "../pages/pre-built/pricing-table/PricingTable";
 import GalleryPreview from "../pages/pre-built/gallery/GalleryCardPreview";
 
-import AppMessages from "../pages/app/messages/Messages";
-import Chat from "../pages/app/chat/ChatContainer";
-import Calender from "../pages/app/calender/Calender";
-import FileManager from "../pages/app/file-manager/FileManager";
 import Inbox from "../pages/app/inbox/Inbox";
 import Kanban from "../pages/app/kanban/Kanban";
 import DateTimePicker from "../pages/components/forms/DateTimePicker";
@@ -88,12 +90,10 @@ import SlickPage from "../pages/components/misc/Slick";
 import SweetAlertPage from "../pages/components/misc/SweetAlert";
 import BeautifulDnd from "../pages/components/misc/BeautifulDnd";
 import DualListPage from "../pages/components/misc/DualListbox";
-import GoogleMapPage from "../pages/components/misc/GoogleMap";
 import JsTreePreview from "../pages/components/misc/JsTree";
 import QuillPreview from "../pages/components/forms/rich-editor/QuillPreview";
 import TinymcePreview from "../pages/components/forms/rich-editor/TinymcePreview";
 import KnobPreview from "../pages/components/charts/KnobPreview";
-import { FileManagerContextProvider } from "../pages/app/file-manager/FileManagerContext";
 
 import ChangePassword from "../pages/auth/changePassword";
 
@@ -105,11 +105,12 @@ const Pages = () => {
 	return (
 		<Suspense fallback={<div />}>
 			<Switch>
-				{/*Dashboards*/}
+				{/*Dashboards and used route*/}
 				<Route exact path={`${process.env.PUBLIC_URL}/crypto`} component={Crypto}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/analytics`} component={Analytics}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/invest`} component={Invest}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/_blank`} component={Blank}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/kyc-details-regular/:id`} component={KycDetailsRegular}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/all-shorten-links`} component={ProductList}></Route>
 
 				{/*Pre-built Pages*/}
 				<Route exact path={`${process.env.PUBLIC_URL}/project-card`} component={ProjectCardPage}></Route>
@@ -121,10 +122,8 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-change-password/`} component={ChangePassword}></Route>
 
 				<Route exact path={`${process.env.PUBLIC_URL}/kyc-list-regular`} component={KycListRegular}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/kyc-details-regular/:id`} component={KycDetailsRegular}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/transaction-basic`} component={TransListBasic}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/transaction-crypto`} component={TransListCrypto}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/all-shorten-links`} component={ProductList}></Route>
 
 				<Route exact path={`${process.env.PUBLIC_URL}/invoice-list`} component={InvoiceList}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/invoice-details/:id`} component={InvoiceDetails}></Route>
@@ -138,81 +137,6 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/pages/regular-v2`} component={Regularv2}></Route>
 
 				{/*Application*/}
-				<Route exact path={`${process.env.PUBLIC_URL}/app-messages`} component={AppMessages}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/app-chat`} component={Chat}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/app-calender`} component={Calender}></Route>
-				<Route
-					exact
-					path={`${process.env.PUBLIC_URL}/app-file-manager`}
-					render={(props) => (
-						<FileManagerContextProvider>
-							<FileManager />
-						</FileManagerContextProvider>
-					)}
-				></Route>
-				<Route
-					exact
-					path={`${process.env.PUBLIC_URL}/app-file-manager/files`}
-					render={(props) => (
-						<FileManagerContextProvider>
-							<FileManager />
-						</FileManagerContextProvider>
-					)}
-				></Route>
-				<Route
-					exact
-					path={`${process.env.PUBLIC_URL}/app-file-manager/shared`}
-					render={(props) => (
-						<FileManagerContextProvider>
-							<FileManager />
-						</FileManagerContextProvider>
-					)}
-				></Route>
-				<Route
-					exact
-					path={`${process.env.PUBLIC_URL}/app-file-manager/starred`}
-					render={(props) => (
-						<FileManagerContextProvider>
-							<FileManager />
-						</FileManagerContextProvider>
-					)}
-				></Route>
-				<Route
-					exact
-					path={`${process.env.PUBLIC_URL}/app-file-manager/recovery`}
-					render={(props) => (
-						<FileManagerContextProvider>
-							<FileManager />
-						</FileManagerContextProvider>
-					)}
-				></Route>
-				<Route
-					exact
-					path={`${process.env.PUBLIC_URL}/app-file-manager/settings`}
-					render={(props) => (
-						<FileManagerContextProvider>
-							<FileManager />
-						</FileManagerContextProvider>
-					)}
-				></Route>
-				<Route
-					exact
-					path={`${process.env.PUBLIC_URL}/app-file-manager/pricing`}
-					render={(props) => (
-						<FileManagerContextProvider>
-							<FileManager />
-						</FileManagerContextProvider>
-					)}
-				></Route>
-				<Route
-					exact
-					path={`${process.env.PUBLIC_URL}/app-file-manager/folder/:id`}
-					render={(props) => (
-						<FileManagerContextProvider>
-							<FileManager />
-						</FileManagerContextProvider>
-					)}
-				></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/app-inbox`} component={Inbox}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/app-kanban`} component={Kanban}></Route>
 
@@ -257,7 +181,7 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/components/misc/sweet-alert`} component={SweetAlertPage}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/misc/beautiful-dnd`} component={BeautifulDnd}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/misc/dual-list`} component={DualListPage}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/misc/map`} component={GoogleMapPage}></Route>
+				{/* <Route exact path={`${process.env.PUBLIC_URL}/components/misc/map`} component={GoogleMapPage}></Route> */}
 				<Route exact path={`${process.env.PUBLIC_URL}/components/misc/jsTree`} component={JsTreePreview}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/util-border`} component={UtilBorder}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/util-colors`} component={UtilColors}></Route>
@@ -278,6 +202,81 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/svg-icons`} component={SVGIconPage}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/`} component={Invest}></Route>
 				<Route component={RedirectAs404}></Route>
+				{/* <Route exact path={`${process.env.PUBLIC_URL}/app-messages`} component={AppMessages}></Route>
+			<Route exact path={`${process.env.PUBLIC_URL}/app-chat`} component={Chat}></Route>
+			<Route exact path={`${process.env.PUBLIC_URL}/app-calender`} component={Calender}></Route>
+			<Route
+				exact
+				path={`${process.env.PUBLIC_URL}/app-file-manager`}
+				render={(props) => (
+					<FileManagerContextProvider>
+						<FileManager />
+					</FileManagerContextProvider>
+				)}
+			></Route>
+			<Route
+				exact
+				path={`${process.env.PUBLIC_URL}/app-file-manager/files`}
+				render={(props) => (
+					<FileManagerContextProvider>
+						<FileManager />
+					</FileManagerContextProvider>
+				)}
+			></Route>
+			<Route
+				exact
+				path={`${process.env.PUBLIC_URL}/app-file-manager/shared`}
+				render={(props) => (
+					<FileManagerContextProvider>
+						<FileManager />
+					</FileManagerContextProvider>
+				)}
+			></Route>
+			<Route
+				exact
+				path={`${process.env.PUBLIC_URL}/app-file-manager/starred`}
+				render={(props) => (
+					<FileManagerContextProvider>
+						<FileManager />
+					</FileManagerContextProvider>
+				)}
+			></Route>
+			<Route
+				exact
+				path={`${process.env.PUBLIC_URL}/app-file-manager/recovery`}
+				render={(props) => (
+					<FileManagerContextProvider>
+						<FileManager />
+					</FileManagerContextProvider>
+				)}
+			></Route>
+			<Route
+				exact
+				path={`${process.env.PUBLIC_URL}/app-file-manager/settings`}
+				render={(props) => (
+					<FileManagerContextProvider>
+						<FileManager />
+					</FileManagerContextProvider>
+				)}
+			></Route>
+			<Route
+				exact
+				path={`${process.env.PUBLIC_URL}/app-file-manager/pricing`}
+				render={(props) => (
+					<FileManagerContextProvider>
+						<FileManager />
+					</FileManagerContextProvider>
+				)}
+			></Route>
+			<Route
+				exact
+				path={`${process.env.PUBLIC_URL}/app-file-manager/folder/:id`}
+				render={(props) => (
+					<FileManagerContextProvider>
+						<FileManager />
+					</FileManagerContextProvider>
+				)}
+			></Route> */}
 			</Switch>
 		</Suspense>
 	);
