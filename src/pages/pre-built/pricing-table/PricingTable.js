@@ -5,7 +5,7 @@ import { Badge, Button } from "reactstrap";
 import { BlockBetween, BlockDes, Block, BlockContent, BlockHead, BlockTitle, Col, Row } from "../../../components/Component";
 import { Card } from "reactstrap";
 import { pricingTableDataV2 } from "./PricingTableData";
-import userDashBoard from "../../../zustand/userDashBoard/userDashBoard";
+import userDashBoard from "../../../zustand/DashBoard/userDashBoard";
 
 const PricingTable = () => {
 	const { getAllPlan, plan } = userDashBoard((state) => ({

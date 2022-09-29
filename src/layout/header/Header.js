@@ -5,7 +5,7 @@ import User from "./dropdown/user/User";
 // import Notification from "./dropdown/notification/Notification";
 import Mode from "./dropdown/mode/mode";
 import "./style.css";
-import userActivity from "../../zustand/userDashBoard/userDashBoard";
+import userActivity from "../../zustand/DashBoard/userDashBoard";
 
 const Header = ({ fixed, theme, className, setVisibility, ...props }) => {
 	const headerClass = classNames({

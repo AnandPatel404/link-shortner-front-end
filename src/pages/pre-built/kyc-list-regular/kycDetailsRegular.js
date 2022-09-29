@@ -18,7 +18,7 @@ import {
 import { findUpper } from "../../../utils/Utils";
 // import { kycData } from "./KycData";
 import { Link } from "react-router-dom";
-import usersDashBoard from "../../../zustand/userDashBoard/userDashBoard";
+import usersDashBoard from "../../../zustand/DashBoard/userDashBoard";
 
 const KycDetailsRegular = ({ match }) => {
 	// const [data] = useState(kycData);

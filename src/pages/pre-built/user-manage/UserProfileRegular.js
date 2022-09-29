@@ -3,7 +3,7 @@ import Head from "../../../layout/head/Head";
 import { Modal, ModalBody, FormGroup } from "reactstrap";
 import { Block, BlockBetween, BlockHead, BlockHeadContent, BlockTitle, Icon, Row, Col, Button } from "../../../components/Component";
 import useUserStore from "../../../zustand/userStore/userStore";
-import useUserDashBoard from "../../../zustand/userDashBoard/userDashBoard";
+import useUserDashBoard from "../../../zustand/DashBoard/userDashBoard";
 
 const UserProfileRegularPage = ({ sm, updateSm, setProfileName }) => {
 	const userState = useUserStore((state) => state.user);

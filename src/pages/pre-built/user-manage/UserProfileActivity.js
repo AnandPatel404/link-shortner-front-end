@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Head from "../../../layout/head/Head";
 import { BlockBetween, BlockDes, BlockHead, BlockHeadContent, BlockTitle, Icon, LoginLogTable, Button } from "../../../components/Component";
-import userActivity from "../../../zustand/userDashBoard/userDashBoard";
+import userActivity from "../../../zustand/DashBoard/userDashBoard";
 
 const UserProfileActivityPage = ({ sm, updateSm }) => {
 	const a = userActivity((state) => state.getuserActivity);

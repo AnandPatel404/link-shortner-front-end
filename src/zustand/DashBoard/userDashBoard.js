@@ -120,8 +120,10 @@ const userActivity = create((set, get) => ({
 			},
 			success: {
 				render({ data }) {
-					const getUserAllShortenLink = get().getUserAllShortenLink;
-					getUserAllShortenLink();
+					setTimeout(() => {
+						const getUserAllShortenLink = get().getUserAllShortenLink;
+						getUserAllShortenLink();
+					}, 1000);
 					return `${data.data.message}`;
 				},
 				icon: "🟢",
