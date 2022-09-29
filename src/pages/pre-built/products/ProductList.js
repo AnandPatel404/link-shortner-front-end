@@ -368,20 +368,6 @@ const ProductList = () => {
 																				<li>
 																					<DropdownItem
 																						tag="a"
-																						href="#view"
-																						onClick={(ev) => {
-																							ev.preventDefault();
-																							onEditClick(item.id);
-																							toggle("details");
-																						}}
-																					>
-																						<Icon name="eye"></Icon>
-																						<span>View Product</span>
-																					</DropdownItem>
-																				</li>
-																				<li>
-																					<DropdownItem
-																						tag="a"
 																						href="#remove"
 																						onClick={(ev) => {
 																							ev.preventDefault();
@@ -561,55 +547,6 @@ const ProductList = () => {
 					</ModalBody>
 				</Modal>
 
-				<Modal isOpen={view.details} toggle={() => onFormCancel()} className="modal-dialog-centered" size="lg">
-					<ModalBody>
-						<a href="#cancel" className="close">
-							{" "}
-							<Icon
-								name="cross-sm"
-								onClick={(ev) => {
-									ev.preventDefault();
-									onFormCancel();
-								}}
-							></Icon>
-						</a>
-						<div className="nk-modal-head">
-							<h4 className="nk-modal-title title">Link details</h4>
-						</div>
-						<div className="nk-tnx-details mt-sm-3">
-							<Row className="gy-3">
-								<Col lg={6}>
-									<span className="sub-text">Link title</span>
-									<span className="caption-text"> {formData.link_title}</span>
-								</Col>
-								<Col lg={6}>
-									<span className="sub-text">protocol</span>
-									<span className="caption-text">{formData.protocol}</span>
-								</Col>
-								<Col lg={6}>
-									<span className="sub-text">domain</span>
-									<span className="caption-text">{formData.domain}</span>
-								</Col>
-								<Col lg={6}>
-									<span className="sub-text">Back-link</span>
-									<span className="caption-text"> {formData.backlink}</span>
-								</Col>
-								<Col lg={6}>
-									<span className="sub-text">Official-domain</span>
-									<span className="caption-text"> {formData.official_domain}</span>
-								</Col>
-								<Col lg={6}>
-									<span className="sub-text">Shorted-link</span>
-									<span className="caption-text"> {formData.shorterLink}</span>
-								</Col>
-								<Col lg={6}>
-									<span className="sub-text">time & date</span>
-									<span className="caption-text"> {formData.createdAt}</span>
-								</Col>
-							</Row>
-						</div>
-					</ModalBody>
-				</Modal>
 				{view.add && <div className="toggle-overlay" onClick={toggle}></div>}
 			</Content>
 		</React.Fragment>
