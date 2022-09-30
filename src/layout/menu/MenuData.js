@@ -42,6 +42,24 @@ const menu = [
 		],
 	},
 	{
+		heading: "QR-link",
+	},
+	{
+		icon: "qr",
+		text: "QR-link-generation",
+		active: false,
+		subMenu: [
+			{
+				text: "Generate QR",
+				link: "/project-card",
+			},
+			{
+				text: "QR List",
+				link: "/project-list",
+			},
+		],
+	},
+	{
 		heading: "Pre-built Pages",
 	},
 	{

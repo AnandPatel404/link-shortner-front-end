@@ -75,7 +75,7 @@ const userActivity = create((set, get) => ({
 		});
 	},
 
-	getUserAllShortenLink: async ({ currentPage = 1, sortBy, ...rest }) => {
+	getUserAllShortenLink: async ({ currentPage, sortBy, ...rest }) => {
 		await axios({
 			method: "get",
 			url: `logged-user/get-all-links?page=${currentPage}&sortBy=${sortBy}&${Object.keys(rest)
@@ -97,9 +97,11 @@ const userActivity = create((set, get) => ({
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
+					setTimeout(() => {
+						getUserAllShortenLink();
+					}, 1000);
 					messageToast(`${res.data.message} ✅✅`, res.data.status);
 					const getUserAllShortenLink = get().getUserAllShortenLink;
-					getUserAllShortenLink();
 				}
 			})
 			.catch((err) => {
@@ -128,8 +130,8 @@ const userActivity = create((set, get) => ({
 			},
 			success: {
 				render({ data }) {
+					const getUserAllShortenLink = get().getUserAllShortenLink;
 					setTimeout(() => {
-						const getUserAllShortenLink = get().getUserAllShortenLink;
 						getUserAllShortenLink();
 					}, 1000);
 					return `${data.data.message}`;

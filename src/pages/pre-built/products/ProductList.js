@@ -23,7 +23,12 @@ import { errorToast } from "../../../pages/components/misc/ReactToastify";
 import { Link } from "react-router-dom";
 
 const ProductList = () => {
+	const [sm, updateSm] = useState(false);
 	const [shortBy, setShortBy] = useState("");
+	const [onSearchText, setSearchText] = useState("");
+	const [currentPage, setCurrentPage] = useState(1);
+	const [itemPerPage] = useState(10);
+
 	const sortBy = [
 		{
 			value: "asc",
@@ -38,6 +43,7 @@ const ProductList = () => {
 		{ value: "https", label: "https" },
 		{ value: "http", label: "http" },
 	];
+
 	const { data, getUserAllShortenLink, removeLink, deleteMany, AllLinksLength } = userDashBoard((state) => ({
 		data: state.allLinks,
 		getUserAllShortenLink: state.getUserAllShortenLink,
@@ -47,9 +53,27 @@ const ProductList = () => {
 		updateLink: state.updateLink,
 		AllLinksLength: state.AllLinksLength,
 	}));
-	const [onSearchText, setSearchText] = useState("");
-	const [currentPage, setCurrentPage] = useState(1);
-	const [itemPerPage] = useState(10);
+
+	// selects one product
+	let linkId = [];
+	const onSelectChange = (e, id) => {
+		linkId.push(id);
+	};
+
+	// function to delete the selected item
+	const selectorDeleteProduct = () => {
+		if (linkId.length === 0) {
+			return errorToast(`Please select the item before click ❌❌`, "Error");
+		}
+		deleteMany(linkId);
+		linkId = [];
+	};
+
+	// function to delete a link
+	const deleteProduct = async (id) => {
+		removeLink(id);
+	};
+
 	let params = {
 		currentPage,
 		sortBy: shortBy,
@@ -62,30 +86,6 @@ const ProductList = () => {
 		getUserAllShortenLink(params);
 	}, [getUserAllShortenLink, shortBy, currentPage, onSearchText]);
 
-	const [sm, updateSm] = useState(false);
-
-	console.log(onSearchText);
-	// selects one product
-	let linkId = [];
-	const onSelectChange = (e, id) => {
-		linkId.push(id);
-	};
-	// function to delete the selected item
-	const selectorDeleteProduct = () => {
-		if (linkId.length === 0) {
-			return errorToast(`Please select the item before click ❌❌`, "Error");
-		}
-		deleteMany(linkId);
-		linkId = [];
-	};
-
-	// // function to delete a link
-	const deleteProduct = async (id) => {
-		const promise = new Promise((resolve) => resolve(removeLink(id)));
-		promise.then(() => {
-			getUserAllShortenLink();
-		});
-	};
 	const currentItems = data;
 
 	// Change Page
