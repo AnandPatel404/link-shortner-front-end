@@ -160,36 +160,6 @@ const menu = [
 		text: "Image Gallery",
 		link: "/image-gallery",
 	},
-	/*   {
-		heading: "Misc Pages",
-	}, */
-	// {
-	//   icon: "signin",
-	//   text: "Auth Pages",
-	//   active: false,
-	//   subMenu: [
-	//     {
-	//       text: "Login / Signin",
-	//       link: "/auth-login",
-	//       newTab: true,
-	//     },
-	//     {
-	//       text: "Register / Signup",
-	//       link: "/auth-register",
-	//       newTab: true,
-	//     },
-	//     {
-	//       text: "Forgot Password",
-	//       link: "/auth-reset",
-	//       newTab: true,
-	//     },
-	//     {
-	//       text: "Success / Confirm",
-	//       link: "/auth-success",
-	//       newTab: true,
-	//     },
-	//   ],
-	// },
 	{
 		icon: "files",
 		text: "Error Pages",
