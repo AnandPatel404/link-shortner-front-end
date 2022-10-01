@@ -23,24 +23,24 @@ const menu = [
 		link: "/pricing-table",
 	},
 
-	{
-		heading: "Api",
-	},
-	{
-		icon: "code",
-		text: "Api webhook",
-		active: false,
-		subMenu: [
-			{
-				text: "Project Cards",
-				link: "/project-card",
-			},
-			{
-				text: "Project List",
-				link: "/project-list",
-			},
-		],
-	},
+	// {
+	// 	heading: "Api",
+	// },
+	// {
+	// 	icon: "code",
+	// 	text: "Api webhook",
+	// 	active: false,
+	// 	subMenu: [
+	// 		{
+	// 			text: "Project Cards",
+	// 			link: "/project-card",
+	// 		},
+	// 		{
+	// 			text: "Project List",
+	// 			link: "/project-list",
+	// 		},
+	// 	],
+	// },
 	{
 		heading: "QR-link",
 	},
@@ -62,21 +62,21 @@ const menu = [
 	{
 		heading: "Pre-built Pages",
 	},
-	{
-		icon: "tile-thumb",
-		text: "Projects",
-		active: false,
-		subMenu: [
-			{
-				text: "Project Cards",
-				link: "/project-card",
-			},
-			{
-				text: "Project List",
-				link: "/project-list",
-			},
-		],
-	},
+	// {
+	// 	icon: "tile-thumb",
+	// 	text: "Projects",
+	// 	active: false,
+	// 	subMenu: [
+	// 		{
+	// 			text: "Project Cards",
+	// 			link: "/project-card",
+	// 		},
+	// 		{
+	// 			text: "Project List",
+	// 			link: "/project-list",
+	// 		},
+	// 	],
+	// },
 	{
 		icon: "file-docs",
 		text: "AML / KYCs",
