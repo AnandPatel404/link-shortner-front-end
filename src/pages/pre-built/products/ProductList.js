@@ -49,29 +49,12 @@ const ProductList = () => {
 		getUserAllShortenLink: state.getUserAllShortenLink,
 		removeLink: state.removeLink,
 		deleteMany: state.deleteMany,
-		getLinkById: state.getLinkById,
-		updateLink: state.updateLink,
 		AllLinksLength: state.AllLinksLength,
 	}));
 
-	// selects one product
-	let linkId = [];
-	const onSelectChange = (e, id) => {
-		linkId.push(id);
-	};
-
-	// function to delete the selected item
-	const selectorDeleteProduct = () => {
-		if (linkId.length === 0) {
-			return errorToast(`Please select the item before click ❌❌`, "Error");
-		}
-		deleteMany(linkId);
-		linkId = [];
-	};
-
-	// function to delete a link
 	const deleteProduct = async (id) => {
 		removeLink(id);
+		getUserAllShortenLink();
 	};
 
 	let params = {
@@ -79,12 +62,28 @@ const ProductList = () => {
 		sortBy: shortBy,
 		shorterLink: onSearchText,
 	};
+	if (params.shorterLink === undefined || params.shorterLink === "") {
+		delete params.shorterLink;
+	}
+	if (params.sortBy === undefined || params.sortBy === "") {
+		delete params.sortBy;
+	}
 	useEffect(() => {
-		if (params.shorterLink === undefined || params.shorterLink === "") {
-			delete params.shorterLink;
-		}
 		getUserAllShortenLink(params);
 	}, [getUserAllShortenLink, shortBy, currentPage, onSearchText]);
+
+	let linkId = [];
+	const onSelectChange = (e, id) => {
+		linkId.push(id);
+	};
+
+	const selectorDeleteProduct = async () => {
+		if (linkId.length === 0) {
+			return errorToast(`Please select the item before click ❌❌`, "Error");
+		}
+		await deleteMany(linkId);
+		linkId = [];
+	};
 
 	const currentItems = data;
 

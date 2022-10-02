@@ -17,13 +17,17 @@ import {
 } from "../../../components/Component";
 import { FormGroup, Form } from "reactstrap";
 import { useForm } from "react-hook-form";
+import useqrCode from "../../../zustand/qrCode/qrCode";
 
 const ProjectCardPage = () => {
+	const { createQrs } = useqrCode((state) => ({
+		createQrs: state.createQr,
+	}));
 	const [color, SetColor] = useState();
 	const [colorCodes, setColorsCode] = useState("");
 
 	const [deadLine, setDate] = useState(false);
-	const [dates, setDates] = useState(Date.now());
+	const [dates, setDates] = useState("");
 
 	const [image, setImage] = useState(false);
 	const showlogoBOx = () => {
@@ -37,7 +41,7 @@ const ProjectCardPage = () => {
 	};
 	const [files, setFiles] = useState([]);
 
-	const handleDropChange = (acceptedFiles, set) => {
+	const handleDropChange = async (acceptedFiles, set) => {
 		set(
 			acceptedFiles.map((file) =>
 				Object.assign(file, {
@@ -51,12 +55,31 @@ const ProjectCardPage = () => {
 		setColorsCode(e);
 	};
 
-	// submit function to add a new item
-	const onFormSubmit = (sData) => {
-		console.log(colorCodes);
-		console.log(files);
-		console.log(sData);
-		console.log(dates);
+	const onFormSubmit = async (sData) => {
+		if (files.length > 0) {
+			await fetch(files[0].preview).then(async (res) => {
+				const blob = await res.blob();
+				const reader = new FileReader();
+				reader.readAsDataURL(blob);
+
+				reader.onload = async () => {
+					const data = {
+						link: sData.link,
+						qrColor: colorCodes,
+						base64: reader.result,
+					};
+					console.log(data);
+					await createQrs(data);
+				};
+			});
+		} else {
+			const data = {
+				link: sData.link,
+				qrColor: colorCodes.toString(),
+			};
+			console.log(data);
+			await createQrs(data);
+		}
 	};
 
 	const { errors, register, handleSubmit } = useForm();
@@ -77,6 +100,10 @@ const ProjectCardPage = () => {
 				<Block>
 					<ProjectCard>
 						<div className="p-2">
+							<img
+								src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHwAAAB8CAYAAACrHtS+AAAAAklEQVR4AewaftIAAAS0SURBVO3BQW4dSQxEwZdE35viyXO2hBdlFPpL1oCMEHyZNUawRgnWKMEa5eEPdvKTpOLETjqpOLGTT5KKzk5OpOLETn6SVHTBGiVYowRrlIe/kIpPspPvJBWdnXRS8UlS0dlJJxUnUvFJdnISrFGCNUqwRnm4ZCc3pOKGndywk04qbthJJxX/kp3ckIobwRolWKMEa5SHdWQnJ3bSScVvFqxRgjVKsEZ5+GWkorOTzk5O7OTETjqpuCEVnZ10dtJJxW8SrFGCNUqwRnm4JBX/klR0dnJDKk7s5MROOqn4JKn4TsEaJVijBGuUh7+wk59kJ51UdHbSSUVnJ51UdHbSScWJVHR2cmInnVSc2MlPCtYowRolWKM8/EEq/iWp+E5ScSIVJ1LxhlT8S8EaJVijBGsUwZd5wU5OpKKzkxOp6Oykk4rOTjqpeMNOOqno7KSTiu9kJydScSNYowRrlGCNIvgyB3ZyIhWdnXRScWInN6TiDTvppOKT7KSTiht20klFZyedVNwI1ijBGiVYowi+TGMnP0kqOjvppKKzkxtS0dnJDano7KSTihM7OZGKG3bSScWNYI0SrFGCNcrDH6Sis5NOKjo7OZGKEzvppKKzk04qOjvppOKGVHwnqejs5MROOqnopOLETjqp6II1SrBGCdYogi9zwU46qbhhJydScWInJ1JxYicnUtHZyQ2pOLGTE6no7KSTijeCNUqwRgnWKA8v2ckNqejspLOTE6no7OST7OSGVHR20knFDTvppOLETk6kogvWKMEaJVijPPzBTjqpOJGKEzvp7KSTis5OOqno7OQNqfgkO+mk4kQqTuzkxE7eCNYowRolWKMIvswH2UknFW/YSScVJ3bSSUVnJ58kFSd20klFZyedVHR2ciIVnZ10UtEFa5RgjRKsUR7+YCedVJzYSScVJ3bSScUNOzmRis5ObkjFJ0nFG1JxYiedVJwEa5RgjRKsUR4u2ckbUtHZSScVnVR0dtJJxRtSccNOTqTihlR0dnJDKm4Ea5RgjRKsUR7+wk46qejs5MRObthJJxVvSEVnJzfs5IaddFJxYiedVLxhJ51UdMEaJVijBGuUhw+zkxOpuGEnnVR0dtJJRWcnnVR0dvKGVHR20tnJiVR0dtJJRWcnnVTcCNYowRolWKM8fJhUnNjJiVR0UtHZSScVnZ10UtHZyRtS8Ul2ckMq3gjWKMEaJVijCL7ML2InN6Sis5M3pOLETm5IxQ076aSis5MTqTgJ1ijBGiVYozz8wU5+klScSEVnJzekorOTf8lOOqk4sZNOKjo7uRGsUYI1SrBGefgLqfgkOzmRis5OOqn4P5OKT5KKzk46qeiCNUqwRgnWKA+X7OSGVNywk+8kFTfs5A07+U52ciNYowRrlGCN8vDLScUbdtJJxSdJxYmddFJxw05uSMVJsEYJ1ijBGuXhl5GKEzv5SVLR2UlnJ51UdFJxYicnUnHDTjqp6II1SrBGCdYoD5ek4ifZyQ2peMNOOqnopOKGnXySnXRS0dnJSbBGCdYowRrl4S/s5DeTis5OTqSis5M37OSGVHR2cmInnVScSMVJsEYJ1ijBGkXwZdYYwRolWKMEa5T/AHoXAE1ciHekAAAAAElFTkSuQmCC"
+								alt=""
+							/>
 							<h5 className="title">Qr generation</h5>
 							<div className="mt-4">
 								<Form className="row gy-4" onSubmit={handleSubmit(onFormSubmit)}>
@@ -142,8 +169,8 @@ const ProjectCardPage = () => {
 									{color === true ? (
 										<Col md="12">
 											<FormGroup>
-												<input type="color" className="" name="color" onChange={(e) => colorCode(e.target.value)} />
-												{errors.color && <span className="invalid">{errors.color.message}</span>}
+												<input type="color" className="" name="backGroundColor" onChange={(e) => colorCode(e.target.value)} />
+												<label className="form-label">Qr code</label>
 											</FormGroup>
 										</Col>
 									) : (
@@ -185,8 +212,8 @@ const ProjectCardPage = () => {
 																		key={file.name}
 																		className="dz-preview dz-processing dz-image-preview dz-error dz-complete d-flex justify-content-center"
 																	>
-																		<div className="dz-image">
-																			<img src={file.preview} alt="preview" />
+																		<div className="">
+																			<img src={file.preview} alt="preview" width={300} />
 																		</div>
 																	</div>
 																))}

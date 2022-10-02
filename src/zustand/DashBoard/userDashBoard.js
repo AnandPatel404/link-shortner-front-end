@@ -34,8 +34,8 @@ const userActivity = create((set, get) => ({
 				set({ linksLength: res.data.data.links.length });
 				set({ links: res.data.data.links.slice(0, 5) });
 				set({ subscription: res.data.data.Subscriptions });
-				set({ chart: res.data.data.chart });
-				set({ browser: res.data.data.browser });
+				// set({ chart: res.data.data.chart });
+				// set({ browser: res.data.data.browser });
 			})
 			.catch((err) => {
 				console.log(err);
@@ -61,7 +61,9 @@ const userActivity = create((set, get) => ({
 			success: {
 				render({ data }) {
 					const reFetch = get().userDashBoard;
-					reFetch();
+					setTimeout(() => {
+						reFetch();
+					}, 1000);
 					return `${data.data.message}`;
 				},
 				icon: "🟢",
@@ -75,20 +77,19 @@ const userActivity = create((set, get) => ({
 		});
 	},
 
-	getUserAllShortenLink: async ({ currentPage, sortBy, ...rest }) => {
-		await axios({
-			method: "get",
-			url: `logged-user/get-all-links?page=${currentPage}&sortBy=${sortBy}&${Object.keys(rest)
-				.map((key) => `${key}=${rest[key]}`)
-				.join("&")}`,
-		})
-			.then((res) => {
-				set({ allLinks: res.data.data.results });
-				set({ AllLinksLength: res.data.data.totalResults });
-			})
-			.catch((err) => {
-				errorToast(`${err.response.data.message} ❌❌`, "Error");
+	getUserAllShortenLink: async ({ currentPage, ...rest }) => {
+		try {
+			const data = await axios({
+				method: "get",
+				url: `logged-user/get-all-links?page=${currentPage}&${Object.keys(rest)
+					.map((key) => `${key}=${rest[key]}`)
+					.join("&")}`,
 			});
+			set({ allLinks: data.data.data.results });
+			set({ AllLinksLength: data.data.data.totalResults });
+		} catch (err) {
+			errorToast(`${err.response.data.message} ❌❌`, "Error");
+		}
 	},
 	removeLink: async (linkId) => {
 		await axios({
@@ -97,11 +98,7 @@ const userActivity = create((set, get) => ({
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
-					setTimeout(() => {
-						getUserAllShortenLink();
-					}, 1000);
 					messageToast(`${res.data.message} ✅✅`, res.data.status);
-					const getUserAllShortenLink = get().getUserAllShortenLink;
 				}
 			})
 			.catch((err) => {
@@ -130,10 +127,6 @@ const userActivity = create((set, get) => ({
 			},
 			success: {
 				render({ data }) {
-					const getUserAllShortenLink = get().getUserAllShortenLink;
-					setTimeout(() => {
-						getUserAllShortenLink();
-					}, 1000);
 					return `${data.data.message}`;
 				},
 				icon: "🟢",
