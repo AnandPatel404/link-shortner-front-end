@@ -45,12 +45,12 @@ const ProjectCardPage = () => {
 	};
 
 	const onFormSubmit = async (sData) => {
-		if (files.length > 0) {
-			const data = {
-				link: sData.link,
-				qrColor: colorCodes.toString(),
-				file: files[0].path.toString(),
-			};
+		const data = new FormData();
+		if (files) {
+			data.append("link", sData.link);
+			data.append("qrColor", colorCodes.toString());
+			data.append("img", files[0]);
+
 			await createQrs(data);
 		} else {
 			const data = {
@@ -79,10 +79,6 @@ const ProjectCardPage = () => {
 				<Block>
 					<ProjectCard>
 						<div className="p-2">
-							<img
-								src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHwAAAB8CAYAAACrHtS+AAAAAklEQVR4AewaftIAAAS0SURBVO3BQW4dSQxEwZdE35viyXO2hBdlFPpL1oCMEHyZNUawRgnWKMEa5eEPdvKTpOLETjqpOLGTT5KKzk5OpOLETn6SVHTBGiVYowRrlIe/kIpPspPvJBWdnXRS8UlS0dlJJxUnUvFJdnISrFGCNUqwRnm4ZCc3pOKGndywk04qbthJJxX/kp3ckIobwRolWKMEa5SHdWQnJ3bSScVvFqxRgjVKsEZ5+GWkorOTzk5O7OTETjqpuCEVnZ10dtJJxW8SrFGCNUqwRnm4JBX/klR0dnJDKk7s5MROOqn4JKn4TsEaJVijBGuUh7+wk59kJ51UdHbSSUVnJ51UdHbSScWJVHR2cmInnVSc2MlPCtYowRolWKM8/EEq/iWp+E5ScSIVJ1LxhlT8S8EaJVijBGsUwZd5wU5OpKKzkxOp6Oykk4rOTjqpeMNOOqno7KSTiu9kJydScSNYowRrlGCNIvgyB3ZyIhWdnXRScWInN6TiDTvppOKT7KSTiht20klFZyedVNwI1ijBGiVYowi+TGMnP0kqOjvppKKzkxtS0dnJDano7KSTihM7OZGKG3bSScWNYI0SrFGCNcrDH6Sis5NOKjo7OZGKEzvppKKzk04qOjvppOKGVHwnqejs5MROOqnopOLETjqp6II1SrBGCdYogi9zwU46qbhhJydScWInJ1JxYicnUtHZyQ2pOLGTE6no7KSTijeCNUqwRgnWKA8v2ckNqejspLOTE6no7OST7OSGVHR20knFDTvppOLETk6kogvWKMEaJVijPPzBTjqpOJGKEzvp7KSTis5OOqno7OQNqfgkO+mk4kQqTuzkxE7eCNYowRolWKMIvswH2UknFW/YSScVJ3bSSUVnJ58kFSd20klFZyedVHR2ciIVnZ10UtEFa5RgjRKsUR7+YCedVJzYSScVJ3bSScUNOzmRis5ObkjFJ0nFG1JxYiedVJwEa5RgjRKsUR4u2ckbUtHZSScVnVR0dtJJxRtSccNOTqTihlR0dnJDKm4Ea5RgjRKsUR7+wk46qejs5MRObthJJxVvSEVnJzfs5IaddFJxYiedVLxhJ51UdMEaJVijBGuUhw+zkxOpuGEnnVR0dtJJRWcnnVR0dvKGVHR20tnJiVR0dtJJRWcnnVTcCNYowRolWKM8fJhUnNjJiVR0UtHZSScVnZ10UtHZyRtS8Ul2ckMq3gjWKMEaJVijCL7ML2InN6Sis5M3pOLETm5IxQ076aSis5MTqTgJ1ijBGiVYozz8wU5+klScSEVnJzekorOTf8lOOqk4sZNOKjo7uRGsUYI1SrBGefgLqfgkOzmRis5OOqn4P5OKT5KKzk46qeiCNUqwRgnWKA+X7OSGVNywk+8kFTfs5A07+U52ciNYowRrlGCN8vDLScUbdtJJxSdJxYmddFJxw05uSMVJsEYJ1ijBGuXhl5GKEzv5SVLR2UlnJ51UdFJxYicnUnHDTjqp6II1SrBGCdYoD5ek4ifZyQ2peMNOOqnopOKGnXySnXRS0dnJSbBGCdYowRrl4S/s5DeTis5OTqSis5M37OSGVHR2cmInnVScSMVJsEYJ1ijBGkXwZdYYwRolWKMEa5T/AHoXAE1ciHekAAAAAElFTkSuQmCC"
-								alt=""
-							/>
 							<h5 className="title">Qr generation</h5>
 							<div className="mt-4">
 								<Form className="row gy-4" onSubmit={handleSubmit(onFormSubmit)}>
@@ -173,8 +169,8 @@ const ProjectCardPage = () => {
 									{image === true ? (
 										<Col md="12" className="d-flex justify-content-center">
 											<FormGroup>
-												<label className="form-label ">Qr logo</label>
-												<Dropzone onDrop={(acceptedFiles) => handleDropChange(acceptedFiles, setFiles)}>
+												<label className="form-label">Dropzone Single File</label>
+												<Dropzone onDrop={(acceptedFiles) => handleDropChange(acceptedFiles, setFiles)} maxFiles={1}>
 													{({ getRootProps, getInputProps }) => (
 														<section>
 															<div {...getRootProps()} className="dropzone upload-zone dz-clickable">

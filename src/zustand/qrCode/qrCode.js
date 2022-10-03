@@ -19,6 +19,9 @@ const useqrCode = create((set) => ({
 			resolve(
 				axios({
 					url: "qr-link/",
+					headers: {
+						"Content-Type": "multipart/form-data",
+					},
 					method: "post",
 					data,
 				})
