@@ -39,6 +39,7 @@ const useqrCode = create((set) => ({
 			},
 			error: {
 				render({ data }) {
+					console.log(data);
 					return `${data.response.data.message}`;
 				},
 				icon: "❌",

@@ -3,18 +3,7 @@ import Head from "../../../layout/head/Head";
 import Content from "../../../layout/content/Content";
 import Dropzone from "react-dropzone";
 import DatePicker from "react-datepicker";
-import {
-	Block,
-	BlockHead,
-	BlockBetween,
-	BlockHeadContent,
-	BlockTitle,
-	BlockDes,
-	Button,
-	ProjectCard,
-	Col,
-	RSelect,
-} from "../../../components/Component";
+import { Block, BlockHead, BlockBetween, BlockHeadContent, BlockTitle, BlockDes, Button, ProjectCard, Col } from "../../../components/Component";
 import { FormGroup, Form } from "reactstrap";
 import { useForm } from "react-hook-form";
 import useqrCode from "../../../zustand/qrCode/qrCode";
@@ -57,27 +46,17 @@ const ProjectCardPage = () => {
 
 	const onFormSubmit = async (sData) => {
 		if (files.length > 0) {
-			await fetch(files[0].preview).then(async (res) => {
-				const blob = await res.blob();
-				const reader = new FileReader();
-				reader.readAsDataURL(blob);
-
-				reader.onload = async () => {
-					const data = {
-						link: sData.link,
-						qrColor: colorCodes,
-						base64: reader.result,
-					};
-					console.log(data);
-					await createQrs(data);
-				};
-			});
+			const data = {
+				link: sData.link,
+				qrColor: colorCodes.toString(),
+				file: files[0].path.toString(),
+			};
+			await createQrs(data);
 		} else {
 			const data = {
 				link: sData.link,
 				qrColor: colorCodes.toString(),
 			};
-			console.log(data);
 			await createQrs(data);
 		}
 	};
@@ -204,7 +183,9 @@ const ProjectCardPage = () => {
 																	<div className="dz-message">
 																		<span className="dz-message-text">Drag and drop file</span>
 																		<span className="dz-message-or">or</span>
-																		<Button color="primary">SELECT</Button>
+																		<Button color="primary" type="button">
+																			SELECT
+																		</Button>
 																	</div>
 																)}
 																{files.map((file) => (
