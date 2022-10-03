@@ -83,42 +83,6 @@ const ProjectCardPage = () => {
 					</BlockBetween>
 				</BlockHead>
 
-				{/* <Block>
-					<ProjectCard>
-						<div className="p-2">
-							<h5 className="title">Qr generation</h5>
-							<div className="mt-4">
-								<Form className="row gy-4" onSubmit={handleSubmit(onFormSubmit)}>
-									<Col md="4">
-										<FormGroup onChange={setDeadlines}>
-											<div className="custom-control custom-checkbox">
-												<input type="checkbox" className="custom-control-input form-control" id="deadline" name="deadline" />
-												<label className="custom-control-label" htmlFor="deadline">
-													set Date to Qr
-												</label>
-											</div>
-										</FormGroup>
-									</Col>
-									{deadLine === true ? (
-										<Col md="12">
-											<FormGroup>
-												<label className="form-label">Deadline Date</label>
-												<DatePicker
-													selected={dates}
-													className="form-control"
-													onChange={(date) => setDates(date)}
-													minDate={new Date()}
-												/>
-											</FormGroup>
-										</Col>
-									) : (
-										""
-									)}
-								</Form>
-							</div>
-						</div>
-					</ProjectCard>
-				</Block> */}
 				<Block className="nk-auth-body pt-lg-5 mt-lg-4 wide-s">
 					<ProjectCard>
 						<Row>
