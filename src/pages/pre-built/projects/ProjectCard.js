@@ -54,13 +54,14 @@ const ProjectCardPage = () => {
 	};
 
 	const onsecondSubmit = async () => {
-		if (files) {
+		if (files.length > 0) {
 			const data = new FormData();
 			data.append("qrColor", colorCodes.toString());
 			data.append("img", files[0]);
 
 			await createQrs(data, newID, setModal);
 		} else {
+			console.log("this is running");
 			const data = {
 				qrColor: colorCodes.toString(),
 			};

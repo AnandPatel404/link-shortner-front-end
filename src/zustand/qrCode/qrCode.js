@@ -9,7 +9,7 @@ const useqrCode = create((set) => ({
 	getAllQr: async () => {
 		await axios({
 			method: "get",
-			url: "qr-link/",
+			url: "qr-link/all-qr",
 		}).then((res) => {
 			set({ allQr: res.data.data });
 		});
