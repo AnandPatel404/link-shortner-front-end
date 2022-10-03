@@ -23,9 +23,9 @@ import { Link } from "react-router-dom";
 import useqrCode from "../../../zustand/qrCode/qrCode";
 
 export const ProjectListPage = () => {
-	const { getAllQr, allQr } = useqrCode((state) => ({
+	const { getAllQr, data } = useqrCode((state) => ({
 		getAllQr: state.getAllQr,
-		allQr: state.allQr,
+		data: state.allQr,
 	}));
 
 	useEffect(() => {
@@ -37,7 +37,7 @@ export const ProjectListPage = () => {
 		edit: false,
 		add: false,
 	});
-	const [data, setData] = useState(allQr);
+
 	const [currentPage, setCurrentPage] = useState(1);
 	const [itemPerPage] = useState(7);
 
@@ -48,14 +48,14 @@ export const ProjectListPage = () => {
 			item.checked = e.currentTarget.checked;
 			return item;
 		});
-		setData([...newData]);
+		// setData([...newData]);
 	};
 
 	// function to delete the seletected item
 	const selectorDeleteProject = () => {
 		let newData;
 		newData = data.filter((item) => item.checked !== true);
-		setData([...newData]);
+		// setData([...newData]);
 	};
 
 	// function to change the check property of selected item
@@ -63,7 +63,7 @@ export const ProjectListPage = () => {
 		let newData = data;
 		let index = newData.findIndex((item) => item.id === id);
 		newData[index].checked = e.currentTarget.checked;
-		setData([...newData]);
+		// setData([...newData]);
 	};
 
 	// Get current list, pagination

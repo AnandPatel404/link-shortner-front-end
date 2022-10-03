@@ -7,6 +7,7 @@ import { Block, BlockHead, BlockBetween, BlockHeadContent, BlockTitle, BlockDes,
 import { FormGroup, Form, ModalBody, Modal } from "reactstrap";
 import { useForm } from "react-hook-form";
 import useqrCode from "../../../zustand/qrCode/qrCode";
+import qr from "../../../images/svg/qr.svg";
 
 const ProjectCardPage = () => {
 	const [newID, setNewId] = useState("");
@@ -84,11 +85,14 @@ const ProjectCardPage = () => {
 					</BlockBetween>
 				</BlockHead>
 
-				<Block className="nk-auth-body pt-lg-5 mt-lg-4 wide-s">
+				<Block>
 					<ProjectCard>
 						<Row>
-							<Col size="12" className="d-flex justify-content-center">
-								<Button color="primary" size="md" onClick={() => setModal({ edit: true })}>
+							<Col size="6" className="d-flex justify-content-center">
+								<img src={qr} alt="" />
+							</Col>
+							<Col size="6" className="d-flex align-items-center justify-content-center">
+								<Button color="primary" size="xl" onClick={() => setModal({ edit: true })}>
 									Create Qr
 								</Button>
 							</Col>
@@ -98,7 +102,7 @@ const ProjectCardPage = () => {
 				<Modal isOpen={modal.edit} toggle={() => setModal({ edit: false })} className="modal-dialog-centered" size="lg">
 					<ModalBody>
 						<h5 className="title">Enter your link</h5>
-						<Form className="row gy-3" onSubmit={handleSubmit(onFormSubmit)}>
+						<Row className="gy-3" onSubmit={handleSubmit(onFormSubmit)}>
 							<Col md="12">
 								<FormGroup>
 									<input
@@ -127,7 +131,7 @@ const ProjectCardPage = () => {
 									Next
 								</Button>
 							</Col>
-						</Form>
+						</Row>
 					</ModalBody>
 				</Modal>
 
