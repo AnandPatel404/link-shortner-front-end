@@ -1,10 +1,11 @@
 import create from "zustand";
 import axios from "../../axios/axiosconfig";
 import { toast } from "react-toastify";
-import { messageToast, errorToast } from "../../pages/components/misc/ReactToastify";
+// import { messageToast, errorToast } from "../../pages/components/misc/ReactToastify";
 
 const useqrCode = create((set) => ({
 	allQr: [],
+
 	getAllQr: async () => {
 		await axios({
 			method: "get",
@@ -14,11 +15,22 @@ const useqrCode = create((set) => ({
 		});
 		// return data.data.data;
 	},
-	createQr: async (data) => {
+	checkQrLink: async (data, setModal) => {
+		const d = await axios({
+			method: "post",
+			url: "qr-link/check-link",
+			data,
+		});
+		if (d.data.status === "Success") {
+			setModal({ edit: false, color: true });
+			return d.data;
+		}
+	},
+	createQr: async (data, id, setModal) => {
 		const resolvePromise = new Promise((resolve) =>
 			resolve(
 				axios({
-					url: "qr-link/",
+					url: `qr-link/${id}`,
 					headers: {
 						"Content-Type": "multipart/form-data",
 					},
@@ -30,12 +42,13 @@ const useqrCode = create((set) => ({
 		toast.promise(resolvePromise, {
 			pending: {
 				render() {
-					return "Link is shorting";
+					return "Qr is in process";
 				},
 				icon: "🤖",
 			},
 			success: {
 				render({ data }) {
+					setModal({ edit: false, color: false });
 					return `${data.data.message}`;
 				},
 				icon: "🟢",
