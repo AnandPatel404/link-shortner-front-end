@@ -2,22 +2,8 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import Content from "../../../layout/content/Content";
 import Head from "../../../layout/head/Head";
-import makeAnimated from "react-select/animated";
 import { FormGroup, Label, Input, Row, Col } from "reactstrap";
-import {
-	Block,
-	BlockHead,
-	BlockHeadContent,
-	BlockTitle,
-	BlockDes,
-	PreviewCard,
-	CodeBlock,
-	OverlineTitle,
-	OutlinedInput,
-	Icon,
-	Button,
-} from "../../../components/Component";
-import { RSelect } from "../../../components/Component";
+import { Block, BlockHead, BlockHeadContent, BlockTitle, BlockDes, PreviewCard, Icon, Button } from "../../../components/Component";
 function ShortingFuncationality() {
 	const [rangeStart, setRangeStart] = useState(new Date());
 	const [rangeEnd, setRangeEnd] = useState();
