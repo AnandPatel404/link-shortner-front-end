@@ -14,7 +14,7 @@ const menu = [
 	},
 	{
 		text: "Short with functionality",
-		link: "/project-list",
+		link: "/full-short",
 		icon: "brick-fill",
 	},
 	{
