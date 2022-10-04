@@ -23,9 +23,11 @@ import { Link } from "react-router-dom";
 import useqrCode from "../../../zustand/qrCode/qrCode";
 
 export const ProjectListPage = () => {
+	const [itemPerPage] = useState(7);
+	const [currentPage, setCurrentPage] = useState(1);
 	const { getAllQr, data } = useqrCode((state) => ({
-		getAllQr: state.getAllQr,
 		data: state.allQr,
+		getAllQr: state.getAllQr,
 	}));
 
 	useEffect(() => {
@@ -37,9 +39,6 @@ export const ProjectListPage = () => {
 		edit: false,
 		add: false,
 	});
-
-	const [currentPage, setCurrentPage] = useState(1);
-	const [itemPerPage] = useState(7);
 
 	// function to change the check property of an item
 	const selectorCheck = (e) => {
@@ -66,10 +65,8 @@ export const ProjectListPage = () => {
 		// setData([...newData]);
 	};
 
-	// Get current list, pagination
-	const indexOfLastItem = currentPage * itemPerPage;
-	const indexOfFirstItem = indexOfLastItem - itemPerPage;
-	const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+	const currentItems = data;
+	console.log(currentItems);
 
 	// Change Page
 	const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -82,7 +79,7 @@ export const ProjectListPage = () => {
 					<BlockBetween>
 						<BlockHeadContent>
 							<BlockTitle page>QR list</BlockTitle>
-							<BlockDes className="text-soft">You have total {data.length} projects</BlockDes>
+							{/* <BlockDes className="text-soft">You have total {data.length} projects</BlockDes> */}
 						</BlockHeadContent>
 						<BlockHeadContent>
 							<div className="toggle-wrap nk-block-tools-toggle">
@@ -205,32 +202,32 @@ export const ProjectListPage = () => {
 													<img src={item.QRdata} alt="" width={70} className="mx-2" />
 													<span className="tb-product align-items-start d-flex flex-column">
 														<span className="title d-lg-none">
-															{item.linkId.link_title ? item.linkId.link_title.slice(0, 25) + "..." : "No title"}
+															{item.linkId?.link_title ? item.linkId?.link_title.slice(0, 25) + "..." : "No title"}
 														</span>
 														<span className="title d-none  d-lg-block">
-															{item.linkId.link_title ? item.linkId.link_title.slice(0, 60) + "..." : "No title"}
+															{item.linkId?.link_title ? item.linkId?.link_title.slice(0, 60) + "..." : "No title"}
 														</span>
-														<span className="tb-sub d-lg-none">{`${item?.linkId.protocol}://${item?.linkId.domain}/${
-															item?.linkId.backlink.slice(0, 25) + "..."
+														<span className="tb-sub d-lg-none">{`${item.linkId?.protocol}://${item.linkId?.domain}/${
+															item.linkId?.backlink.slice(0, 25) + "..."
 														}`}</span>
-														<span className="tb-sub d-none  d-lg-block">{`${item?.linkId.protocol}://${
-															item?.linkId.domain
-														}/${item?.linkId.backlink.slice(0, 60) + "..."}`}</span>
+														<span className="tb-sub d-none  d-lg-block">{`${item.linkId?.protocol}://${
+															item.linkId?.domain
+														}/${item.linkId?.backlink.slice(0, 60) + "..."}`}</span>
 													</span>
 												</DataTableRow>
 												<DataTableRow>
 													<a
 														className="tb-lead d-none d-md-inline-block"
-														href={`localhost:8000/${item?.linkId.shorterLink}`}
+														href={`localhost:8000/${item.linkId?.shorterLink}`}
 														target="_blank"
 														rel="noreferrer"
 													>
-														{`localhost:8000/${item?.linkId.shorterLink}`}
+														{`localhost:8000/${item.linkId?.shorterLink}`}
 													</a>
 												</DataTableRow>
 												<DataTableRow>
 													<span className="tb-sub d-none d-md-inline-block">
-														{new Date(item?.linkId.createdAt).toLocaleString()}
+														{new Date(item.linkId?.createdAt).toLocaleString()}
 													</span>
 												</DataTableRow>
 												<DataTableRow className="nk-tb-col-tools">
@@ -250,7 +247,7 @@ export const ProjectListPage = () => {
 																		<li>
 																			<DropdownItem>
 																				<Link
-																					to={`${process.env.PUBLIC_URL}/link-details/${item?.linkId.id}`}
+																					to={`${process.env.PUBLIC_URL}/link-details/${item.linkId?.id}`}
 																					className=""
 																				>
 																					<Icon name="edit"></Icon>
@@ -291,8 +288,11 @@ export const ProjectListPage = () => {
 									currentPage={currentPage}
 								/>
 							) : (
-								<div className="text-center">
-									<span className="text-silent">No projects found</span>
+								<div className="text-center d-flex flex-column">
+									<span className="text-silent">No Qr found</span>
+									<div style={{ fontSize: 4 + "rem" }}>
+										<Icon name="inbox"></Icon>
+									</div>
 								</div>
 							)}
 						</div>

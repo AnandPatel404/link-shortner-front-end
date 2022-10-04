@@ -19,7 +19,7 @@ const ProjectCardPage = () => {
 		edit: false,
 		color: false,
 	});
-	const [colorCodes, setColorsCode] = useState("");
+	const [colorCodes, setColorsCode] = useState("#000000");
 
 	// const [deadLine, setDate] = useState(false);
 	// const [dates, setDates] = useState("");
@@ -50,6 +50,7 @@ const ProjectCardPage = () => {
 	};
 
 	const onFormSubmit = async (sData) => {
+		console.log("this is running");
 		const d = await checkQrLink(sData, setModal);
 		setNewId(d.data.id);
 	};
@@ -102,7 +103,7 @@ const ProjectCardPage = () => {
 				<Modal isOpen={modal.edit} toggle={() => setModal({ edit: false })} className="modal-dialog-centered" size="lg">
 					<ModalBody>
 						<h5 className="title">Enter your link</h5>
-						<Row className="gy-3" onSubmit={handleSubmit(onFormSubmit)}>
+						<Form className="gy-3 row" onSubmit={handleSubmit(onFormSubmit)}>
 							<Col md="12">
 								<FormGroup>
 									<input
@@ -131,7 +132,7 @@ const ProjectCardPage = () => {
 									Next
 								</Button>
 							</Col>
-						</Row>
+						</Form>
 					</ModalBody>
 				</Modal>
 
