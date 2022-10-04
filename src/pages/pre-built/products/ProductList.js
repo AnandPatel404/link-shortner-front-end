@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Head from "../../../layout/head/Head";
 import Content from "../../../layout/content/Content";
-// import Dropzone from "react-dropzone";
 import {
 	Block,
 	BlockHead,
@@ -14,8 +13,6 @@ import {
 	DataTableRow,
 	DataTableItem,
 	PaginationComponent,
-	Button,
-	RSelect,
 } from "../../../components/Component";
 import { Card, DropdownItem, UncontrolledDropdown, DropdownMenu, DropdownToggle, Row, Col, FormGroup } from "reactstrap";
 import userDashBoard from "../../../zustand/DashBoard/userDashBoard";
@@ -24,25 +21,9 @@ import { Link } from "react-router-dom";
 
 const ProductList = () => {
 	const [sm, updateSm] = useState(false);
-	const [shortBy, setShortBy] = useState("");
 	const [onSearchText, setSearchText] = useState("");
 	const [currentPage, setCurrentPage] = useState(1);
 	const [itemPerPage] = useState(10);
-
-	const sortBy = [
-		{
-			value: "asc",
-			label: "asc",
-		},
-		{
-			value: "desc",
-			label: "desc",
-		},
-	];
-	const protocols = [
-		{ value: "https", label: "https" },
-		{ value: "http", label: "http" },
-	];
 
 	const { data, getUserAllShortenLink, removeLink, deleteMany, AllLinksLength } = userDashBoard((state) => ({
 		data: state.allLinks,
@@ -53,13 +34,11 @@ const ProductList = () => {
 	}));
 
 	const deleteProduct = async (id) => {
-		removeLink(id);
-		getUserAllShortenLink();
+		await removeLink(id);
 	};
 
 	let params = {
 		currentPage,
-		sortBy: shortBy,
 		shorterLink: onSearchText,
 	};
 	if (params.shorterLink === undefined || params.shorterLink === "") {
@@ -70,7 +49,7 @@ const ProductList = () => {
 	}
 	useEffect(() => {
 		getUserAllShortenLink(params);
-	}, [getUserAllShortenLink, shortBy, currentPage, onSearchText]);
+	}, [getUserAllShortenLink, currentPage, onSearchText]);
 
 	let linkId = [];
 	const onSelectChange = (e, id) => {
@@ -126,61 +105,6 @@ const ProductList = () => {
 													onChange={(e) => setSearchText(e.target.value)}
 												/>
 											</div>
-										</li>
-										<li>
-											<UncontrolledDropdown>
-												<DropdownToggle tag="a" className="btn btn-trigger btn-icon dropdown-toggle">
-													<div className="dot dot-primary"></div>
-													<Icon name="filter-alt"></Icon>
-												</DropdownToggle>
-												<DropdownMenu right className="filter-wg dropdown-menu-xl" style={{ overflow: "visible" }}>
-													<div className="dropdown-head">
-														<span className="sub-title dropdown-title">Advanced Filter</span>
-													</div>
-													<div className="dropdown-body dropdown-body-rg">
-														<Row>
-															<Col size="6">
-																<FormGroup>
-																	<label className="overline-title overline-title-alt">short-by</label>
-																	<RSelect options={sortBy} onChange={(e) => setShortBy(e.value)} />
-																</FormGroup>
-															</Col>
-															<Col size="6">
-																<FormGroup>
-																	<label className="overline-title overline-title-alt">protocol</label>
-																	<RSelect options={protocols} />
-																</FormGroup>
-															</Col>
-															{/* <Col size="12">
-																<FormGroup className="mt-4">
-																	<Button type="button" color="secondary">
-																		Filter
-																	</Button>
-																</FormGroup>
-															</Col> */}
-														</Row>
-													</div>
-													<div className="dropdown-foot between">
-														<a
-															className="clickable"
-															href="#reset"
-															onClick={(ev) => {
-																ev.preventDefault();
-															}}
-														>
-															Reset Filter
-														</a>
-														<a
-															href="#save"
-															onClick={(ev) => {
-																ev.preventDefault();
-															}}
-														>
-															Save Filter
-														</a>
-													</div>
-												</DropdownMenu>
-											</UncontrolledDropdown>
 										</li>
 									</ul>
 								</div>

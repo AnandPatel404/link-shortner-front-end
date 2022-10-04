@@ -34,8 +34,6 @@ const userActivity = create((set, get) => ({
 				set({ linksLength: res.data.data.links.length });
 				set({ links: res.data.data.links.slice(0, 5) });
 				set({ subscription: res.data.data.Subscriptions });
-				// set({ chart: res.data.data.chart });
-				// set({ browser: res.data.data.browser });
 			})
 			.catch((err) => {
 				console.log(err);
@@ -79,14 +77,15 @@ const userActivity = create((set, get) => ({
 
 	getUserAllShortenLink: async ({ currentPage, ...rest }) => {
 		try {
-			const data = await axios({
+			await axios({
 				method: "get",
 				url: `logged-user/get-all-links?page=${currentPage}&${Object.keys(rest)
 					.map((key) => `${key}=${rest[key]}`)
 					.join("&")}`,
+			}).then((res) => {
+				set({ allLinks: res.data.data.results });
+				set({ AllLinksLength: res.data.data.totalResults });
 			});
-			set({ allLinks: data.data.data.results });
-			set({ AllLinksLength: data.data.data.totalResults });
 		} catch (err) {
 			errorToast(`${err.response.data.message} ❌❌`, "Error");
 		}
@@ -96,12 +95,21 @@ const userActivity = create((set, get) => ({
 			method: "delete",
 			url: `short/${linkId}`,
 		})
-			.then((res) => {
+			.then(async (res) => {
 				if (res.data.status === "Success") {
 					messageToast(`${res.data.message} ✅✅`, res.data.status);
+					const allLink = get().allLinks;
+					let newData = [];
+					allLink.forEach((res) => {
+						if (res.id !== linkId) {
+							newData.push(res);
+						}
+					});
+					set({ allLinks: newData });
 				}
 			})
 			.catch((err) => {
+				console.log(err);
 				errorToast(`${err.response.data.message} ❌❌`, "Error");
 			});
 	},
