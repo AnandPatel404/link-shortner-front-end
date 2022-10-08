@@ -1,123 +1,59 @@
 import React, { useState, useEffect } from "react";
 import Content from "../../../layout/content/Content";
 import Head from "../../../layout/head/Head";
-import DatePicker from "react-datepicker";
 import { UncontrolledDropdown, DropdownMenu, DropdownToggle, Card, FormGroup, Modal, ModalBody, DropdownItem, Form, Badge } from "reactstrap";
 import {
 	Button,
 	Block,
 	BlockBetween,
-	BlockDes,
 	BlockHead,
 	BlockHeadContent,
 	BlockTitle,
 	Icon,
 	Col,
 	PaginationComponent,
-	Row,
 	RSelect,
 } from "../../../components/Component";
-import { statusOptions, transData } from "../trans-list/TransData";
-import { dateFormatterAlt } from "../../../utils/Utils";
 import { useForm } from "react-hook-form";
+import userDomain from "../../../zustand/domainStuff/domain";
 
 const AddDomain = () => {
-	const [onSearch, setonSearch] = useState(true);
-	const [onSearchText, setSearchText] = useState("");
+	const option = [
+		{ value: "Enable", label: "Enable" },
+		{ value: "Disable", label: "Disable" },
+	];
+	const { data, createDomains, getAllDomain } = userDomain((state) => ({
+		data: state.domains,
+		createDomains: state.createDomains,
+		getAllDomain: state.getAllDomain,
+	}));
+
+	useEffect(() => {
+		getAllDomain();
+	}, [getAllDomain]);
+
 	const [modal, setModal] = useState({
 		add: false,
 	});
-	const [viewModal, setViewModal] = useState(false);
-	const [detail, setDetail] = useState({});
-	const [data, setData] = useState(transData);
-	const [formData, setFormData] = useState({
-		bill: "",
-		issue: new Date(),
-		due: new Date(),
-		total: "",
-		status: "",
-		ref: "",
-	});
+	// const [viewModal, setViewModal] = useState(false);
+	const [formData, setFormData] = useState("Enable");
 	const [currentPage, setCurrentPage] = useState(1);
 	const [itemPerPage, setItemPerPage] = useState(10);
-	const [sort, setSortState] = useState("");
-
-	const sortingFunc = (params) => {
-		let defaultData = data;
-		if (params === "asc") {
-			let sortedData = [...defaultData].sort((a, b) => parseFloat(a.ref) - parseFloat(b.ref));
-			setData([...sortedData]);
-		} else if (params === "dsc") {
-			let sortedData = [...defaultData].sort((a, b) => parseFloat(b.ref) - parseFloat(a.ref));
-			setData([...sortedData]);
-		}
-	};
-
-	// Changing state value when searching name
-	useEffect(() => {
-		if (onSearchText !== "") {
-			const filteredObject = transData.filter((item) => {
-				return item.bill.toLowerCase().includes(onSearchText.toLowerCase());
-			});
-			setData([...filteredObject]);
-		} else {
-			setData([...transData]);
-		}
-	}, [onSearchText]);
-
-	// onChange function for searching name
-	const onFilterChange = (e) => {
-		setSearchText(e.target.value);
-	};
-
-	// function to reset the form
-	const resetForm = () => {
-		setFormData({
-			bill: "",
-			issue: new Date(),
-			due: new Date(),
-			total: "",
-			status: "",
-		});
-	};
 
 	// function to close the form modal
 	const onFormCancel = () => {
 		setModal({ add: false });
-		resetForm();
 	};
 
-	// submit function to add a new item
-	const onFormSubmit = (submitData) => {
-		const { bill, total } = submitData;
-		let submittedData = {
-			id: data.length + 1,
-			ref: 4970 + data.length,
-			bill: bill,
-			issue: dateFormatterAlt(formData.issue, true),
-			due: dateFormatterAlt(formData.due, true),
-			total: total + ".00",
-			status: formData.status,
-		};
-		setData([submittedData, ...data]);
-
-		resetForm();
+	const onFormSubmit = async (sData) => {
+		await createDomains({
+			domainName: sData.domainName,
+			status: formData,
+		});
 		setModal({ add: false });
 	};
 
-	// function to load detail data
-	const loadDetail = (id) => {
-		let index = data.findIndex((item) => item.id === id);
-		setDetail(data[index]);
-	};
-
-	// function to toggle the search option
-	const toggle = () => setonSearch(!onSearch);
-
-	// Get current list, pagination
-	const indexOfLastItem = currentPage * itemPerPage;
-	const indexOfFirstItem = indexOfLastItem - itemPerPage;
-	const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+	const currentItems = data;
 
 	// Change Page
 	const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -132,9 +68,6 @@ const AddDomain = () => {
 					<BlockBetween>
 						<BlockHeadContent>
 							<BlockTitle page>Domain list</BlockTitle>
-							{/* <BlockDes className="text-soft">
-								<p>You have total 937 orders.</p>
-							</BlockDes> */}
 						</BlockHeadContent>
 						<BlockHeadContent>
 							<ul className="nk-block-tools g-3">
@@ -156,29 +89,6 @@ const AddDomain = () => {
 									<div className="card-title">
 										<h5 className="title">All Domains</h5>
 									</div>
-									<div className={`card-search search-wrap ${!onSearch ? "active" : ""}`}>
-										<div className="search-content">
-											<Button
-												className="search-back btn-icon toggle-search"
-												onClick={() => {
-													setSearchText("");
-													toggle();
-												}}
-											>
-												<Icon name="arrow-left"></Icon>
-											</Button>
-											<input
-												type="text"
-												className="form-control border-transparent form-focus-none"
-												placeholder="Search by bill name"
-												value={onSearchText}
-												onChange={(e) => onFilterChange(e)}
-											/>
-											<Button className="search-submit btn-icon">
-												<Icon name="search"></Icon>
-											</Button>
-										</div>
-									</div>
 								</div>
 							</div>
 							<div className="card-inner p-0">
@@ -186,23 +96,24 @@ const AddDomain = () => {
 									<thead>
 										<tr className="tb-tnx-head">
 											<th className="tb-tnx-id">
-												<span className="">#</span>
+												<span className="">No</span>
 											</th>
 											<th className="tb-tnx-info">
 												<span className="tb-tnx-desc d-none d-sm-inline-block">
-													<span>Bill For</span>
+													<span>Domain name</span>
 												</span>
 												<span className="tb-tnx-date d-md-inline-block d-none">
 													<span className="d-md-none">Date</span>
 													<span className="d-none d-md-block">
-														<span>Issue Date</span>
-														{/* <span>Due Date</span> */}
+														<span>Created Date</span>
 													</span>
 												</span>
 											</th>
 											<th className="tb-tnx-amount is-alt">
-												{/* <span className="tb-tnx-total">Total</span> */}
 												<span className="tb-tnx-status d-none d-md-inline-block">Status</span>
+											</th>
+											<th className="tb-tnx-amount is-alt">
+												<span className="tb-tnx-status d-none d-md-inline-block">Config</span>
 											</th>
 											<th className="tb-tnx-action">
 												<span>&nbsp;</span>
@@ -211,7 +122,7 @@ const AddDomain = () => {
 									</thead>
 									<tbody>
 										{currentItems.length > 0
-											? currentItems.map((item) => {
+											? currentItems.map((item, index) => {
 													return (
 														<tr key={item.id} className="tb-tnx-item">
 															<td className="tb-tnx-id">
@@ -221,33 +132,36 @@ const AddDomain = () => {
 																		ev.preventDefault();
 																	}}
 																>
-																	<span>{item.ref}</span>
+																	<span>{index + 1}</span>
 																</a>
 															</td>
 															<td className="tb-tnx-info">
 																<div className="tb-tnx-desc">
-																	<span className="title">{item.bill}</span>
+																	<span className="title">{item.domain}</span>
 																</div>
 																<div className="tb-tnx-date">
-																	<span className="date">{item.issue}</span>
-																	{/* <span className="date">{item.due}</span> */}
+																	<span className="date">{new Date(item.createdAt).toLocaleDateString()}</span>
 																</div>
 															</td>
 															<td className="tb-tnx-amount is-alt">
-																{/* <div className="tb-tnx-total">
-																	<span className="amount">${item.total}</span>
-																</div> */}
 																<div className="tb-tnx-status">
 																	<span
 																		className={`badge badge-dot badge-${
-																			item.status === "Paid"
-																				? "success"
-																				: item.status === "Due"
-																				? "warning"
-																				: "danger"
+																			item.status === "Enable" ? "success" : "danger"
 																		}`}
 																	>
 																		{item.status}
+																	</span>
+																</div>
+															</td>
+															<td className="tb-tnx-amount is-alt">
+																<div className="tb-tnx-status">
+																	<span
+																		className={`badge badge-dot badge-${
+																			item.config === true ? "success" : "danger"
+																		}`}
+																	>
+																		{item.config.toString()}
 																	</span>
 																</div>
 															</td>
@@ -261,9 +175,8 @@ const AddDomain = () => {
 																	</DropdownToggle>
 																	<DropdownMenu right>
 																		<ul className="link-list-plain">
-																			<li
+																			{/* <li
 																				onClick={() => {
-																					loadDetail(item.id);
 																					setViewModal(true);
 																				}}
 																			>
@@ -276,7 +189,7 @@ const AddDomain = () => {
 																				>
 																					View
 																				</DropdownItem>
-																			</li>
+																			</li> */}
 																		</ul>
 																	</DropdownMenu>
 																</UncontrolledDropdown>
@@ -325,16 +238,16 @@ const AddDomain = () => {
 								<Form className="row gy-4 mt-4" onSubmit={handleSubmit(onFormSubmit)}>
 									<Col md="12">
 										<FormGroup>
-											<label className="form-label">Bill</label>
+											<label className="form-label">Domain name</label>
 											<input
 												className="form-control"
 												ref={register({ required: "This field is required" })}
 												type="text"
-												name="bill"
+												name="domainName"
 												defaultValue={formData.bill}
-												placeholder="Enter bill"
+												placeholder="Enter Your domain name"
 											/>
-											{errors.bill && <span className="invalid">{errors.bill.message}</span>}
+											{errors.domainName && <span className="invalid">{errors.domainName.message}</span>}
 										</FormGroup>
 									</Col>
 
@@ -342,11 +255,7 @@ const AddDomain = () => {
 										<FormGroup>
 											<label className="form-label">Status</label>
 											<div className="form-control-wrap">
-												<RSelect
-													options={statusOptions}
-													defaultValue={{ value: "Paid", label: "Paid" }}
-													onChange={(e) => setFormData({ ...formData, status: e.value })}
-												/>
+												<RSelect options={option} onChange={(e) => setFormData(e.value)} defaultValue={option[0]} />
 											</div>
 										</FormGroup>
 									</Col>
@@ -373,56 +282,6 @@ const AddDomain = () => {
 									</Col>
 								</Form>
 							</div>
-						</div>
-					</ModalBody>
-				</Modal>
-
-				<Modal isOpen={viewModal} toggle={() => setViewModal(false)} className="modal-dialog-centered" size="lg">
-					<ModalBody>
-						<a
-							href="#cancel"
-							onClick={(ev) => {
-								ev.preventDefault();
-								setViewModal(false);
-							}}
-							className="close"
-						>
-							<Icon name="cross-sm"></Icon>
-						</a>
-						<div className="nk-modal-head">
-							<h4 className="nk-modal-title title">
-								Transaction <small className="text-primary">#{detail.ref}</small>
-							</h4>
-						</div>
-						<div className="nk-tnx-details mt-sm-3">
-							<Row className="gy-3">
-								<Col lg={6}>
-									<span className="sub-text">Order ID</span>
-									<span className="caption-text">{detail.ref}</span>
-								</Col>
-								<Col lg={6}>
-									<span className="sub-text">Bill </span>
-									<span className="caption-text text-break">{detail.bill}</span>
-								</Col>
-								<Col lg={6}>
-									<span className="sub-text">Transaction Fee</span>
-									<span className="caption-text">$ {detail.total}</span>
-								</Col>
-								<Col lg={6}>
-									<span className="sub-text">Status</span>
-									<Badge color={detail.status === "Paid" ? "success" : detail.status === "Due" ? "warning" : "danger"} size="md">
-										{detail.status}
-									</Badge>
-								</Col>
-								<Col lg={6}>
-									<span className="sub-text">Issue Date</span>
-									<span className="caption-text"> {detail.issue}</span>
-								</Col>
-								<Col lg={6}>
-									<span className="sub-text">Due Date</span>
-									<span className="caption-text"> {detail.due}</span>
-								</Col>
-							</Row>
 						</div>
 					</ModalBody>
 				</Modal>
