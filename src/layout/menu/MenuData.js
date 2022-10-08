@@ -13,14 +13,14 @@ const menu = [
 		icon: "link",
 	},
 	{
-		text: "Short with functionality",
-		link: "/full-short",
-		icon: "brick-fill",
-	},
-	{
 		icon: "view-col",
 		text: "Pricing",
 		link: "/pricing-table",
+	},
+	{
+		icon: "sign-dollar",
+		text: "Trans List",
+		link: "/transaction-crypto",
 	},
 
 	// {
@@ -42,6 +42,36 @@ const menu = [
 	// 	],
 	// },
 	{
+		heading: "Sort link pro",
+	},
+	{
+		icon: "brick-fill",
+		text: "Short with functionality",
+		active: false,
+		subMenu: [
+			{
+				icon: "puzzle-fill",
+				text: "Password link",
+				link: "/full-short",
+			},
+			{
+				icon: "bulb-fill",
+				text: "Branded link",
+				link: "/full-short",
+			},
+			{
+				icon: "clock-fill",
+				text: "Schedule link",
+				link: "/full-short",
+			},
+			{
+				icon: "shuffle",
+				text: "link re-direction",
+				link: "/full-short",
+			},
+		],
+	},
+	{
 		heading: "QR-link",
 	},
 	{
@@ -50,10 +80,32 @@ const menu = [
 		active: false,
 		subMenu: [
 			{
+				icon: "scan",
 				text: "Generate QR",
 				link: "/project-card",
 			},
 			{
+				icon: "notes-alt",
+				text: "QR List",
+				link: "/project-list",
+			},
+		],
+	},
+	{
+		heading: "UP-DOWNS",
+	},
+	{
+		icon: "bar-chart",
+		text: "Link analysis",
+		active: false,
+		subMenu: [
+			{
+				icon: "scan",
+				text: "Generate QR",
+				link: "/project-card",
+			},
+			{
+				icon: "notes-alt",
 				text: "QR List",
 				link: "/project-list",
 			},
@@ -100,10 +152,6 @@ const menu = [
 			{
 				text: "Trans List - Basic",
 				link: "/transaction-basic",
-			},
-			{
-				text: "Trans List - Crypto",
-				link: "/transaction-crypto",
 			},
 		],
 	},
