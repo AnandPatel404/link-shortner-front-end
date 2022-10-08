@@ -7,7 +7,9 @@ import { Block, BlockHead, BlockBetween, BlockHeadContent, BlockTitle, BlockDes,
 import { FormGroup, Form, ModalBody, Modal } from "reactstrap";
 import { useForm } from "react-hook-form";
 import useqrCode from "../../../zustand/qrCode/qrCode";
+import userDashBoard from "../../../zustand/DashBoard/userDashBoard";
 import qr from "../../../images/svg/qr.svg";
+import { Link } from "react-router-dom";
 
 const ProjectCardPage = () => {
 	const [newID, setNewId] = useState("");
@@ -15,6 +17,11 @@ const ProjectCardPage = () => {
 		createQrs: state.createQr,
 		checkQrLink: state.checkQrLink,
 	}));
+
+	const { subscription } = userDashBoard((state) => ({
+		subscription: state.subscription,
+	}));
+
 	const [modal, setModal] = useState({
 		edit: false,
 		color: false,
@@ -89,13 +96,22 @@ const ProjectCardPage = () => {
 				<Block>
 					<ProjectCard>
 						<Row>
-							<Col size="6" className="d-flex justify-content-center">
+							<Col md="6" className="d-flex justify-content-center">
 								<img src={qr} alt="" />
 							</Col>
-							<Col size="6" className="d-flex align-items-center justify-content-center">
-								<Button color="primary" size="xl" onClick={() => setModal({ edit: true })}>
-									Create Qr
-								</Button>
+							<Col md="6" className="d-flex align-items-center justify-content-center">
+								{subscription.planId?.qr_link === true ? (
+									<Button color="primary" size="xl" onClick={() => setModal({ edit: true })}>
+										Create Qr
+									</Button>
+								) : (
+									<BlockHeadContent>
+										<BlockTitle page>Upgrade your plan to create your qr link</BlockTitle>
+										<Link className=" my-2 btn btn-primary" to={process.env.PUBLIC_URL + "/all-shorten-links"}>
+											click here to upgrade
+										</Link>
+									</BlockHeadContent>
+								)}
 							</Col>
 						</Row>
 					</ProjectCard>

@@ -4,8 +4,8 @@ import Content from "../layout/content/Content";
 import Head from "../layout/head/Head";
 import RecentInvest from "../components/partials/invest/recent-investment/RecentInvest";
 import TrafficChannel from "../components/partials/analytics/traffic-channel/Traffic";
-import BrowserUser from "../components/partials/analytics/browser-users/BrowserUser";
-import SessionDevice from "../components/partials/analytics/session-devices/SessionDevice";
+// import BrowserUser from "../components/partials/analytics/browser-users/BrowserUser";
+// import SessionDevice from "../components/partials/analytics/session-devices/SessionDevice";
 import { useForm } from "react-hook-form";
 import { Card, Form } from "reactstrap";
 import { Block, Icon, Button, Row, Col, PreviewAltCard } from "../components/Component";
@@ -13,7 +13,7 @@ import firstSvg from "../images/svg/dashboard-one.svg";
 import b from "../images/svg/dashboard-paln.svg";
 import a from "../images/svg/dashboard-limite.svg";
 // import rocketSvg from "../images/svg/dashboard.svg";
-import AudienceOverview from "../components/partials/analytics/audience-overview/AudienceOverview";
+// import AudienceOverview from "../components/partials/analytics/audience-overview/AudienceOverview";
 import useUserDashBoard from "../zustand/DashBoard/userDashBoard";
 // import { Link } from "react-router-dom";
 
@@ -102,20 +102,6 @@ const InvestHomePage = () => {
 								</Row>
 							</PreviewAltCard>
 						</Col>
-						<Col md="12">
-							<Card className="card-bordered h-100">
-								<TrafficChannel />
-							</Card>
-						</Col>
-						{/* <Col md="6" lg="4" xl="4" xxl="6">
-							<img src={rocketSvg} alt="rocket" />
-							<div className="d-flex justify-content-center mb-4">
-								<Link className="btn btn-primary" style={{ width: 200 + "px" }} to={process.env.PUBLIC_URL + "/product-list"}>
-									<Icon name="hot"></Icon>
-									<span>Get api credentials</span>
-								</Link>
-							</div>
-						</Col> */}
 						<Col xl="12" xxl="12">
 							<Form className="is-alter" onSubmit={handleSubmit(onFormSubmit)}>
 								<Card className="card-bordered card-full p-3">
@@ -149,12 +135,30 @@ const InvestHomePage = () => {
 								</Card>
 							</Form>
 						</Col>
-						<Col xl="12" xxl="12">
-							<Card className="card-bordered card-full">
-								<RecentInvest links={links} />
+						{links.length > 0 ? (
+							<Col xl="12" xxl="12">
+								<Card className="card-bordered card-full">
+									<RecentInvest links={links} />
+								</Card>
+							</Col>
+						) : (
+							""
+						)}
+						<Col md="12">
+							<Card className="card-bordered h-100">
+								<TrafficChannel />
 							</Card>
 						</Col>
-						<Col lg="5" xxl="6">
+						{/* <Col md="6" lg="4" xl="4" xxl="6">
+							<img src={rocketSvg} alt="rocket" />
+							<div className="d-flex justify-content-center mb-4">
+								<Link className="btn btn-primary" style={{ width: 200 + "px" }} to={process.env.PUBLIC_URL + "/product-list"}>
+									<Icon name="hot"></Icon>
+									<span>Get api credentials</span>
+								</Link>
+							</div>
+						</Col> */}
+						{/* <Col lg="5" xxl="6">
 							<PreviewAltCard className="h-100" bodyclassName="h-100 stretch flex-column">
 								<SessionDevice />
 							</PreviewAltCard>
@@ -168,7 +172,7 @@ const InvestHomePage = () => {
 							<Card className="card-bordered h-100">
 								<BrowserUser />
 							</Card>
-						</Col>
+						</Col> */}
 					</Row>
 				</Block>
 			</Content>

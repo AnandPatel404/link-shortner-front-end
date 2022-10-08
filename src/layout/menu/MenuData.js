@@ -155,38 +155,38 @@ const menu = [
 		],
 	},
 
-	{
-		icon: "img",
-		text: "Image Gallery",
-		link: "/image-gallery",
-	},
-	{
-		icon: "files",
-		text: "Error Pages",
-		active: false,
-		subMenu: [
-			{
-				text: "404 Classic",
-				link: "/errors/404-classic",
-				newTab: true,
-			},
-			{
-				text: "504 Classic",
-				link: "/errors/504-classic",
-				newTab: true,
-			},
-			{
-				text: "404 Modern",
-				link: "/errors/404-modern",
-				newTab: true,
-			},
-			{
-				text: "504 Modern",
-				link: "/errors/504-modern",
-				newTab: true,
-			},
-		],
-	},
+	// {
+	// 	icon: "img",
+	// 	text: "Image Gallery",
+	// 	link: "/image-gallery",
+	// },
+	// {
+	// 	icon: "files",
+	// 	text: "Error Pages",
+	// 	active: false,
+	// 	subMenu: [
+	// 		{
+	// 			text: "404 Classic",
+	// 			link: "/errors/404-classic",
+	// 			newTab: true,
+	// 		},
+	// 		{
+	// 			text: "504 Classic",
+	// 			link: "/errors/504-classic",
+	// 			newTab: true,
+	// 		},
+	// 		{
+	// 			text: "404 Modern",
+	// 			link: "/errors/404-modern",
+	// 			newTab: true,
+	// 		},
+	// 		{
+	// 			text: "504 Modern",
+	// 			link: "/errors/504-modern",
+	// 			newTab: true,
+	// 		},
+	// 	],
+	// },
 	{
 		icon: "files",
 		text: "Other Pages",

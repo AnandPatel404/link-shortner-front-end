@@ -3,43 +3,43 @@ import Head from "../../../layout/head/Head";
 import { Card } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Block, BlockBetween, BlockDes, BlockHead, BlockHeadContent, BlockTitle, Icon, Button } from "../../../components/Component";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 import userStore from "../../../zustand/userStore/userStore";
-import userChnage from "../../../zustand/userChange/userChnage";
+// import userChnage from "../../../zustand/userChange/userChnage";
 const UserProfileSettingPage = ({ sm, updateSm, history }) => {
 	const userDate = userStore((state) => state.user);
-	const deleteUserAccount = userChnage((state) => state.deleteAccount);
-	const deleteAccount = () => {
-		Swal.fire({
-			title: "Are you sure?",
-			text: "You won't be able to revert this!",
-			icon: "warning",
-			showCancelButton: true,
-			confirmButtonText: "Yes, delete it!",
-		}).then((result) => {
-			if (result.isConfirmed) {
-				Swal.fire({
-					title: "Enter Your password",
-					input: "text",
-					inputAttributes: {
-						autocapitalize: "off",
-					},
-					showCancelButton: true,
-					confirmButtonText: "Look up",
-					showLoaderOnConfirm: true,
-					preConfirm: (data) => {
-						deleteUserAccount(
-							{
-								password: data,
-							},
-							history
-						);
-					},
-					allowOutsideClick: () => !Swal.isLoading(),
-				});
-			}
-		});
-	};
+	// const deleteUserAccount = userChnage((state) => state.deleteAccount);
+	// const deleteAccount = () => {
+	// 	Swal.fire({
+	// 		title: "Are you sure?",
+	// 		text: "You won't be able to revert this!",
+	// 		icon: "warning",
+	// 		showCancelButton: true,
+	// 		confirmButtonText: "Yes, delete it!",
+	// 	}).then((result) => {
+	// 		if (result.isConfirmed) {
+	// 			Swal.fire({
+	// 				title: "Enter Your password",
+	// 				input: "text",
+	// 				inputAttributes: {
+	// 					autocapitalize: "off",
+	// 				},
+	// 				showCancelButton: true,
+	// 				confirmButtonText: "Look up",
+	// 				showLoaderOnConfirm: true,
+	// 				preConfirm: (data) => {
+	// 					deleteUserAccount(
+	// 						{
+	// 							password: data,
+	// 						},
+	// 						history
+	// 					);
+	// 				},
+	// 				allowOutsideClick: () => !Swal.isLoading(),
+	// 			});
+	// 		}
+	// 	});
+	// };
 	// Swal.fire("Deleted!", "Your file has been deleted.", "success");
 	return (
 		<React.Fragment>
@@ -86,7 +86,7 @@ const UserProfileSettingPage = ({ sm, updateSm, history }) => {
 								</div>
 							</div>
 						</div>
-						<div className="card-inner">
+						{/* <div className="card-inner">
 							<div className="between-center flex-wrap g-3">
 								<div className="nk-block-text">
 									<h6>Delete your Account </h6>
@@ -104,7 +104,7 @@ const UserProfileSettingPage = ({ sm, updateSm, history }) => {
 									</ul>
 								</div>
 							</div>
-						</div>
+						</div> */}
 						<div className="card-body">
 							<div className="between-center flex-wrap flex-md-nowrap g-3">
 								<div className="nk-block-text">
