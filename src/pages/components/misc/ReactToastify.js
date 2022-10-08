@@ -73,11 +73,11 @@ export const infoToast = () => {
 
 export const errorToast = (msg, status) => {
 	toast.error(<CustomToast msg={msg} status={status} />, {
-		position: "top-right",
+		position: "top-center",
 		autoClose: true,
 		hideProgressBar: true,
 		closeOnClick: true,
-		pauseOnHover: true,
+		pauseOnHover: false,
 		draggable: true,
 		progress: false,
 		closeButton: <CloseButton />,
@@ -86,7 +86,7 @@ export const errorToast = (msg, status) => {
 
 export const messageToast = (msg, status) => {
 	toast.success(<CustomToast msg={msg} status={status} />, {
-		position: "top-right",
+		position: "top-center",
 		autoClose: true,
 		hideProgressBar: true,
 		closeOnClick: true,

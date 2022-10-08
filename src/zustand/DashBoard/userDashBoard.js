@@ -55,6 +55,13 @@ const userActivity = create((set, get) => ({
 					return "Link is shorting";
 				},
 				icon: "🤖",
+				position: "top-center",
+				autoClose: true,
+				hideProgressBar: true,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: false,
 			},
 			success: {
 				render({ data }) {
@@ -65,12 +72,26 @@ const userActivity = create((set, get) => ({
 					return `${data.data.message}`;
 				},
 				icon: "🟢",
+				position: "top-center",
+				autoClose: true,
+				hideProgressBar: true,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: false,
 			},
 			error: {
 				render({ data }) {
 					return `${data.response.data.message}`;
 				},
 				icon: "❌",
+				position: "top-center",
+				autoClose: true,
+				hideProgressBar: true,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: false,
 			},
 		});
 	},
@@ -138,12 +159,26 @@ const userActivity = create((set, get) => ({
 					return `${data.data.message}`;
 				},
 				icon: "🟢",
+				position: "top-center",
+				autoClose: true,
+				hideProgressBar: true,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: false,
 			},
 			error: {
 				render({ data }) {
 					return `${data.response.data.message}`;
 				},
 				icon: "❌",
+				position: "top-center",
+				autoClose: true,
+				hideProgressBar: true,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: false,
 			},
 		});
 	},

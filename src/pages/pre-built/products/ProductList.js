@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Head from "../../../layout/head/Head";
 import Content from "../../../layout/content/Content";
-import shallow from "zustand/shallow";
 import {
 	Block,
 	BlockHead,
@@ -15,7 +14,7 @@ import {
 	DataTableItem,
 	PaginationComponent,
 } from "../../../components/Component";
-import { Card, DropdownItem, UncontrolledDropdown, DropdownMenu, DropdownToggle, Row, Col, FormGroup } from "reactstrap";
+import { Card, DropdownItem, UncontrolledDropdown, DropdownMenu, DropdownToggle } from "reactstrap";
 import userDashBoard from "../../../zustand/DashBoard/userDashBoard";
 import { errorToast } from "../../../pages/components/misc/ReactToastify";
 import { Link } from "react-router-dom";
