@@ -98,6 +98,7 @@ import KnobPreview from "../pages/components/charts/KnobPreview";
 import ChangePassword from "../pages/auth/changePassword";
 import Editlink from "../pages/pre-built/editLink/editlink";
 import fullShort from "../pages/pre-built/shortingFunctions/shortingFuncationality";
+import AddDomain from "../pages/pre-built/domain/addDomain";
 const Pages = () => {
 	useLayoutEffect(() => {
 		window.scrollTo(0, 0);
@@ -114,6 +115,7 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/link-details/:id`} component={Editlink}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/all-shorten-links`} component={ProductList}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/full-short`} component={fullShort}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/add-custom-domain`} component={AddDomain}></Route>
 
 				{/*Pre-built Pages*/}
 				<Route exact path={`${process.env.PUBLIC_URL}/project-card`} component={ProjectCardPage}></Route>

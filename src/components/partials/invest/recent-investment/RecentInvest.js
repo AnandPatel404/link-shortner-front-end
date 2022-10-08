@@ -24,7 +24,7 @@ const RecentInvest = ({ links }) => {
 			<div className="nk-tb-list">
 				<DataTableHead>
 					<DataTableRow>
-						<span>Real Link & title</span>{" "}
+						<span>Real Link</span>{" "}
 					</DataTableRow>
 					<DataTableRow size="sm">
 						<span>Shorten Link</span>
@@ -40,9 +40,8 @@ const RecentInvest = ({ links }) => {
 					return (
 						<DataTableItem key={item.id + "uuid"}>
 							<DataTableRow>
-								<div className="d-flex flex-column">
-									<span className="tb-sub">{`${item.protocol}://${item.domain}/${item.backlink.slice(0, 60) + "..."}`}</span>
-									<h6 className="my-1">{item.link_title ? item.link_title.slice(0, 60) + "..." : "No title"}</h6>
+								<div>
+									<h6 className="my-1">{`${item.protocol}://${item.domain}/${item.backlink.slice(0, 60) + "..."}`}</h6>
 								</div>
 							</DataTableRow>
 							<DataTableRow size="sm">
