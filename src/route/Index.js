@@ -91,7 +91,7 @@ import Editlink from "../pages/pre-built/editLink/editlink";
 import fullShort from "../pages/pre-built/shortingFunctions/shortingFuncationality";
 import AddDomain from "../pages/pre-built/domain/addDomain";
 import SetErrorPage from "../pages/pre-built/errorPage/SetErrorPage";
-// import LinkDetails from "../pages/pre-built/products/linkDetails";
+import ClientDetails from "../pages/pre-built/products/ClientDetails";
 const Pages = () => {
 	useLayoutEffect(() => {
 		window.scrollTo(0, 0);
@@ -101,6 +101,7 @@ const Pages = () => {
 		<Suspense fallback={<div />}>
 			<Switch>
 				{/*Dashboards and used route*/}
+				<Route exact path={`${process.env.PUBLIC_URL}/`} component={Invest}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/_blank`} component={Blank}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/link/:id`} component={KycDetailsRegular}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/link-details/:id`} component={Editlink}></Route>
@@ -108,16 +109,16 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/full-short`} component={fullShort}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/add-custom-domain`} component={AddDomain}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/set-error-page`} component={SetErrorPage}></Route>
-				{/* <Route exact path={`${process.env.PUBLIC_URL}/link-details/:id`} component={LinkDetails}></Route> */}
-
-				{/*Pre-built Pages*/}
+				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-change-password/`} component={ChangePassword}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-setting/`} component={UserProfileLayout}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/project-card`} component={ProjectCardPage}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/project-list`} component={ProjectListPage}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-regular/`} component={UserProfileLayout}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-notification/`} component={UserProfileLayout}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-activity/`} component={UserProfileLayout}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-setting/`} component={UserProfileLayout}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-change-password/`} component={ChangePassword}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/client-details/:id`} component={ClientDetails}></Route>
+
+				{/*Pre-built Pages*/}
 
 				<Route exact path={`${process.env.PUBLIC_URL}/kyc-list-regular`} component={KycListRegular}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/transaction-basic`} component={TransListBasic}></Route>
@@ -197,7 +198,6 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/email-template`} component={EmailTemplate}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/nioicon`} component={NioIconPage}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/svg-icons`} component={SVGIconPage}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/`} component={Invest}></Route>
 				<Route component={RedirectAs404}></Route>
 				{/* <Route exact path={`${process.env.PUBLIC_URL}/app-messages`} component={AppMessages}></Route>
 			<Route exact path={`${process.env.PUBLIC_URL}/app-chat`} component={Chat}></Route>

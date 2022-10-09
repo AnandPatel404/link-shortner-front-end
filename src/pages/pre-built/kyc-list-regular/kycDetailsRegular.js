@@ -197,6 +197,11 @@ const KycDetailsRegular = ({ match }) => {
 									<BrowserUser />
 								</Card>
 							</Col>
+							<Col xxl="12" className="d-flex justify-content-center">
+								<Link className="btn btn-primary" to={`${process.env.PUBLIC_URL}/client-details/${link.id}`}>
+									See client Details
+								</Link>
+							</Col>
 						</Row>
 					</Block>
 				</Content>
