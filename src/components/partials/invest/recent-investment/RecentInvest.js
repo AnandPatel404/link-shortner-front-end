@@ -41,7 +41,7 @@ const RecentInvest = ({ links }) => {
 						<DataTableItem key={item.id + "uuid"}>
 							<DataTableRow>
 								<div>
-									<h6 className="my-1">{`${item.protocol}://${item.domain}/${item.backlink.slice(0, 60) + "..."}`}</h6>
+									<h6 className="my-1">{`${item.protocol}://${item.domain}/${item.backlink.slice(0, 20) + "..."}`}</h6>
 								</div>
 							</DataTableRow>
 							<DataTableRow size="sm">

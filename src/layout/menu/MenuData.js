@@ -51,24 +51,24 @@ const menu = [
 		subMenu: [
 			{
 				icon: "puzzle-fill",
-				text: "Password link",
+				text: "Create with custom domain",
 				link: "/full-short",
 			},
-			{
-				icon: "bulb-fill",
-				text: "Branded link",
-				link: "/full-short",
-			},
-			{
-				icon: "clock-fill",
-				text: "Schedule link",
-				link: "/full-short",
-			},
-			{
-				icon: "shuffle",
-				text: "link re-direction",
-				link: "/full-short",
-			},
+			// {
+			// 	icon: "bulb-fill",
+			// 	text: "Branded link",
+			// 	link: "/full-short",
+			// },
+			// {
+			// 	icon: "clock-fill",
+			// 	text: "Schedule link",
+			// 	link: "/full-short",
+			// },
+			// {
+			// 	icon: "shuffle",
+			// 	text: "link re-direction",
+			// 	link: "/full-short",
+			// },
 		],
 	},
 	{

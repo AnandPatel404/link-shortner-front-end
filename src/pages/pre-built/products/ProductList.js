@@ -64,6 +64,7 @@ const ProductList = () => {
 		linkId = [];
 	};
 
+	console.log(data);
 	const currentItems = data;
 
 	// Change Page
@@ -197,7 +198,9 @@ const ProductList = () => {
 																target="_blank"
 																rel="noreferrer"
 															>
-																{`localhost:8000/${item.shorterLink}`}
+																{`${item.coustomDomain ? item.coustomDomain?.domain : "localhost:8000"}/${
+																	item.shorterLink
+																}`}
 															</a>
 														</DataTableRow>
 														<DataTableRow>

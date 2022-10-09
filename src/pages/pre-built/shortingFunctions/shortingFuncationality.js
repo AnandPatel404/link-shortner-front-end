@@ -1,12 +1,41 @@
-import React, { useState } from "react";
-import DatePicker from "react-datepicker";
+import React, { useEffect, useState } from "react";
 import Content from "../../../layout/content/Content";
 import Head from "../../../layout/head/Head";
-import { FormGroup, Label, Input, Row, Col } from "reactstrap";
-import { Block, BlockHead, BlockHeadContent, BlockTitle, BlockDes, PreviewCard, Icon, Button } from "../../../components/Component";
+import { useForm } from "react-hook-form";
+import { FormGroup, Input, Row, Col, Form } from "reactstrap";
+import { Block, BlockHead, BlockHeadContent, BlockTitle, BlockDes, PreviewCard, Button } from "../../../components/Component";
+import userDomain from "../../../zustand/domainStuff/domain";
 function ShortingFuncationality() {
-	const [rangeStart, setRangeStart] = useState(new Date());
-	const [rangeEnd, setRangeEnd] = useState();
+	const [doamins, setDomains] = useState("shorterME.link/");
+	const [linkStatus, setLinkStatus] = useState("Enable");
+	const { domains, getAllDomain, createLinkWithCustomDomain } = userDomain((state) => ({
+		domains: state.domains,
+		getAllDomain: state.getAllDomain,
+		createLinkWithCustomDomain: state.createLinkWithCustomDomain,
+	}));
+
+	useEffect(() => {
+		getAllDomain();
+	}, [getAllDomain]);
+
+	const s = async (sData) => {
+		const data = {
+			link: sData.link,
+			domain: doamins,
+			link_status: linkStatus,
+		};
+		await createLinkWithCustomDomain(data);
+	};
+
+	const set = (e) => {
+		if (linkStatus === "Enable") {
+			setLinkStatus("Disable");
+		} else {
+			setLinkStatus("Enable");
+		}
+	};
+
+	const { errors, handleSubmit, register } = useForm();
 	return (
 		<React.Fragment>
 			<Head title="Form Elements" />
@@ -14,14 +43,10 @@ function ShortingFuncationality() {
 				<BlockHead size="lg" wide="sm">
 					<BlockHeadContent>
 						<BlockTitle tag="h2" className="fw-normal">
-							Create a Link
+							Create a Link with custom domain
 						</BlockTitle>
 						<BlockDes>
-							<p className="lead">
-								Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide
-								variety of forms. Here’s a quick example to demonstrate form styles, so use these classes to opt into their customized
-								displays.
-							</p>
+							<p className="lead">create a link with your domain and your brand</p>
 						</BlockDes>
 					</BlockHeadContent>
 				</BlockHead>
@@ -29,9 +54,9 @@ function ShortingFuncationality() {
 				<Block size="lg">
 					<PreviewCard>
 						<div className="card-head">
-							<h5 className="card-title">Website Setting</h5>
+							<h5 className="card-title">Link Setting</h5>
 						</div>
-						<form className="gy-3">
+						<Form className="gy-3" onSubmit={handleSubmit(s)}>
 							<Row className="g-3 align-center">
 								<Col lg="5">
 									<FormGroup>
@@ -44,24 +69,13 @@ function ShortingFuncationality() {
 								<Col lg="7">
 									<FormGroup>
 										<div className="form-control-wrap">
-											<input type="text" id="site-name" className="form-control" />
-										</div>
-									</FormGroup>
-								</Col>
-							</Row>
-							<Row className="g-3 align-center">
-								<Col lg="5">
-									<FormGroup>
-										<label className="form-label" htmlFor="site-name">
-											Branded back link
-										</label>
-										<span className="form-note">Specify the back link</span>
-									</FormGroup>
-								</Col>
-								<Col lg="7">
-									<FormGroup>
-										<div className="form-control-wrap">
-											<input type="text" id="site-name" className="form-control" />
+											<input
+												type="text"
+												id="link"
+												name="link"
+												className="form-control"
+												ref={register({ required: "This field is required" })}
+											/>
 										</div>
 									</FormGroup>
 								</Col>
@@ -82,8 +96,9 @@ function ShortingFuncationality() {
 														type="radio"
 														className="custom-control-input form-control"
 														defaultChecked
-														name="reg-public"
+														name="status"
 														id="reg-enable"
+														onClick={set}
 													/>
 													<label className="custom-control-label" htmlFor="reg-enable">
 														Enable
@@ -95,8 +110,9 @@ function ShortingFuncationality() {
 													<input
 														type="radio"
 														className="custom-control-input form-control"
-														name="reg-public"
+														name="status"
 														id="reg-disable"
+														onClick={set}
 													/>
 													<label className="custom-control-label" htmlFor="reg-disable">
 														Disable
@@ -118,148 +134,34 @@ function ShortingFuncationality() {
 									<FormGroup>
 										<div className="form-control-wrap">
 											<div className="form-control-select">
-												<Input type="select" name="select" id="default-4">
-													<option value="shorterMe.link/">shorterMe.link/</option>
-													<option value="option_select_name">Option select name</option>
-													<option value="option_select_name">Option select name</option>
+												<Input type="select" onChange={(e) => setDomains(e.target.value)}>
+													<option value="shorterME.link/">shorterME.link/</option>
+													{domains.length > 0 ? (
+														domains.map((res) => (
+															<option value={res.domain} key={res.id}>
+																{res.domain}/
+															</option>
+														))
+													) : (
+														<option value="shorterME.link/">shorterME.link/</option>
+													)}
 												</Input>
 											</div>
 										</div>
 									</FormGroup>
 								</Col>
 							</Row>
-							<Row className="g-3 align-center">
-								<Col lg="5">
-									<FormGroup>
-										<label className="form-label">Set Password</label>
-										<span className="form-note">Set Password of your link.</span>
-									</FormGroup>
-								</Col>
-								<Col lg="7">
-									<FormGroup>
-										<div className="form-control-wrap">
-											<input type="text" id="site-copyright" className="form-control" />
-										</div>
-									</FormGroup>
-								</Col>
-							</Row>
-							<Row className="g-3 align-center">
-								<Col lg="5">
-									<FormGroup>
-										<label className="form-label">Re-direction link</label>
-										<span className="form-note">Specify the URL if your main website is down.</span>
-									</FormGroup>
-								</Col>
-								<Col lg="7">
-									<FormGroup>
-										<div className="form-control-wrap">
-											<input type="text" name="site-url" className="form-control" placeholder="https://www.example.com" />
-										</div>
-									</FormGroup>
-								</Col>
-							</Row>
-							<Row className="g-3 align-center">
-								<Col lg="5">
-									<FormGroup>
-										<label className="form-label">Enter error link</label>
-										<span className="form-note">Specify the URL if your main website is down.</span>
-									</FormGroup>
-								</Col>
-								<Col lg="7">
-									<FormGroup>
-										<div className="form-control-wrap">
-											<input type="text" name="site-url" className="form-control" placeholder="https://www.example.com" />
-										</div>
-									</FormGroup>
-								</Col>
-							</Row>
-							<Row className="g-3 align-center">
-								<Col lg="5">
-									<FormGroup>
-										<label className="form-label">Specify date</label>
-										<span className="form-note">Specify the start to expire date</span>
-									</FormGroup>
-								</Col>
-								<Col lg="7">
-									<FormGroup>
-										<Label>Datepicker Range Multiple Input</Label>
-										<div className="form-control-wrap">
-											<div className="input-daterange date-picker-range input-group">
-												<DatePicker
-													selected={rangeStart}
-													onChange={setRangeStart}
-													selectsStart
-													startDate={rangeStart}
-													endDate={rangeEnd}
-													wrapperClassName="start-m"
-													className="form-control"
-												/>{" "}
-												<div className="input-group-addon">TO</div>
-												<DatePicker
-													selected={rangeEnd}
-													onChange={setRangeEnd}
-													startDate={rangeStart}
-													endDate={rangeEnd}
-													selectsEnd
-													minDate={rangeStart}
-													wrapperClassName="end-m"
-													className="form-control"
-												/>
-											</div>
-										</div>
-										<div className="form-note">
-											Date Format <code>mm/dd/yyyy</code>
-										</div>
-									</FormGroup>
-								</Col>
-							</Row>
-							<Row className="g-3 align-center">
-								<Col lg="5">
-									<FormGroup>
-										<label className="form-label" htmlFor="site-off">
-											Maintanance Mode
-										</label>
-										<span className="form-note">Enable to make website make offline.</span>
-									</FormGroup>
-								</Col>
-								<Col lg="7">
-									<FormGroup>
-										<div className="custom-control custom-switch">
-											<input type="checkbox" className="custom-control-input form-control" name="reg-public" id="site-off" />
-											<label className="custom-control-label" htmlFor="site-off">
-												Offline
-											</label>
-										</div>
-									</FormGroup>
-								</Col>
-							</Row>
-							<Row className="g-3 align-center">
-								<Col lg="5">
-									<FormGroup>
-										<label className="form-label">Click's limit</label>
-										<span className="form-note">
-											Specify click's limit of link then (disable link default limit is unlimited)
-										</span>
-									</FormGroup>
-								</Col>
-								<Col lg="7">
-									<FormGroup>
-										<div className="form-control-wrap">
-											<input type="number" name="site-url" className="form-control" />
-										</div>
-									</FormGroup>
-								</Col>
-							</Row>
+
 							<Row className="g-3">
 								<Col lg="7" className="offset-lg-5">
 									<FormGroup className="mt-2">
-										<Button color="primary" size="lg" onClick={(e) => e.preventDefault()}>
+										<Button color="primary" size="lg" type="submit">
 											Create
 										</Button>
 									</FormGroup>
 								</Col>
 							</Row>
-						</form>
+						</Form>
 					</PreviewCard>
 				</Block>
 			</Content>

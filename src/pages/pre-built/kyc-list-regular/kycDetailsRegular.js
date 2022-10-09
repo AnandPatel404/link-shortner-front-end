@@ -27,9 +27,6 @@ const KycDetailsRegular = ({ match }) => {
 		getLinkById: state.getLinkById,
 	}));
 
-	// const getData = useCallback(() => {
-
-	// }, [getLinkById, match.params.id]);
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const getData = async () => {
 		const id = match.params.id;

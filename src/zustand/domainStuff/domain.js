@@ -38,6 +38,23 @@ const userDomain = create((set, get) => ({
 				errorToast(`${err.response.data.message} ❌❌`, "Error");
 			});
 	},
+
+	createLinkWithCustomDomain: async (data) => {
+		await axios({
+			method: "post",
+			url: `short/create-with-custom-domain`,
+			data,
+		})
+			.then((res) => {
+				if (res.data.status === "Success") {
+					messageToast(`${res.data.message} ✅✅`, res.data.status);
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+				errorToast(`${err.response.data.message} ❌❌`, "Error");
+			});
+	},
 }));
 
 export default userDomain;
