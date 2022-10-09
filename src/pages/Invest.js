@@ -4,7 +4,6 @@ import Content from "../layout/content/Content";
 import Head from "../layout/head/Head";
 import RecentInvest from "../components/partials/invest/recent-investment/RecentInvest";
 import TrafficChannel from "../components/partials/analytics/traffic-channel/Traffic";
-// import BrowserUser from "../components/partials/analytics/browser-users/BrowserUser";
 // import SessionDevice from "../components/partials/analytics/session-devices/SessionDevice";
 import { useForm } from "react-hook-form";
 import { Card, Form } from "reactstrap";
@@ -13,7 +12,6 @@ import firstSvg from "../images/svg/dashboard-one.svg";
 import b from "../images/svg/dashboard-paln.svg";
 import a from "../images/svg/dashboard-limite.svg";
 // import rocketSvg from "../images/svg/dashboard.svg";
-// import AudienceOverview from "../components/partials/analytics/audience-overview/AudienceOverview";
 import useUserDashBoard from "../zustand/DashBoard/userDashBoard";
 // import { Link } from "react-router-dom";
 
@@ -162,17 +160,7 @@ const InvestHomePage = () => {
 							<PreviewAltCard className="h-100" bodyclassName="h-100 stretch flex-column">
 								<SessionDevice />
 							</PreviewAltCard>
-						</Col>
-						<Col lg="7" xxl="6">
-							<PreviewAltCard className="h-100">
-								<AudienceOverview />
-							</PreviewAltCard>
-						</Col>
-						<Col xxl="12">
-							<Card className="card-bordered h-100">
-								<BrowserUser />
-							</Card>
-						</Col> */}
+						</Col>*/}
 					</Row>
 				</Block>
 			</Content>

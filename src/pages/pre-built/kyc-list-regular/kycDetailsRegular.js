@@ -1,8 +1,22 @@
 import React, { useEffect, useState, useCallback } from "react";
 import Content from "../../../layout/content/Content";
 import Head from "../../../layout/head/Head";
+import BrowserUser from "../../../components/partials/analytics/browser-users/BrowserUser";
+import AudienceOverview from "../../../components/partials/analytics/audience-overview/AudienceOverview";
 import { Badge, Card } from "reactstrap";
-import { Button, Block, BlockBetween, BlockDes, BlockHead, BlockHeadContent, BlockTitle, Icon, Row, Col } from "../../../components/Component";
+import {
+	Button,
+	Block,
+	BlockBetween,
+	BlockDes,
+	BlockHead,
+	BlockHeadContent,
+	BlockTitle,
+	Icon,
+	Row,
+	Col,
+	PreviewAltCard,
+} from "../../../components/Component";
 import { Link } from "react-router-dom";
 import usersDashBoard from "../../../zustand/DashBoard/userDashBoard";
 
@@ -101,6 +115,18 @@ const KycDetailsRegular = ({ match }) => {
 												</div>
 											</div>
 										</li>
+										<li className="data-item">
+											<div className="data-col">
+												<div className="data-label">Total clicks</div>
+												<div className="data-value">200</div>
+											</div>
+										</li>
+										<li className="data-item">
+											<div className="data-col">
+												<div className="data-label">expire at</div>
+												<div className="data-value">200</div>
+											</div>
+										</li>
 									</ul>
 								</Card>
 							</Col>
@@ -159,6 +185,16 @@ const KycDetailsRegular = ({ match }) => {
 											</div>
 										</li>
 									</ul>
+								</Card>
+							</Col>
+							<Col lg="12">
+								<PreviewAltCard className="h-100">
+									<AudienceOverview />
+								</PreviewAltCard>
+							</Col>
+							<Col xxl="12">
+								<Card className="card-bordered h-100">
+									<BrowserUser />
 								</Card>
 							</Col>
 						</Row>
