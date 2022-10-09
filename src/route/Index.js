@@ -99,6 +99,8 @@ import ChangePassword from "../pages/auth/changePassword";
 import Editlink from "../pages/pre-built/editLink/editlink";
 import fullShort from "../pages/pre-built/shortingFunctions/shortingFuncationality";
 import AddDomain from "../pages/pre-built/domain/addDomain";
+import SetErrorPage from "../pages/pre-built/errorPage/SetErrorPage";
+// import LinkDetails from "../pages/pre-built/products/linkDetails";
 const Pages = () => {
 	useLayoutEffect(() => {
 		window.scrollTo(0, 0);
@@ -111,11 +113,13 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/crypto`} component={Crypto}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/analytics`} component={Analytics}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/_blank`} component={Blank}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/kyc-details-regular/:id`} component={KycDetailsRegular}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/link/:id`} component={KycDetailsRegular}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/link-details/:id`} component={Editlink}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/all-shorten-links`} component={ProductList}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/full-short`} component={fullShort}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/add-custom-domain`} component={AddDomain}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/set-error-page`} component={SetErrorPage}></Route>
+				{/* <Route exact path={`${process.env.PUBLIC_URL}/link-details/:id`} component={LinkDetails}></Route> */}
 
 				{/*Pre-built Pages*/}
 				<Route exact path={`${process.env.PUBLIC_URL}/project-card`} component={ProjectCardPage}></Route>

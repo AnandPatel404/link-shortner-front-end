@@ -22,6 +22,11 @@ const menu = [
 		text: "Trans List",
 		link: "/transaction-crypto",
 	},
+	{
+		icon: "alert",
+		text: "Error page",
+		link: "/set-error-page",
+	},
 
 	// {
 	// 	heading: "Api",
@@ -129,21 +134,6 @@ const menu = [
 	// 		},
 	// 	],
 	// },
-	{
-		icon: "file-docs",
-		text: "AML / KYCs",
-		active: false,
-		subMenu: [
-			{
-				text: "KYC List - Regular",
-				link: "/kyc-list-regular",
-			},
-			{
-				text: "KYC Details - Regular",
-				link: "/kyc-details-regular/UD01544",
-			},
-		],
-	},
 	{
 		icon: "tranx",
 		text: "Transaction",

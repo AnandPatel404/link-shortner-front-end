@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import Head from "../../../layout/head/Head";
 import Content from "../../../layout/content/Content";
@@ -63,8 +64,6 @@ const ProductList = () => {
 		await deleteMany(linkId);
 		linkId = [];
 	};
-
-	console.log(data);
 	const currentItems = data;
 
 	// Change Page
@@ -174,22 +173,22 @@ const ProductList = () => {
 															</div>
 														</DataTableRow>
 														<DataTableRow sm>
-															{/* <Link to={`${process.env.PUBLIC_URL}/kyc-details-regular/${item.id}`}> */}
-															<span className="tb-product align-items-start d-flex flex-column">
-																<span className="title d-lg-none">
-																	{item.link_title ? item.link_title.slice(0, 25) + "..." : "No title"}
+															<Link to={`${process.env.PUBLIC_URL}/link/${item.id}`}>
+																<span className="tb-product align-items-start d-flex flex-column">
+																	<span className="title d-lg-none">
+																		{item.link_title ? item.link_title.slice(0, 25) + "..." : "No title"}
+																	</span>
+																	<span className="title d-none  d-lg-block">
+																		{item.link_title ? item.link_title.slice(0, 60) + "..." : "No title"}
+																	</span>
+																	<span className="tb-sub d-lg-none">{`${item.protocol}://${item.domain}/${
+																		item.backlink.slice(0, 25) + "..."
+																	}`}</span>
+																	<span className="tb-sub d-none  d-lg-block">{`${item.protocol}://${item.domain}/${
+																		item.backlink.slice(0, 60) + "..."
+																	}`}</span>
 																</span>
-																<span className="title d-none  d-lg-block">
-																	{item.link_title ? item.link_title.slice(0, 60) + "..." : "No title"}
-																</span>
-																<span className="tb-sub d-lg-none">{`${item.protocol}://${item.domain}/${
-																	item.backlink.slice(0, 25) + "..."
-																}`}</span>
-																<span className="tb-sub d-none  d-lg-block">{`${item.protocol}://${item.domain}/${
-																	item.backlink.slice(0, 60) + "..."
-																}`}</span>
-															</span>
-															{/* </Link> */}
+															</Link>
 														</DataTableRow>
 														<DataTableRow>
 															<a
@@ -226,10 +225,9 @@ const ProductList = () => {
 																					<DropdownItem>
 																						<Link
 																							to={`${process.env.PUBLIC_URL}/link-details/${item.id}`}
-																							className=""
 																						>
 																							<Icon name="edit"></Icon>
-																							<span>Edit Product</span>
+																							<span>Edit link</span>
 																						</Link>
 																					</DropdownItem>
 																				</li>
