@@ -1,6 +1,5 @@
 import React from "react";
-import Icon from "../../../icon/Icon";
-import { DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from "reactstrap";
+import { Badge } from "reactstrap";
 import { DataTableHead, DataTableItem, DataTableRow } from "../../../table/DataTable";
 import Button from "../../../button/Button";
 import { Link } from "react-router-dom";
@@ -29,20 +28,22 @@ const RecentInvest = ({ links }) => {
 					<DataTableRow size="sm">
 						<span>Shorten Link</span>
 					</DataTableRow>
+					<DataTableRow size="sm">
+						<span>Link status</span>
+					</DataTableRow>
 					<DataTableRow size="lg">
 						<span>Date</span>
-					</DataTableRow>
-					<DataTableRow>
-						<span>&nbsp;</span>
 					</DataTableRow>
 				</DataTableHead>
 				{links.map((item) => {
 					return (
-						<DataTableItem key={item.id + "uuid"}>
+						<DataTableItem key={item.id}>
 							<DataTableRow>
-								<div>
-									<h6 className="my-1">{`${item.protocol}://${item.domain}/${item.backlink.slice(0, 20) + "..."}`}</h6>
-								</div>
+								<Link to={`${process.env.PUBLIC_URL}/link/${item.id}`}>
+									<div style={{ cursor: "pointer" }}>
+										<h6 className="my-1">{`${item.protocol}://${item.domain}/${item.backlink.slice(0, 20) + "..."}`}</h6>
+									</div>
+								</Link>
 							</DataTableRow>
 							<DataTableRow size="sm">
 								<div className="user-card">
@@ -54,31 +55,13 @@ const RecentInvest = ({ links }) => {
 									</div>
 								</div>
 							</DataTableRow>
+							<DataTableRow size="sm">
+								<Badge size="sm" color={item.link_status === "Enable" ? "outline-success" : "outline-danger"} className="badge-dim">
+									{item.link_status}
+								</Badge>
+							</DataTableRow>
 							<DataTableRow size="lg">
 								<span className="tb-sub">{new Date(item.createdAt).toLocaleString()}</span>
-							</DataTableRow>
-
-							<DataTableRow className="nk-tb-col-action">
-								<UncontrolledDropdown>
-									<DropdownToggle tag="a" className="text-soft dropdown-toggle btn btn-sm btn-icon btn-trigger">
-										<Icon name="chevron-right"></Icon>
-									</DropdownToggle>
-									<DropdownMenu right className="dropdown-menu-xs">
-										<ul className="link-list-plain">
-											<li>
-												<DropdownItem
-													tag="a"
-													href="#dropdownitem"
-													onClick={(ev) => {
-														ev.preventDefault();
-													}}
-												>
-													View
-												</DropdownItem>
-											</li>
-										</ul>
-									</DropdownMenu>
-								</UncontrolledDropdown>
 							</DataTableRow>
 						</DataTableItem>
 					);
