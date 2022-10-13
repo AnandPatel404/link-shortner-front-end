@@ -123,8 +123,18 @@ const KycDetailsRegular = ({ match }) => {
 										</li>
 										<li className="data-item">
 											<div className="data-col">
-												<div className="data-label">expire at</div>
-												<div className="data-value">200</div>
+												<div className="data-label">Starting Date</div>
+												<div className="data-value">
+													{link.staring_date ? new Date(link.staring_date).toLocaleString() : ""}
+												</div>
+											</div>
+										</li>
+										<li className="data-item">
+											<div className="data-col">
+												<div className="data-label">Expire Date</div>
+												<div className="data-value">
+													{link.expire_date ? new Date(link.expire_date).toLocaleString() : ""}
+												</div>
 											</div>
 										</li>
 									</ul>

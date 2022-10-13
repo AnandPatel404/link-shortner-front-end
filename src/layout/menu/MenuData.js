@@ -17,16 +17,16 @@ const menu = [
 		text: "Pricing",
 		link: "/pricing-table",
 	},
-	{
-		icon: "sign-dollar",
-		text: "Trans List",
-		link: "/transaction-crypto",
-	},
-	{
-		icon: "alert",
-		text: "Error page",
-		link: "/set-error-page",
-	},
+	// {
+	// 	icon: "sign-dollar",
+	// 	text: "Trans List",
+	// 	link: "/transaction-crypto",
+	// },
+	// {
+	// 	icon: "alert",
+	// 	text: "Error page",
+	// 	link: "/set-error-page",
+	// },
 
 	// {
 	// 	heading: "Api",
@@ -57,7 +57,12 @@ const menu = [
 			{
 				icon: "puzzle-fill",
 				text: "Create with custom domain",
-				link: "/full-short",
+				link: "/create-with-custom-domain",
+			},
+			{
+				icon: "clock-fill",
+				text: "Create Expiration link",
+				link: "/create-expiration-link",
 			},
 			// {
 			// 	icon: "bulb-fill",

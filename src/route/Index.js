@@ -88,7 +88,8 @@ import KnobPreview from "../pages/components/charts/KnobPreview";
 
 import ChangePassword from "../pages/auth/changePassword";
 import Editlink from "../pages/pre-built/editLink/editlink";
-import fullShort from "../pages/pre-built/shortingFunctions/shortingFuncationality";
+import CreateWithCustomDomain from "../pages/pre-built/shortingFunctions/shortingFuncationality";
+import Expirationlink from "../pages/pre-built/shortingFunctions/Expirationlink";
 import AddDomain from "../pages/pre-built/domain/addDomain";
 import SetErrorPage from "../pages/pre-built/errorPage/SetErrorPage";
 import ClientDetails from "../pages/pre-built/products/ClientDetails";
@@ -106,7 +107,8 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/link/:id`} component={KycDetailsRegular}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/link-details/:id`} component={Editlink}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/all-shorten-links`} component={ProductList}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/full-short`} component={fullShort}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/create-with-custom-domain`} component={CreateWithCustomDomain}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/create-expiration-link`} component={Expirationlink}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/add-custom-domain`} component={AddDomain}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/set-error-page`} component={SetErrorPage}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-change-password/`} component={ChangePassword}></Route>

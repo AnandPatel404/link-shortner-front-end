@@ -29,7 +29,6 @@ const userDomain = create((set, get) => ({
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
-					console.log(res);
 					set({ domains: res.data.data });
 				}
 			})
