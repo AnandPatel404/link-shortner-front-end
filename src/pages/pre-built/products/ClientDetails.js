@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Head from "../../../layout/head/Head";
 import Content from "../../../layout/content/Content";
-import { DropdownMenu, DropdownToggle, UncontrolledDropdown, DropdownItem } from "reactstrap";
 import {
 	Block,
 	BlockHead,
@@ -16,31 +15,30 @@ import {
 	DataTableRow,
 	DataTableItem,
 } from "../../../components/Component";
-import { Link } from "react-router-dom";
-import useqrCode from "../../../zustand/qrCode/qrCode";
+import userLinkClient from "../../../zustand/clientDetails/client";
 
-export const ClientDetails = () => {
+export const ClientDetails = ({ match }) => {
+	const [data, setData] = useState([]);
+	const [link, setLink] = useState({});
 	const [itemPerPage] = useState(7);
 	const [currentPage, setCurrentPage] = useState(1);
-	const { getAllQr, data } = useqrCode((state) => ({
-		data: state.allQr,
-		getAllQr: state.getAllQr,
+	const { getLinkClient } = userLinkClient((state) => ({
+		getLinkClient: state.getLinkClient,
 	}));
 
-	useEffect(() => {
-		getAllQr();
-	}, [getAllQr]);
+	const getClientData = useCallback(async () => {
+		const id = match.params.id;
+		const data = await getLinkClient(id);
+		console.log(data.data.data.linkId);
+		setData(data.data.data.clientId);
+		setLink(data.data.data.linkId);
+	}, [getLinkClient, match.params.id]);
 
-	// function to change the check property of selected item
-	const onSelectChange = (e, id) => {
-		let newData = data;
-		let index = newData.findIndex((item) => item.id === id);
-		newData[index].checked = e.currentTarget.checked;
-		// setData([...newData]);
-	};
+	useEffect(() => {
+		getClientData();
+	}, [getClientData]);
 
 	const currentItems = data;
-	console.log(currentItems);
 
 	// Change Page
 	const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -52,7 +50,10 @@ export const ClientDetails = () => {
 				<BlockHead size="sm">
 					<BlockBetween>
 						<BlockHeadContent>
-							<BlockTitle page>Client list</BlockTitle>
+							<BlockTitle page>Client list of</BlockTitle>
+							<BlockTitle page>
+								<strong className="text-primary small">{link.link_title}</strong>
+							</BlockTitle>
 						</BlockHeadContent>
 					</BlockBetween>
 				</BlockHead>
@@ -60,109 +61,55 @@ export const ClientDetails = () => {
 					<DataTable className="card-stretch">
 						<DataTableBody>
 							<DataTableHead>
-								<DataTableRow className="nk-tb-col-check"></DataTableRow>
+								<DataTableRow className="nk-tb-col-check">no</DataTableRow>
 								<DataTableRow sm>
-									<span>browser name</span>
+									<span>IP</span>
 								</DataTableRow>
 								<DataTableRow>
-									<span className="d-none d-md-inline-block">browser version</span>
+									<span className="d-none d-md-inline-block">BROWSER & VERSION</span>
 								</DataTableRow>
 								<DataTableRow>
-									<span className="d-none d-md-inline-block">os</span>
+									<span className="d-none d-md-inline-block">OS & VERSION</span>
+								</DataTableRow>
+								<DataTableRow>
+									<span className="d-none d-md-inline-block">DEVICE</span>
+								</DataTableRow>
+								<DataTableRow>
+									<span className="d-none d-md-inline-block">CLICKED AT</span>
 								</DataTableRow>
 							</DataTableHead>
 							{currentItems.length > 0
-								? currentItems.map((item) => {
+								? currentItems.map((item, index) => {
 										return (
 											<DataTableItem key={item.id}>
 												<DataTableRow className="nk-tb-col-check">
-													<div className="custom-control custom-control-sm custom-checkbox notext">
-														<input
-															type="checkbox"
-															className="custom-control-input form-control"
-															defaultChecked={false}
-															id={item.id + "uid1"}
-															key={Math.random()}
-															onChange={(e) => onSelectChange(e, item.id)}
-														/>
-														<label className="custom-control-label" htmlFor={item.id + "uid1"}></label>
-													</div>
+													<span>{index + 1}</span>
 												</DataTableRow>
-												<DataTableRow sm className="d-flex align-items-center">
-													<img src={item.QRdata} alt="" width={70} className="mx-2" />
-													<span className="tb-product align-items-start d-flex flex-column">
-														<span className="title d-lg-none">
-															{item.linkId?.link_title ? item.linkId?.link_title.slice(0, 25) + "..." : "No title"}
-														</span>
-														<span className="title d-none  d-lg-block">
-															{item.linkId?.link_title ? item.linkId?.link_title.slice(0, 60) + "..." : "No title"}
-														</span>
-														<span className="tb-sub d-lg-none">{`${item.linkId?.protocol}://${item.linkId?.domain}/${
-															item.linkId?.backlink.slice(0, 25) + "..."
-														}`}</span>
-														<span className="tb-sub d-none  d-lg-block">{`${item.linkId?.protocol}://${
-															item.linkId?.domain
-														}/${item.linkId?.backlink.slice(0, 60) + "..."}`}</span>
+												<DataTableRow sm>
+													<span>
+														<Icon name="linux-server" className="h5"></Icon>
+														{item.client_ip}
 													</span>
 												</DataTableRow>
 												<DataTableRow>
-													<a
-														className="tb-lead d-none d-md-inline-block"
-														href={`localhost:8000/${item.linkId?.shorterLink}`}
-														target="_blank"
-														rel="noreferrer"
-													>
-														{`localhost:8000/${item.linkId?.shorterLink}`}
-													</a>
+													<span className="d-flex">
+														<Icon name={`b-${item.client_browser?.split(" ")[0].toLowerCase()}`} className="h5"></Icon>
+														{item.client_browser}
+													</span>
+												</DataTableRow>
+												<DataTableRow>
+													<span className="d-flex">
+														<Icon name={`${item.client_os?.split(" ")[0].toLowerCase()}`} className="h5"></Icon>
+														{item.client_os}
+													</span>
+												</DataTableRow>
+												<DataTableRow>
+													<span>{item.client_device}</span>
 												</DataTableRow>
 												<DataTableRow>
 													<span className="tb-sub d-none d-md-inline-block">
-														{new Date(item.linkId?.createdAt).toLocaleString()}
+														{new Date(item.createdAt).toLocaleString()}
 													</span>
-												</DataTableRow>
-												<DataTableRow className="nk-tb-col-tools">
-													<ul className="nk-tb-actions gx-1 my-n1">
-														<li className="mr-n1">
-															<UncontrolledDropdown>
-																<DropdownToggle
-																	tag="a"
-																	href="#more"
-																	onClick={(ev) => ev.preventDefault()}
-																	className="dropdown-toggle btn btn-icon btn-trigger"
-																>
-																	<Icon name="more-h"></Icon>
-																</DropdownToggle>
-																<DropdownMenu right>
-																	<ul className="link-list-opt no-bdr">
-																		<li>
-																			<DropdownItem>
-																				<Link
-																					to={`${process.env.PUBLIC_URL}/link-details/${item.linkId?.id}`}
-																					className=""
-																				>
-																					<Icon name="edit"></Icon>
-																					<span>Edit Product</span>
-																				</Link>
-																			</DropdownItem>
-																		</li>
-																		<li>
-																			<DropdownItem
-																				href="#remove"
-																				onClick={(ev) => {
-																					ev.preventDefault();
-																					// deleteProduct(item.id);
-																				}}
-																				className="ml-2"
-																			>
-																				<Icon name="trash"></Icon>
-																				<span>Remove Product</span>
-																			</DropdownItem>
-																		</li>
-																	</ul>
-																</DropdownMenu>
-															</UncontrolledDropdown>
-														</li>
-													</ul>
 												</DataTableRow>
 											</DataTableItem>
 										);
@@ -179,7 +126,7 @@ export const ClientDetails = () => {
 								/>
 							) : (
 								<div className="text-center d-flex flex-column">
-									<span className="text-silent">No Qr found</span>
+									<span className="text-silent">No Data found</span>
 									<div style={{ fontSize: 4 + "rem" }}>
 										<Icon name="inbox"></Icon>
 									</div>

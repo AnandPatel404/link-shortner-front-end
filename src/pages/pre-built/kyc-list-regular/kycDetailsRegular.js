@@ -35,8 +35,6 @@ const KycDetailsRegular = ({ match }) => {
 	useEffect(() => {
 		getData();
 	}, [getData]);
-
-	console.log(link);
 	return (
 		<React.Fragment>
 			<Head title="KYC Details - Regular"></Head>
@@ -60,7 +58,7 @@ const KycDetailsRegular = ({ match }) => {
 								</BlockDes>
 							</BlockHeadContent>
 							<BlockHeadContent>
-								<Link to={`${process.env.PUBLIC_URL}/`}>
+								<Link to={`${process.env.PUBLIC_URL}/all-shorten-links`}>
 									<Button color="light" outline className="bg-white d-none d-sm-inline-flex">
 										<Icon name="arrow-left"></Icon>
 										<span>Back</span>
@@ -125,7 +123,7 @@ const KycDetailsRegular = ({ match }) => {
 											<div className="data-col">
 												<div className="data-label">Starting Date</div>
 												<div className="data-value">
-													{link.staring_date ? new Date(link.staring_date).toLocaleString() : ""}
+													{link.staring_date ? new Date(link.staring_date).toLocaleString() : "-"}
 												</div>
 											</div>
 										</li>
@@ -133,7 +131,7 @@ const KycDetailsRegular = ({ match }) => {
 											<div className="data-col">
 												<div className="data-label">Expire Date</div>
 												<div className="data-value">
-													{link.expire_date ? new Date(link.expire_date).toLocaleString() : ""}
+													{link.expire_date ? new Date(link.expire_date).toLocaleString() : "-"}
 												</div>
 											</div>
 										</li>
