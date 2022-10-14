@@ -49,7 +49,12 @@ const RecentInvest = ({ links }) => {
 								<div className="user-card">
 									<div className="user-name d-flex align-items-center">
 										<spam className="tb-lead">{`localhost:8000/${item.shorterLink}`}</spam>
-										<Button onClick={() => navigator.clipboard.writeText(`localhost:8000/${item.shorterLink}`)}>copy</Button>
+										<Button
+											onClick={() => navigator.clipboard.writeText(`localhost:8000/${item.shorterLink}`)}
+											className="btn-dim mx-2 btn-primary px-3 py-1"
+										>
+											copy
+										</Button>
 									</div>
 								</div>
 							</DataTableRow>

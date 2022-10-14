@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import Content from "../../../layout/content/Content";
 import Head from "../../../layout/head/Head";
 import BrowserUser from "../../../components/partials/analytics/browser-users/BrowserUser";
+import SessionDevice from "../../../components/partials/analytics/session-devices/SessionDevice";
 import AudienceOverview from "../../../components/partials/analytics/audience-overview/AudienceOverview";
 import { Badge, Card } from "reactstrap";
 import {
@@ -22,6 +23,7 @@ import usersDashBoard from "../../../zustand/DashBoard/userDashBoard";
 
 const KycDetailsRegular = ({ match }) => {
 	const [link, setLink] = useState({});
+	const [qr, setQr] = useState({});
 	const { getLinkById } = usersDashBoard((state) => ({
 		getLinkById: state.getLinkById,
 	}));
@@ -29,7 +31,9 @@ const KycDetailsRegular = ({ match }) => {
 	const getData = useCallback(async () => {
 		const id = match.params.id;
 		const data = await getLinkById(id);
-		setLink(data.data.data);
+		console.log(data.data.data);
+		setLink(data.data.data.link);
+		setQr(data.data.data.isQrExist);
 	}, [getLinkById, match.params.id]);
 
 	useEffect(() => {
@@ -97,6 +101,12 @@ const KycDetailsRegular = ({ match }) => {
 											<div className="data-col">
 												<div className="data-label">back link</div>
 												<div className="data-value">{link.backlink}</div>
+											</div>
+										</li>
+										<li className="data-item">
+											<div className="data-col">
+												<div className="data-label">Qr</div>
+												<div className="data-value">{qr !== null ? "true" : "false"}</div>
 											</div>
 										</li>
 										<li className="data-item">
@@ -188,12 +198,41 @@ const KycDetailsRegular = ({ match }) => {
 										</li>
 										<li className="data-item">
 											<div className="data-col">
+												<div className="data-label">Click limit</div>
+												<div className="data-value text-break">{link.click_limit ? link.click_limit : "-"}</div>
+											</div>
+										</li>
+										<li className="data-item">
+											<div className="data-col">
+												<div className="data-label">Link redirection</div>
+												<div className="data-value text-break">{link.link_redirection ? link.link_redirection : "-"}</div>
+											</div>
+										</li>
+										<li className="data-item">
+											<div className="data-col">
 												<div className="data-label">Updated At</div>
 												<div className="data-value text-break">{new Date(link.updatedAt).toLocaleString()}</div>
 											</div>
 										</li>
 									</ul>
 								</Card>
+							</Col>
+							<Col lg="5">
+								<PreviewAltCard className="h-100" bodyclassName="h-100 stretch flex-column">
+									<SessionDevice />
+								</PreviewAltCard>
+							</Col>
+							<Col lg="7">
+								<PreviewAltCard className="h-100 d-flex justify-content-center align-items-center">
+									{qr !== null && qr.length !== 0 ? (
+										<img src={qr.QRdata} alt="qr" width={350} />
+									) : (
+										<span className="d-flex justify-content-center align-items-center flex-column">
+											<Icon name="qr" className="h2" />
+											no qr find
+										</span>
+									)}
+								</PreviewAltCard>
 							</Col>
 							<Col lg="12">
 								<PreviewAltCard className="h-100">
