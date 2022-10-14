@@ -2,16 +2,14 @@ import React, { useState } from "react";
 import Head from "../../../layout/head/Head";
 import Content from "../../../layout/content/Content";
 import Dropzone from "react-dropzone";
-// import DatePicker from "react-datepicker";
-import { Block, BlockHead, BlockBetween, BlockHeadContent, BlockTitle, BlockDes, Button, ProjectCard, Col, Row } from "../../../components/Component";
+import { Block, BlockHead, BlockBetween, BlockHeadContent, BlockTitle, BlockDes, Button, Col, Row, Icon } from "../../../components/Component";
 import { FormGroup, Form, ModalBody, Modal } from "reactstrap";
 import { useForm } from "react-hook-form";
 import useqrCode from "../../../zustand/qrCode/qrCode";
 import userDashBoard from "../../../zustand/DashBoard/userDashBoard";
-import qr from "../../../images/svg/qr.svg";
 import { Link } from "react-router-dom";
 
-const ProjectCardPage = () => {
+const ProjectCardPage = ({ sm, updateSm }) => {
 	const [newID, setNewId] = useState("");
 	const { createQrs, checkQrLink } = useqrCode((state) => ({
 		createQrs: state.createQr,
@@ -27,13 +25,6 @@ const ProjectCardPage = () => {
 		color: false,
 	});
 	const [colorCodes, setColorsCode] = useState("#000000");
-
-	// const [deadLine, setDate] = useState(false);
-	// const [dates, setDates] = useState("");
-
-	// const setDeadlines = () => {
-	// 	setDate(!deadLine);
-	// };
 
 	const [image, setImage] = useState(false);
 	const showlogoBOx = () => {
@@ -90,31 +81,31 @@ const ProjectCardPage = () => {
 							<BlockTitle page>QR </BlockTitle>
 							<BlockDes className="text-soft">make your link as qr</BlockDes>
 						</BlockHeadContent>
+						<BlockHeadContent className="align-self-start d-lg-none">
+							<Button className={`toggle btn btn-icon btn-trigger mt-n1 ${sm ? "active" : ""}`} onClick={() => updateSm(!sm)}>
+								<Icon name="menu-alt-r"></Icon>
+							</Button>
+						</BlockHeadContent>
 					</BlockBetween>
 				</BlockHead>
 
 				<Block>
-					<ProjectCard>
-						<Row>
-							<Col md="6" className="d-flex justify-content-center">
-								<img src={qr} alt="" />
-							</Col>
-							<Col md="6" className="d-flex align-items-center justify-content-center">
-								{subscription.planId?.qr_link === true ? (
-									<Button color="primary" size="xl" onClick={() => setModal({ edit: true })}>
-										Create Qr
-									</Button>
-								) : (
-									<BlockHeadContent>
-										<BlockTitle page>Upgrade your plan to create your qr link</BlockTitle>
-										<Link className=" my-2 btn btn-primary" to={process.env.PUBLIC_URL + "/all-shorten-links"}>
-											click here to upgrade
-										</Link>
-									</BlockHeadContent>
-								)}
-							</Col>
-						</Row>
-					</ProjectCard>
+					<Row>
+						<Col md="12" className="d-flex align-items-center justify-content-center">
+							{subscription.planId?.qr_link === true ? (
+								<Button color="primary" size="xl" onClick={() => setModal({ edit: true })}>
+									Create Qr
+								</Button>
+							) : (
+								<BlockHeadContent>
+									<BlockTitle page>Upgrade your plan to create your qr link</BlockTitle>
+									<Link className=" my-2 btn btn-primary" to={process.env.PUBLIC_URL + "/all-shorten-links"}>
+										click here to upgrade
+									</Link>
+								</BlockHeadContent>
+							)}
+						</Col>
+					</Row>
 				</Block>
 				<Modal isOpen={modal.edit} toggle={() => setModal({ edit: false })} className="modal-dialog-centered" size="lg">
 					<ModalBody>

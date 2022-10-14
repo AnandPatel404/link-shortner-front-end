@@ -111,14 +111,26 @@ const FullShort = () => {
 						<div className="card-inner card-inner-lg">
 							{sm && mobileView && <div className="toggle-overlay" onClick={() => updateSm(!sm)}></div>}
 							<Switch>
-								<Route exact path={`${process.env.PUBLIC_URL}/create-with-custom-domain`} render={() => <CoustomDomain />}></Route>
-								<Route exact path={`${process.env.PUBLIC_URL}/create-expiration-link`} render={() => <Expirationlink />}></Route>
+								<Route
+									exact
+									path={`${process.env.PUBLIC_URL}/create-with-custom-domain`}
+									render={() => <CoustomDomain updateSm={updateSm} sm={sm} />}
+								></Route>
+								<Route
+									exact
+									path={`${process.env.PUBLIC_URL}/create-expiration-link`}
+									render={() => <Expirationlink updateSm={updateSm} sm={sm} />}
+								></Route>
 								<Route
 									exact
 									path={`${process.env.PUBLIC_URL}/password-protected-link`}
-									render={() => <PasswordProtectedLink />}
+									render={() => <PasswordProtectedLink updateSm={updateSm} sm={sm} />}
 								></Route>
-								<Route exact path={`${process.env.PUBLIC_URL}/project-card`} render={() => <ProjectCardPage />}></Route>
+								<Route
+									exact
+									path={`${process.env.PUBLIC_URL}/project-card`}
+									render={() => <ProjectCardPage updateSm={updateSm} sm={sm} />}
+								></Route>
 							</Switch>
 						</div>
 					</div>
