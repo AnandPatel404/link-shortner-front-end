@@ -41,16 +41,14 @@ const RecentInvest = ({ links }) => {
 							<DataTableRow>
 								<Link to={`${process.env.PUBLIC_URL}/link/${item.id}`}>
 									<div style={{ cursor: "pointer" }}>
-										<h6 className="my-1">{`${item.protocol}://${item.domain}/${item.backlink.slice(0, 20) + "..."}`}</h6>
+										<h6 className="my-1">{`${item.protocol}://${item.domain}/${item.backlink?.slice(0, 20) + "..."}`}</h6>
 									</div>
 								</Link>
 							</DataTableRow>
 							<DataTableRow size="sm">
 								<div className="user-card">
 									<div className="user-name d-flex align-items-center">
-										<a className="tb-lead" href={`localhost:8000/${item.shorterLink}`} target="_blank" rel="noreferrer">
-											{`localhost:8000/${item.shorterLink}`}
-										</a>
+										<spam className="tb-lead">{`localhost:8000/${item.shorterLink}`}</spam>
 										<Button onClick={() => navigator.clipboard.writeText(`localhost:8000/${item.shorterLink}`)}>copy</Button>
 									</div>
 								</div>

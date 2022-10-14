@@ -15,9 +15,8 @@ import {
 	DataTableItem,
 	PaginationComponent,
 } from "../../../components/Component";
-import { Card, DropdownItem, UncontrolledDropdown, DropdownMenu, DropdownToggle } from "reactstrap";
+import { Card, DropdownItem, UncontrolledDropdown, DropdownMenu, DropdownToggle, Badge } from "reactstrap";
 import userDashBoard from "../../../zustand/DashBoard/userDashBoard";
-import { errorToast } from "../../../pages/components/misc/ReactToastify";
 import { Link } from "react-router-dom";
 
 const ProductList = () => {
@@ -26,7 +25,7 @@ const ProductList = () => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [itemPerPage] = useState(10);
 
-	const { data, getUserAllShortenLink, removeLink, deleteMany, AllLinksLength } = userDashBoard((state) => ({
+	const { data, getUserAllShortenLink, removeLink, AllLinksLength } = userDashBoard((state) => ({
 		data: state.allLinks,
 		getUserAllShortenLink: state.getUserAllShortenLink,
 		removeLink: state.removeLink,
@@ -52,18 +51,6 @@ const ProductList = () => {
 		getUserAllShortenLink(params);
 	}, [getUserAllShortenLink, currentPage, onSearchText]);
 
-	let linkId = [];
-	const onSelectChange = (e, id) => {
-		linkId.push(id);
-	};
-
-	const selectorDeleteProduct = async () => {
-		if (linkId.length === 0) {
-			return errorToast(`Please select the item before click ❌❌`, "Error");
-		}
-		await deleteMany(linkId);
-		linkId = [];
-	};
 	const currentItems = data;
 
 	// Change Page
@@ -118,60 +105,26 @@ const ProductList = () => {
 							<div className="card-inner p-0">
 								<DataTableBody>
 									<DataTableHead>
-										<DataTableRow className="nk-tb-col-check"></DataTableRow>
 										<DataTableRow sm>
-											<span>title</span>
+											<span>url & title</span>
 										</DataTableRow>
 										<DataTableRow>
-											<span className="d-none d-md-inline-block">shorten</span>
+											<span className="d-none d-md-inline-block">short-link</span>
 										</DataTableRow>
 										<DataTableRow>
-											<span className="d-none d-md-inline-block">time&date</span>
+											<span className="d-none d-md-inline-block">createdAt</span>
 										</DataTableRow>
-										<DataTableRow className="nk-tb-col-tools">
-											<ul className="nk-tb-actions gx-1 my-n1">
-												<li className="mr-n1">
-													<UncontrolledDropdown>
-														<DropdownToggle
-															tag="a"
-															href="#toggle"
-															onClick={(ev) => ev.preventDefault()}
-															className="dropdown-toggle btn btn-icon btn-trigger"
-														>
-															<Icon name="more-h"></Icon>
-														</DropdownToggle>
-														<DropdownMenu right>
-															<ul className="link-list-opt no-bdr">
-																<li>
-																	<DropdownItem tag="a" href="#remove" onClick={selectorDeleteProduct}>
-																		<Icon name="trash"></Icon>
-																		<span>Remove Selected</span>
-																	</DropdownItem>
-																</li>
-															</ul>
-														</DropdownMenu>
-													</UncontrolledDropdown>
-												</li>
-											</ul>
+										<DataTableRow>
+											<span className="d-none d-md-inline-block">status</span>
+										</DataTableRow>
+										<DataTableRow>
+											<span className="d-none d-md-inline-block"></span>
 										</DataTableRow>
 									</DataTableHead>
 									{currentItems.length > 0
 										? currentItems.map((item) => {
 												return (
 													<DataTableItem key={item.id}>
-														<DataTableRow className="nk-tb-col-check">
-															<div className="custom-control custom-control-sm custom-checkbox notext">
-																<input
-																	type="checkbox"
-																	className="custom-control-input form-control"
-																	defaultChecked={false}
-																	id={item.id + "uid1"}
-																	key={Math.random()}
-																	onChange={(e) => onSelectChange(e, item.id)}
-																/>
-																<label className="custom-control-label" htmlFor={item.id + "uid1"}></label>
-															</div>
-														</DataTableRow>
 														<DataTableRow sm>
 															<Link to={`${process.env.PUBLIC_URL}/link/${item.id}`}>
 																<span className="tb-product align-items-start d-flex flex-column">
@@ -182,10 +135,10 @@ const ProductList = () => {
 																		{item.link_title ? item.link_title.slice(0, 60) + "..." : "No title"}
 																	</span>
 																	<span className="tb-sub d-lg-none">{`${item.protocol}://${item.domain}/${
-																		item.backlink.slice(0, 25) + "..."
+																		item.backlink?.slice(0, 25) + "..."
 																	}`}</span>
 																	<span className="tb-sub d-none  d-lg-block">{`${item.protocol}://${item.domain}/${
-																		item.backlink.slice(0, 60) + "..."
+																		item.backlink?.slice(0, 60) + "..."
 																	}`}</span>
 																</span>
 															</Link>
@@ -206,6 +159,15 @@ const ProductList = () => {
 															<span className="tb-sub d-none d-md-inline-block">
 																{new Date(item.createdAt).toLocaleString()}
 															</span>
+														</DataTableRow>
+														<DataTableRow>
+															<Badge
+																size="sm"
+																color={item.link_status === "Enable" ? "outline-success" : "outline-danger"}
+																className="badge-dim"
+															>
+																{item.link_status}
+															</Badge>
 														</DataTableRow>
 														<DataTableRow className="nk-tb-col-tools">
 															<ul className="nk-tb-actions gx-1 my-n1">

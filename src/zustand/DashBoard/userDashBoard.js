@@ -134,54 +134,6 @@ const userActivity = create((set, get) => ({
 				errorToast(`${err.response.data.message} ❌❌`, "Error");
 			});
 	},
-
-	deleteMany: async (data) => {
-		const resolvePromise = new Promise((resolve) =>
-			resolve(
-				axios({
-					method: "delete",
-					url: `short/delete-many`,
-					data: {
-						linkId: data,
-					},
-				})
-			)
-		);
-		toast.promise(resolvePromise, {
-			pending: {
-				render() {
-					return "Links is deleting";
-				},
-				icon: "🤖",
-			},
-			success: {
-				render({ data }) {
-					return `${data.data.message}`;
-				},
-				icon: "🟢",
-				position: "top-center",
-				autoClose: true,
-				hideProgressBar: true,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: true,
-				progress: false,
-			},
-			error: {
-				render({ data }) {
-					return `${data.response.data.message}`;
-				},
-				icon: "❌",
-				position: "top-center",
-				autoClose: true,
-				hideProgressBar: true,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: true,
-				progress: false,
-			},
-		});
-	},
 	updateLink: async (data, linkId, history) => {
 		await axios({
 			method: "patch",
