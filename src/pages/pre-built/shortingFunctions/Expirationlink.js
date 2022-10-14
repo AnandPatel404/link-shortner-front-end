@@ -3,40 +3,13 @@ import Content from "../../../layout/content/Content";
 import Head from "../../../layout/head/Head";
 import DatePicker from "react-datepicker";
 import { useForm } from "react-hook-form";
-import { FormGroup, Input, Row, Col, Form } from "reactstrap";
+import { FormGroup, Row, Col, Form } from "reactstrap";
 import { Block, BlockHead, BlockHeadContent, BlockTitle, PreviewCard, Button } from "../../../components/Component";
-import userDomain from "../../../zustand/domainStuff/domain";
-import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
 function Expirationlink() {
-	const [doamins, setDomains] = useState("shorterME.link/");
 	const [rangeStart, setRangeStart] = useState(new Date());
 	const [rangeEnd, setRangeEnd] = useState();
-	const { domains, getAllDomain } = userDomain((state) => ({
-		domains: state.domains,
-		getAllDomain: state.getAllDomain,
-	}));
 
-	const { createExpirationLink } = userFunctionalityLink((state) => ({
-		createExpirationLink: state.createExpirationLink,
-	}));
-
-	const getAllDomains = useCallback(() => {
-		getAllDomain();
-	}, [getAllDomain]);
-
-	useEffect(() => {
-		getAllDomains();
-	}, [getAllDomains]);
-
-	const s = async (sData) => {
-		const data = {
-			link: sData.link,
-			domain: doamins,
-			staringDate: rangeStart,
-			expireDate: rangeEnd,
-		};
-		await createExpirationLink(data);
-	};
+	const s = async (sData) => {};
 
 	const { handleSubmit, register } = useForm();
 	return (
@@ -53,61 +26,7 @@ function Expirationlink() {
 
 				<Block size="lg">
 					<PreviewCard>
-						<div className="card-head">
-							<h5 className="card-title">Link Setting</h5>
-						</div>
 						<Form className="gy-3" onSubmit={handleSubmit(s)}>
-							<Row className="g-3 align-center">
-								<Col lg="5">
-									<FormGroup>
-										<label className="form-label" htmlFor="site-name">
-											Link
-										</label>
-										<span className="form-note">Specify the link you want short</span>
-									</FormGroup>
-								</Col>
-								<Col lg="7">
-									<FormGroup>
-										<div className="form-control-wrap">
-											<input
-												type="text"
-												id="link"
-												name="link"
-												className="form-control"
-												ref={register({ required: "This field is required" })}
-											/>
-										</div>
-									</FormGroup>
-								</Col>
-							</Row>
-							<Row className="g-3 align-center">
-								<Col lg="5">
-									<FormGroup>
-										<label className="form-label">Choose your domain</label>
-										<span className="form-note">Specify the domain of your link.</span>
-									</FormGroup>
-								</Col>
-								<Col lg="7">
-									<FormGroup>
-										<div className="form-control-wrap">
-											<div className="form-control-select">
-												<Input type="select" onChange={(e) => setDomains(e.target.value)}>
-													<option value="shorterME.link/">shorterME.link/</option>
-													{domains.length > 0 ? (
-														domains.map((res) => (
-															<option value={res.domain} key={res.id}>
-																{res.domain}/
-															</option>
-														))
-													) : (
-														<option value="shorterME.link/">shorterME.link/</option>
-													)}
-												</Input>
-											</div>
-										</div>
-									</FormGroup>
-								</Col>
-							</Row>
 							<Row className="g-3 align-center">
 								<Col lg="5">
 									<FormGroup>

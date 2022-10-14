@@ -1,4 +1,3 @@
-// import Homepage from "../pages/Homepage";
 import React, { Suspense, useLayoutEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import { RedirectAs404 } from "../utils/Utils";
@@ -58,7 +57,6 @@ import EmailTemplate from "../pages/components/email-template/Email";
 import NioIconPage from "../pages/components/crafted-icons/NioIcon";
 import SVGIconPage from "../pages/components/crafted-icons/SvgIcons";
 
-import ProjectCardPage from "../pages/pre-built/projects/ProjectCard";
 import ProjectListPage from "../pages/pre-built/projects/ProjectList";
 import UserProfileLayout from "../pages/pre-built/user-manage/UserProfileLayout";
 import KycListRegular from "../pages/pre-built/kyc-list-regular/KycListRegular";
@@ -88,8 +86,6 @@ import KnobPreview from "../pages/components/charts/KnobPreview";
 
 import ChangePassword from "../pages/auth/changePassword";
 import Editlink from "../pages/pre-built/editLink/editlink";
-// import CreateWithCustomDomain from "../pages/pre-built/shortingFunctions/shortingFuncationality";
-// import Expirationlink from "../pages/pre-built/shortingFunctions/Expirationlink";
 import AddDomain from "../pages/pre-built/domain/addDomain";
 import SetErrorPage from "../pages/pre-built/errorPage/SetErrorPage";
 import ClientDetails from "../pages/pre-built/products/ClientDetails";

@@ -7,7 +7,7 @@ import ProjectCardPage from "../projects/ProjectCard";
 import { Route, Switch, Link } from "react-router-dom";
 import { Icon } from "../../../components/Component";
 import { Card } from "reactstrap";
-// import WorkSvg from "../../../images/svg/work.svg";
+import WorkSvg from "../../../images/svg/www.svg";
 
 const FullShort = () => {
 	const [sm, updateSm] = useState(false);
@@ -86,7 +86,7 @@ const FullShort = () => {
 												to={`${process.env.PUBLIC_URL}/project-card`}
 												className={window.location.pathname === `${process.env.PUBLIC_URL}/project-card` ? "active" : ""}
 											>
-												<Icon name="clock"></Icon>
+												<Icon name="qr"></Icon>
 												<span>Qr</span>
 											</Link>
 										</li>
@@ -103,10 +103,10 @@ const FullShort = () => {
 										</li> */}
 									</ul>
 								</div>
+								<div className="d-flex justify-content-center mt-5 pt-5">
+									<img src={WorkSvg} alt="work" width={250} />
+								</div>
 							</div>
-							{/* <div className="d-flex justify-content-center mt-5 pt-5">
-								<img src={WorkSvg} alt="work" width={250} />
-							</div> */}
 						</div>
 						<div className="card-inner card-inner-lg">
 							{sm && mobileView && <div className="toggle-overlay" onClick={() => updateSm(!sm)}></div>}
