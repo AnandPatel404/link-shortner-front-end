@@ -17,6 +17,16 @@ const menu = [
 		text: "Pricing",
 		link: "/pricing-table",
 	},
+	{
+		icon: "puzzle",
+		text: "Create full link",
+		link: "/create-full-link",
+	},
+	{
+		icon: "notes-alt",
+		text: "QR List",
+		link: "/project-list",
+	},
 	// {
 	// 	icon: "sign-dollar",
 	// 	text: "Trans List",
@@ -46,61 +56,6 @@ const menu = [
 	// 		},
 	// 	],
 	// },
-	{
-		heading: "Sort link pro",
-	},
-	{
-		icon: "brick-fill",
-		text: "Short with functionality",
-		active: false,
-		subMenu: [
-			{
-				icon: "puzzle-fill",
-				text: "Create with custom domain",
-				link: "/create-with-custom-domain",
-			},
-			{
-				icon: "clock-fill",
-				text: "Create Expiration link",
-				link: "/create-expiration-link",
-			},
-			// {
-			// 	icon: "bulb-fill",
-			// 	text: "Branded link",
-			// 	link: "/full-short",
-			// },
-			// {
-			// 	icon: "clock-fill",
-			// 	text: "Schedule link",
-			// 	link: "/full-short",
-			// },
-			// {
-			// 	icon: "shuffle",
-			// 	text: "link re-direction",
-			// 	link: "/full-short",
-			// },
-		],
-	},
-	{
-		heading: "QR-link",
-	},
-	{
-		icon: "qr",
-		text: "QR-link-generation",
-		active: false,
-		subMenu: [
-			{
-				icon: "scan",
-				text: "Generate QR",
-				link: "/project-card",
-			},
-			{
-				icon: "notes-alt",
-				text: "QR List",
-				link: "/project-list",
-			},
-		],
-	},
 	{
 		heading: "UP-DOWNS",
 	},
