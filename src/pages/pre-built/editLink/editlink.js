@@ -16,8 +16,8 @@ function Editlink({ match, history }) {
 	const getLink = useCallback(async () => {
 		const id = match.params.id;
 		const data = await getLinkById(id);
-		SetData(data.data.data);
-		setStatus(data.data.data.link_status);
+		SetData(data.data.data.link);
+		setStatus(data.data.data.link.link_status);
 	}, [getLinkById, match.params.id]);
 	useEffect(() => {
 		getLink();

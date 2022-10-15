@@ -5,6 +5,7 @@ import { messageToast, errorToast } from "../../pages/components/misc/ReactToast
 
 const userFunctionalityLink = create((set, get) => ({
 	SingleLink: {},
+	checkForBrandedLink: "",
 	createLink: async (data) => {
 		await axios({
 			method: "post",
@@ -119,6 +120,39 @@ const userFunctionalityLink = create((set, get) => ({
 			},
 		});
 	},
+
+	checkBrandedLinkIsExist: async (data) => {
+		await axios({
+			url: "short/check-branded-link",
+			method: "post",
+			data,
+		})
+			.then((res) => {
+				if (res.data.status === "Success") {
+					set({ checkForBrandedLink: res.data.data });
+				}
+			})
+			.catch((err) => {
+				errorToast(`${err.response.data.message} ❌❌`, "Error");
+			});
+	},
+	createBrandedLink: async (data) => {
+		await axios({
+			url: "short/create-branded-link",
+			method: "post",
+			data,
+		})
+			.then((res) => {
+				if (res.data.status === "Success") {
+					messageToast(`${res.data.message} ✅✅`, res.data.status);
+					set({ SingleLink: res.data.data });
+				}
+			})
+			.catch((err) => {
+				errorToast(`${err.response.data.message} ❌❌`, "Error");
+			});
+	},
+
 	applyChanges: async () => {
 		messageToast(`Changes are applied ✅✅`, "Success");
 		set({ SingleLink: {} });

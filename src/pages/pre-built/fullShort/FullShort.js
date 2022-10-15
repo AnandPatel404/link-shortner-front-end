@@ -5,6 +5,7 @@ import PasswordProtectedLink from "../shortingFunctions/PasswordProtectedLink";
 import Expirationlink from "../shortingFunctions/Expirationlink";
 import ProjectCardPage from "../projects/ProjectCard";
 import ShortLink from "../shortingFunctions/shortLink";
+import BrandedLink from "../shortingFunctions/BrandedLink";
 import { Route, Switch, Link } from "react-router-dom";
 import { Icon, BlockTitle, Button } from "../../../components/Component";
 import { Card } from "reactstrap";
@@ -64,7 +65,7 @@ const FullShort = () => {
 													window.location.pathname === `${process.env.PUBLIC_URL}/create-or-find-link` ? "active" : ""
 												}
 											>
-												<Icon name="list-thumb-alt"></Icon>
+												<Icon name="link-alt"></Icon>
 												<span>Create or find link</span>
 											</Link>
 										</li>
@@ -77,6 +78,15 @@ const FullShort = () => {
 											>
 												<Icon name="list-thumb-alt"></Icon>
 												<span>Custom domain</span>
+											</Link>
+										</li>
+										<li onClick={() => updateSm(false)}>
+											<Link
+												to={`${process.env.PUBLIC_URL}/branded-link`}
+												className={window.location.pathname === `${process.env.PUBLIC_URL}/branded-link` ? "active" : ""}
+											>
+												<Icon name="info-i"></Icon>
+												<span>Branded-link</span>
 											</Link>
 										</li>
 										<li onClick={() => updateSm(false)}>
@@ -154,6 +164,11 @@ const FullShort = () => {
 									exact
 									path={`${process.env.PUBLIC_URL}/create-with-custom-domain`}
 									render={() => <CoustomDomain updateSm={updateSm} sm={sm} />}
+								></Route>
+								<Route
+									exact
+									path={`${process.env.PUBLIC_URL}/branded-link`}
+									render={() => <BrandedLink updateSm={updateSm} sm={sm} />}
 								></Route>
 								<Route
 									exact
