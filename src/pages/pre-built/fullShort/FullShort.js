@@ -4,6 +4,7 @@ import CoustomDomain from "../shortingFunctions/shortingFuncationality";
 import PasswordProtectedLink from "../shortingFunctions/PasswordProtectedLink";
 import Expirationlink from "../shortingFunctions/Expirationlink";
 import ProjectCardPage from "../projects/ProjectCard";
+import ShortLink from "../shortingFunctions/shortLink";
 import { Route, Switch, Link } from "react-router-dom";
 import { Icon } from "../../../components/Component";
 import { Card } from "reactstrap";
@@ -48,6 +49,17 @@ const FullShort = () => {
 							<div className="card-inner-group">
 								<div className="card-inner p-0">
 									<ul className="link-list-menu">
+										<li onClick={() => updateSm(false)}>
+											<Link
+												to={`${process.env.PUBLIC_URL}/create-or-find-link`}
+												className={
+													window.location.pathname === `${process.env.PUBLIC_URL}/create-or-find-link` ? "active" : ""
+												}
+											>
+												<Icon name="list-thumb-alt"></Icon>
+												<span>Create or find link</span>
+											</Link>
+										</li>
 										<li onClick={() => updateSm(false)}>
 											<Link
 												to={`${process.env.PUBLIC_URL}/create-with-custom-domain`}
@@ -111,6 +123,11 @@ const FullShort = () => {
 						<div className="card-inner card-inner-lg">
 							{sm && mobileView && <div className="toggle-overlay" onClick={() => updateSm(!sm)}></div>}
 							<Switch>
+								<Route
+									exact
+									path={`${process.env.PUBLIC_URL}/create-or-find-link`}
+									render={() => <ShortLink updateSm={updateSm} sm={sm} />}
+								></Route>
 								<Route
 									exact
 									path={`${process.env.PUBLIC_URL}/create-with-custom-domain`}

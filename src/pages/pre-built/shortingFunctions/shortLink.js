@@ -1,32 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Content from "../../../layout/content/Content";
 import Head from "../../../layout/head/Head";
 import { useForm } from "react-hook-form";
-import { FormGroup, Input, Row, Col, Form } from "reactstrap";
-import { Block, BlockHead, BlockHeadContent, BlockTitle, BlockDes, Button, Icon, BlockBetween } from "../../../components/Component";
-import userDomain from "../../../zustand/domainStuff/domain";
-function ShortingFuncationality({ sm, updateSm }) {
-	const [doamins, setDomains] = useState("shorterME.link/");
+import { FormGroup, Row, Col, Form } from "reactstrap";
+import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetween } from "../../../components/Component";
+function ShortLink({ sm, updateSm }) {
 	const [linkStatus, setLinkStatus] = useState("Enable");
-	const { domains, getAllDomain, createLinkWithCustomDomain } = userDomain((state) => ({
-		domains: state.domains,
-		getAllDomain: state.getAllDomain,
-		createLinkWithCustomDomain: state.createLinkWithCustomDomain,
-	}));
 
-	useEffect(() => {
-		getAllDomain();
-	}, [getAllDomain]);
-
-	const s = async (sData) => {
-		const data = {
-			link: sData.link,
-			domain: doamins,
-			link_status: linkStatus,
-		};
-		await createLinkWithCustomDomain(data);
-	};
-
+	const s = async (sData) => {};
 	const set = (e) => {
 		if (linkStatus === "Enable") {
 			setLinkStatus("Disable");
@@ -44,11 +25,8 @@ function ShortingFuncationality({ sm, updateSm }) {
 					<BlockBetween>
 						<BlockHeadContent>
 							<BlockTitle tag="h2" className="fw-normal">
-								Create a Link with custom domain
+								Create a Link or find link
 							</BlockTitle>
-							<BlockDes>
-								<p className="lead">create a link with your domain and your brand</p>
-							</BlockDes>
 						</BlockHeadContent>
 						<BlockHeadContent className="align-self-start d-lg-none">
 							<Button className={`toggle btn btn-icon btn-trigger mt-n1 ${sm ? "active" : ""}`} onClick={() => updateSm(!sm)}>
@@ -59,17 +37,14 @@ function ShortingFuncationality({ sm, updateSm }) {
 				</BlockHead>
 
 				<Block size="lg">
-					<div className="card-head">
-						<h5 className="card-title">Link Setting</h5>
-					</div>
 					<Form className="gy-3" onSubmit={handleSubmit(s)}>
 						<Row className="g-3 align-center">
 							<Col lg="5">
 								<FormGroup>
 									<label className="form-label" htmlFor="site-name">
-										Link
+										Url
 									</label>
-									<span className="form-note">Specify the link you want short</span>
+									<span className="form-note">Specify the link</span>
 								</FormGroup>
 							</Col>
 							<Col lg="7">
@@ -129,35 +104,6 @@ function ShortingFuncationality({ sm, updateSm }) {
 								</FormGroup>
 							</Col>
 						</Row>
-						<Row className="g-3 align-center">
-							<Col lg="5">
-								<FormGroup>
-									<label className="form-label">Choose your domain</label>
-									<span className="form-note">Specify the domain of your link.</span>
-								</FormGroup>
-							</Col>
-							<Col lg="7">
-								<FormGroup>
-									<div className="form-control-wrap">
-										<div className="form-control-select">
-											<Input type="select" onChange={(e) => setDomains(e.target.value)}>
-												<option value="shorterME.link/">shorterME.link/</option>
-												{domains.length > 0 ? (
-													domains.map((res) => (
-														<option value={res.domain} key={res.id}>
-															{res.domain}/
-														</option>
-													))
-												) : (
-													<option value="shorterME.link/">shorterME.link/</option>
-												)}
-											</Input>
-										</div>
-									</div>
-								</FormGroup>
-							</Col>
-						</Row>
-
 						<Row className="g-3">
 							<Col lg="7" className="offset-lg-5">
 								<FormGroup className="mt-2">
@@ -174,4 +120,4 @@ function ShortingFuncationality({ sm, updateSm }) {
 	);
 }
 
-export default ShortingFuncationality;
+export default ShortLink;

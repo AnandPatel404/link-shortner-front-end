@@ -120,6 +120,7 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/create-expiration-link`} component={FullShort}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/password-protected-link`} component={FullShort}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/project-card`} component={FullShort}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/create-or-find-link`} component={FullShort}></Route>
 
 				{/*Pre-built Pages*/}
 
