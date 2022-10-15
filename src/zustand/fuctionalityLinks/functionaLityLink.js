@@ -95,6 +95,13 @@ const userFunctionalityLink = create((set, get) => ({
 					return `${data.data.message}`;
 				},
 				icon: "🟢",
+				position: "top-center",
+				autoClose: true,
+				hideProgressBar: true,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: false,
 			},
 			error: {
 				render({ data }) {
@@ -102,6 +109,13 @@ const userFunctionalityLink = create((set, get) => ({
 					return `${data.response.data.message}`;
 				},
 				icon: "❌",
+				position: "top-center",
+				autoClose: true,
+				hideProgressBar: true,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: false,
 			},
 		});
 	},
