@@ -1,5 +1,6 @@
 import create from "zustand";
 import axios from "../../axios/axiosconfig";
+import { toast } from "react-toastify";
 import { messageToast, errorToast } from "../../pages/components/misc/ReactToastify";
 
 const userFunctionalityLink = create((set, get) => ({
@@ -69,6 +70,41 @@ const userFunctionalityLink = create((set, get) => ({
 			});
 	},
 
+	createQr: async (data, linkId) => {
+		const resolvePromise = new Promise((resolve) =>
+			resolve(
+				axios({
+					url: `qr-link/${linkId}`,
+					headers: {
+						"Content-Type": "multipart/form-data",
+					},
+					method: "post",
+					data,
+				})
+			)
+		);
+		toast.promise(resolvePromise, {
+			pending: {
+				render() {
+					return "Qr is in process";
+				},
+				icon: "🤖",
+			},
+			success: {
+				render({ data }) {
+					return `${data.data.message}`;
+				},
+				icon: "🟢",
+			},
+			error: {
+				render({ data }) {
+					console.log(data);
+					return `${data.response.data.message}`;
+				},
+				icon: "❌",
+			},
+		});
+	},
 	applyChanges: async () => {
 		messageToast(`Changes are applied ✅✅`, "Success");
 		set({ SingleLink: {} });

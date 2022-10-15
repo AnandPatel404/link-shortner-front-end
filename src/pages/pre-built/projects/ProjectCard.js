@@ -2,36 +2,20 @@ import React, { useState } from "react";
 import Head from "../../../layout/head/Head";
 import Content from "../../../layout/content/Content";
 import Dropzone from "react-dropzone";
-import { Block, BlockHead, BlockBetween, BlockHeadContent, BlockTitle, BlockDes, Button, Col, Row, Icon } from "../../../components/Component";
-import { FormGroup, Form, ModalBody, Modal } from "reactstrap";
+import { Block, BlockHead, BlockBetween, BlockHeadContent, BlockTitle, Row, Button, Col, Icon } from "../../../components/Component";
+import { FormGroup, Form } from "reactstrap";
 import { useForm } from "react-hook-form";
-import useqrCode from "../../../zustand/qrCode/qrCode";
-import userDashBoard from "../../../zustand/DashBoard/userDashBoard";
-import { Link } from "react-router-dom";
+import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
+import { errorToast } from "../../../pages/components/misc/ReactToastify";
 
 const ProjectCardPage = ({ sm, updateSm }) => {
-	const [newID, setNewId] = useState("");
-	const { createQrs, checkQrLink } = useqrCode((state) => ({
-		createQrs: state.createQr,
-		checkQrLink: state.checkQrLink,
-	}));
-
-	const { subscription } = userDashBoard((state) => ({
-		subscription: state.subscription,
-	}));
-
-	const [modal, setModal] = useState({
-		edit: false,
-		color: false,
-	});
 	const [colorCodes, setColorsCode] = useState("#000000");
-
-	const [image, setImage] = useState(false);
-	const showlogoBOx = () => {
-		setImage(!image);
-	};
-
 	const [files, setFiles] = useState([]);
+
+	const { createQr, SingleLink } = userFunctionalityLink((state) => ({
+		createQr: state.createQr,
+		SingleLink: state.SingleLink,
+	}));
 
 	const handleDropChange = async (acceptedFiles, set) => {
 		set(
@@ -47,39 +31,37 @@ const ProjectCardPage = ({ sm, updateSm }) => {
 		setColorsCode(e);
 	};
 
-	const onFormSubmit = async (sData) => {
-		console.log("this is running");
-		const d = await checkQrLink(sData, setModal);
-		setNewId(d.data.id);
-	};
+	const onSubmit = async () => {
+		if (!SingleLink || !SingleLink.id || SingleLink.length === 0) {
+			return errorToast("Please select link first", "Error");
+		}
 
-	const onsecondSubmit = async () => {
 		if (files.length > 0) {
 			const data = new FormData();
 			data.append("qrColor", colorCodes.toString());
 			data.append("img", files[0]);
 
-			await createQrs(data, newID, setModal);
+			await createQr(data, SingleLink.id);
 		} else {
-			console.log("this is running");
 			const data = {
 				qrColor: colorCodes.toString(),
 			};
-			await createQrs(data, newID, setModal);
+			await createQr(data, SingleLink.id);
 		}
 	};
 
-	const { errors, register, handleSubmit } = useForm();
+	const { handleSubmit } = useForm();
 
 	return (
 		<React.Fragment>
-			<Head title="Project Card"></Head>
-			<Content>
-				<BlockHead size="sm">
+			<Head title="Form Elements" />
+			<Content page="component">
+				<BlockHead size="lg" wide="sm">
 					<BlockBetween>
 						<BlockHeadContent>
-							<BlockTitle page>QR </BlockTitle>
-							<BlockDes className="text-soft">make your link as qr</BlockDes>
+							<BlockTitle tag="h2" className="fw-normal">
+								Create a Link with Qr code
+							</BlockTitle>
 						</BlockHeadContent>
 						<BlockHeadContent className="align-self-start d-lg-none">
 							<Button className={`toggle btn btn-icon btn-trigger mt-n1 ${sm ? "active" : ""}`} onClick={() => updateSm(!sm)}>
@@ -89,124 +71,76 @@ const ProjectCardPage = ({ sm, updateSm }) => {
 					</BlockBetween>
 				</BlockHead>
 
-				<Block>
-					<Row>
-						<Col md="12" className="d-flex align-items-center justify-content-center">
-							{subscription.planId?.qr_link === true ? (
-								<Button color="primary" size="xl" onClick={() => setModal({ edit: true })}>
-									Create Qr
-								</Button>
-							) : (
-								<BlockHeadContent>
-									<BlockTitle page>Upgrade your plan to create your qr link</BlockTitle>
-									<Link className=" my-2 btn btn-primary" to={process.env.PUBLIC_URL + "/all-shorten-links"}>
-										click here to upgrade
-									</Link>
-								</BlockHeadContent>
-							)}
-						</Col>
-					</Row>
-				</Block>
-				<Modal isOpen={modal.edit} toggle={() => setModal({ edit: false })} className="modal-dialog-centered" size="lg">
-					<ModalBody>
-						<h5 className="title">Enter your link</h5>
-						<Form className="gy-3 row" onSubmit={handleSubmit(onFormSubmit)}>
-							<Col md="12">
+				<Block size="lg">
+					<Form className="gy-3" onSubmit={handleSubmit(onSubmit)}>
+						<Row className="g-3 align-center">
+							<Col lg="5">
 								<FormGroup>
-									<input
-										type="text"
-										name="link"
-										placeholder="Enter link"
-										className="form-control"
-										ref={register({ required: "This field is required" })}
-									/>
-
-									{errors.link && <span className="invalid">{errors.link.message}</span>}
+									<label className="form-label" htmlFor="site-name">
+										Qr color
+									</label>
+									<span className="form-note">Specify the Qr color</span>
 								</FormGroup>
 							</Col>
-							<Col md="12">
-								<FormGroup>
-									<div className="custom-control custom-checkbox">
-										<input type="checkbox" className="custom-control-input form-control" id="isAllreadyExist" name="isExist" />
-										<label className="custom-control-label" htmlFor="isAllreadyExist">
-											is this link already exist in your profile
-										</label>
-									</div>
-								</FormGroup>
-							</Col>
-							<Col size="12">
-								<Button color="primary" size="md" type="submit">
-									Next
-								</Button>
-							</Col>
-						</Form>
-					</ModalBody>
-				</Modal>
-
-				<Modal isOpen={modal.color} toggle={() => setModal({ edit: false })} className="modal-dialog-centered" size="lg">
-					<ModalBody>
-						<h5 className="title">Choose your Qr color</h5>
-						<Form className="row gy-3" onSubmit={handleSubmit(onsecondSubmit)}>
-							<Col md="6">
+							<Col lg="7">
 								<FormGroup>
 									<input type="color" className="" name="backGroundColor" onChange={(e) => colorCode(e.target.value)} />
 								</FormGroup>
 							</Col>
-							<Col md="4">
-								<FormGroup onChange={showlogoBOx}>
-									<div className="custom-control custom-checkbox">
-										<input type="checkbox" className="custom-control-input form-control" id="withLogo" name="withLogo" />
-										<label className="custom-control-label" htmlFor="withLogo">
-											Qr with your logo
-										</label>
-									</div>
+						</Row>
+						<Row className="g-3 align-center">
+							<Col lg="5">
+								<FormGroup>
+									<label className="form-label" htmlFor="site-name">
+										Qr with logo
+									</label>
+									<span className="form-note">Specify the Qr logo</span>
 								</FormGroup>
 							</Col>
-							{image === true ? (
-								<Col md="12" className="d-flex justify-content-center">
-									<FormGroup>
-										<label className="form-label">Dropzone Single File</label>
-										<Dropzone onDrop={(acceptedFiles) => handleDropChange(acceptedFiles, setFiles)} maxFiles={1}>
-											{({ getRootProps, getInputProps }) => (
-												<section>
-													<div {...getRootProps()} className="dropzone upload-zone dz-clickable">
-														<input {...getInputProps()} />
-														{files.length === 0 && (
-															<div className="dz-message">
-																<span className="dz-message-text">Drag and drop file</span>
-																<span className="dz-message-or">or</span>
-																<Button color="primary" type="button">
-																	SELECT
-																</Button>
+							<Col lg="7">
+								<FormGroup>
+									<Dropzone onDrop={(acceptedFiles) => handleDropChange(acceptedFiles, setFiles)} maxFiles={1}>
+										{({ getRootProps, getInputProps }) => (
+											<section>
+												<div {...getRootProps()} className="dropzone border-0 p-0 d-flex">
+													<input {...getInputProps()} />
+													{files.length === 0 && (
+														<div className="dz-message">
+															<span className="dz-message-text">Drag and drop file</span>
+															<span className="dz-message-or">or</span>
+															<Button color="primary" type="button">
+																SELECT
+															</Button>
+														</div>
+													)}
+													{files.map((file) => (
+														<div
+															key={file.name}
+															className="dz-preview dz-processing dz-image-preview dz-error dz-complete d-flex justify-content-center"
+														>
+															<div className="">
+																<img src={file.preview} alt="preview" width={300} />
 															</div>
-														)}
-														{files.map((file) => (
-															<div
-																key={file.name}
-																className="dz-preview dz-processing dz-image-preview dz-error dz-complete d-flex justify-content-center"
-															>
-																<div className="">
-																	<img src={file.preview} alt="preview" width={300} />
-																</div>
-															</div>
-														))}
-													</div>
-												</section>
-											)}
-										</Dropzone>
-									</FormGroup>
-								</Col>
-							) : (
-								""
-							)}
-							<Col size="12" className="my-2">
-								<Button color="primary" size="md" onClick={() => setModal({ edit: false })}>
-									Next
-								</Button>
+														</div>
+													))}
+												</div>
+											</section>
+										)}
+									</Dropzone>
+								</FormGroup>
 							</Col>
-						</Form>
-					</ModalBody>
-				</Modal>
+						</Row>
+						<Row className="g-3">
+							<Col lg="7" className="offset-lg-5">
+								<FormGroup className="mt-2">
+									<Button color="primary" size="lg" type="submit">
+										Save
+									</Button>
+								</FormGroup>
+							</Col>
+						</Row>
+					</Form>
+				</Block>
 			</Content>
 		</React.Fragment>
 	);

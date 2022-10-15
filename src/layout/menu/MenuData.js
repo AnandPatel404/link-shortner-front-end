@@ -56,26 +56,26 @@ const menu = [
 	// 		},
 	// 	],
 	// },
-	{
-		heading: "UP-DOWNS",
-	},
-	{
-		icon: "bar-chart",
-		text: "Link analysis",
-		active: false,
-		subMenu: [
-			{
-				icon: "scan",
-				text: "Generate QR",
-				link: "/project-card",
-			},
-			{
-				icon: "notes-alt",
-				text: "QR List",
-				link: "/project-list",
-			},
-		],
-	},
+	// {
+	// 	heading: "UP-DOWNS",
+	// },
+	// {
+	// 	icon: "bar-chart",
+	// 	text: "Link analysis",
+	// 	active: false,
+	// 	subMenu: [
+	// 		{
+	// 			icon: "scan",
+	// 			text: "Generate QR",
+	// 			link: "/project-card",
+	// 		},
+	// 		{
+	// 			icon: "notes-alt",
+	// 			text: "QR List",
+	// 			link: "/project-list",
+	// 		},
+	// 	],
+	// },
 	{
 		heading: "Pre-built Pages",
 	},
