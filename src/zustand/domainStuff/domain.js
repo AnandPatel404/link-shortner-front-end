@@ -37,6 +37,22 @@ const userDomain = create((set, get) => ({
 				errorToast(`${err.response.data.message} ❌❌`, "Error");
 			});
 	},
+	deleteDomain: async (id) => {
+		await axios({
+			method: "delete",
+			url: `custom-domain/domain/${id}`,
+		})
+			.then((res) => {
+				if (res.data.status === "Success") {
+					const reFatch = get().getAllDomain;
+					reFatch();
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+				errorToast(`${err.response.data.message} ❌❌`, "Error");
+			});
+	},
 }));
 
 export default userDomain;

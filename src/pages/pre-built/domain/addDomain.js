@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Content from "../../../layout/content/Content";
 import Head from "../../../layout/head/Head";
-import { UncontrolledDropdown, DropdownMenu, DropdownToggle, Card, FormGroup, Modal, ModalBody, Form } from "reactstrap";
+import { UncontrolledDropdown, DropdownMenu, DropdownToggle, Card, FormGroup, Modal, ModalBody, Form, DropdownItem } from "reactstrap";
 import {
 	Button,
 	Block,
@@ -22,10 +22,11 @@ const AddDomain = () => {
 		{ value: "Enable", label: "Enable" },
 		{ value: "Disable", label: "Disable" },
 	];
-	const { data, createDomains, getAllDomain } = userDomain((state) => ({
+	const { data, createDomains, getAllDomain, deleteDomain } = userDomain((state) => ({
 		data: state.domains,
 		createDomains: state.createDomains,
 		getAllDomain: state.getAllDomain,
+		deleteDomain: state.deleteDomain,
 	}));
 
 	useEffect(() => {
@@ -35,10 +36,9 @@ const AddDomain = () => {
 	const [modal, setModal] = useState({
 		add: false,
 	});
-	// const [viewModal, setViewModal] = useState(false);
 	const [formData, setFormData] = useState("Enable");
 	const [currentPage, setCurrentPage] = useState(1);
-	const [itemPerPage, setItemPerPage] = useState(10);
+	const [itemPerPage] = useState(10);
 
 	// function to close the form modal
 	const onFormCancel = () => {
@@ -46,11 +46,18 @@ const AddDomain = () => {
 	};
 
 	const onFormSubmit = async (sData) => {
-		await createDomains({
+		const data = {
 			domainName: sData.domainName,
+			rootDomainLink: sData.rootDomainLink,
 			status: formData,
-		});
+		};
+		console.log(data);
+		await createDomains(data);
 		setModal({ add: false });
+	};
+
+	const dd = (id) => {
+		deleteDomain(id);
 	};
 
 	const currentItems = data;
@@ -190,6 +197,15 @@ const AddDomain = () => {
 																					View
 																				</DropdownItem>
 																			</li> */}
+																			<li
+																				onClick={() => {
+																					dd(item.id);
+																				}}
+																			>
+																				<DropdownItem tag="a" href="#view">
+																					Delete Domain
+																				</DropdownItem>
+																			</li>
 																		</ul>
 																	</DropdownMenu>
 																</UncontrolledDropdown>
@@ -244,10 +260,22 @@ const AddDomain = () => {
 												ref={register({ required: "This field is required" })}
 												type="text"
 												name="domainName"
-												defaultValue={formData.bill}
 												placeholder="Enter Your domain name"
 											/>
 											{errors.domainName && <span className="invalid">{errors.domainName.message}</span>}
+										</FormGroup>
+									</Col>
+									<Col md="12">
+										<FormGroup>
+											<label className="form-label">Root link</label>
+											<input
+												className="form-control"
+												ref={register({ required: "This field is required" })}
+												type="text"
+												name="rootDomainLink"
+												placeholder="Enter Your root domain link"
+											/>
+											{errors.rootDomainLink && <span className="invalid">{errors.rootDomainLink.message}</span>}
 										</FormGroup>
 									</Col>
 
