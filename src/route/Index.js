@@ -122,6 +122,7 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/project-card`} component={FullShort}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/create-or-find-link`} component={FullShort}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/branded-link`} component={FullShort}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/limited-link`} component={FullShort}></Route>
 
 				{/*Pre-built Pages*/}
 

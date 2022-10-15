@@ -152,6 +152,21 @@ const userFunctionalityLink = create((set, get) => ({
 				errorToast(`${err.response.data.message} ❌❌`, "Error");
 			});
 	},
+	createLimitedLink: async (data) => {
+		await axios({
+			url: "short/limited-link",
+			method: "patch",
+			data,
+		})
+			.then((res) => {
+				if (res.data.status === "Success") {
+					messageToast(`${res.data.message} ✅✅`, res.data.status);
+				}
+			})
+			.catch((err) => {
+				errorToast(`${err.response.data.message} ❌❌`, "Error");
+			});
+	},
 
 	applyChanges: async () => {
 		messageToast(`Changes are applied ✅✅`, "Success");

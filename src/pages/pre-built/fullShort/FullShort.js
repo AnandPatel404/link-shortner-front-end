@@ -6,6 +6,7 @@ import Expirationlink from "../shortingFunctions/Expirationlink";
 import ProjectCardPage from "../projects/ProjectCard";
 import ShortLink from "../shortingFunctions/shortLink";
 import BrandedLink from "../shortingFunctions/BrandedLink";
+import LimitedLink from "../shortingFunctions/LimitedLink";
 import { Route, Switch, Link } from "react-router-dom";
 import { Icon, BlockTitle, Button } from "../../../components/Component";
 import { Card } from "reactstrap";
@@ -120,17 +121,15 @@ const FullShort = () => {
 												<span>Qr</span>
 											</Link>
 										</li>
-										{/* <li onClick={() => updateSm(false)}>
+										<li onClick={() => updateSm(false)}>
 											<Link
-												to={`${process.env.PUBLIC_URL}/user-profile-setting`}
-												className={
-													window.location.pathname === `${process.env.PUBLIC_URL}/user-profile-setting` ? "active" : ""
-												}
+												to={`${process.env.PUBLIC_URL}/limited-link`}
+												className={window.location.pathname === `${process.env.PUBLIC_URL}/limited-link` ? "active" : ""}
 											>
-												<Icon name="bar-chart"></Icon>
+												<Icon name="meter"></Icon>
 												<span>click limit</span>
 											</Link>
-										</li> */}
+										</li>
 									</ul>
 								</div>
 								<div className="d-flex justify-content-center align-item-center mt-3">
@@ -184,6 +183,11 @@ const FullShort = () => {
 									exact
 									path={`${process.env.PUBLIC_URL}/project-card`}
 									render={() => <ProjectCardPage updateSm={updateSm} sm={sm} />}
+								></Route>
+								<Route
+									exact
+									path={`${process.env.PUBLIC_URL}/limited-link`}
+									render={() => <LimitedLink updateSm={updateSm} sm={sm} />}
 								></Route>
 							</Switch>
 						</div>
