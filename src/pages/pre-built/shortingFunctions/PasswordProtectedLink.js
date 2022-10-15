@@ -4,8 +4,23 @@ import Head from "../../../layout/head/Head";
 import { useForm } from "react-hook-form";
 import { FormGroup, Row, Col, Form } from "reactstrap";
 import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetween } from "../../../components/Component";
+import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
+import { errorToast } from "../../../pages/components/misc/ReactToastify";
 function PasswordProtectedLink({ sm, updateSm }) {
-	const s = async (sData) => {};
+	const { SingleLink, passwordProtectedLink } = userFunctionalityLink((state) => ({
+		SingleLink: state.SingleLink,
+		passwordProtectedLink: state.passwordProtectedLink,
+	}));
+	const s = async (sData) => {
+		if (!SingleLink || SingleLink.length === 0 || !SingleLink.id) {
+			return errorToast("Please select link first", "Error");
+		}
+		const data = {
+			linkId: SingleLink.id,
+			password: sData.password,
+		};
+		passwordProtectedLink(data);
+	};
 
 	const { handleSubmit, register } = useForm();
 	return (
@@ -42,9 +57,9 @@ function PasswordProtectedLink({ sm, updateSm }) {
 								<FormGroup>
 									<div className="form-control-wrap">
 										<input
-											type="text"
-											id="link"
-											name="link"
+											type="password"
+											id="password"
+											name="password"
 											className="form-control"
 											ref={register({ required: "This field is required" })}
 										/>

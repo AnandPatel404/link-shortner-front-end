@@ -6,11 +6,15 @@ import Expirationlink from "../shortingFunctions/Expirationlink";
 import ProjectCardPage from "../projects/ProjectCard";
 import ShortLink from "../shortingFunctions/shortLink";
 import { Route, Switch, Link } from "react-router-dom";
-import { Icon } from "../../../components/Component";
+import { Icon, BlockTitle, Button } from "../../../components/Component";
 import { Card } from "reactstrap";
 import WorkSvg from "../../../images/svg/www.svg";
-
+import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
 const FullShort = () => {
+	const { SingleLink, applyChanges } = userFunctionalityLink((state) => ({
+		SingleLink: state.SingleLink,
+		applyChanges: state.applyChanges,
+	}));
 	const [sm, updateSm] = useState(false);
 	const [mobileView, setMobileView] = useState(false);
 	// function to change the design view under 990 px
@@ -21,6 +25,10 @@ const FullShort = () => {
 			setMobileView(false);
 			updateSm(false);
 		}
+	};
+
+	const applyChange = async () => {
+		await applyChanges();
 	};
 
 	useEffect(() => {
@@ -114,6 +122,20 @@ const FullShort = () => {
 											</Link>
 										</li> */}
 									</ul>
+								</div>
+								<div className="d-flex justify-content-center align-item-center mt-3">
+									<BlockTitle tag="h6" className="text-primary">
+										{SingleLink
+											? `${SingleLink.coustomDomain ? SingleLink.coustomDomain.domain : "shorterMe.link"}/${
+													SingleLink.shorterLink
+											  }`
+											: ""}
+									</BlockTitle>
+								</div>
+								<div className="d-flex justify-content-center my-4">
+									<Button type="button" color="primary" size="lg" className="btn-dim" onClick={applyChange}>
+										Apply Changes
+									</Button>
 								</div>
 								<div className="d-flex justify-content-center mt-5 pt-5">
 									<img src={WorkSvg} alt="work" width={250} />

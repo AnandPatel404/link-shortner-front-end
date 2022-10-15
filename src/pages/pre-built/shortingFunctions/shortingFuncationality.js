@@ -5,37 +5,36 @@ import { useForm } from "react-hook-form";
 import { FormGroup, Input, Row, Col, Form } from "reactstrap";
 import { Block, BlockHead, BlockHeadContent, BlockTitle, BlockDes, Button, Icon, BlockBetween } from "../../../components/Component";
 import userDomain from "../../../zustand/domainStuff/domain";
+import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
+import { errorToast } from "../../../pages/components/misc/ReactToastify";
 function ShortingFuncationality({ sm, updateSm }) {
 	const [doamins, setDomains] = useState("shorterME.link/");
-	const [linkStatus, setLinkStatus] = useState("Enable");
-	const { domains, getAllDomain, createLinkWithCustomDomain } = userDomain((state) => ({
+	const { domains, getAllDomain } = userDomain((state) => ({
 		domains: state.domains,
 		getAllDomain: state.getAllDomain,
-		createLinkWithCustomDomain: state.createLinkWithCustomDomain,
+	}));
+
+	const { SingleLink, customDomain } = userFunctionalityLink((state) => ({
+		SingleLink: state.SingleLink,
+		customDomain: state.customDomain,
 	}));
 
 	useEffect(() => {
 		getAllDomain();
 	}, [getAllDomain]);
 
-	const s = async (sData) => {
-		const data = {
-			link: sData.link,
-			domain: doamins,
-			link_status: linkStatus,
-		};
-		await createLinkWithCustomDomain(data);
-	};
-
-	const set = (e) => {
-		if (linkStatus === "Enable") {
-			setLinkStatus("Disable");
-		} else {
-			setLinkStatus("Enable");
+	const s = async () => {
+		if (!SingleLink || SingleLink.length === 0 || !SingleLink.id) {
+			return errorToast("Please select link first", "Error");
 		}
+		const data = {
+			linkId: SingleLink.id,
+			domain: doamins,
+		};
+		customDomain(data);
 	};
 
-	const { handleSubmit, register } = useForm();
+	const { handleSubmit } = useForm();
 	return (
 		<React.Fragment>
 			<Head title="Form Elements" />
@@ -59,76 +58,7 @@ function ShortingFuncationality({ sm, updateSm }) {
 				</BlockHead>
 
 				<Block size="lg">
-					<div className="card-head">
-						<h5 className="card-title">Link Setting</h5>
-					</div>
 					<Form className="gy-3" onSubmit={handleSubmit(s)}>
-						<Row className="g-3 align-center">
-							<Col lg="5">
-								<FormGroup>
-									<label className="form-label" htmlFor="site-name">
-										Link
-									</label>
-									<span className="form-note">Specify the link you want short</span>
-								</FormGroup>
-							</Col>
-							<Col lg="7">
-								<FormGroup>
-									<div className="form-control-wrap">
-										<input
-											type="text"
-											id="link"
-											name="link"
-											className="form-control"
-											ref={register({ required: "This field is required" })}
-										/>
-									</div>
-								</FormGroup>
-							</Col>
-						</Row>
-						<Row className="g-3 align-center">
-							<Col lg="5">
-								<FormGroup>
-									<label className="form-label">Link status</label>
-									<span className="form-note">Enable or disable link status.</span>
-								</FormGroup>
-							</Col>
-							<Col lg="7">
-								<FormGroup>
-									<ul className="custom-control-group g-3 align-center flex-wrap">
-										<li>
-											<div className="custom-control custom-radio">
-												<input
-													type="radio"
-													className="custom-control-input form-control"
-													defaultChecked
-													name="status"
-													id="reg-enable"
-													onClick={set}
-												/>
-												<label className="custom-control-label" htmlFor="reg-enable">
-													Enable
-												</label>
-											</div>
-										</li>
-										<li>
-											<div className="custom-control custom-radio">
-												<input
-													type="radio"
-													className="custom-control-input form-control"
-													name="status"
-													id="reg-disable"
-													onClick={set}
-												/>
-												<label className="custom-control-label" htmlFor="reg-disable">
-													Disable
-												</label>
-											</div>
-										</li>
-									</ul>
-								</FormGroup>
-							</Col>
-						</Row>
 						<Row className="g-3 align-center">
 							<Col lg="5">
 								<FormGroup>
@@ -162,7 +92,7 @@ function ShortingFuncationality({ sm, updateSm }) {
 							<Col lg="7" className="offset-lg-5">
 								<FormGroup className="mt-2">
 									<Button color="primary" size="lg" type="submit">
-										Create
+										save
 									</Button>
 								</FormGroup>
 							</Col>

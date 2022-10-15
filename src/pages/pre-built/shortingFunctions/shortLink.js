@@ -4,10 +4,19 @@ import Head from "../../../layout/head/Head";
 import { useForm } from "react-hook-form";
 import { FormGroup, Row, Col, Form } from "reactstrap";
 import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetween } from "../../../components/Component";
+import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
 function ShortLink({ sm, updateSm }) {
 	const [linkStatus, setLinkStatus] = useState("Enable");
-
-	const s = async (sData) => {};
+	const { createLink } = userFunctionalityLink((state) => ({
+		createLink: state.createLink,
+	}));
+	const s = async (sData) => {
+		const data = {
+			link: sData.link,
+			link_status: linkStatus,
+		};
+		createLink(data);
+	};
 	const set = (e) => {
 		if (linkStatus === "Enable") {
 			setLinkStatus("Disable");

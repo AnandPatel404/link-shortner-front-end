@@ -1,17 +1,33 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useState } from "react";
 import Content from "../../../layout/content/Content";
 import Head from "../../../layout/head/Head";
 import DatePicker from "react-datepicker";
 import { useForm } from "react-hook-form";
 import { FormGroup, Row, Col, Form } from "reactstrap";
 import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetween } from "../../../components/Component";
+import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
+import { errorToast } from "../../../pages/components/misc/ReactToastify";
+
 function Expirationlink({ sm, updateSm }) {
 	const [rangeStart, setRangeStart] = useState(new Date());
 	const [rangeEnd, setRangeEnd] = useState();
+	const { SingleLink, createExpirationLink } = userFunctionalityLink((state) => ({
+		SingleLink: state.SingleLink,
+		createExpirationLink: state.createExpirationLink,
+	}));
+	const s = async () => {
+		if (!SingleLink || SingleLink.length === 0 || !SingleLink.id) {
+			return errorToast("Please select link first", "Error");
+		}
+		const data = {
+			linkId: SingleLink.id,
+			staringDate: rangeStart,
+			expireDate: rangeEnd,
+		};
+		createExpirationLink(data);
+	};
 
-	const s = async (sData) => {};
-
-	const { handleSubmit, register } = useForm();
+	const { handleSubmit } = useForm();
 	return (
 		<React.Fragment>
 			<Head title="Form Elements" />
@@ -78,7 +94,7 @@ function Expirationlink({ sm, updateSm }) {
 							<Col lg="7" className="offset-lg-5">
 								<FormGroup className="mt-2">
 									<Button color="primary" size="lg" type="submit">
-										Create
+										Save
 									</Button>
 								</FormGroup>
 							</Col>
