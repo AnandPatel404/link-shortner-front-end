@@ -4,14 +4,16 @@ import LogoDark from "../../images/only-charecter.svg";
 import PageContainer from "../../layout/page-container/PageContainer";
 import Head from "../../layout/head/Head";
 import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button, Icon, PreviewCard, RSelect } from "../../components/Component";
-import { FormGroup, Row, Col } from "reactstrap";
+import { FormGroup, Row, Col, Spinner } from "reactstrap";
 import { useForm } from "react-hook-form";
 import r from "../../images/svg/rr.svg";
 import { Link } from "react-router-dom";
 import useUserAuth from "../../zustand/auth/userAuth";
 import fevIcon from "../../images/svg/fevicon-and-logo.svg";
+import { errorToast } from "../../pages/components/misc/ReactToastify";
 
 const Register = ({ history }) => {
+	const [loading, setLoading] = useState(false);
 	const [passState, setPassState] = useState(false);
 	const [Gender, setGender] = useState("");
 	const { errors, register, handleSubmit } = useForm();
@@ -22,13 +24,17 @@ const Register = ({ history }) => {
 
 	const registerUser = useUserAuth((state) => state.Register);
 	const handleFormSubmit = async (formData) => {
+		if (Gender === " " || Gender === null || Gender === undefined) {
+			errorToast("Please select gender");
+		}
+		setLoading(true);
 		const data = {
 			...formData,
 			number: localStorage.getItem("number"),
 			countryCode: localStorage.getItem("countryCode"),
 			gender: Gender,
 		};
-		await registerUser(data, history);
+		await registerUser(data, history, setLoading);
 	};
 	return (
 		<React.Fragment>
@@ -94,8 +100,7 @@ const Register = ({ history }) => {
 										</div>
 										<div className="form-control-wrap">
 											<input
-												type="text"
-												bssize="lg"
+												type="email"
 												id="default-01"
 												name="email"
 												ref={register({ required: true })}
@@ -113,7 +118,6 @@ const Register = ({ history }) => {
 										</div>
 										<div className="form-control-wrap">
 											<RSelect options={option} onChange={(e) => setGender(e.value)} />
-											{errors.email && <p className="invalid">This field is required</p>}
 										</div>
 									</FormGroup>
 									<FormGroup>
@@ -147,8 +151,8 @@ const Register = ({ history }) => {
 										</div>
 									</FormGroup>
 									<FormGroup>
-										<Button type="submit" color="primary" size="lg" className="btn-block">
-											Register
+										<Button size="lg" className="btn-block" type="submit" color="primary">
+											{loading ? <Spinner size="sm" color="light" /> : "Sign in"}
 										</Button>
 									</FormGroup>
 								</form>

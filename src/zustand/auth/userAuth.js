@@ -21,7 +21,7 @@ const useUserAuth = create((set) => ({
 				errorToast(err.response.data.message);
 			});
 	},
-	verifyOtp: async (data, history) => {
+	verifyOtp: async (data, history, setLoading) => {
 		await axios({
 			method: "post",
 			url: "auth/verify-otp",
@@ -34,10 +34,11 @@ const useUserAuth = create((set) => ({
 				}
 			})
 			.catch((err) => {
+				setLoading(false);
 				errorToast(err.response.data.message);
 			});
 	},
-	ReSendOtp: async (data) => {
+	ReSendOtp: async (data, setLoadingTwo) => {
 		await axios({
 			method: "post",
 			url: "auth/resend-otp",
@@ -45,14 +46,16 @@ const useUserAuth = create((set) => ({
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
+					setLoadingTwo(false);
 					messageToast(`${res.data.message}`, res.data.status);
 				}
 			})
 			.catch((err) => {
+				setLoadingTwo(false);
 				errorToast(err.response.data.message);
 			});
 	},
-	Register: async (data, history) => {
+	Register: async (data, history, setLoading) => {
 		await axios({
 			method: "post",
 			url: "auth/register",
@@ -67,6 +70,7 @@ const useUserAuth = create((set) => ({
 				}
 			})
 			.catch((err) => {
+				setLoading(false);
 				errorToast(err.response.data.message);
 			});
 	},
@@ -85,7 +89,7 @@ const useUserAuth = create((set) => ({
 				errorToast(err.response.data.message);
 			});
 	},
-	changePassword: async (data) => {
+	changePassword: async (data, setLoading) => {
 		await axios({
 			method: "patch",
 			url: "auth/change-password",
@@ -97,6 +101,7 @@ const useUserAuth = create((set) => ({
 				}
 			})
 			.catch((err) => {
+				setLoading(false);
 				errorToast(err.response.data.message);
 			});
 	},
@@ -121,7 +126,7 @@ const useUserAuth = create((set) => ({
 			});
 	},
 
-	verifyOtpForResetPassword: async (data, history) => {
+	verifyOtpForResetPassword: async (data, history, setLoading) => {
 		await axios({
 			method: "post",
 			url: "auth/verify-otp",
@@ -134,11 +139,12 @@ const useUserAuth = create((set) => ({
 				}
 			})
 			.catch((err) => {
+				setLoading(false);
 				errorToast(err.response.data.message);
 			});
 	},
 
-	setNewPassword: async (data, history) => {
+	setNewPassword: async (data, history, setLoading) => {
 		await axios({
 			method: "post",
 			url: "auth/reset-password",
@@ -153,6 +159,7 @@ const useUserAuth = create((set) => ({
 				}
 			})
 			.catch((err) => {
+				setLoading(false);
 				errorToast(err.response.data.message);
 			});
 	},

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Logo from "../../images/only-charecter.svg";
 import LogoDark from "../../images/only-charecter.svg";
@@ -6,18 +6,20 @@ import PageContainer from "../../layout/page-container/PageContainer";
 import Head from "../../layout/head/Head";
 import AuthFooter from "./AuthFooter";
 import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button, PreviewCard } from "../../components/Component";
-import { FormGroup, Form } from "reactstrap";
+import { FormGroup, Form, Spinner } from "reactstrap";
 import useUserAuth from "../../zustand/auth/userAuth";
 import { Link } from "react-router-dom";
 
 const ResetPassword = ({ history }) => {
+	const [loading, setLoading] = useState(false);
 	const passwordReset = useUserAuth((state) => state.setNewPassword);
 	const onFormSubmit = async (formData) => {
+		setLoading(true);
 		const data = {
 			number: localStorage.getItem("number"),
 			password: formData.password,
 		};
-		await passwordReset(data, history);
+		await passwordReset(data, history, setLoading);
 	};
 	const { errors, register, handleSubmit } = useForm();
 	return (
@@ -60,8 +62,8 @@ const ResetPassword = ({ history }) => {
 								</div>
 							</FormGroup>
 							<FormGroup>
-								<Button color="primary" size="lg" className="btn-block" type="submit">
-									Send otp
+								<Button size="lg" className="btn-block" type="submit" color="primary">
+									{loading ? <Spinner size="sm" color="light" /> : "Submit"}
 								</Button>
 							</FormGroup>
 						</Form>

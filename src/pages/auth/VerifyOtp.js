@@ -3,8 +3,8 @@ import Logo from "../../images/only-charecter.svg";
 import LogoDark from "../../images/only-charecter.svg";
 import PageContainer from "../../layout/page-container/PageContainer";
 import Head from "../../layout/head/Head";
-import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button, Icon, PreviewCard } from "../../components/Component";
-import { Form, FormGroup, Spinner, Alert, Row, Col } from "reactstrap";
+import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button, PreviewCard } from "../../components/Component";
+import { Form, FormGroup, Spinner, Row, Col } from "reactstrap";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import fevIcon from "../../images/svg/fevicon-and-logo.svg";
@@ -12,23 +12,25 @@ import useUserAuth from "../../zustand/auth/userAuth";
 import o from "../../images/svg/otp.svg";
 
 function VerifyOtp({ history }) {
-	const [loading] = useState(false);
-	const [errorVal] = useState("");
+	const [loading, setLoading] = useState(false);
+	const [loadingTwo, setLoadingTwo] = useState(false);
 	const verifyOtp = useUserAuth((state) => state.verifyOtp);
 	const onFormSubmit = async (formData) => {
+		setLoading(true);
 		const data = {
 			number: localStorage.getItem("number"),
 			otp: formData.otp,
 		};
-		await verifyOtp(data, history);
+		await verifyOtp(data, history, setLoading);
 	};
 	const ReSendOtp = useUserAuth((state) => state.ReSendOtp);
 	const reSendOtp = async () => {
+		setLoadingTwo(true);
 		const data = {
 			number: localStorage.getItem("number"),
 			countryCode: localStorage.getItem("countryCode"),
 		};
-		await ReSendOtp(data);
+		await ReSendOtp(data, setLoadingTwo);
 	};
 	const { errors, register, handleSubmit } = useForm();
 	return (
@@ -70,14 +72,6 @@ function VerifyOtp({ history }) {
 										</BlockDes>
 									</BlockContent>
 								</BlockHead>
-								{errorVal && (
-									<div className="mb-3">
-										<Alert color="danger" className="alert-icon">
-											{" "}
-											<Icon name="alert-circle" /> Unable to verify Otp credentials{" "}
-										</Alert>
-									</div>
-								)}
 								<Form className="is-alter" onSubmit={handleSubmit(onFormSubmit)}>
 									<FormGroup>
 										<div className="form-label-group">
@@ -105,7 +99,7 @@ function VerifyOtp({ history }) {
 								</Form>
 								<div className="form-note-s2 text-center pt-2">
 									<Button size="lg" className="link link-primary" type="button" onClick={reSendOtp}>
-										Resend Otp
+										{loadingTwo ? <Spinner size="sm" color="light" /> : "Re-send Otp"}
 									</Button>
 								</div>
 							</PreviewCard>
