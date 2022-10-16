@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Content from "../../../layout/content/Content";
 import Head from "../../../layout/head/Head";
 import { useForm } from "react-hook-form";
@@ -12,15 +12,29 @@ function LimitedLink({ sm, updateSm }) {
 		SingleLink: state.SingleLink,
 		createLimitedLink: state.createLimitedLink,
 	}));
+	const [afterUrl, setAfterUrl] = useState(null);
 	const s = async (sData) => {
 		if (!SingleLink || SingleLink.length === 0 || !SingleLink.id) {
 			return errorToast("Please select link first", "Error");
 		}
-		let data = {
-			linkId: SingleLink.id,
-			clickCount: sData.number,
-		};
-		createLimitedLink(data);
+		if (afterUrl !== null && afterUrl !== "") {
+			let data = {
+				linkId: SingleLink.id,
+				clickCount: sData.number,
+				after_click_limit_reach: afterUrl,
+			};
+			createLimitedLink(data);
+		} else {
+			let datat = {
+				linkId: SingleLink.id,
+				clickCount: sData.number,
+			};
+			createLimitedLink(datat);
+		}
+	};
+
+	const afterLink = (e) => {
+		setAfterUrl(e);
 	};
 
 	const { handleSubmit, register } = useForm();
@@ -63,6 +77,31 @@ function LimitedLink({ sm, updateSm }) {
 											name="number"
 											className="form-control"
 											ref={register({ required: "This field is required" })}
+										/>
+									</div>
+								</FormGroup>
+							</Col>
+						</Row>
+						<Row className="g-3 align-center">
+							<Col lg="5">
+								<FormGroup>
+									<label className="form-label" htmlFor="site-name">
+										re-direct url (optional)
+									</label>
+									<span className="form-note">Specify the After reach clicks limit (optional)</span>
+								</FormGroup>
+							</Col>
+							<Col lg="7">
+								<FormGroup>
+									<div className="form-control-wrap d-flex align-item-center">
+										<input
+											type="text"
+											id="after_click_limit_reach"
+											name="after_click_limit_reach"
+											className="form-control"
+											onChange={(e) => {
+												afterLink(e.target.value);
+											}}
 										/>
 									</div>
 								</FormGroup>

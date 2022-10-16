@@ -7,16 +7,25 @@ import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetw
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
 function ShortLink({ sm, updateSm }) {
 	const [linkStatus, setLinkStatus] = useState("Enable");
+	const [title, setTitle] = useState(null);
 	const { createLink } = userFunctionalityLink((state) => ({
 		createLink: state.createLink,
 	}));
 	const s = async (sData) => {
-		const data = {
-			link: sData.link,
-			link_title: sData.title,
-			link_status: linkStatus,
-		};
-		createLink(data);
+		if (title !== null && title !== "") {
+			const data = {
+				link: sData.link,
+				link_title: sData.title,
+				link_status: linkStatus,
+			};
+			createLink(data);
+		} else {
+			const data = {
+				link: sData.link,
+				link_status: linkStatus,
+			};
+			createLink(data);
+		}
 	};
 	const set = (e) => {
 		if (linkStatus === "Enable") {
@@ -24,6 +33,10 @@ function ShortLink({ sm, updateSm }) {
 		} else {
 			setLinkStatus("Enable");
 		}
+	};
+
+	const tt = (e) => {
+		setTitle(e);
 	};
 
 	const { handleSubmit, register } = useForm();
@@ -88,7 +101,9 @@ function ShortLink({ sm, updateSm }) {
 											id="title"
 											name="title"
 											className="form-control"
-											ref={register({ required: "This field is required" })}
+											onChange={(e) => {
+												tt(e.target.value);
+											}}
 										/>
 									</div>
 								</FormGroup>
