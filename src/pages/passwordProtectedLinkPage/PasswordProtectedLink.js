@@ -8,7 +8,6 @@ import passwordProtected from "../../images/svg/passwordProtected.svg";
 import useCheckThePassword from "../../zustand/LinkPassowrdCheck/LinkPassowrdCheck";
 import Logo from "../../layout/logo/Logo";
 
-// TODO: THIS is not working
 function PasswordProtected({ match }) {
 	const { checkThePassword } = useCheckThePassword((state) => ({
 		checkThePassword: state.checkThePassword,

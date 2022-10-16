@@ -7,11 +7,13 @@ import PageContainer from "../../layout/page-container/PageContainer";
 import Head from "../../layout/head/Head";
 import AuthFooter from "./AuthFooter";
 import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button, PreviewCard, RSelect } from "../../components/Component";
-import { FormGroup, Form } from "reactstrap";
+import { FormGroup, Form, Spinner } from "reactstrap";
 import useUserAuth from "../../zustand/auth/userAuth";
+import { errorToast } from "../../pages/components/misc/ReactToastify";
 import { Link } from "react-router-dom";
 
 const ForgotPassword = ({ history }) => {
+	const [loading, setLoading] = useState(false);
 	const [CountryCodes, setCountryCodes] = useState("");
 	const [option, setOption] = useState([]);
 	const getCountryCode = async () => {
@@ -40,12 +42,16 @@ const ForgotPassword = ({ history }) => {
 	};
 	const sendOtp = useUserAuth((state) => state.forgotPassword);
 	const onFormSubmit = async (formData) => {
+		if (!CountryCodes || CountryCodes === null || CountryCodes === undefined || CountryCodes === " ") {
+			return errorToast("Please select the country code", "Error");
+		}
+		setLoading(!loading);
 		const newCode = CountryCodes.slice(1);
 		const data = {
 			number: formData.number,
 			countryCode: newCode,
 		};
-		await sendOtp(data, history);
+		await sendOtp(data, history, setLoading);
 	};
 	const { errors, register, handleSubmit } = useForm();
 	return (
@@ -91,7 +97,7 @@ const ForgotPassword = ({ history }) => {
 										id="number"
 										name="number"
 										ref={register({ required: "This field is required" })}
-										placeholder="Enter your WhatsApp number"
+										placeholder="Enter your number"
 										className="form-control-lg form-control is-shown"
 									/>
 									{errors.number && <span className="invalid">{errors.number.message}</span>}
@@ -99,7 +105,7 @@ const ForgotPassword = ({ history }) => {
 							</FormGroup>
 							<FormGroup>
 								<Button color="primary" size="lg" className="btn-block" type="submit">
-									Send otp
+									{loading ? <Spinner size="sm" color="light" /> : "Send Otp"}
 								</Button>
 							</FormGroup>
 						</Form>

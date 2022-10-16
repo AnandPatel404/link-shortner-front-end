@@ -12,11 +12,12 @@ import l from "../../images/svg/l.svg";
 import fevIcon from "../../images/svg/fevicon-and-logo.svg";
 
 const Login = ({ history }) => {
-	const [loading] = useState(false);
+	const [loading, setLoading] = useState(false);
 	const [passState, setPassState] = useState(false);
 	const login = useUserStore((state) => state.loginUser);
 	const onFormSubmit = (formData) => {
-		login(formData);
+		setLoading(!loading);
+		login(formData, setLoading);
 	};
 
 	const { errors, register, handleSubmit } = useForm();
@@ -25,8 +26,8 @@ const Login = ({ history }) => {
 		<React.Fragment>
 			<Head title="Login" />
 			<PageContainer>
-				<Row>
-					<Col lg="8" className="position-relative" style={{ backgroundColor: "#f1c40f4a" }}>
+				<Row style={{ height: 100 + "vh" }}>
+					<Col lg="8" xl="8" className="position-relative" style={{ backgroundColor: "#f1c40f4a" }}>
 						<img src={fevIcon} alt="" width={50} className="position-absolute mt-3 ml-3  mt-md-5 ml-md-5" />
 						<div className="d-md-flex justify-content-md-center align-items-md-center flex-column text-center">
 							<img src={l} alt="" width={600} />
@@ -43,7 +44,7 @@ const Login = ({ history }) => {
 							</BlockHead>
 						</div>
 					</Col>
-					<Col lg="4">
+					<Col lg="4" xl="4">
 						<Block className="nk-auth-body py-lg-5 my-lg-5 wide-s">
 							<PreviewCard className="border-0" bodyClass="card-inner-lg" style={{ backgroundColor: "#f5f6fa" }}>
 								<div className="brand-logo pb-4">
@@ -69,14 +70,14 @@ const Login = ({ history }) => {
 										</div>
 										<div className="form-control-wrap">
 											<input
-												type="text"
+												type="email"
 												id="default-01"
 												name="email"
 												ref={register({ required: "This field is required" })}
 												placeholder="Enter your email address"
 												className="form-control-lg form-control"
 											/>
-											{errors.name && <span className="invalid">{errors.name.message}</span>}
+											{errors.email && <span className="invalid">{errors.email.message}</span>}
 										</div>
 									</FormGroup>
 									<FormGroup>

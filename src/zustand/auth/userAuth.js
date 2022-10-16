@@ -10,14 +10,14 @@ const useUserAuth = create((set) => ({
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
-					messageToast(`${res.data.message} ✅✅`, res.data.status);
+					messageToast(`${res.data.message}`, res.data.status);
 					history.push(`${process.env.PUBLIC_URL}/auth-verify-otp`);
 					localStorage.setItem("number", data.number);
 					localStorage.setItem("countryCode", data.countryCode);
 				}
 			})
 			.catch((err) => {
-				errorToast(`${err.response.data.message} ❌❌`, "Error");
+				errorToast(`${err.response.data.message}`, "Error");
 			});
 	},
 	verifyOtp: async (data, history) => {
@@ -28,12 +28,12 @@ const useUserAuth = create((set) => ({
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
-					messageToast(`${res.data.message} ✅✅`, res.data.status);
+					messageToast(`${res.data.message}`, res.data.status);
 					history.push(`${process.env.PUBLIC_URL}/auth-register`);
 				}
 			})
 			.catch((err) => {
-				errorToast(`${err.response.data.message} ❌❌`, "Error");
+				errorToast(`${err.response.data.message}`, "Error");
 			});
 	},
 	ReSendOtp: async (data) => {
@@ -44,11 +44,11 @@ const useUserAuth = create((set) => ({
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
-					messageToast(`${res.data.message} ✅✅`, res.data.status);
+					messageToast(`${res.data.message}`, res.data.status);
 				}
 			})
 			.catch((err) => {
-				errorToast(`${err.response.data.message} ❌❌`, "Error");
+				errorToast(`${err.response.data.message}`, "Error");
 			});
 	},
 	Register: async (data, history) => {
@@ -59,14 +59,14 @@ const useUserAuth = create((set) => ({
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
-					messageToast(`${res.data.message} ✅✅`, res.data.status);
+					messageToast(`${res.data.message}`, res.data.status);
 					history.push(`${process.env.PUBLIC_URL}/auth-success`);
 					localStorage.removeItem("number");
 					localStorage.removeItem("countryCode");
 				}
 			})
 			.catch((err) => {
-				errorToast(`${err.response.data.message} ❌❌`, "Error");
+				errorToast(`${err.response.data.message}`, "Error");
 			});
 	},
 	LogOut: async () => {
@@ -81,7 +81,7 @@ const useUserAuth = create((set) => ({
 				}
 			})
 			.catch((err) => {
-				errorToast(`${err.response.data.message} ❌❌`, "Error");
+				errorToast(`${err.response.data.message}`, "Error");
 			});
 	},
 	changePassword: async (data) => {
@@ -92,15 +92,15 @@ const useUserAuth = create((set) => ({
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
-					messageToast(`${res.data.message} ✅✅`, res.data.status);
+					messageToast(`${res.data.message}`, res.data.status);
 				}
 			})
 			.catch((err) => {
-				errorToast(`${err.response.data.message} ❌❌`, "Error");
+				errorToast(`${err.response.data.message}`, "Error");
 			});
 	},
 
-	forgotPassword: async (data, history) => {
+	forgotPassword: async (data, history, setLoading) => {
 		await axios({
 			method: "post",
 			url: "auth/forgot-password",
@@ -108,14 +108,15 @@ const useUserAuth = create((set) => ({
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
-					messageToast(`${res.data.message} ✅✅`, res.data.status);
+					messageToast(`${res.data.message}`, res.data.status);
 					history.push(`${process.env.PUBLIC_URL}/auth-verify-otp-for-reset-password`);
 					localStorage.setItem("number", data.number);
 					localStorage.setItem("countryCode", data.countryCode);
 				}
 			})
 			.catch((err) => {
-				errorToast(`${err.response.data.message} ❌❌`, "Error");
+				setLoading(false);
+				errorToast(`${err.response.data.message}`, "Error");
 			});
 	},
 
@@ -127,12 +128,12 @@ const useUserAuth = create((set) => ({
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
-					messageToast(`${res.data.message} ✅✅`, res.data.status);
+					messageToast(`${res.data.message}`, res.data.status);
 					history.push(`${process.env.PUBLIC_URL}/auth-reset-password`);
 				}
 			})
 			.catch((err) => {
-				errorToast(`${err.response.data.message} ❌❌`, "Error");
+				errorToast(`${err.response.data.message}`, "Error");
 			});
 	},
 
@@ -144,14 +145,14 @@ const useUserAuth = create((set) => ({
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
-					messageToast(`${res.data.message} ✅✅`, res.data.status);
+					messageToast(`${res.data.message}`, res.data.status);
 					history.push(`${process.env.PUBLIC_URL}/auth-login`);
 					localStorage.removeItem("number");
 					localStorage.removeItem("countryCode");
 				}
 			})
 			.catch((err) => {
-				errorToast(`${err.response.data.message} ❌❌`, "Error");
+				errorToast(`${err.response.data.message}`, "Error");
 			});
 	},
 }));

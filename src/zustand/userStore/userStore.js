@@ -7,7 +7,7 @@ const useUserStore = create(
 	persist(
 		(set) => ({
 			user: {},
-			loginUser: async (data) => {
+			loginUser: async (data, setLoading) => {
 				await axios({
 					method: "post",
 					url: "auth/login",
@@ -16,7 +16,7 @@ const useUserStore = create(
 					.then((res) => {
 						if (res.data.status === "Success") {
 							localStorage.setItem("id", res.data.data.id);
-							messageToast(`${res.data.message} ✅✅`, res.data.status);
+							messageToast(`${res.data.message}`, res.data.status);
 							set({ user: res.data.data });
 							setTimeout(() => {
 								window.history.pushState(
@@ -29,7 +29,8 @@ const useUserStore = create(
 						}
 					})
 					.catch((err) => {
-						errorToast(`${err.response.data.message} ❌❌`, "Error");
+						setLoading(false);
+						errorToast(`${err.response.data.message}`, "Error");
 					});
 			},
 		}),
