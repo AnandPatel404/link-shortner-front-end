@@ -1,17 +1,15 @@
 import create from "zustand";
-import axios from "axios";
+import axios from "../../axios/axiosconfig";
 import Swal from "sweetalert2";
-// TODO : this is change in production i mean localhost:8000
 const useCheckThePassword = create((set) => ({
 	checkThePassword: async (data, id) => {
-		axios({
+		await axios({
 			method: "post",
-			url: `http://localhost:8000/password-check/${id}`,
-			withCredentials: true,
+			url: `short/password-check/${id}`,
 			data,
 		})
 			.then((res) => {
-				console.log(res);
+				window.location.href = res.data.data;
 			})
 			.catch((err) => {
 				console.log(err);

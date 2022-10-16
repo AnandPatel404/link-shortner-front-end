@@ -6,6 +6,7 @@ import { FormGroup, Row, Col, Form } from "reactstrap";
 import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, BlockBetween, PreviewCard } from "../../components/Component";
 import passwordProtected from "../../images/svg/passwordProtected.svg";
 import useCheckThePassword from "../../zustand/LinkPassowrdCheck/LinkPassowrdCheck";
+import Logo from "../../layout/logo/Logo";
 
 // TODO: THIS is not working
 function PasswordProtected({ match }) {
@@ -29,7 +30,7 @@ function PasswordProtected({ match }) {
 					<BlockBetween>
 						<BlockHeadContent>
 							<BlockTitle tag="h2" className="fw-normal">
-								enter the password
+								<Logo />
 							</BlockTitle>
 						</BlockHeadContent>
 					</BlockBetween>

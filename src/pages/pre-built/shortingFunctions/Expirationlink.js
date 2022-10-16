@@ -10,24 +10,38 @@ import { errorToast } from "../../../pages/components/misc/ReactToastify";
 
 function Expirationlink({ sm, updateSm }) {
 	const [rangeStart] = useState(new Date());
+	const [expireLink, setExpirationLink] = useState(null);
 	const [rangeEnd, setRangeEnd] = useState();
 	const { SingleLink, createExpirationLink } = userFunctionalityLink((state) => ({
 		SingleLink: state.SingleLink,
 		createExpirationLink: state.createExpirationLink,
 	}));
-	const s = async (sData) => {
+	const s = async () => {
 		if (!SingleLink || SingleLink.length === 0 || !SingleLink.id) {
 			return errorToast("Please select link first", "Error");
 		}
-		const data = {
-			linkId: SingleLink.id,
-			after_expired: sData.sData,
-			expireDate: rangeEnd,
-		};
-		createExpirationLink(data);
+
+		if (expireLink !== null && expireLink !== "") {
+			const data = {
+				linkId: SingleLink.id,
+				after_expired: expireLink,
+				expireDate: rangeEnd,
+			};
+			createExpirationLink(data);
+		} else {
+			const data = {
+				linkId: SingleLink.id,
+				expireDate: rangeEnd,
+			};
+			createExpirationLink(data);
+		}
 	};
 
-	const { handleSubmit, register } = useForm();
+	const afterExpiration = (e) => {
+		setExpirationLink(e);
+	};
+
+	const { handleSubmit } = useForm();
 	return (
 		<React.Fragment>
 			<Head title="Form Elements" />
@@ -99,7 +113,9 @@ function Expirationlink({ sm, updateSm }) {
 											id="after_expired"
 											name="after_expired"
 											className="form-control"
-											ref={register({ required: "This field is required" })}
+											onChange={(e) => {
+												afterExpiration(e.target.value);
+											}}
 										/>
 									</div>
 								</FormGroup>
