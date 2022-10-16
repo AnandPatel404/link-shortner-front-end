@@ -173,7 +173,7 @@ const KycDetailsRegular = ({ match }) => {
 											<div className="data-col">
 												<div className="data-label">Password</div>
 												<div className="data-value">
-													{`${link.link_password?.slice(0, 40)}...`} this is encrypted password
+													{`${link.link_password?.slice(0, 40) ? link.link_password?.slice(0, 40) : "-"}`}
 												</div>
 											</div>
 										</li>
