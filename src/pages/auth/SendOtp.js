@@ -4,17 +4,17 @@ import Logo from "../../images/only-charecter.svg";
 import LogoDark from "../../images/only-charecter.svg";
 import PageContainer from "../../layout/page-container/PageContainer";
 import Head from "../../layout/head/Head";
-import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button, Icon, PreviewCard, RSelect } from "../../components/Component";
-import { Form, FormGroup, Spinner, Alert, Row, Col } from "reactstrap";
+import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button, PreviewCard, RSelect } from "../../components/Component";
+import { Form, FormGroup, Spinner, Row, Col } from "reactstrap";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { errorToast } from "../../pages/components/misc/ReactToastify";
 import fevIcon from "../../images/svg/fevicon-and-logo.svg";
 import useUserAuth from "../../zustand/auth/userAuth";
 import o from "../../images/svg/oo.svg";
 
 function SendOtp({ history }) {
-	const [loading] = useState(false);
-	const [errorVal] = useState("");
+	const [loading, setLoading] = useState(false);
 	const [option, setOption] = useState([]);
 	const [CountryCodes, setCountryCodes] = useState("");
 	const getCountryCode = async () => {
@@ -41,12 +41,16 @@ function SendOtp({ history }) {
 
 	const sendOtp = useUserAuth((state) => state.sendOtp);
 	const onFormSubmit = async (formData) => {
+		if (!CountryCodes || CountryCodes === null || CountryCodes === undefined || CountryCodes === " ") {
+			return errorToast("Please select the country code");
+		}
+		setLoading(!loading);
 		const newCode = CountryCodes.slice(1);
 		const data = {
 			number: formData.number,
 			countryCode: newCode,
 		};
-		await sendOtp(data, history);
+		await sendOtp(data, history, setLoading);
 	};
 	const countryCode = (e) => {
 		setCountryCodes(e.value);
@@ -91,14 +95,6 @@ function SendOtp({ history }) {
 										</BlockDes>
 									</BlockContent>
 								</BlockHead>
-								{errorVal && (
-									<div className="mb-3">
-										<Alert color="danger" className="alert-icon">
-											{" "}
-											<Icon name="alert-circle" /> Unable to Send Otp credentials{" "}
-										</Alert>
-									</div>
-								)}
 								<Form className="is-alter" onSubmit={handleSubmit(onFormSubmit)}>
 									<FormGroup>
 										<div className="form-label-group">

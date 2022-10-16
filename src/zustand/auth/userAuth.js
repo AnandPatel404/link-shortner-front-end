@@ -2,7 +2,7 @@ import create from "zustand";
 import axios from "../../axios/axiosconfig";
 import { messageToast, errorToast } from "../../pages/components/misc/ReactToastify";
 const useUserAuth = create((set) => ({
-	sendOtp: async (data, history) => {
+	sendOtp: async (data, history, setLoading) => {
 		await axios({
 			method: "post",
 			url: "auth/send-otp",
@@ -17,7 +17,8 @@ const useUserAuth = create((set) => ({
 				}
 			})
 			.catch((err) => {
-				errorToast(`${err.response.data.message}`, "Error");
+				setLoading(false);
+				errorToast(err.response.data.message);
 			});
 	},
 	verifyOtp: async (data, history) => {
@@ -33,7 +34,7 @@ const useUserAuth = create((set) => ({
 				}
 			})
 			.catch((err) => {
-				errorToast(`${err.response.data.message}`, "Error");
+				errorToast(err.response.data.message);
 			});
 	},
 	ReSendOtp: async (data) => {
@@ -48,7 +49,7 @@ const useUserAuth = create((set) => ({
 				}
 			})
 			.catch((err) => {
-				errorToast(`${err.response.data.message}`, "Error");
+				errorToast(err.response.data.message);
 			});
 	},
 	Register: async (data, history) => {
@@ -66,7 +67,7 @@ const useUserAuth = create((set) => ({
 				}
 			})
 			.catch((err) => {
-				errorToast(`${err.response.data.message}`, "Error");
+				errorToast(err.response.data.message);
 			});
 	},
 	LogOut: async () => {
@@ -81,7 +82,7 @@ const useUserAuth = create((set) => ({
 				}
 			})
 			.catch((err) => {
-				errorToast(`${err.response.data.message}`, "Error");
+				errorToast(err.response.data.message);
 			});
 	},
 	changePassword: async (data) => {
@@ -96,7 +97,7 @@ const useUserAuth = create((set) => ({
 				}
 			})
 			.catch((err) => {
-				errorToast(`${err.response.data.message}`, "Error");
+				errorToast(err.response.data.message);
 			});
 	},
 
@@ -133,7 +134,7 @@ const useUserAuth = create((set) => ({
 				}
 			})
 			.catch((err) => {
-				errorToast(`${err.response.data.message}`, "Error");
+				errorToast(err.response.data.message);
 			});
 	},
 
@@ -152,7 +153,7 @@ const useUserAuth = create((set) => ({
 				}
 			})
 			.catch((err) => {
-				errorToast(`${err.response.data.message}`, "Error");
+				errorToast(err.response.data.message);
 			});
 	},
 }));
