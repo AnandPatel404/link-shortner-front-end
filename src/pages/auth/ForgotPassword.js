@@ -43,7 +43,7 @@ const ForgotPassword = ({ history }) => {
 	const sendOtp = useUserAuth((state) => state.forgotPassword);
 	const onFormSubmit = async (formData) => {
 		if (!CountryCodes || CountryCodes === null || CountryCodes === undefined || CountryCodes === " ") {
-			return errorToast("Please select the country code", "Error");
+			return errorToast("Please select the country code");
 		}
 		setLoading(!loading);
 		const newCode = CountryCodes.slice(1);
