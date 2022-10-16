@@ -13,6 +13,7 @@ function ShortLink({ sm, updateSm }) {
 	const s = async (sData) => {
 		const data = {
 			link: sData.link,
+			link_title: sData.title,
 			link_status: linkStatus,
 		};
 		createLink(data);
@@ -63,6 +64,29 @@ function ShortLink({ sm, updateSm }) {
 											type="text"
 											id="link"
 											name="link"
+											className="form-control"
+											ref={register({ required: "This field is required" })}
+										/>
+									</div>
+								</FormGroup>
+							</Col>
+						</Row>
+						<Row className="g-3 align-center">
+							<Col lg="5">
+								<FormGroup>
+									<label className="form-label" htmlFor="site-name">
+										Title
+									</label>
+									<span className="form-note">Specify the title (if you don't Specify automatically title add to link)</span>
+								</FormGroup>
+							</Col>
+							<Col lg="7">
+								<FormGroup>
+									<div className="form-control-wrap">
+										<input
+											type="text"
+											id="title"
+											name="title"
 											className="form-control"
 											ref={register({ required: "This field is required" })}
 										/>

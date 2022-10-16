@@ -15,18 +15,19 @@ function Expirationlink({ sm, updateSm }) {
 		SingleLink: state.SingleLink,
 		createExpirationLink: state.createExpirationLink,
 	}));
-	const s = async () => {
+	const s = async (sData) => {
 		if (!SingleLink || SingleLink.length === 0 || !SingleLink.id) {
 			return errorToast("Please select link first", "Error");
 		}
 		const data = {
 			linkId: SingleLink.id,
+			after_expired: sData.sData,
 			expireDate: rangeEnd,
 		};
 		createExpirationLink(data);
 	};
 
-	const { handleSubmit } = useForm();
+	const { handleSubmit, register } = useForm();
 	return (
 		<React.Fragment>
 			<Head title="Form Elements" />
@@ -75,6 +76,31 @@ function Expirationlink({ sm, updateSm }) {
 												className="form-control"
 											/>
 										</div>
+									</div>
+								</FormGroup>
+							</Col>
+						</Row>
+						<Row className="g-3 align-center">
+							<Col lg="5">
+								<FormGroup>
+									<label className="form-label" htmlFor="site-name">
+										After expire link (optional)
+									</label>
+									<span className="form-note">
+										Specify the link that re-direct the client after expire the main link (optional)
+									</span>
+								</FormGroup>
+							</Col>
+							<Col lg="7">
+								<FormGroup>
+									<div className="form-control-wrap">
+										<input
+											type="text"
+											id="after_expired"
+											name="after_expired"
+											className="form-control"
+											ref={register({ required: "This field is required" })}
+										/>
 									</div>
 								</FormGroup>
 							</Col>
