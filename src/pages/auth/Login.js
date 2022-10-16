@@ -29,8 +29,8 @@ const Login = ({ history }) => {
 				<Row style={{ height: 100 + "vh" }}>
 					<Col lg="8" xl="8" className="position-relative" style={{ backgroundColor: "#f1c40f4a" }}>
 						<img src={fevIcon} alt="" width={50} className="position-absolute mt-3 ml-3  mt-md-5 ml-md-5" />
-						<div className="d-md-flex justify-content-md-center align-items-md-center flex-column text-center">
-							<img src={l} alt="" width={600} />
+						<div className="d-md-flex justify-content-md-center align-items-md-center flex-column text-center mt-3 pt-md-5">
+							<img src={l} alt="" width={500} />
 							<BlockHead>
 								<BlockContent>
 									<BlockTitle tag="h3">Get start with us 😊😊</BlockTitle>

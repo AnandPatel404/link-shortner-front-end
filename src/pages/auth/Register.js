@@ -37,15 +37,15 @@ const Register = ({ history }) => {
 				<Row style={{ height: 100 + "vh" }}>
 					<Col lg="8" className="position-relative" style={{ backgroundColor: "#f1c40f4a" }}>
 						<img src={fevIcon} alt="" width={50} className="position-absolute mt-3 ml-3  mt-md-5 ml-md-5" />
-						<div className="d-md-flex justify-content-md-center align-items-md-center flex-column text-center">
-							<img src={r} alt="" width={600} />
+						<div className="d-md-flex justify-content-md-center align-items-md-center flex-column text-center mt-5">
+							<img src={r} alt="" width={550} />
 							<BlockHead>
 								<BlockContent>
 									<BlockTitle tag="h3">privacy & security 😊😊</BlockTitle>
 									<BlockDes>
 										<p>
 											feel free we do not share any details with anyone <br />
-											👉 Please enter your whatApp number for receive otp 👈
+											👉 Your data is fully encrypted 👈
 										</p>
 									</BlockDes>
 								</BlockContent>

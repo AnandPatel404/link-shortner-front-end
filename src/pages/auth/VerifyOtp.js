@@ -39,14 +39,14 @@ function VerifyOtp({ history }) {
 					<Col lg="8" className="position-relative" style={{ backgroundColor: "#f1c40f4a" }}>
 						<img src={fevIcon} alt="" width={50} className="position-absolute mt-3 ml-3  mt-md-5 ml-md-5" />
 						<div className="d-md-flex justify-content-md-center align-items-md-center mt-lg-3 pt-lg-5 flex-column text-center">
-							<img src={o} alt="" width={800} />
+							<img src={o} alt="" width={700} />
 							<BlockHead>
 								<BlockContent>
-									<BlockTitle tag="h3">Please enter your Otp</BlockTitle>
+									<BlockTitle tag="h3">Please enter your Otp 1️⃣ 2️⃣ 3️⃣ 4️⃣</BlockTitle>
 									<BlockDes>
 										<p>
 											Please enter your otp to verify your account <br />
-											👉 feel free we do not share any details with anyone 👈
+											👉 feel free we do not share any details with anyone <br /> don't share otp with others 👈
 										</p>
 									</BlockDes>
 								</BlockContent>

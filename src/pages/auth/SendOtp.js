@@ -63,7 +63,7 @@ function SendOtp({ history }) {
 							<img src={o} alt="" width={600} />
 							<BlockHead>
 								<BlockContent>
-									<BlockTitle tag="h3">privacy & security 😊😊</BlockTitle>
+									<BlockTitle tag="h3">Send Otp 📪📪</BlockTitle>
 									<BlockDes>
 										<p>
 											feel free we do not share any details with anyone <br />
