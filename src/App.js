@@ -22,6 +22,7 @@ import verifyOtpForResetPassword from "./pages/auth/verifyOtpForResetPassword";
 import ResetPassword from "./pages/auth/reSetPassword";
 import Success from "./pages/auth/Success";
 import InvoicePrint from "./pages/pre-built/invoice/InvoicePrint";
+import PasswordProtected from "./pages/passwordProtectedLinkPage/PasswordProtectedLink";
 
 const App = () => {
 	return (
@@ -35,6 +36,7 @@ const App = () => {
 			<Route exact path={`${process.env.PUBLIC_URL}/auth-verify-otp`} component={VerifyOtp}></Route>
 			<Route exact path={`${process.env.PUBLIC_URL}/auth-verify-otp-for-reset-password`} component={verifyOtpForResetPassword}></Route>
 			<Route exact path={`${process.env.PUBLIC_URL}/auth-reset-password`} component={ResetPassword}></Route>
+			<Route exact path={`${process.env.PUBLIC_URL}/password-protected-link/:id`} component={PasswordProtected}></Route>
 
 			{/* Print Pages */}
 			<Route exact path={`${process.env.PUBLIC_URL}/invoice-print/:id`} component={InvoicePrint}></Route>

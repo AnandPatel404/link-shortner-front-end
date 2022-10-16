@@ -9,7 +9,7 @@ import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaL
 import { errorToast } from "../../../pages/components/misc/ReactToastify";
 
 function Expirationlink({ sm, updateSm }) {
-	const [rangeStart, setRangeStart] = useState(new Date());
+	const [rangeStart] = useState(new Date());
 	const [rangeEnd, setRangeEnd] = useState();
 	const { SingleLink, createExpirationLink } = userFunctionalityLink((state) => ({
 		SingleLink: state.SingleLink,
@@ -21,7 +21,6 @@ function Expirationlink({ sm, updateSm }) {
 		}
 		const data = {
 			linkId: SingleLink.id,
-			staringDate: rangeStart,
 			expireDate: rangeEnd,
 		};
 		createExpirationLink(data);
@@ -65,16 +64,6 @@ function Expirationlink({ sm, updateSm }) {
 											Date Format <code>mm/dd/yyyy</code>
 										</div>
 										<div className="input-daterange date-picker-range input-group">
-											<DatePicker
-												selected={rangeStart}
-												onChange={setRangeStart}
-												selectsStart
-												startDate={rangeStart}
-												endDate={rangeEnd}
-												wrapperClassName="start-m"
-												className="form-control"
-											/>{" "}
-											<div className="input-group-addon">TO</div>
 											<DatePicker
 												selected={rangeEnd}
 												onChange={setRangeEnd}
