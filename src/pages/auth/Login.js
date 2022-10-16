@@ -55,7 +55,7 @@ const Login = ({ history }) => {
 								</div>
 								<BlockHead>
 									<BlockContent>
-										<BlockTitle tag="h3">Sign-In</BlockTitle>
+										<BlockTitle tag="h3">Login</BlockTitle>
 										<BlockDes>
 											<p>Access Shorterme using your email and password.</p>
 										</BlockDes>

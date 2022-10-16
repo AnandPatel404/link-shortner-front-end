@@ -30,7 +30,7 @@ const useUserStore = create(
 					})
 					.catch((err) => {
 						setLoading(false);
-						errorToast(`${err.response.data.message}`, "Error");
+						errorToast(`${err.response.data.message}`);
 					});
 			},
 		}),
