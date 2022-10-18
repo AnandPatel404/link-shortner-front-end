@@ -129,11 +129,12 @@ const userActivity = create((set, get) => ({
 			});
 	},
 
-	getLinkById: async (id) => {
+	getLinkById: async (id, setLoading) => {
 		const link = await axios({
 			method: "get",
 			url: `short/${id}`,
 		});
+		setLoading(false);
 		return link;
 	},
 }));
