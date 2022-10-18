@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import { Icon } from "../../../Component";
 
-const AudienceOverview = ({ data }) => {
+const AudienceOverview = ({ data, totalClick, dates }) => {
+	const [shortedDate, setShortedDate] = useState([]);
+	useEffect(() => {
+		setShortedDate(dates.sort());
+	}, [dates]);
+
 	const [auOverview, setAuOverview] = useState("month-1");
 	const analyticOvDataSet2 = {
-		labels: ["Tue Oct 18 2022", "Mon Oct 17 2022", "Sun Oct 16 2022", "Sat Oct 15 2022", "Fri Oct 14 2022", "Thu Oct 13 2022", "Wed Oct 12 2022"],
+		labels: shortedDate,
 		dataUnit: "People",
 		datasets: [
 			{
@@ -69,11 +74,8 @@ const AudienceOverview = ({ data }) => {
 			<div className="analytic-ov">
 				<div className="analytic-data-group analytic-ov-group g-3">
 					<div className="analytic-data analytic-ov-data">
-						<div className="title">Users</div>
-						<div className="amount">{auOverview === "month-1" ? "2.57" : "1.21"}K</div>
-						<div className="change up">
-							<Icon name="arrow-long-up"></Icon> {auOverview === "month-1" ? "12.31" : "5.21"}%
-						</div>
+						<div className="title">Users click</div>
+						<div className="amount">{totalClick}</div>
 					</div>
 					<div className="analytic-data analytic-ov-data">
 						<div className="title">Users</div>

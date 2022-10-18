@@ -112,7 +112,7 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-regular/`} component={UserProfileLayout}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-notification/`} component={UserProfileLayout}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-activity/`} component={UserProfileLayout}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/client-details/:id`} component={ClientDetails}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/client-details/:id/:page`} component={ClientDetails}></Route>
 
 				{/* custom page */}
 				<Route exact path={`${process.env.PUBLIC_URL}/create-full-link`} component={FullShort}></Route>

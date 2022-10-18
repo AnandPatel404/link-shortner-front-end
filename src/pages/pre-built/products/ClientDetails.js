@@ -17,10 +17,11 @@ import {
 } from "../../../components/Component";
 import userLinkClient from "../../../zustand/clientDetails/client";
 
-export const ClientDetails = ({ match }) => {
+export const ClientDetails = ({ match, history }) => {
 	const [data, setData] = useState([]);
 	const [link, setLink] = useState({});
-	const [itemPerPage] = useState(7);
+	const [totalItems, setTotalItems] = useState(0);
+	const [itemPerPage] = useState(30);
 	const [currentPage, setCurrentPage] = useState(1);
 	const { getLinkClient } = userLinkClient((state) => ({
 		getLinkClient: state.getLinkClient,
@@ -28,21 +29,25 @@ export const ClientDetails = ({ match }) => {
 
 	const getClientData = useCallback(async () => {
 		const id = match.params.id;
-		const data = await getLinkClient(id);
-		console.log(data.data.data.linkId);
-		setData(data.data.data.clientId);
-		setLink(data.data.data.linkId);
-	}, [getLinkClient, match.params.id]);
+		const page = match.params.page;
+		const d = await getLinkClient(id, itemPerPage, page);
+		console.log(d);
+		setData(d.results);
+		setLink(d.results.linkId);
+		setTotalItems(d.results.totalResults);
+	}, [match.params.id, match.params.page, getLinkClient, itemPerPage]);
 
 	useEffect(() => {
 		getClientData();
 	}, [getClientData]);
 
-	const currentItems = data;
-
 	// Change Page
-	const paginate = (pageNumber) => setCurrentPage(pageNumber);
+	const paginate = (pageNumber) => {
+		setCurrentPage(pageNumber);
+		history.push(`${process.env.PUBLIC_URL}/client-details/${match.params.id}/${pageNumber}`);
+	};
 
+	const currentItems = data;
 	return (
 		<React.Fragment>
 			<Head title="Project List"></Head>
@@ -52,7 +57,7 @@ export const ClientDetails = ({ match }) => {
 						<BlockHeadContent>
 							<BlockTitle page>Client list of</BlockTitle>
 							<BlockTitle page>
-								<strong className="text-primary small">{link.link_title}</strong>
+								<strong className="text-primary small">{link?.link_title}</strong>
 							</BlockTitle>
 						</BlockHeadContent>
 					</BlockBetween>
@@ -78,49 +83,46 @@ export const ClientDetails = ({ match }) => {
 									<span className="d-none d-md-inline-block">CLICKED AT</span>
 								</DataTableRow>
 							</DataTableHead>
-							{currentItems.length > 0
-								? currentItems.map((item, index) => {
-										return (
-											<DataTableItem key={item.id}>
-												<DataTableRow className="nk-tb-col-check">
-													<span>{index + 1}</span>
-												</DataTableRow>
-												<DataTableRow sm>
-													<span>
-														<Icon name="linux-server" className="h5"></Icon>
-														{item.client_ip}
-													</span>
-												</DataTableRow>
-												<DataTableRow>
-													<span className="d-flex">
-														<Icon name={`b-${item.client_browser?.split(" ")[0].toLowerCase()}`} className="h5"></Icon>
-														{item.client_browser}
-													</span>
-												</DataTableRow>
-												<DataTableRow>
-													<span className="d-flex">
-														<Icon name={`${item.client_os?.split(" ")[0].toLowerCase()}`} className="h5"></Icon>
-														{item.client_os}
-													</span>
-												</DataTableRow>
-												<DataTableRow>
-													<span>{item.client_device}</span>
-												</DataTableRow>
-												<DataTableRow>
-													<span className="tb-sub d-none d-md-inline-block">
-														{new Date(item.createdAt).toLocaleString()}
-													</span>
-												</DataTableRow>
-											</DataTableItem>
-										);
-								  })
-								: null}
+							{currentItems &&
+								currentItems.map((item, index) => {
+									return (
+										<DataTableItem key={item.id}>
+											<DataTableRow className="nk-tb-col-check">
+												<span>{index + 1}</span>
+											</DataTableRow>
+											<DataTableRow sm>
+												<span>
+													<Icon name="linux-server" className="h5"></Icon>
+													{item.client_ip}
+												</span>
+											</DataTableRow>
+											<DataTableRow>
+												<span className="d-flex">
+													<Icon name={`b-${item.client_browser.split(" ")[0].toLowerCase()}`} className="h5"></Icon>
+													{item.client_browser}
+												</span>
+											</DataTableRow>
+											<DataTableRow>
+												<span className="d-flex">
+													<Icon name={`${item.client_os.split(" ")[0].toLowerCase()}`} className="h5"></Icon>
+													{item.client_os}
+												</span>
+											</DataTableRow>
+											<DataTableRow>
+												<span>{item.client_device}</span>
+											</DataTableRow>
+											<DataTableRow>
+												<span className="tb-sub d-none d-md-inline-block">{new Date(item.createdAt).toLocaleString()}</span>
+											</DataTableRow>
+										</DataTableItem>
+									);
+								})}
 						</DataTableBody>
 						<div className="card-inner">
-							{data.length > 0 ? (
+							{currentItems?.length > 0 ? (
 								<PaginationComponent
 									itemPerPage={itemPerPage}
-									totalItems={data.length}
+									totalItems={totalItems}
 									paginate={paginate}
 									currentPage={currentPage}
 								/>

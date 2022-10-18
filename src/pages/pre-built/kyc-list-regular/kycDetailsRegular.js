@@ -26,6 +26,7 @@ const KycDetailsRegular = ({ match }) => {
 	const [link, setLink] = useState({});
 	const [qr, setQr] = useState({});
 	const [chartData, setChartData] = useState([]);
+	const [newDates, setNewDate] = useState([]);
 	const { getLinkById } = usersDashBoard((state) => ({
 		getLinkById: state.getLinkById,
 	}));
@@ -38,6 +39,7 @@ const KycDetailsRegular = ({ match }) => {
 		setQr(data.data.data.isQrExist);
 		setCount(data.data.data.count);
 		setChartData(data.data.data.finalData);
+		setNewDate(data.data.data.newDates);
 	}, [getLinkById, match.params.id]);
 
 	useEffect(() => {
@@ -242,7 +244,7 @@ const KycDetailsRegular = ({ match }) => {
 							</Col>
 							<Col lg="12">
 								<PreviewAltCard className="h-100">
-									<AudienceOverview data={chartData} />
+									<AudienceOverview data={chartData} totalClick={count} dates={newDates} />
 								</PreviewAltCard>
 							</Col>
 							<Col xxl="12">
@@ -251,7 +253,7 @@ const KycDetailsRegular = ({ match }) => {
 								</Card>
 							</Col>
 							<Col xxl="12" className="d-flex justify-content-center">
-								<Link className="btn btn-primary" to={`${process.env.PUBLIC_URL}/client-details/${link.id}`}>
+								<Link className="btn btn-primary" to={`${process.env.PUBLIC_URL}/client-details/${link.id}/${1}`}>
 									See client Details
 								</Link>
 							</Col>
