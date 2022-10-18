@@ -1,101 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Line, Bar, Doughnut } from "react-chartjs-2";
 import {
-	analyticOvData,
 	analyticAuData,
-	analyticOvDataSet2,
-	analyticOvDataSet3,
 	TrafficChannelDoughnutData,
 	TrafficChannelDoughnutData2,
 	TrafficChannelDoughnutData3,
 	TrafficChannelDoughnutData4,
-	deviceStatusData,
+	/* 	deviceStatusData,
 	deviceStatusDataSet2,
 	deviceStatusDataSet3,
-	deviceStatusDataSet4,
+	deviceStatusDataSet4, */
 } from "./AnalyticsData";
-
-export const AudienceLineChart = ({ state }) => {
-	const [data, setData] = useState(analyticOvData);
-	useEffect(() => {
-		let object;
-		if (state === "day-7") {
-			object = analyticOvDataSet2;
-		} else {
-			object = analyticOvDataSet3;
-		}
-		setData(object);
-	}, [state]);
-	return (
-		<Line
-			className="analytics-line-large"
-			data={data}
-			options={{
-				legend: {
-					display: false,
-					labels: {
-						boxWidth: 12,
-						padding: 20,
-						fontColor: "#6783b8",
-					},
-				},
-				maintainAspectRatio: false,
-				tooltips: {
-					enabled: true,
-					backgroundColor: "#fff",
-					borderColor: "#eff6ff",
-					borderWidth: 2,
-					titleFontSize: 13,
-					titleFontColor: "#6783b8",
-					titleMarginBottom: 6,
-					bodyFontColor: "#9eaecf",
-					bodyFontSize: 12,
-					bodySpacing: 4,
-					yPadding: 10,
-					xPadding: 10,
-					footerMarginTop: 0,
-					displayColors: false,
-				},
-				scales: {
-					yAxes: [
-						{
-							display: true,
-							ticks: {
-								beginAtZero: true,
-								fontSize: 12,
-								fontColor: "#9eaecf",
-								padding: 8,
-								stepSize: 2400,
-							},
-							gridLines: {
-								color: "rgba(82, 100, 132, 0.2)",
-								tickMarkLength: 0,
-								zeroLineColor: "rgba(82, 100, 132,0.2)",
-							},
-						},
-					],
-					xAxes: [
-						{
-							display: false,
-							ticks: {
-								fontSize: 12,
-								fontColor: "#9eaecf",
-								source: "auto",
-								padding: 0,
-							},
-							gridLines: {
-								color: "transparent",
-								tickMarkLength: 0,
-								zeroLineColor: "transparent",
-								offsetGridLines: true,
-							},
-						},
-					],
-				},
-			}}
-		></Line>
-	);
-};
 
 export const ActiveUserBarChart = () => {
 	return (

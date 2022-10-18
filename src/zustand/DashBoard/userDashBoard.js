@@ -1,6 +1,5 @@
 import create from "zustand";
 import axios from "../../axios/axiosconfig";
-import { toast } from "react-toastify";
 import { messageToast, errorToast } from "../../pages/components/misc/ReactToastify";
 
 const userActivity = create((set, get) => ({
@@ -39,61 +38,25 @@ const userActivity = create((set, get) => ({
 				console.log(err);
 			});
 	},
-	quickShort: async (data) => {
-		const resolvePromise = new Promise((resolve) =>
-			resolve(
-				axios({
-					url: "short/quick-short-link",
-					method: "post",
-					data,
-				})
-			)
-		);
-		toast.promise(resolvePromise, {
-			pending: {
-				render() {
-					return "Link is shorting";
-				},
-				icon: "🤖",
-				position: "top-center",
-				autoClose: true,
-				hideProgressBar: true,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: true,
-				progress: false,
-			},
-			success: {
-				render({ data }) {
-					const reFetch = get().userDashBoard;
-					setTimeout(() => {
-						reFetch();
-					}, 1000);
-					return `${data.data.message}`;
-				},
-				icon: "🟢",
-				position: "top-center",
-				autoClose: true,
-				hideProgressBar: true,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: true,
-				progress: false,
-			},
-			error: {
-				render({ data }) {
-					return `${data.response.data.message}`;
-				},
-				icon: "❌",
-				position: "top-center",
-				autoClose: true,
-				hideProgressBar: true,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: true,
-				progress: false,
-			},
-		});
+	quickShort: async (data, setLoading) => {
+		await axios({
+			url: "short/quick-short-link",
+			method: "post",
+			data,
+		})
+			.then((res) => {
+				messageToast(`${res.data.message}`, res.data.status);
+				const reFetch = get().userDashBoard;
+				setTimeout(() => {
+					reFetch();
+				}, 500);
+				setLoading(false);
+			})
+			.catch((err) => {
+				errorToast(err.response.data.message);
+				console.log(err);
+				setLoading(false);
+			});
 	},
 
 	getUserAllShortenLink: async ({ currentPage, ...rest }) => {
@@ -108,7 +71,7 @@ const userActivity = create((set, get) => ({
 				set({ AllLinksLength: res.data.data.totalResults });
 			});
 		} catch (err) {
-			errorToast(`${err.response.data.message} ❌❌`, "Error");
+			errorToast(err.response.data.message);
 		}
 	},
 	removeLink: async (linkId) => {
@@ -118,7 +81,7 @@ const userActivity = create((set, get) => ({
 		})
 			.then(async (res) => {
 				if (res.data.status === "Success") {
-					messageToast(`${res.data.message} ✅✅`, res.data.status);
+					messageToast(`${res.data.message}`, res.data.status);
 					const allLink = get().allLinks;
 					let newData = [];
 					allLink.forEach((res) => {
@@ -131,7 +94,7 @@ const userActivity = create((set, get) => ({
 			})
 			.catch((err) => {
 				console.log(err);
-				errorToast(`${err.response.data.message} ❌❌`, "Error");
+				errorToast(err.response.data.message);
 			});
 	},
 	updateLink: async (data, linkId, history) => {

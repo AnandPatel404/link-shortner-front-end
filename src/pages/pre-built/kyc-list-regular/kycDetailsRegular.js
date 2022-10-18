@@ -22,8 +22,10 @@ import { Link } from "react-router-dom";
 import usersDashBoard from "../../../zustand/DashBoard/userDashBoard";
 
 const KycDetailsRegular = ({ match }) => {
+	const [count, setCount] = useState(0);
 	const [link, setLink] = useState({});
 	const [qr, setQr] = useState({});
+	const [chartData, setChartData] = useState([]);
 	const { getLinkById } = usersDashBoard((state) => ({
 		getLinkById: state.getLinkById,
 	}));
@@ -34,6 +36,8 @@ const KycDetailsRegular = ({ match }) => {
 		console.log(data.data.data);
 		setLink(data.data.data.link);
 		setQr(data.data.data.isQrExist);
+		setCount(data.data.data.count);
+		setChartData(data.data.data.finalData);
 	}, [getLinkById, match.params.id]);
 
 	useEffect(() => {
@@ -100,7 +104,7 @@ const KycDetailsRegular = ({ match }) => {
 										<li className="data-item">
 											<div className="data-col">
 												<div className="data-label">back link</div>
-												<div className="data-value">{link.backlink}</div>
+												<div className="data-value overflow-auto">{link.backlink}</div>
 											</div>
 										</li>
 										<li className="data-item">
@@ -126,7 +130,7 @@ const KycDetailsRegular = ({ match }) => {
 										<li className="data-item">
 											<div className="data-col">
 												<div className="data-label">Total clicks</div>
-												<div className="data-value">200</div>
+												<div className="data-value">{count}</div>
 											</div>
 										</li>
 										<li className="data-item">
@@ -238,7 +242,7 @@ const KycDetailsRegular = ({ match }) => {
 							</Col>
 							<Col lg="12">
 								<PreviewAltCard className="h-100">
-									<AudienceOverview />
+									<AudienceOverview data={chartData} />
 								</PreviewAltCard>
 							</Col>
 							<Col xxl="12">

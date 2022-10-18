@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import shallow from "zustand/shallow";
 import Content from "../layout/content/Content";
 import Head from "../layout/head/Head";
 import RecentInvest from "../components/partials/invest/recent-investment/RecentInvest";
 import TrafficChannel from "../components/partials/analytics/traffic-channel/Traffic";
 import { useForm } from "react-hook-form";
-import { Card, Form } from "reactstrap";
+import { Card, Form, Spinner } from "reactstrap";
 import { Block, Icon, Button, Row, Col, PreviewAltCard } from "../components/Component";
 import firstSvg from "../images/svg/dashboard-one.svg";
 import b from "../images/svg/dashboard-paln.svg";
@@ -15,6 +15,7 @@ import useUserDashBoard from "../zustand/DashBoard/userDashBoard";
 import { Link } from "react-router-dom";
 
 const InvestHomePage = () => {
+	const [loading, setLoading] = useState(false);
 	const { linksLength, links, quickShort, subscription, userDashBoard } = useUserDashBoard(
 		(state) => ({
 			linksLength: state.linksLength,
@@ -31,7 +32,8 @@ const InvestHomePage = () => {
 	}, [userDashBoard]);
 
 	const onFormSubmit = (formData) => {
-		quickShort(formData);
+		setLoading(true);
+		quickShort(formData, setLoading);
 	};
 	const { register, handleSubmit } = useForm();
 	return (
@@ -124,9 +126,19 @@ const InvestHomePage = () => {
 										/>
 									</div>
 									<div className="d-flex justify-content-center">
-										<Button color="primary" type="submit" className="px-5 py-2 h5">
+										{/* <Button color="primary" type="submit" className="px-5 py-2 h5">
 											<Icon name="link-alt"></Icon>
 											<span>cut</span>
+										</Button> */}
+										<Button color="primary" type="submit" size="lg">
+											{loading ? (
+												<Spinner size="sm" color="light" />
+											) : (
+												<div>
+													<Icon name="link-alt"></Icon>
+													<span>cut</span>
+												</div>
+											)}
 										</Button>
 									</div>
 								</Card>
