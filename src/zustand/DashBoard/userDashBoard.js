@@ -31,7 +31,7 @@ const userActivity = create((set, get) => ({
 		})
 			.then((res) => {
 				set({ linksLength: res.data.data.links.length });
-				set({ links: res.data.data.links.slice(0, 5) });
+				set({ links: res.data.data.links });
 				set({ subscription: res.data.data.Subscriptions });
 				setLoadingTwo(false);
 			})
@@ -64,9 +64,10 @@ const userActivity = create((set, get) => ({
 		try {
 			await axios({
 				method: "get",
-				url: `logged-user/get-all-links?page=${currentPage}&${Object.keys(rest)
-					.map((key) => `${key}=${rest[key]}`)
-					.join("&")}`,
+				// url: `short/links?page=${currentPage}&${Object.keys(rest)
+				// 	.map((key) => `${key}=${rest[key]}`)
+				// 	.join("&")}`,
+				url: `short/links?page=${currentPage}&limit=10`,
 			}).then((res) => {
 				set({ allLinks: res.data.data.results });
 				set({ AllLinksLength: res.data.data.totalResults });
@@ -106,12 +107,12 @@ const userActivity = create((set, get) => ({
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
-					messageToast(`${res.data.message} ✅✅`, res.data.status);
+					messageToast(`${res.data.message}`, res.data.status);
 					history.push(`${process.env.PUBLIC_URL}/all-shorten-links`);
 				}
 			})
 			.catch((err) => {
-				errorToast(`${err.response.data.message} ❌❌`, "Error");
+				errorToast(err.response.data.message);
 			});
 	},
 
@@ -126,7 +127,7 @@ const userActivity = create((set, get) => ({
 				}
 			})
 			.catch((err) => {
-				errorToast(`${err.response.data.message} ❌❌`, "Error");
+				errorToast(err.response.data.message);
 			});
 	},
 

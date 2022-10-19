@@ -1,9 +1,8 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, lazy } from "react";
 import Content from "../../../layout/content/Content";
 import Head from "../../../layout/head/Head";
 import BrowserUser from "../../../components/partials/analytics/browser-users/BrowserUser";
 import SessionDevice from "../../../components/partials/analytics/session-devices/SessionDevice";
-import AudienceOverview from "../../../components/partials/analytics/audience-overview/AudienceOverview";
 import { Badge, Card, Spinner } from "reactstrap";
 import {
 	Button,
@@ -20,6 +19,7 @@ import {
 } from "../../../components/Component";
 import { Link } from "react-router-dom";
 import usersDashBoard from "../../../zustand/DashBoard/userDashBoard";
+const AudienceOverview = lazy(() => import("../../../components/partials/analytics/audience-overview/AudienceOverview"));
 
 const KycDetailsRegular = ({ match }) => {
 	const [count, setCount] = useState(0);
