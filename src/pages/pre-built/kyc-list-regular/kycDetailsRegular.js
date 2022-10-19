@@ -26,8 +26,6 @@ const KycDetailsRegular = ({ match }) => {
 	const [loading, setLoading] = useState(true);
 	const [link, setLink] = useState({});
 	const [qr, setQr] = useState({});
-	const [chartData, setChartData] = useState([]);
-	const [newDates, setNewDate] = useState([]);
 	const { getLinkById } = usersDashBoard((state) => ({
 		getLinkById: state.getLinkById,
 	}));
@@ -39,8 +37,6 @@ const KycDetailsRegular = ({ match }) => {
 		setLink(data.data.data.link);
 		setQr(data.data.data.isQrExist);
 		setCount(data.data.data.count);
-		setChartData(data.data.data.finalData);
-		setNewDate(data.data.data.newDates);
 	}, [getLinkById, match.params.id]);
 
 	useEffect(() => {
@@ -253,7 +249,7 @@ const KycDetailsRegular = ({ match }) => {
 									</Col>
 									<Col lg="12">
 										<PreviewAltCard className="h-100">
-											<AudienceOverview data={chartData} totalClick={count} dates={newDates} />
+											<AudienceOverview totalClick={count} id={match.params.id} />
 										</PreviewAltCard>
 									</Col>
 									<Col xxl="12">

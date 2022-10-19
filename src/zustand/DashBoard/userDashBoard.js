@@ -24,7 +24,7 @@ const userActivity = create((set, get) => ({
 				console.log(err);
 			});
 	},
-	userDashBoard: async () => {
+	userDashBoard: async (setLoadingTwo) => {
 		await axios({
 			method: "get",
 			url: "dashboard",
@@ -33,6 +33,7 @@ const userActivity = create((set, get) => ({
 				set({ linksLength: res.data.data.links.length });
 				set({ links: res.data.data.links.slice(0, 5) });
 				set({ subscription: res.data.data.Subscriptions });
+				setLoadingTwo(false);
 			})
 			.catch((err) => {
 				console.log(err);
