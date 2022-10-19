@@ -53,7 +53,6 @@ import Terms from "../pages/others/Terms";
 import BasicTable from "../pages/components/table/BasicTable";
 import SpecialTablePage from "../pages/components/table/SpecialTable";
 import ChartPage from "../pages/components/charts/Charts";
-import EmailTemplate from "../pages/components/email-template/Email";
 import NioIconPage from "../pages/components/crafted-icons/NioIcon";
 import SVGIconPage from "../pages/components/crafted-icons/SvgIcons";
 
@@ -201,7 +200,6 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/table-special`} component={SpecialTablePage}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/charts/chartjs`} component={ChartPage}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/charts/knobs`} component={KnobPreview}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/email-template`} component={EmailTemplate}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/nioicon`} component={NioIconPage}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/svg-icons`} component={SVGIconPage}></Route>
 				<Route component={RedirectAs404}></Route>
