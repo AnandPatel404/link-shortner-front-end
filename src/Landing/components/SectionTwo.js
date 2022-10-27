@@ -3,78 +3,14 @@ import React from "react";
 // import Chat from "../assets/img/icons/lineal/chat-2.svg";
 // import idsvg from "../assets/img/icons/lineal/id-card.svg";
 // import gift from "../assets/img/icons/lineal/gift.svg";
-import eye from "../assets/img/illustrations/i8.png";
+import eye from "../assets/img/svg/pro.svg";
 function SectionTwo() {
 	return (
-		<section className="wrapper bg-light">
+		<section className="wrapper bg-soft-primary">
 			<div className="container py-14 py-md-16 pb-md-17">
-				{/* <div className="row gx-md-5 gy-5 mt-n18 mt-md-n21 mb-14 mb-md-17">
-					<div className="col-md-6 col-xl-3">
-						<div className="card shadow-lg card-border-bottom border-soft-yellow">
-							<div className="card-body">
-								<img src={browser} className="icon-svg icon-svg-md text-yellow mb-3" alt="" />
-								<h4>Content Marketing</h4>
-								<p className="mb-2">
-									Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida at eget metus cras justo.
-								</p>
-								<a href="/" className="hover link-yellow">
-									Learn More
-								</a>
-							</div>
-						</div>
-					</div>
-
-					<div className="col-md-6 col-xl-3">
-						<div className="card shadow-lg card-border-bottom border-soft-green">
-							<div className="card-body">
-								<img src={Chat} className="icon-svg icon-svg-md text-green mb-3" alt="" />
-								<h4>Social Engagement</h4>
-								<p className="mb-2">
-									Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida at eget metus cras justo.
-								</p>
-								<a href="/" className="hover link-green">
-									Learn More
-								</a>
-							</div>
-						</div>
-					</div>
-
-					<div className="col-md-6 col-xl-3">
-						<div className="card shadow-lg card-border-bottom border-soft-orange">
-							<div className="card-body">
-								<img src={idsvg} className=" icon-svg icon-svg-md text-orange mb-3" alt="" />
-								<h4>Identity & Branding</h4>
-								<p className="mb-2">
-									Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida at eget metus cras justo.
-								</p>
-								<a href="/" className="hover link-orange">
-									Learn More
-								</a>
-							</div>
-						</div>
-					</div>
-
-					<div className="col-md-6 col-xl-3">
-						<div className="card shadow-lg card-border-bottom border-soft-blue">
-							<div className="card-body">
-								<img src={gift} className="icon-svg icon-svg-md text-blue mb-3" alt="" />
-								<h4>Product Design</h4>
-								<p className="mb-2">
-									Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida at eget metus cras justo.
-								</p>
-								<a href="/" className="hover link-blue">
-									Learn More
-								</a>
-							</div>
-						</div>
-					</div>
-				</div> */}
-
 				<div className="row gx-lg-8 gx-xl-12 gy-10 mb-14 mb-md-17 align-items-center">
-					<div className="col-lg-7">
-						<figure>
-							<img className="w-auto" src={eye} alt="" />
-						</figure>
+					<div className="col-lg-7 d-flex justify-content-center">
+						<img src={eye} alt="svg" width={700} />
 					</div>
 
 					<div className="col-lg-5">
