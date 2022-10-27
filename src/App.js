@@ -23,7 +23,7 @@ import ResetPassword from "./pages/auth/reSetPassword";
 import Success from "./pages/auth/Success";
 import InvoicePrint from "./pages/pre-built/invoice/InvoicePrint";
 import PasswordProtected from "./pages/passwordProtectedLinkPage/PasswordProtectedLink";
-// import LandingPage from "./LandingTwo/src/pages/IndexThree";
+import Index from "./Landing/index";
 
 const App = () => {
 	return (
@@ -55,7 +55,7 @@ const App = () => {
 			<Route exact path={`${process.env.PUBLIC_URL}/errors/504-classic`} component={Error504Classic}></Route>
 
 			{/*Main Routes*/}
-			{/* <Route exact path="/" component={LandingPage}></Route> */}
+			<Route exact path="/" component={Index}></Route>
 			<PrivateRoute exact path="" component={Layout}></PrivateRoute>
 			<Route component={RedirectAs404}></Route>
 		</Switch>
