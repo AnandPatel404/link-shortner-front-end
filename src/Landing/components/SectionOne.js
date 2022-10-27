@@ -11,7 +11,7 @@ function SectionOne() {
 						data-group="page-title"
 						data-delay="600"
 					>
-						<h1 class="display-1 mb-5 mx-md-n5 mx-lg-0">Creative. Smart. Awesome.</h1>
+						<h1 class="display-1 mb-5 mx-md-n5 mx-lg-0">Grow Your Business with Our Link Solutions</h1>
 						<p class="lead fs-lg mb-7">We specialize in web, mobile and identity design. We love to turn ideas into beautiful things.</p>
 						<div
 							class="d-flex justify-content-center justify-content-lg-start"

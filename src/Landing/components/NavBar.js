@@ -16,7 +16,7 @@ function NavBar() {
 						<div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
 							<div class="offcanvas-header d-lg-none">
 								<h3 class="text-white fs-30 mb-0">Sandbox</h3>
-								<button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+								<button type="button" class="btn-close btn-close-white"></button>
 							</div>
 							<div class="offcanvas-body d-flex flex-column h-100">
 								<ul class="navbar-nav">

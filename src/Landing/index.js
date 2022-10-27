@@ -3,6 +3,8 @@ import HeroOne from "./heroOne";
 import NavBar from "./components/NavBar";
 import SectionOne from "./components/SectionOne";
 import SectionTwo from "./components/SectionTwo";
+import SectionThree from "./components/SectionThree";
+import SectionFour from "./components/SectionFour";
 import "./style.css";
 function Index() {
 	return (
@@ -10,10 +12,12 @@ function Index() {
 			<div className="bg-soft-primary">
 				<NavBar />
 			</div>
-			<header class="wrapper bg-primary">
+			<header class="wrapper">
 				<SectionOne />
 				<SectionTwo />
-				<HeroOne />
+				<SectionThree />
+				<SectionFour />
+				{/* <HeroOne /> */}
 			</header>
 		</div>
 	);
