@@ -1,14 +1,14 @@
 import React from "react";
-import browser from "../assets/img/icons/lineal/browser.svg";
-import Chat from "../assets/img/icons/lineal/chat-2.svg";
-import idsvg from "../assets/img/icons/lineal/id-card.svg";
-import gift from "../assets/img/icons/lineal/gift.svg";
+// import browser from "../assets/img/icons/lineal/browser.svg";
+// import Chat from "../assets/img/icons/lineal/chat-2.svg";
+// import idsvg from "../assets/img/icons/lineal/id-card.svg";
+// import gift from "../assets/img/icons/lineal/gift.svg";
 import eye from "../assets/img/illustrations/i8.png";
 function SectionTwo() {
 	return (
 		<section className="wrapper bg-light">
 			<div className="container py-14 py-md-16 pb-md-17">
-				<div className="row gx-md-5 gy-5 mt-n18 mt-md-n21 mb-14 mb-md-17">
+				{/* <div className="row gx-md-5 gy-5 mt-n18 mt-md-n21 mb-14 mb-md-17">
 					<div className="col-md-6 col-xl-3">
 						<div className="card shadow-lg card-border-bottom border-soft-yellow">
 							<div className="card-body">
@@ -68,7 +68,7 @@ function SectionTwo() {
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> */}
 
 				<div className="row gx-lg-8 gx-xl-12 gy-10 mb-14 mb-md-17 align-items-center">
 					<div className="col-lg-7">

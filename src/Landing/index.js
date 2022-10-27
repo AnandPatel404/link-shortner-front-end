@@ -14,8 +14,8 @@ function Index() {
 			</div>
 			<header class="wrapper">
 				<SectionOne />
-				<SectionTwo />
 				<SectionThree />
+				<SectionTwo />
 				<SectionFour />
 				{/* <HeroOne /> */}
 			</header>

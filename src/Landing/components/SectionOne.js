@@ -1,5 +1,5 @@
 import React from "react";
-import img from "../assets/img/illustrations/i6.png";
+import img from "../assets/img/svg/grow.svg";
 function SectionOne() {
 	return (
 		<section class="wrapper bg-soft-primary">
@@ -32,10 +32,10 @@ function SectionOne() {
 						</div>
 					</div>
 
-					<div class="col-lg-7" data-cue="slideInDown">
-						<figure>
-							<img class="w-auto" src={img} alt="heroOne" />
-						</figure>
+					<div class="col-lg-7 d-flex justify-content-center">
+						{/* <figure> */}
+						<img src={img} alt="heroOne" width={650} />
+						{/* </figure> */}
 					</div>
 				</div>
 			</div>
