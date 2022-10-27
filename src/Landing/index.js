@@ -1,5 +1,5 @@
 import React from "react";
-import HeroOne from "./heroOne";
+// import HeroOne from "./heroOne";
 import NavBar from "./components/NavBar";
 import SectionOne from "./components/SectionOne";
 import SectionTwo from "./components/SectionTwo";
