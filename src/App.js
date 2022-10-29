@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
 import { RedirectAs404 } from "./utils/Utils";
 import PrivateRoute from "./route/PrivateRoute";
-import LandingRoute from "./route/LandingRoutes";
+// import LandingRoute from "./route/LandingRoutes";
 
 import Layout from "./layout/Index";
 
@@ -24,13 +24,17 @@ import ResetPassword from "./pages/auth/reSetPassword";
 import Success from "./pages/auth/Success";
 import InvoicePrint from "./pages/pre-built/invoice/InvoicePrint";
 import PasswordProtected from "./pages/passwordProtectedLinkPage/PasswordProtectedLink";
-import Index from "./Landing/index";
+import Pricing from "./Landing/components/Pricing";
+import Features from "./Landing/components/Features";
+import SectionOne from "./Landing/components/SectionOne";
 const App = () => {
 	return (
 		<React.Fragment>
 			<Switch>
 				{/* Auth Pages */}
-				<LandingRoute exact path="" component={Index}></LandingRoute>
+				<Route exact path="/pricing" component={Pricing}></Route>
+				<Route exact path="/features" component={Features}></Route>
+				<Route exact path="/home" component={SectionOne}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/auth-success`} component={Success}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/auth-reset`} component={ForgotPassword}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/auth-register`} component={Register}></Route>
