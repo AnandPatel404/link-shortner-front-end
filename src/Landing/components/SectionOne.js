@@ -32,12 +32,7 @@ function SectionOne() {
 								data-delay="900"
 							>
 								<span>
-									<a class="btn btn-primary rounded me-2" href="/">
-										See Projects
-									</a>
-								</span>
-								<span>
-									<a class="btn btn-yellow rounded" href="/">
+									<a class="btn btn-primary btn-dim rounded me-2" href="/">
 										Learn More
 									</a>
 								</span>
