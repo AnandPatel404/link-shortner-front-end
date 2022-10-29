@@ -23,7 +23,8 @@ function SectionOne() {
 						>
 							<h1 class="display-1 mb-5 mx-md-n5 mx-lg-0">Grow Your Business with Our Link Solutions</h1>
 							<p class="lead fs-lg mb-7">
-								We specialize in web, mobile and identity design. We love to turn ideas into beautiful things.
+							Link Management Platform with all features you need in one place. Shorten, brand, manage and track your links the easy way.
+
 							</p>
 							<div
 								class="d-flex justify-content-center justify-content-lg-start"
