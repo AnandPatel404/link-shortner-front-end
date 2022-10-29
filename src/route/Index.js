@@ -40,9 +40,11 @@ import UtilDisplay from "../pages/components/UtilDisplay";
 import UtilEmbeded from "../pages/components/UtilEmbeded";
 import UtilFlex from "../pages/components/UtilFlex";
 import UtilOthers from "../pages/components/UtilOthers";
-import UtilSizing from "../pages/components/UtilSizing";
-import UtilSpacing from "../pages/components/UtilSpacing";
-import UtilText from "../pages/components/UtilText";
+
+
+const UtilSizing = lazy(()=>import("../pages/components/UtilSizing"))
+const UtilSpacing = lazy(()=>import("../pages/components/UtilSpacing"))
+const UtilText = lazy(()=>import("../pages/components/UtilText"))
 
 const Blank = lazy(()=>import("../pages/others/Blank"))
 const Faq = lazy(()=>import("../pages/others/Faq"))
