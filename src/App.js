@@ -26,6 +26,7 @@ import PasswordProtected from "./pages/passwordProtectedLinkPage/PasswordProtect
 import Index from "./Landing/index";
 import NavBar from "./Landing/components/NavBar";
 import Pricing from "./Landing/components/Pricing";
+import Features from "./Landing/components/Features";
 import Footer from "./Landing/components/footer";
 
 const App = () => {
@@ -63,6 +64,7 @@ const App = () => {
 				<NavBar />
 				<Route exact path="/" component={Index}></Route>
 				<Route exact path="/pricing" component={Pricing}></Route>
+				<Route exact path="/features" component={Features}></Route>
 				<Footer />
 			</div>
 			<PrivateRoute exact path="" component={Layout}></PrivateRoute>

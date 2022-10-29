@@ -98,7 +98,7 @@ const Pages = () => {
 		<Suspense fallback={<div />}>
 			<Switch>
 				{/*Dashboards and used route*/}
-				<Route exact path={`${process.env.PUBLIC_URL}/`} component={Invest}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/dashboard`} component={Invest}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/_blank`} component={Blank}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/link/:id`} component={KycDetailsRegular}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/link-details/:id`} component={Editlink}></Route>
@@ -203,9 +203,6 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/nioicon`} component={NioIconPage}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/svg-icons`} component={SVGIconPage}></Route>
 				<Route component={RedirectAs404}></Route>
-				{/* <Route exact path={`${process.env.PUBLIC_URL}/app-messages`} component={AppMessages}></Route>
-			<Route exact path={`${process.env.PUBLIC_URL}/app-chat`} component={Chat}></Route>
-			<Route exact path={`${process.env.PUBLIC_URL}/app-calender`} component={Calender}></Route>*/}
 			</Switch>
 		</Suspense>
 	);
