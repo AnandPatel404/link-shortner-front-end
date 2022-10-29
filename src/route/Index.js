@@ -1,8 +1,7 @@
-import React, { Suspense, useLayoutEffect } from "react";
+import React, { Suspense, useLayoutEffect, lazy } from "react";
 import { Switch, Route } from "react-router-dom";
 import { RedirectAs404 } from "../utils/Utils";
-
-import Invest from "../pages/Invest";
+import { Spinner } from "reactstrap";
 
 import Component from "../pages/components/Index";
 import Accordian from "../pages/components/Accordions";
@@ -23,7 +22,7 @@ import Modals from "../pages/components/Modals";
 import Pagination from "../pages/components/Pagination";
 import Popovers from "../pages/components/Popovers";
 import Progress from "../pages/components/Progress";
-import Spinner from "../pages/components/Spinner";
+// import Spinner from "../pages/components/Spinner";
 import Tabs from "../pages/components/Tabs";
 import Toast from "../pages/components/Toast";
 import Tooltips from "../pages/components/Tooltips";
@@ -62,40 +61,40 @@ import KycListRegular from "../pages/pre-built/kyc-list-regular/KycListRegular";
 import KycDetailsRegular from "../pages/pre-built/kyc-list-regular/kycDetailsRegular";
 import TransListBasic from "../pages/pre-built/trans-list/TransListBasic";
 import TransListCrypto from "../pages/pre-built/trans-list/TransListCrypto";
-import ProductList from "../pages/pre-built/products/ProductList";
-import InvoiceList from "../pages/pre-built/invoice/InvoiceList";
-import InvoiceDetails from "../pages/pre-built/invoice/InvoiceDetails";
-import PricingTable from "../pages/pre-built/pricing-table/PricingTable";
-import GalleryPreview from "../pages/pre-built/gallery/GalleryCardPreview";
 
-import Inbox from "../pages/app/inbox/Inbox";
-import Kanban from "../pages/app/kanban/Kanban";
-import DateTimePicker from "../pages/components/forms/DateTimePicker";
-import CardWidgets from "../pages/components/widgets/CardWidgets";
-import ChartWidgets from "../pages/components/widgets/ChartWidgets";
-import RatingWidgets from "../pages/components/widgets/RatingWidgets";
-import SlickPage from "../pages/components/misc/Slick";
-import SweetAlertPage from "../pages/components/misc/SweetAlert";
-import BeautifulDnd from "../pages/components/misc/BeautifulDnd";
-import DualListPage from "../pages/components/misc/DualListbox";
-import JsTreePreview from "../pages/components/misc/JsTree";
-import QuillPreview from "../pages/components/forms/rich-editor/QuillPreview";
-import TinymcePreview from "../pages/components/forms/rich-editor/TinymcePreview";
-import KnobPreview from "../pages/components/charts/KnobPreview";
-
-import ChangePassword from "../pages/auth/changePassword";
-import Editlink from "../pages/pre-built/editLink/editlink";
-import AddDomain from "../pages/pre-built/domain/addDomain";
-import SetErrorPage from "../pages/pre-built/errorPage/SetErrorPage";
-import ClientDetails from "../pages/pre-built/products/ClientDetails";
-import FullShort from "../pages/pre-built/fullShort/FullShort";
+const ProductList = lazy(() => import("../pages/pre-built/products/ProductList"));
+const InvoiceList = lazy(() => import("../pages/pre-built/invoice/InvoiceList"));
+const InvoiceDetails = lazy(() => import("../pages/pre-built/invoice/InvoiceDetails"));
+const PricingTable = lazy(() => import("../pages/pre-built/pricing-table/PricingTable"));
+const GalleryPreview = lazy(() => import("../pages/pre-built/gallery/GalleryCardPreview"));
+const Inbox = lazy(() => import("../pages/app/inbox/Inbox"));
+const Kanban = lazy(() => import("../pages/app/kanban/Kanban"));
+const DateTimePicker = lazy(() => import("../pages/components/forms/DateTimePicker"));
+const CardWidgets = lazy(() => import("../pages/components/widgets/CardWidgets"));
+const ChartWidgets = lazy(() => import("../pages/components/widgets/ChartWidgets"));
+const RatingWidgets = lazy(() => import("../pages/components/widgets/RatingWidgets"));
+const SlickPage = lazy(() => import("../pages/components/misc/Slick"));
+const SweetAlertPage = lazy(() => import("../pages/components/misc/SweetAlert"));
+const BeautifulDnd = lazy(() => import("../pages/components/misc/BeautifulDnd"));
+const DualListPage = lazy(() => import("../pages/components/misc/DualListbox"));
+const JsTreePreview = lazy(() => import("../pages/components/misc/JsTree"));
+const QuillPreview = lazy(() => import("../pages/components/forms/rich-editor/QuillPreview"));
+const TinymcePreview = lazy(() => import("../pages/components/forms/rich-editor/TinymcePreview"));
+const KnobPreview = lazy(() => import("../pages/components/charts/KnobPreview"));
+const ChangePassword = lazy(() => import("../pages/auth/changePassword"));
+const Editlink = lazy(() => import("../pages/pre-built/editLink/editlink"));
+const AddDomain = lazy(() => import("../pages/pre-built/domain/addDomain"));
+const SetErrorPage = lazy(() => import("../pages/pre-built/errorPage/SetErrorPage"));
+const ClientDetails = lazy(() => import("../pages/pre-built/products/ClientDetails"));
+const FullShort = lazy(() => import("../pages/pre-built/fullShort/FullShort"));
+const Invest = lazy(() => import("../pages/Invest"));
 const Pages = () => {
 	useLayoutEffect(() => {
 		window.scrollTo(0, 0);
 	});
 
 	return (
-		<Suspense fallback={<div />}>
+		<Suspense fallback={<Spinner />}>
 			<Switch>
 				{/*Dashboards and used route*/}
 				<Route exact path={`${process.env.PUBLIC_URL}/`} component={Invest}></Route>

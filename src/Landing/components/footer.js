@@ -4,7 +4,7 @@ import Logo from "../../layout/logo/Logo";
 function footer() {
 	return (
 		<footer class="bg-soft-primary">
-			<div class="container py-13 py-md-15">
+			<div class="container pb-10">
 				<div class="row gy-6 gy-lg-0">
 					<div class="col-md-4 col-lg-3">
 						<div class="widget">

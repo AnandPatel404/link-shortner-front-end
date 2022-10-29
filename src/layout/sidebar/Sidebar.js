@@ -3,7 +3,9 @@ import classNames from "classnames";
 import SimpleBar from "simplebar-react";
 import Menu from "../menu/Menu";
 import Toggle from "./Toggle";
-import Logo from "../logo/Logo";
+import LogoLight2x from "../../images/svg/darklogo.svg";
+import LogoDark2x from "../../images/only-charecter.svg";
+import { Link } from "react-router-dom";
 
 const Sidebar = ({ fixed, theme, className, sidebarToggle, mobileView, ...props }) => {
 	const [collapseSidebar, setSidebar] = useState(false);
@@ -37,7 +39,10 @@ const Sidebar = ({ fixed, theme, className, sidebarToggle, mobileView, ...props 
 						icon="menu"
 					/>
 				</div>
-				<Logo />
+				<Link to={`${process.env.PUBLIC_URL}/`} className="logo-link">
+					<img className="logo-light logo-img" src={LogoLight2x} alt="logo" width={120} />
+					<img className="logo-dark logo-img" src={LogoDark2x} alt="logo" width={120} />
+				</Link>
 			</div>
 			<div className="nk-sidebar-content" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
 				<SimpleBar className="nk-sidebar-menu">
