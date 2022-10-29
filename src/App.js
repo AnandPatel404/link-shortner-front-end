@@ -24,6 +24,9 @@ import Success from "./pages/auth/Success";
 import InvoicePrint from "./pages/pre-built/invoice/InvoicePrint";
 import PasswordProtected from "./pages/passwordProtectedLinkPage/PasswordProtectedLink";
 import Index from "./Landing/index";
+import NavBar from "./Landing/components/NavBar";
+import Pricing from "./Landing/components/Pricing";
+import Footer from "./Landing/components/footer";
 
 const App = () => {
 	return (
@@ -40,6 +43,7 @@ const App = () => {
 			<Route exact path={`${process.env.PUBLIC_URL}/password-protected-link/:id`} component={PasswordProtected}></Route>
 
 			{/* Print Pages */}
+
 			<Route exact path={`${process.env.PUBLIC_URL}/invoice-print/:id`} component={InvoicePrint}></Route>
 
 			{/* Helper pages */}
@@ -55,7 +59,14 @@ const App = () => {
 			<Route exact path={`${process.env.PUBLIC_URL}/errors/504-classic`} component={Error504Classic}></Route>
 
 			{/*Main Routes*/}
-			<Route exact path="/" component={Index}></Route>
+			<div class="content-wrapper">
+				<div className="bg-soft-primary">
+					<NavBar />
+					<Route exact path="/" component={Index}></Route>
+					<Route exact path="/pricing" component={Pricing}></Route>
+					<Footer />
+				</div>
+			</div>
 			<PrivateRoute exact path="" component={Layout}></PrivateRoute>
 			<Route component={RedirectAs404}></Route>
 		</Switch>
