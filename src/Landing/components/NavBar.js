@@ -14,133 +14,17 @@ function NavBar() {
 					<div class="navbar-collapse-wrapper bg-white d-flex flex-row align-items-center justify-content-between">
 						<Logo />
 						<div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start justify-content-center">
-							{/* <div class="offcanvas-header d-lg-none">
-								<h3 class="text-white fs-30 mb-0">Sandbox</h3>
-								<button type="button" class="btn-close btn-close-white"></button>
-							</div> */}
 							<div class="offcanvas-body d-flex flex-column h-100">
 								<ul class="navbar-nav">
+									<li class="dropdown dropdown-submenu dropend">
+										<Link class="nav-link" to="/pricing">
+											Pricing
+										</Link>
+									</li>
 									<li class="nav-item dropdown dropdown-mega">
-										<a class="nav-link dropdown-toggle" href="/" data-bs-toggle="dropdown">
-											Demos
-										</a>
-										{/* <ul class="dropdown-menu mega-menu mega-menu-dark mega-menu-img">
-						  <li class="mega-menu-content mega-menu-scroll"> */}
-										{/* <ul class="row row-cols-1 row-cols-lg-6 gx-0 gx-lg-4 gy-lg-2 list-unstyled">
-							  <li class="col"><a class="dropdown-item" href="./demo1.html">
-								  <figure class="rounded lift d-none d-lg-block"><img src="./assets/img/demos/mi1.jpg" srcset="./assets/img/demos/mi1@2x.jpg 2x" alt=""></figure>
-								  <span class="d-lg-none">Demo I</span>
-								</a></li>
-							  <li class="col"><a class="dropdown-item" href="./demo2.html">
-								  <figure class="rounded lift d-none d-lg-block"><img src="./assets/img/demos/mi2.jpg" srcset="./assets/img/demos/mi2@2x.jpg 2x" alt=""></figure>
-								  <span class="d-lg-none">Demo II</span>
-								</a></li>
-							  <li class="col"><a class="dropdown-item" href="./demo3.html">
-								  <figure class="rounded lift d-none d-lg-block"><img src="./assets/img/demos/mi3.jpg" srcset="./assets/img/demos/mi3@2x.jpg 2x" alt=""></figure>
-								  <span class="d-lg-none">Demo III</span>
-								</a></li>
-							  <li class="col"><a class="dropdown-item" href="./demo4.html">
-								  <figure class="rounded lift d-none d-lg-block"><img src="./assets/img/demos/mi4.jpg" srcset="./assets/img/demos/mi4@2x.jpg 2x" alt=""></figure>
-								  <span class="d-lg-none">Demo IV</span>
-								</a></li>
-							  <li class="col"><a class="dropdown-item" href="./demo5.html">
-								  <figure class="rounded lift d-none d-lg-block"><img src="./assets/img/demos/mi5.jpg" srcset="./assets/img/demos/mi5@2x.jpg 2x" alt=""></figure>
-								  <span class="d-lg-none">Demo V</span>
-								</a></li>
-							  <li class="col"><a class="dropdown-item" href="./demo6.html">
-								  <figure class="rounded lift d-none d-lg-block"><img src="./assets/img/demos/mi6.jpg" srcset="./assets/img/demos/mi6@2x.jpg 2x" alt=""></figure>
-								  <span class="d-lg-none">Demo VI</span>
-								</a></li>
-							  <li class="col"><a class="dropdown-item" href="./demo7.html">
-								  <figure class="rounded lift d-none d-lg-block"><img src="./assets/img/demos/mi7.jpg" srcset="./assets/img/demos/mi7@2x.jpg 2x" alt=""></figure>
-								  <span class="d-lg-none">Demo VII</span>
-								</a></li>
-							  <li class="col"><a class="dropdown-item" href="./demo8.html">
-								  <figure class="rounded lift d-none d-lg-block"><img src="./assets/img/demos/mi8.jpg" srcset="./assets/img/demos/mi8@2x.jpg 2x" alt=""></figure>
-								  <span class="d-lg-none">Demo VIII</span>
-								</a></li>
-							  <li class="col"><a class="dropdown-item" href="./demo9.html">
-								  <figure class="rounded lift d-none d-lg-block"><img src="./assets/img/demos/mi9.jpg" srcset="./assets/img/demos/mi9@2x.jpg 2x" alt=""></figure>
-								  <span class="d-lg-none">Demo IX</span>
-								</a></li>
-							  <li class="col"><a class="dropdown-item" href="./demo10.html">
-								  <figure class="rounded lift d-none d-lg-block"><img src="./assets/img/demos/mi10.jpg" srcset="./assets/img/demos/mi10@2x.jpg 2x" alt=""></figure>
-								  <span class="d-lg-none">Demo X</span>
-								</a></li>
-							  <li class="col"><a class="dropdown-item" href="./demo11.html">
-								  <figure class="rounded lift d-none d-lg-block"><img src="./assets/img/demos/mi11.jpg" srcset="./assets/img/demos/mi11@2x.jpg 2x" alt=""></figure>
-								  <span class="d-lg-none">Demo XI</span>
-								</a></li>
-							  <li class="col"><a class="dropdown-item" href="./demo12.html">
-								  <figure class="rounded lift d-none d-lg-block"><img src="./assets/img/demos/mi12.jpg" srcset="./assets/img/demos/mi12@2x.jpg 2x" alt=""></figure>
-								  <span class="d-lg-none">Demo XII</span>
-								</a></li>
-							  <li class="col"><a class="dropdown-item" href="./demo13.html">
-								  <figure class="rounded lift d-none d-lg-block"><img src="./assets/img/demos/mi13.jpg" srcset="./assets/img/demos/mi13@2x.jpg 2x" alt=""></figure>
-								  <span class="d-lg-none">Demo XIII</span>
-								</a></li>
-							  <li class="col"><a class="dropdown-item" href="./demo14.html">
-								  <figure class="rounded lift d-none d-lg-block"><img src="./assets/img/demos/mi14.jpg" srcset="./assets/img/demos/mi14@2x.jpg 2x" alt=""></figure>
-								  <span class="d-lg-none">Demo XIV</span>
-								</a></li>
-							  <li class="col"><a class="dropdown-item" href="./demo15.html">
-								  <figure class="rounded lift d-none d-lg-block"><img src="./assets/img/demos/mi15.jpg" srcset="./assets/img/demos/mi15@2x.jpg 2x" alt=""></figure>
-								  <span class="d-lg-none">Demo XV</span>
-								</a></li>
-							  <li class="col"><a class="dropdown-item" href="./demo16.html">
-								  <figure class="rounded lift d-none d-lg-block"><img src="./assets/img/demos/mi16.jpg" srcset="./assets/img/demos/mi16@2x.jpg 2x" alt=""></figure>
-								  <span class="d-lg-none">Demo XVI</span>
-								</a></li>
-							  <li class="col"><a class="dropdown-item" href="./demo17.html">
-								  <figure class="rounded lift d-none d-lg-block"><img src="./assets/img/demos/mi17.jpg" srcset="./assets/img/demos/mi17@2x.jpg 2x" alt=""></figure>
-								  <span class="d-lg-none">Demo XVII</span>
-								</a></li>
-							  <li class="col"><a class="dropdown-item" href="./demo18.html">
-								  <figure class="rounded lift d-none d-lg-block"><img src="./assets/img/demos/mi18.jpg" srcset="./assets/img/demos/mi18@2x.jpg 2x" alt=""></figure>
-								  <span class="d-lg-none">Demo XVIII</span>
-								</a></li>
-							  <li class="col"><a class="dropdown-item" href="./demo19.html">
-								  <figure class="rounded lift d-none d-lg-block"><img src="./assets/img/demos/mi19.jpg" srcset="./assets/img/demos/mi19@2x.jpg 2x" alt=""></figure>
-								  <span class="d-lg-none">Demo XIX</span>
-								</a></li>
-							  <li class="col"><a class="dropdown-item" href="./demo20.html">
-								  <figure class="rounded lift d-none d-lg-block"><img src="./assets/img/demos/mi20.jpg" srcset="./assets/img/demos/mi20@2x.jpg 2x" alt=""></figure>
-								  <span class="d-lg-none">Demo XX</span>
-								</a></li>
-							  <li class="col"><a class="dropdown-item" href="./demo21.html">
-								  <figure class="rounded lift d-none d-lg-block"><img src="./assets/img/demos/mi21.jpg" srcset="./assets/img/demos/mi21@2x.jpg 2x" alt=""></figure>
-								  <span class="d-lg-none">Demo XXI</span>
-								</a></li>
-							  <li class="col"><a class="dropdown-item" href="./demo22.html">
-								  <figure class="rounded lift d-none d-lg-block"><img src="./assets/img/demos/mi22.jpg" srcset="./assets/img/demos/mi22@2x.jpg 2x" alt=""></figure>
-								  <span class="d-lg-none">Demo XXII</span>
-								</a></li>
-							  <li class="col"><a class="dropdown-item" href="./demo23.html">
-								  <figure class="rounded lift d-none d-lg-block"><img src="./assets/img/demos/mi23.jpg" srcset="./assets/img/demos/mi23@2x.jpg 2x" alt=""></figure>
-								  <span class="d-lg-none">Demo XXIII</span>
-								</a></li>
-							  <li class="col"><a class="dropdown-item" href="./demo24.html">
-								  <figure class="rounded lift d-none d-lg-block"><img src="./assets/img/demos/mi24.jpg" srcset="./assets/img/demos/mi24@2x.jpg 2x" alt=""></figure>
-								  <span class="d-lg-none">Demo XXIV</span>
-								</a></li>
-							  <li class="col"><a class="dropdown-item" href="./demo25.html">
-								  <figure class="rounded lift d-none d-lg-block"><img src="./assets/img/demos/mi25.jpg" srcset="./assets/img/demos/mi25@2x.jpg 2x" alt=""></figure>
-								  <span class="d-lg-none">Demo XXV</span>
-								</a></li>
-							  <li class="col"><a class="dropdown-item" href="./demo26.html">
-								  <figure class="rounded lift d-none d-lg-block"><img src="./assets/img/demos/mi26.jpg" srcset="./assets/img/demos/mi26@2x.jpg 2x" alt=""></figure>
-								  <span class="d-lg-none">Demo XXVI</span>
-								</a></li>
-							  <li class="col"><a class="dropdown-item" href="./demo27.html">
-								  <figure class="rounded lift d-none d-lg-block"><img src="./assets/img/demos/mi27.jpg" srcset="./assets/img/demos/mi27@2x.jpg 2x" alt=""></figure>
-								  <span class="d-lg-none">Demo XXVII</span>
-								</a></li>
-							</ul> */}
-
-										{/* <span class="d-none d-lg-flex"><i class="uil uil-direction"></i><strong>Scroll to view more</strong></span>
-						  </li>
-
-						</ul> */}
+										<Link class="nav-link dropdown-toggle" to="/" data-bs-toggle="dropdown">
+											Home
+										</Link>
 									</li>
 									<li class="nav-item dropdown">
 										<a class="nav-link dropdown-toggle" href="/" data-bs-toggle="dropdown">
