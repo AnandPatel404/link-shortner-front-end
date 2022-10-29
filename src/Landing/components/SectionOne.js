@@ -9,9 +9,9 @@ import SectionSix from "./SectionSix";
 import "../style.css";
 function SectionOne() {
 	return (
-		<div class="content-wrapper">
+		<div class="content-wrapper bg-soft-primary">
 			<NavBar />
-			<section class="wrapper bg-light">
+			<section class="wrapper bg-soft-primary">
 				<div class="container pt-10 pb-15 pt-md-14 pb-md-20">
 					<div class="row gx-lg-8 gx-xl-12 gy-10 mb-5 align-items-center">
 						<div
