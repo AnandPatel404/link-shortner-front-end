@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
 import { RedirectAs404 } from "./utils/Utils";
 import PrivateRoute from "./route/PrivateRoute";
+import LandingRoute from "./route/LandingRoutes";
 
 import Layout from "./layout/Index";
 
@@ -24,52 +25,42 @@ import Success from "./pages/auth/Success";
 import InvoicePrint from "./pages/pre-built/invoice/InvoicePrint";
 import PasswordProtected from "./pages/passwordProtectedLinkPage/PasswordProtectedLink";
 import Index from "./Landing/index";
-import NavBar from "./Landing/components/NavBar";
-import Pricing from "./Landing/components/Pricing";
-import Features from "./Landing/components/Features";
-import Footer from "./Landing/components/footer";
-
 const App = () => {
 	return (
-		<Switch>
-			{/* Auth Pages */}
-			<Route exact path={`${process.env.PUBLIC_URL}/auth-success`} component={Success}></Route>
-			<Route exact path={`${process.env.PUBLIC_URL}/auth-reset`} component={ForgotPassword}></Route>
-			<Route exact path={`${process.env.PUBLIC_URL}/auth-register`} component={Register}></Route>
-			<Route exact path={`${process.env.PUBLIC_URL}/auth-login`} component={Login}></Route>
-			<Route exact path={`${process.env.PUBLIC_URL}/auth-send-otp`} component={SendOtp}></Route>
-			<Route exact path={`${process.env.PUBLIC_URL}/auth-verify-otp`} component={VerifyOtp}></Route>
-			<Route exact path={`${process.env.PUBLIC_URL}/auth-verify-otp-for-reset-password`} component={verifyOtpForResetPassword}></Route>
-			<Route exact path={`${process.env.PUBLIC_URL}/auth-reset-password`} component={ResetPassword}></Route>
-			<Route exact path={`${process.env.PUBLIC_URL}/password-protected-link/:id`} component={PasswordProtected}></Route>
+		<React.Fragment>
+			<Switch>
+				{/* Auth Pages */}
+				<LandingRoute exact path="" component={Index}></LandingRoute>
+				<Route exact path={`${process.env.PUBLIC_URL}/auth-success`} component={Success}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/auth-reset`} component={ForgotPassword}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/auth-register`} component={Register}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/auth-login`} component={Login}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/auth-send-otp`} component={SendOtp}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/auth-verify-otp`} component={VerifyOtp}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/auth-verify-otp-for-reset-password`} component={verifyOtpForResetPassword}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/auth-reset-password`} component={ResetPassword}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/password-protected-link/:id`} component={PasswordProtected}></Route>
 
-			{/* Print Pages */}
+				<Route exact path={`${process.env.PUBLIC_URL}/invoice-print/:id`} component={InvoicePrint}></Route>
 
-			<Route exact path={`${process.env.PUBLIC_URL}/invoice-print/:id`} component={InvoicePrint}></Route>
+				{/* Helper pages */}
+				<Route exact path={`${process.env.PUBLIC_URL}/auths/terms`} component={Terms}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/auths/faq`} component={Faq}></Route>
 
-			{/* Helper pages */}
-			<Route exact path={`${process.env.PUBLIC_URL}/auths/terms`} component={Terms}></Route>
-			<Route exact path={`${process.env.PUBLIC_URL}/auths/faq`} component={Faq}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/invoice-print`} component={InvoicePrint}></Route>
 
-			<Route exact path={`${process.env.PUBLIC_URL}/invoice-print`} component={InvoicePrint}></Route>
+				{/*Error Pages*/}
+				<Route exact path={`${process.env.PUBLIC_URL}/errors/404-classic`} component={Error404Classic}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/errors/504-modern`} component={Error504Modern}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/errors/404-modern`} component={Error404Modern}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/errors/504-classic`} component={Error504Classic}></Route>
 
-			{/*Error Pages*/}
-			<Route exact path={`${process.env.PUBLIC_URL}/errors/404-classic`} component={Error404Classic}></Route>
-			<Route exact path={`${process.env.PUBLIC_URL}/errors/504-modern`} component={Error504Modern}></Route>
-			<Route exact path={`${process.env.PUBLIC_URL}/errors/404-modern`} component={Error404Modern}></Route>
-			<Route exact path={`${process.env.PUBLIC_URL}/errors/504-classic`} component={Error504Classic}></Route>
+				{/*Main Routes*/}
+				<PrivateRoute exact path="" component={Layout}></PrivateRoute>
 
-			{/*Main Routes*/}
-			<div class="content-wrapper bg-light">
-				<NavBar />
-				<Route exact path="/" component={Index}></Route>
-				<Route exact path="/pricing" component={Pricing}></Route>
-				<Route exact path="/features" component={Features}></Route>
-				<Footer />
-			</div>
-			<PrivateRoute exact path="" component={Layout}></PrivateRoute>
-			<Route component={RedirectAs404}></Route>
-		</Switch>
+				<Route component={RedirectAs404}></Route>
+			</Switch>
+		</React.Fragment>
 	);
 };
 export default withRouter(App);
