@@ -1,36 +1,32 @@
-import React from "react";
+import React, { lazy } from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
 import { RedirectAs404 } from "./utils/Utils";
+
 import PrivateRoute from "./route/PrivateRoute";
+const Error404Classic = lazy(() => import("./pages/error/404-classic"));
+const Error404Modern = lazy(() => import("./pages/error/404-modern"));
+const Error504Classic = lazy(() => import("./pages/error/504-classic"));
+const Error504Modern = lazy(() => import("./pages/error/504-modern"));
+const Faq = lazy(() => import("./pages/others/Faq"));
+const Terms = lazy(() => import("./pages/others/Terms"));
+const Login = lazy(() => import("./pages/auth/Login"));
+const Register = lazy(() => import("./pages/auth/Register"));
+const SendOtp = lazy(() => import("./pages/auth/SendOtp"));
+const VerifyOtp = lazy(() => import("./pages/auth/VerifyOtp"));
+const ForgotPassword = lazy(() => import("./pages/auth/ForgotPassword"));
+const verifyOtpForResetPassword = lazy(() => import("./pages/auth/verifyOtpForResetPassword"));
+const ResetPassword = lazy(() => import("./pages/auth/reSetPassword"));
+const Success = lazy(() => import("./pages/auth/Success"));
+const PasswordProtected = lazy(() => import("./pages/passwordProtectedLinkPage/PasswordProtectedLink"));
+const Pricing = lazy(() => import("./Landing/components/Pricing"));
+const Features = lazy(() => import("./Landing/components/Features"));
+const SectionOne = lazy(() => import("./Landing/components/SectionOne"));
+const Layout = lazy(() => import("./layout/Index"));
 
-import Layout from "./layout/Index";
-
-import Error404Classic from "./pages/error/404-classic";
-import Error404Modern from "./pages/error/404-modern";
-import Error504Modern from "./pages/error/504-modern";
-import Error504Classic from "./pages/error/504-classic";
-
-import Faq from "./pages/others/Faq";
-import Terms from "./pages/others/Terms";
-
-import Login from "./pages/auth/Login";
-import Register from "./pages/auth/Register";
-import SendOtp from "./pages/auth/SendOtp";
-import VerifyOtp from "./pages/auth/VerifyOtp";
-import ForgotPassword from "./pages/auth/ForgotPassword";
-import verifyOtpForResetPassword from "./pages/auth/verifyOtpForResetPassword";
-import ResetPassword from "./pages/auth/reSetPassword";
-import Success from "./pages/auth/Success";
-import InvoicePrint from "./pages/pre-built/invoice/InvoicePrint";
-import PasswordProtected from "./pages/passwordProtectedLinkPage/PasswordProtectedLink";
-import Pricing from "./Landing/components/Pricing";
-import Features from "./Landing/components/Features";
-import SectionOne from "./Landing/components/SectionOne";
 const App = () => {
 	return (
 		<React.Fragment>
 			<Switch>
-				{/* Auth Pages */}
 				<Route exact path="/pricing" component={Pricing}></Route>
 				<Route exact path="/features" component={Features}></Route>
 				<Route exact path="/home" component={SectionOne}></Route>
@@ -44,13 +40,9 @@ const App = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/auth-reset-password`} component={ResetPassword}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/password-protected-link/:id`} component={PasswordProtected}></Route>
 
-				<Route exact path={`${process.env.PUBLIC_URL}/invoice-print/:id`} component={InvoicePrint}></Route>
-
 				{/* Helper pages */}
 				<Route exact path={`${process.env.PUBLIC_URL}/auths/terms`} component={Terms}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/auths/faq`} component={Faq}></Route>
-
-				<Route exact path={`${process.env.PUBLIC_URL}/invoice-print`} component={InvoicePrint}></Route>
 
 				{/*Error Pages*/}
 				<Route exact path={`${process.env.PUBLIC_URL}/errors/404-classic`} component={Error404Classic}></Route>
