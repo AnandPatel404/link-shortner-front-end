@@ -2,7 +2,7 @@ import React from "react";
 import img from "../assets/img/svg/grow.svg";
 function SectionOne() {
 	return (
-		<section class="wrapper bg-soft-primary">
+		<section class="wrapper bg-light">
 			<div class="container pt-10 pb-15 pt-md-14 pb-md-20">
 				<div class="row gx-lg-8 gx-xl-12 gy-10 mb-5 align-items-center">
 					<div

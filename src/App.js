@@ -59,13 +59,11 @@ const App = () => {
 			<Route exact path={`${process.env.PUBLIC_URL}/errors/504-classic`} component={Error504Classic}></Route>
 
 			{/*Main Routes*/}
-			<div class="content-wrapper">
-				<div className="bg-soft-primary">
-					<NavBar />
-					<Route exact path="/" component={Index}></Route>
-					<Route exact path="/pricing" component={Pricing}></Route>
-					<Footer />
-				</div>
+			<div class="content-wrapper bg-light">
+				<NavBar />
+				<Route exact path="/" component={Index}></Route>
+				<Route exact path="/pricing" component={Pricing}></Route>
+				<Footer />
 			</div>
 			<PrivateRoute exact path="" component={Layout}></PrivateRoute>
 			<Route component={RedirectAs404}></Route>

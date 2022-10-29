@@ -1,12 +1,8 @@
 import React from "react";
-// import browser from "../assets/img/icons/lineal/browser.svg";
-// import Chat from "../assets/img/icons/lineal/chat-2.svg";
-// import idsvg from "../assets/img/icons/lineal/id-card.svg";
-// import gift from "../assets/img/icons/lineal/gift.svg";
 import eye from "../assets/img/svg/pro.svg";
 function SectionTwo() {
 	return (
-		<section className="wrapper bg-soft-primary">
+		<section className="wrapper bg-light">
 			<div className="container py-14 py-md-16 pb-md-17">
 				<div className="row gx-lg-8 gx-xl-12 gy-10 mb-14 mb-md-17 align-items-center">
 					<div className="col-lg-7 d-flex justify-content-center">
