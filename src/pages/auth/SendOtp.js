@@ -82,7 +82,7 @@ function SendOtp({ history }) {
 						<Block className="nk-auth-body py-5 my-5 wide-s">
 							<PreviewCard className="border-0" bodyClass="card-inner-lg" style={{ backgroundColor: "#f5f6fa" }}>
 								<div className="brand-logo pb-4">
-									<Link to={process.env.PUBLIC_URL + "/"} className="logo-link">
+									<Link to="/home" className="logo-link">
 										<img className="logo-light logo-img logo-img-lg" src={Logo} alt="logo" width={130} />
 										<img className="logo-dark logo-img logo-img-lg" src={LogoDark} alt="logodark" />
 									</Link>

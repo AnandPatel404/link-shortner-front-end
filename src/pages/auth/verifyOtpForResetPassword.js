@@ -57,7 +57,7 @@ function VerifyOtpForResetPassword({ history }) {
 						<Block className="nk-auth-body pt-lg-5 mt-lg-5 wide-s">
 							<PreviewCard className="border-0 mt-lg-5" bodyClass="card-inner-lg" style={{ backgroundColor: "#f5f6fa" }}>
 								<div className="brand-logo pb-4">
-									<Link to={process.env.PUBLIC_URL + "/"} className="logo-link">
+									<Link className="logo-link">
 										<img className="logo-light logo-img logo-img-lg" src={Logo} alt="logo" width={160} />
 										<img className="logo-dark logo-img logo-img-lg" src={LogoDark} alt="logodark" />
 									</Link>

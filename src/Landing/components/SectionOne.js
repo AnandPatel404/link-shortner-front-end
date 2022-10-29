@@ -6,6 +6,7 @@ import SectionThree from "./SectionThree";
 import SectionFour from "./SectionFour";
 import SectionFive from "./SectionFive";
 import SectionSix from "./SectionSix";
+import Footer from "./footer";
 import "../style.css";
 function SectionOne() {
 	return (
@@ -56,6 +57,7 @@ function SectionOne() {
 			<SectionFour />
 			<SectionFive />
 			<SectionSix />
+			<Footer />
 		</div>
 	);
 }
