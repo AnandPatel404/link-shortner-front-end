@@ -1,13 +1,14 @@
-import React from "react";
+import React, { lazy } from "react";
 import img from "../assets/img/svg/grow.svg";
 import NavBar from "./NavBar";
-import SectionTwo from "./SectionTwo";
-import SectionThree from "./SectionThree";
-import SectionFour from "./SectionFour";
-import SectionFive from "./SectionFive";
-import SectionSix from "./SectionSix";
-import Footer from "./footer";
 import "../style.css";
+const SectionTwo = lazy(() => import("./SectionTwo"));
+const SectionThree = lazy(() => import("./SectionThree"));
+const SectionFour = lazy(() => import("./SectionFour"));
+const SectionFive = lazy(() => import("./SectionFive"));
+const SectionSix = lazy(() => import("./SectionSix"));
+const Footer = lazy(() => import("./footer"));
+
 function SectionOne() {
 	return (
 		<div class="content-wrapper bg-soft-primary">

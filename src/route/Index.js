@@ -1,6 +1,7 @@
 import React, { Suspense, useLayoutEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import { RedirectAs404 } from "../utils/Utils";
+import { Spinner } from "reactstrap";
 
 import Invest from "../pages/Invest";
 
@@ -23,7 +24,7 @@ import Modals from "../pages/components/Modals";
 import Pagination from "../pages/components/Pagination";
 import Popovers from "../pages/components/Popovers";
 import Progress from "../pages/components/Progress";
-import Spinner from "../pages/components/Spinner";
+// import Spinner from "../pages/components/Spinner";
 import Tabs from "../pages/components/Tabs";
 import Toast from "../pages/components/Toast";
 import Tooltips from "../pages/components/Tooltips";
@@ -95,7 +96,7 @@ const Pages = () => {
 	});
 
 	return (
-		<Suspense fallback={<div />}>
+		<Suspense fallback={<Spinner />}>
 			<Switch>
 				{/*Dashboards and used route*/}
 				<Route exact path={`${process.env.PUBLIC_URL}/`} component={Invest}></Route>
