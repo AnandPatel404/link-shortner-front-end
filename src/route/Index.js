@@ -44,24 +44,23 @@ import UtilSizing from "../pages/components/UtilSizing";
 import UtilSpacing from "../pages/components/UtilSpacing";
 import UtilText from "../pages/components/UtilText";
 
-import Blank from "../pages/others/Blank";
-import Faq from "../pages/others/Faq";
-import Regularv1 from "../pages/others/Regular-1";
-import Regularv2 from "../pages/others/Regular-2";
-import Terms from "../pages/others/Terms";
-import BasicTable from "../pages/components/table/BasicTable";
-import SpecialTablePage from "../pages/components/table/SpecialTable";
-import ChartPage from "../pages/components/charts/Charts";
-import NioIconPage from "../pages/components/crafted-icons/NioIcon";
-import SVGIconPage from "../pages/components/crafted-icons/SvgIcons";
+const Blank = lazy(()=>import("../pages/others/Blank"))
+const Faq = lazy(()=>import("../pages/others/Faq"))
+const Regularv1 = lazy(()=>import("../pages/others/Regular-1"))
+const Regularv2 = lazy(()=>import("../pages/others/Regular-2"))
+const Terms = lazy(()=>import("../pages/others/Terms"))
+const BasicTable = lazy(()=>import("../pages/components/table/BasicTable"))
+const SpecialTablePage = lazy(()=>import("../pages/components/table/SpecialTable"))
+const ChartPage = lazy(()=>import("../pages/components/charts/Charts"))
+const NioIconPage = lazy(()=>import("../pages/components/crafted-icons/NioIcon"))
+const SVGIconPage = lazy(()=>import("../pages/components/crafted-icons/SvgIcons"))
 
-import ProjectListPage from "../pages/pre-built/projects/ProjectList";
-import UserProfileLayout from "../pages/pre-built/user-manage/UserProfileLayout";
-import KycListRegular from "../pages/pre-built/kyc-list-regular/KycListRegular";
-import KycDetailsRegular from "../pages/pre-built/kyc-list-regular/kycDetailsRegular";
-import TransListBasic from "../pages/pre-built/trans-list/TransListBasic";
-import TransListCrypto from "../pages/pre-built/trans-list/TransListCrypto";
-
+const ProjectListPage = lazy(()=>import("../pages/pre-built/projects/ProjectList"))
+const UserProfileLayout = lazy(()=>import("../pages/pre-built/user-manage/UserProfileLayout"))
+const KycListRegular = lazy(()=>import("../pages/pre-built/kyc-list-regular/KycListRegular"))
+const KycDetailsRegular = lazy(()=>import("../pages/pre-built/kyc-list-regular/kycDetailsRegular"))
+const TransListBasic = lazy(()=>import("../pages/pre-built/trans-list/TransListBasic"))
+const TransListCrypto = lazy(()=>import("../pages/pre-built/trans-list/TransListCrypto"))
 const ProductList = lazy(() => import("../pages/pre-built/products/ProductList"));
 const InvoiceList = lazy(() => import("../pages/pre-built/invoice/InvoiceList"));
 const InvoiceDetails = lazy(() => import("../pages/pre-built/invoice/InvoiceDetails"));

@@ -10,7 +10,7 @@ function footer() {
 						<div class="widget">
 							<Logo />
 							<p class="mb-4">
-								© 2022 Sandbox. <br class="d-none d-lg-block" />
+								© 2022 Shortnerme. <br class="d-none d-lg-block" />
 								All rights reserved.
 							</p>
 							{/* <nav class="nav social ">
@@ -36,7 +36,7 @@ function footer() {
 					<div class="col-md-4 col-lg-3">
 						<div class="widget">
 							<h4 class="widget-title  mb-3">Get in Touch</h4>
-							<address class="pe-xl-15 pe-xxl-17">Moonshine St. 14/05 Light City, London, United Kingdom</address>
+							<address class="pe-xl-15 pe-xxl-17"> Upleta, Gujarat-360490</address>
 							<a href="mailto:/" class="link-body">
 								shorterme@gmail.com
 							</a>

@@ -15,8 +15,9 @@ function SectionThree() {
 										</span>
 									</div>
 									<div>
-										<h4 className="mb-1">Collect Ideas</h4>
-										<p className="mb-0">Nulla vitae elit libero pharetra augue dapibus.</p>
+										<h4 className="mb-1">URL Shortener</h4>
+										<p className="mb-0">Free custom URL Shortener with many features that gives you better quality for links shortening. Shortened URLs will never expire. We do not display ads during direct redirecting to the original url.
+</p>
 									</div>
 								</div>
 							</div>
@@ -31,8 +32,10 @@ function SectionThree() {
 										</span>
 									</div>
 									<div>
-										<h4 className="mb-1">Data Analysis</h4>
-										<p className="mb-0">Vivamus sagittis lacus vel augue laoreet.</p>
+										<h4 className="mb-1">Link Analytics Platform</h4>
+										<p className="mb-0">Track each shortened link and measure its performance to understand it. Detailed analytics provides you info about clicks, devices, brands, browsers, systems, geo location.
+
+</p>
 									</div>
 								</div>
 							</div>
@@ -47,8 +50,8 @@ function SectionThree() {
 										</span>
 									</div>
 									<div>
-										<h4 className="mb-1">Finalize Product</h4>
-										<p className="mb-0">Cras mattis consectetur purus sit amet.</p>
+										<h4 className="mb-1">Goog Pricing</h4>
+										<p className="mb-0">Good quality at good and cheap price is only found in shortme.</p>
 									</div>
 								</div>
 							</div>
@@ -56,19 +59,16 @@ function SectionThree() {
 					</div>
 
 					<div className="col-lg-6">
-						<h2 className="fs-16 text-uppercase text-muted mb-3">Our Strategy</h2>
-						<h3 className="display-4 mb-5">Here are 3 working steps to organize our business projects.</h3>
+						<h2 className="fs-16 text-uppercase text-muted mb-3"> Main benefit</h2>
+						<h3 className="display-4 mb-5">Here  3 Main benefit in shorterme.</h3>
 						<p>
-							Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Etiam porta sem malesuada magna mollis
-							euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam quis risus eget urna mollis.
+						Free custom URL Shortener with many features that gives you better quality for links shortening.Good quality at good and cheap price is only found in shortme.
+
 						</p>
 						<p className="mb-6">
-							Nullam id dolor id nibh ultricies vehicula ut id elit. Vestibulum id ligula porta felis euismod semper. Aenean lacinia
-							bibendum nulla sed consectetur.
+						Track each shortened link and measure its performance to understand it. Detailed analytics provides you info about clicks, devices, brands, browsers, systems, geo location.
 						</p>
-						<a href="/" className="btn btn-primary rounded-pill mb-0">
-							Learn More
-						</a>
+						
 					</div>
 				</div>
 			</div>
