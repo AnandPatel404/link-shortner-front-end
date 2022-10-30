@@ -1,7 +1,7 @@
 import React, { lazy } from "react";
-import img from "../assets/img/svg/grow.svg";
+import img from "../assets/img/svg/growtwo.svg";
 import NavBar from "./NavBar";
-import "../style.css";
+
 const SectionTwo = lazy(() => import("./SectionTwo"));
 const SectionThree = lazy(() => import("./SectionThree"));
 const SectionFour = lazy(() => import("./SectionFour"));
@@ -13,19 +13,19 @@ function SectionOne() {
 	return (
 		<div class="content-wrapper bg-soft-primary">
 			<NavBar />
-			<section class="wrapper bg-soft-primary">
+			<section class="wrapper ">
 				<div class="container pt-10 pb-15 pt-md-14 pb-md-20">
 					<div class="row gx-lg-8 gx-xl-12 gy-10 mb-5 align-items-center">
 						<div
-							class="col-md-10 offset-md-1 offset-lg-0 col-lg-5 text-center text-lg-start order-2 order-lg-0"
+							class="col-md-10 offset-md-1 offset-lg-0 col-lg-6 text-center text-lg-start order-2 order-lg-0"
 							data-cues="slideInDown"
 							data-group="page-title"
 							data-delay="600"
 						>
-							<h1 class="display-1 mb-5 mx-md-n5 mx-lg-0">Grow Your Business with Our Link Solutions</h1>
-							<p class="lead fs-lg mb-7">
-							Link Management Platform with all features you need in one place. Shorten, brand, manage and track your links the easy way.
-
+							<h1 class=" mb-5 mx-md-n5 mx-lg-0">Grow Your Business with Our Link Solutions</h1>
+							<p class=" mb-7">
+								Link Management Platform with all features you need in one place. Shorten, brand, manage and track your links the easy
+								way.
 							</p>
 							<div
 								class="d-flex justify-content-center justify-content-lg-start"
@@ -34,17 +34,15 @@ function SectionOne() {
 								data-delay="900"
 							>
 								<span>
-									<a class="btn btn-primary btn-dim rounded me-2" href="/">
+									<a class="btn btn-primary rounded me-2" href="/">
 										Learn More
 									</a>
 								</span>
 							</div>
 						</div>
 
-						<div class="col-lg-7 d-flex justify-content-center">
-							{/* <figure> */}
-							<img src={img} alt="heroOne" width={650} />
-							{/* </figure> */}
+						<div class="col-lg-6 d-flex justify-content-center">
+							<img src={img} alt="heroOne" width={600} />
 						</div>
 					</div>
 				</div>

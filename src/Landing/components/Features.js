@@ -3,7 +3,7 @@ import imgOne from "../assets/img/svg/reach.svg";
 import imgTwo from "../assets/img/svg/collect.svg";
 import imgThree from "../assets/img/svg/password.svg";
 import imgFour from "../assets/img/svg/time.svg";
-import imgFive from "../assets/img/illustrations/i18.png";
+import imgFive from "../assets/img/svg/click.svg";
 import NavBar from "./NavBar";
 import { Icon } from "../../components/Component";
 

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import userApiCred from "../../../zustand/apiCred/apiCred";
 
-const InvoiceList = () => {
+const ApiCred = () => {
 	const [data, setData] = useState([]);
 
 	const [modal, setModal] = useState({
@@ -231,4 +231,4 @@ const InvoiceList = () => {
 		</React.Fragment>
 	);
 };
-export default InvoiceList;
+export default ApiCred;

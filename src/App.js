@@ -1,7 +1,7 @@
 import React, { lazy } from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
 import { RedirectAs404 } from "./utils/Utils";
-
+import "./Landing/style.css";
 import PrivateRoute from "./route/PrivateRoute";
 const Error404Classic = lazy(() => import("./pages/error/404-classic"));
 const Error404Modern = lazy(() => import("./pages/error/404-modern"));

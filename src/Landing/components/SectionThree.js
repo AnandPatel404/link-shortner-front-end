@@ -1,5 +1,5 @@
 import React from "react";
-
+import paichart from "../assets/img/svg/paichart.svg";
 function SectionThree() {
 	return (
 		<section className="wrapper bg-soft-primary ">
@@ -16,8 +16,10 @@ function SectionThree() {
 									</div>
 									<div>
 										<h4 className="mb-1">URL Shortener</h4>
-										<p className="mb-0">Free custom URL Shortener with many features that gives you better quality for links shortening. Shortened URLs will never expire. We do not display ads during direct redirecting to the original url.
-</p>
+										<p className="mb-0">
+											Free custom URL Shortener with many features that gives you better quality for links shortening. Shortened
+											URLs will never expire. We do not display ads during direct redirecting to the original url.
+										</p>
 									</div>
 								</div>
 							</div>
@@ -33,9 +35,10 @@ function SectionThree() {
 									</div>
 									<div>
 										<h4 className="mb-1">Link Analytics Platform</h4>
-										<p className="mb-0">Track each shortened link and measure its performance to understand it. Detailed analytics provides you info about clicks, devices, brands, browsers, systems, geo location.
-
-</p>
+										<p className="mb-0">
+											Track each shortened link and measure its performance to understand it. Detailed analytics provides you
+											info about clicks, devices, brands, browsers, systems, geo location.
+										</p>
 									</div>
 								</div>
 							</div>
@@ -60,15 +63,8 @@ function SectionThree() {
 
 					<div className="col-lg-6">
 						<h2 className="fs-16 text-uppercase text-muted mb-3"> Main benefit</h2>
-						<h3 className="display-4 mb-5">Here  3 Main benefit in shorterme.</h3>
-						<p>
-						Free custom URL Shortener with many features that gives you better quality for links shortening.Good quality at good and cheap price is only found in shortme.
-
-						</p>
-						<p className="mb-6">
-						Track each shortened link and measure its performance to understand it. Detailed analytics provides you info about clicks, devices, brands, browsers, systems, geo location.
-						</p>
-						
+						<h3 className="mb-5">Here 3 Main benefit in shorterme.</h3>
+						<img src={paichart} alt="" />
 					</div>
 				</div>
 			</div>
