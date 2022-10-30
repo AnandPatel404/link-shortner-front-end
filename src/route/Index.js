@@ -171,7 +171,6 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/components/toast`} component={Toast}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/tooltips`} component={Tooltips}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/typography`} component={Typography}></Route>
-				{/* <Route exact path={`${process.env.PUBLIC_URL}/components/noUislider`} component={NouiSlider}></Route> */}
 				<Route exact path={`${process.env.PUBLIC_URL}/components/wizard-basic`} component={WizardForm}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/quill`} component={QuillPreview}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/tinymce`} component={TinymcePreview}></Route>
