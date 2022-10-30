@@ -60,19 +60,18 @@ const userActivity = create((set, get) => ({
 			});
 	},
 
-	getUserAllShortenLink: async ({ currentPage, ...rest }) => {
+	getUserAllShortenLink: async ({ currentPage }, setLoading) => {
 		try {
 			await axios({
 				method: "get",
-				// url: `short/links?page=${currentPage}&${Object.keys(rest)
-				// 	.map((key) => `${key}=${rest[key]}`)
-				// 	.join("&")}`,
 				url: `short/links?page=${currentPage}&limit=10`,
 			}).then((res) => {
+				setLoading(false);
 				set({ allLinks: res.data.data.results });
 				set({ AllLinksLength: res.data.data.totalResults });
 			});
 		} catch (err) {
+			setLoading(false);
 			errorToast(err.response.data.message);
 		}
 	},

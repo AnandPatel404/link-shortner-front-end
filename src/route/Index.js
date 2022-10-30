@@ -85,6 +85,7 @@ const AddDomain = lazy(() => import("../pages/pre-built/domain/addDomain"));
 const SetErrorPage = lazy(() => import("../pages/pre-built/errorPage/SetErrorPage"));
 const ClientDetails = lazy(() => import("../pages/pre-built/products/ClientDetails"));
 const FullShort = lazy(() => import("../pages/pre-built/fullShort/FullShort"));
+const ApiCred = lazy(() => import("../pages/pre-built/apiCred/apiCred"));
 const Invest = lazy(() => import("../pages/Invest"));
 const Pages = () => {
 	useLayoutEffect(() => {
@@ -109,6 +110,7 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-notification/`} component={UserProfileLayout}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-activity/`} component={UserProfileLayout}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/client-details/:id/:page`} component={ClientDetails}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/api-credentials`} component={ApiCred}></Route>
 
 				{/* custom page */}
 				<Route exact path={`${process.env.PUBLIC_URL}/create-full-link`} component={FullShort}></Route>

@@ -13,7 +13,7 @@ const menu = [
 		icon: "link",
 	},
 	{
-		icon: "view-col",
+		icon: "sign-mxn",
 		text: "Pricing",
 		link: "/pricing-table",
 	},
@@ -26,6 +26,11 @@ const menu = [
 		icon: "notes-alt",
 		text: "QR List",
 		link: "/project-list",
+	},
+	{
+		icon: "link-group",
+		text: "Api Credentials",
+		link: "/api-credentials",
 	},
 	// {
 	// 	icon: "sign-dollar",
