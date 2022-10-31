@@ -7,7 +7,6 @@ import Loader from "../pages/Loader/Loader";
 const Component = lazy(() => import("../pages/components/Index"));
 const Accordian = lazy(() => import("../pages/components/Accordions"));
 const Alerts = lazy(() => import("../pages/components/Alerts"));
-const Avatar = lazy(() => import("../pages/components/Avatar"));
 const Badges = lazy(() => import("../pages/components/Badges"));
 const Breadcrumbs = lazy(() => import("../pages/components/Breadcrumbs"));
 const ButtonGroup = lazy(() => import("../pages/components/ButtonGroup"));
@@ -24,11 +23,9 @@ const Pagination = lazy(() => import("../pages/components/Pagination"));
 const Popovers = lazy(() => import("../pages/components/Popovers"));
 const Progress = lazy(() => import("../pages/components/Progress"));
 const Tabs = lazy(() => import("../pages/components/Tabs"));
-const Toast = lazy(() => import("../pages/components/Toast"));
 const Tooltips = lazy(() => import("../pages/components/Tooltips"));
 const Typography = lazy(() => import("../pages/components/Typography"));
 const CheckboxRadio = lazy(() => import("../pages/components/forms/CheckboxRadio"));
-const AdvancedControls = lazy(() => import("../pages/components/forms/AdvancedControls"));
 const InputGroup = lazy(() => import("../pages/components/forms/InputGroup"));
 const FormUpload = lazy(() => import("../pages/components/forms/FormUpload"));
 const NumberSpinner = lazy(() => import("../pages/components/forms/NumberSpinner"));
@@ -53,7 +50,6 @@ const BasicTable = lazy(() => import("../pages/components/table/BasicTable"));
 const SpecialTablePage = lazy(() => import("../pages/components/table/SpecialTable"));
 const ChartPage = lazy(() => import("../pages/components/charts/Charts"));
 const NioIconPage = lazy(() => import("../pages/components/crafted-icons/NioIcon"));
-const SVGIconPage = lazy(() => import("../pages/components/crafted-icons/SvgIcons"));
 
 const ProjectListPage = lazy(() => import("../pages/pre-built/projects/ProjectList"));
 const UserProfileLayout = lazy(() => import("../pages/pre-built/user-manage/UserProfileLayout"));
@@ -65,9 +61,6 @@ const ProductList = lazy(() => import("../pages/pre-built/products/ProductList")
 const InvoiceList = lazy(() => import("../pages/pre-built/invoice/InvoiceList"));
 const InvoiceDetails = lazy(() => import("../pages/pre-built/invoice/InvoiceDetails"));
 const PricingTable = lazy(() => import("../pages/pre-built/pricing-table/PricingTable"));
-const GalleryPreview = lazy(() => import("../pages/pre-built/gallery/GalleryCardPreview"));
-const Inbox = lazy(() => import("../pages/app/inbox/Inbox"));
-const Kanban = lazy(() => import("../pages/app/kanban/Kanban"));
 const DateTimePicker = lazy(() => import("../pages/components/forms/DateTimePicker"));
 const CardWidgets = lazy(() => import("../pages/components/widgets/CardWidgets"));
 const ChartWidgets = lazy(() => import("../pages/components/widgets/ChartWidgets"));
@@ -132,7 +125,6 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/invoice-list`} component={InvoiceList}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/invoice-details/:id`} component={InvoiceDetails}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/pricing-table`} component={PricingTable}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/image-gallery`} component={GalleryPreview}></Route>
 
 				{/*Demo Pages*/}
 				<Route exact path={`${process.env.PUBLIC_URL}/pages/terms-policy`} component={Terms}></Route>
@@ -140,15 +132,10 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/pages/regular-v1`} component={Regularv1}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/pages/regular-v2`} component={Regularv2}></Route>
 
-				{/*Application*/}
-				<Route exact path={`${process.env.PUBLIC_URL}/app-inbox`} component={Inbox}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/app-kanban`} component={Kanban}></Route>
-
 				{/*Components*/}
 				<Route exact path={`${process.env.PUBLIC_URL}/components`} component={Component}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/accordions`} component={Accordian}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/alerts`} component={Alerts}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/avatar`} component={Avatar}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/badges`} component={Badges}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/breadcrumbs`} component={Breadcrumbs}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/button-group`} component={ButtonGroup}></Route>
@@ -159,7 +146,6 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/components/form-elements`} component={FormElements}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/form-layouts`} component={FormLayouts}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/checkbox-radio`} component={CheckboxRadio}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/advanced-control`} component={AdvancedControls}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/input-group`} component={InputGroup}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/form-upload`} component={FormUpload}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/number-spinner`} component={NumberSpinner}></Route>
@@ -171,7 +157,6 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/components/progress`} component={Progress}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/spinner`} component={Spinner}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/tabs`} component={Tabs}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/toast`} component={Toast}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/tooltips`} component={Tooltips}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/typography`} component={Typography}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/wizard-basic`} component={WizardForm}></Route>
@@ -200,7 +185,6 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/charts/chartjs`} component={ChartPage}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/charts/knobs`} component={KnobPreview}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/nioicon`} component={NioIconPage}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/svg-icons`} component={SVGIconPage}></Route>
 				<Route component={RedirectAs404}></Route>
 				{/* <Route exact path={`${process.env.PUBLIC_URL}/app-messages`} component={AppMessages}></Route>
 			<Route exact path={`${process.env.PUBLIC_URL}/app-chat`} component={Chat}></Route>

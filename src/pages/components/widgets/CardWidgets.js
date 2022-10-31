@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import Head from "../../../layout/head/Head";
 import Content from "../../../layout/content/Content";
-import ProductLGA from "../../../images/product/lg-a.jpg";
 import StockA from "../../../images/stock/a.jpg";
-import AvatarA from "../../../images/avatar/a-sm.jpg";
+// import AvatarA from "../../../images/avatar/a-sm.jpg";
 import ImageContainer from "../../../components/partials/gallery/GalleryImage";
 import PlanS1 from "../../../images/icons/plan-s1.svg";
 import InvestOverview from "../../../components/partials/invest/invest-overview/InvestOverview";
@@ -15,93 +14,93 @@ import PageViewer from "../../../components/partials/analytics/page-view/PageVie
 import ActionCenter from "../../../components/partials/crypto/action-center/ActionCenter";
 import { Link } from "react-router-dom";
 import {
-  Block,
-  BlockHead,
-  BlockHeadContent,
-  BlockTitle,
-  BackTo,
-  PreviewCard,
-  PreviewAltCard,
-  Icon,
-  CodeBlock,
-  UserAvatar,
-  BlockDes,
-  ProjectCard,
-  Progress,
+	Block,
+	BlockHead,
+	BlockHeadContent,
+	BlockTitle,
+	BackTo,
+	PreviewCard,
+	PreviewAltCard,
+	Icon,
+	CodeBlock,
+	UserAvatar,
+	BlockDes,
+	ProjectCard,
+	Progress,
 } from "../../../components/Component";
 import { findUpper } from "../../../utils/Utils";
 import { Card, Row, Col, Button, UncontrolledDropdown, DropdownMenu, DropdownItem, DropdownToggle } from "reactstrap";
 
 const CardWidgets = () => {
-  const [heart, setHeart] = useState(false);
-  const toggleHeart = () => {
-    setHeart(!heart);
-  };
-  return (
-    <React.Fragment>
-      <Head title="Card Widgets"></Head>
-      <Content page="component">
-        <BlockHead size="lg" wide="sm">
-          <BlockHeadContent>
-            <BackTo link="/components" icon="arrow-left">
-              Components
-            </BackTo>
-            <BlockTitle tag="h2" className="fw-normal">
-              Card Widgets
-            </BlockTitle>
-          </BlockHeadContent>
-        </BlockHead>
+	const [heart, setHeart] = useState(false);
+	const toggleHeart = () => {
+		setHeart(!heart);
+	};
+	return (
+		<React.Fragment>
+			<Head title="Card Widgets"></Head>
+			<Content page="component">
+				<BlockHead size="lg" wide="sm">
+					<BlockHeadContent>
+						<BackTo link="/components" icon="arrow-left">
+							Components
+						</BackTo>
+						<BlockTitle tag="h2" className="fw-normal">
+							Card Widgets
+						</BlockTitle>
+					</BlockHeadContent>
+				</BlockHead>
 
-        <Block size="lg">
-          <BlockHead>
-            <BlockHeadContent>
-              <BlockTitle tag="h5">Product Card</BlockTitle>
-              <p>
-                Cards are built with as little markup and styles as possible, but still manage to deliver a ton of
-                control and customization.
-              </p>
-            </BlockHeadContent>
-          </BlockHead>
-          <PreviewCard>
-            <Row>
-              <Col md="5" sm="7">
-                <Card className="card-bordered product-card">
-                  <div className="product-thumb">
-                    <Link to={`${process.env.PUBLIC_URL}/product-details/1`}>
-                      <img className="card-img-top" src={ProductLGA} alt="" />
-                    </Link>
-                    <ul className="product-actions">
-                      <li>
-                        <a href="#cart" onClick={(ev) => ev.preventDefault()}>
-                          <Icon name="cart"></Icon>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#like" onClick={(ev) => ev.preventDefault()}>
-                          <Icon name="heart"></Icon>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="card-inner text-center">
-                    <ul className="product-tags">
-                      <li>
-                        <Link to={`${process.env.PUBLIC_URL}/product-details/1`}>Smart Watch</Link>
-                      </li>
-                    </ul>
-                    <h5 className="product-title">
-                      <Link to={`${process.env.PUBLIC_URL}/product-details/1`}>Classy Smart Watch</Link>
-                    </h5>
-                    <div className="product-price text-primary h5">
-                      <small className="text-muted del fs-13px">$350</small> $324
-                    </div>
-                  </div>
-                </Card>
-              </Col>
-            </Row>
-          </PreviewCard>
-          <CodeBlock language="jsx">
-            {`<Card className="card-bordered product-card">
+				<Block size="lg">
+					<BlockHead>
+						<BlockHeadContent>
+							<BlockTitle tag="h5">Product Card</BlockTitle>
+							<p>
+								Cards are built with as little markup and styles as possible, but still manage to deliver a ton of control and
+								customization.
+							</p>
+						</BlockHeadContent>
+					</BlockHead>
+					<PreviewCard>
+						<Row>
+							<Col md="5" sm="7">
+								<Card className="card-bordered product-card">
+									<div className="product-thumb">
+										<Link to={`${process.env.PUBLIC_URL}/product-details/1`}>
+											{/* <img className="card-img-top" src={ProductLGA} alt="" /> */}
+										</Link>
+										<ul className="product-actions">
+											<li>
+												<a href="#cart" onClick={(ev) => ev.preventDefault()}>
+													<Icon name="cart"></Icon>
+												</a>
+											</li>
+											<li>
+												<a href="#like" onClick={(ev) => ev.preventDefault()}>
+													<Icon name="heart"></Icon>
+												</a>
+											</li>
+										</ul>
+									</div>
+									<div className="card-inner text-center">
+										<ul className="product-tags">
+											<li>
+												<Link to={`${process.env.PUBLIC_URL}/product-details/1`}>Smart Watch</Link>
+											</li>
+										</ul>
+										<h5 className="product-title">
+											<Link to={`${process.env.PUBLIC_URL}/product-details/1`}>Classy Smart Watch</Link>
+										</h5>
+										<div className="product-price text-primary h5">
+											<small className="text-muted del fs-13px">$350</small> $324
+										</div>
+									</div>
+								</Card>
+							</Col>
+						</Row>
+					</PreviewCard>
+					<CodeBlock language="jsx">
+						{`<Card className="card-bordered product-card">
     <div className="product-thumb">
         <Link to={process.env.PUBLIC_URL}/product-details/1}>
             <img className="card-img-top" src={ProductLGA} alt="" />
@@ -133,41 +132,41 @@ const CardWidgets = () => {
         </div>
     </div>
 </Card>`}
-          </CodeBlock>
-        </Block>
+					</CodeBlock>
+				</Block>
 
-        <Block size="lg">
-          <BlockHead>
-            <BlockHeadContent>
-              <BlockTitle tag="h5">Image Popup</BlockTitle>
-            </BlockHeadContent>
-          </BlockHead>
-          <PreviewCard>
-            <Row>
-              <Col md="5" sm="7">
-                <Card className="card-bordered gallery">
-                  <ImageContainer img={StockA} />
-                  <div className="gallery-body card-inner align-center justify-between flex-wrap g-2">
-                    <div className="user-card">
-                      <UserAvatar image={AvatarA}></UserAvatar>
-                      <div className="user-info">
-                        <span className="lead-text">Dustin Mock</span>
-                        <span className="sub-text">mock@softnio.com</span>
-                      </div>
-                    </div>
-                    <div>
-                      <Button color="transparent" className="btn-p-0 btn-nofocus" onClick={toggleHeart}>
-                        <Icon name={`${heart ? "heart-fill" : "heart"}`}></Icon>
-                        <span>{heart ? 34 : 33}</span>
-                      </Button>
-                    </div>
-                  </div>
-                </Card>
-              </Col>
-            </Row>
-          </PreviewCard>
-          <CodeBlock language="jsx">
-            {`<Card className="card-bordered gallery">
+				<Block size="lg">
+					<BlockHead>
+						<BlockHeadContent>
+							<BlockTitle tag="h5">Image Popup</BlockTitle>
+						</BlockHeadContent>
+					</BlockHead>
+					<PreviewCard>
+						<Row>
+							<Col md="5" sm="7">
+								<Card className="card-bordered gallery">
+									<ImageContainer img={StockA} />
+									<div className="gallery-body card-inner align-center justify-between flex-wrap g-2">
+										<div className="user-card">
+											{/* <UserAvatar image={AvatarA}></UserAvatar> */}
+											<div className="user-info">
+												<span className="lead-text">Dustin Mock</span>
+												<span className="sub-text">mock@softnio.com</span>
+											</div>
+										</div>
+										<div>
+											<Button color="transparent" className="btn-p-0 btn-nofocus" onClick={toggleHeart}>
+												<Icon name={`${heart ? "heart-fill" : "heart"}`}></Icon>
+												<span>{heart ? 34 : 33}</span>
+											</Button>
+										</div>
+									</div>
+								</Card>
+							</Col>
+						</Row>
+					</PreviewCard>
+					<CodeBlock language="jsx">
+						{`<Card className="card-bordered gallery">
     <ImageContainer img={StockA} />
     <div className="gallery-body card-inner align-center justify-between flex-wrap g-2">
         <div className="user-card">
@@ -185,106 +184,103 @@ const CardWidgets = () => {
         </div>
     </div>
 </Card>`}
-          </CodeBlock>
-        </Block>
+					</CodeBlock>
+				</Block>
 
-        <Block size="lg">
-          <BlockHead>
-            <BlockHeadContent>
-              <BlockTitle tag="h5">User Card</BlockTitle>
-              <BlockDes>
-                <p>
-                  Cards are built with as little markup and styles as possible, but still manage to deliver a ton of
-                  control and customization
-                </p>
-              </BlockDes>
-            </BlockHeadContent>
-          </BlockHead>
-          <PreviewCard>
-            <Row>
-              <Col md="6" lg="4">
-                <PreviewAltCard>
-                  <div className="team">
-                    <div className="team-status bg-danger text-white">
-                      <Icon name="na" />
-                    </div>
-                    <div className="team-options">
-                      <UncontrolledDropdown>
-                        <DropdownToggle tag="a" className="dropdown-toggle btn btn-icon btn-trigger">
-                          <Icon name="more-h"></Icon>
-                        </DropdownToggle>
-                        <DropdownMenu right>
-                          <ul className="link-list-opt no-bdr">
-                            <li>
-                              <DropdownItem
-                                tag="a"
-                                href="#edit"
-                                onClick={(ev) => {
-                                  ev.preventDefault();
-                                }}
-                              >
-                                <Icon name="edit"></Icon>
-                                <span>Edit</span>
-                              </DropdownItem>
-                            </li>
-                            <li className="divider"></li>
-                            <li>
-                              <DropdownItem
-                                tag="a"
-                                href="#suspend"
-                                onClick={(ev) => {
-                                  ev.preventDefault();
-                                }}
-                              >
-                                <Icon name="na"></Icon>
-                                <span>Suspend User</span>
-                              </DropdownItem>
-                            </li>
-                          </ul>
-                        </DropdownMenu>
-                      </UncontrolledDropdown>
-                    </div>
-                    <div className="user-card user-card-s2">
-                      <UserAvatar theme="purple" className="md" text={findUpper("Abu Bin")}>
-                        <div className="status dot dot-lg dot-success"></div>
-                      </UserAvatar>
-                      <div className="user-info">
-                        <h6>Abu Bin Ishtiak</h6>
-                        <span className="sub-text">@ishtyak</span>
-                      </div>
-                    </div>
-                    <div className="team-details">
-                      <p>I am UI/UX Designer and love to be creative.</p>
-                    </div>
-                    <ul className="team-statistics">
-                      <li>
-                        <span>213</span>
-                        <span>Projects</span>
-                      </li>
-                      <li>
-                        <span>87.5%</span>
-                        <span>Performed</span>
-                      </li>
-                      <li>
-                        <span>587</span>
-                        <span>Tasks</span>
-                      </li>
-                    </ul>
-                    <div className="team-view">
-                      <Link
-                        to={`${process.env.PUBLIC_URL}/user-details-regular/1`}
-                        className="btn btn-round btn-outline-light"
-                      >
-                        <span>View Profile</span>
-                      </Link>
-                    </div>
-                  </div>
-                </PreviewAltCard>
-              </Col>
-            </Row>
-          </PreviewCard>
-          <CodeBlock language="jsx">
-            {`                <PreviewAltCard>
+				<Block size="lg">
+					<BlockHead>
+						<BlockHeadContent>
+							<BlockTitle tag="h5">User Card</BlockTitle>
+							<BlockDes>
+								<p>
+									Cards are built with as little markup and styles as possible, but still manage to deliver a ton of control and
+									customization
+								</p>
+							</BlockDes>
+						</BlockHeadContent>
+					</BlockHead>
+					<PreviewCard>
+						<Row>
+							<Col md="6" lg="4">
+								<PreviewAltCard>
+									<div className="team">
+										<div className="team-status bg-danger text-white">
+											<Icon name="na" />
+										</div>
+										<div className="team-options">
+											<UncontrolledDropdown>
+												<DropdownToggle tag="a" className="dropdown-toggle btn btn-icon btn-trigger">
+													<Icon name="more-h"></Icon>
+												</DropdownToggle>
+												<DropdownMenu right>
+													<ul className="link-list-opt no-bdr">
+														<li>
+															<DropdownItem
+																tag="a"
+																href="#edit"
+																onClick={(ev) => {
+																	ev.preventDefault();
+																}}
+															>
+																<Icon name="edit"></Icon>
+																<span>Edit</span>
+															</DropdownItem>
+														</li>
+														<li className="divider"></li>
+														<li>
+															<DropdownItem
+																tag="a"
+																href="#suspend"
+																onClick={(ev) => {
+																	ev.preventDefault();
+																}}
+															>
+																<Icon name="na"></Icon>
+																<span>Suspend User</span>
+															</DropdownItem>
+														</li>
+													</ul>
+												</DropdownMenu>
+											</UncontrolledDropdown>
+										</div>
+										<div className="user-card user-card-s2">
+											<UserAvatar theme="purple" className="md" text={findUpper("Abu Bin")}>
+												<div className="status dot dot-lg dot-success"></div>
+											</UserAvatar>
+											<div className="user-info">
+												<h6>Abu Bin Ishtiak</h6>
+												<span className="sub-text">@ishtyak</span>
+											</div>
+										</div>
+										<div className="team-details">
+											<p>I am UI/UX Designer and love to be creative.</p>
+										</div>
+										<ul className="team-statistics">
+											<li>
+												<span>213</span>
+												<span>Projects</span>
+											</li>
+											<li>
+												<span>87.5%</span>
+												<span>Performed</span>
+											</li>
+											<li>
+												<span>587</span>
+												<span>Tasks</span>
+											</li>
+										</ul>
+										<div className="team-view">
+											<Link to={`${process.env.PUBLIC_URL}/user-details-regular/1`} className="btn btn-round btn-outline-light">
+												<span>View Profile</span>
+											</Link>
+										</div>
+									</div>
+								</PreviewAltCard>
+							</Col>
+						</Row>
+					</PreviewCard>
+					<CodeBlock language="jsx">
+						{`                <PreviewAltCard>
     <div className="team">
         <div className="team-status bg-danger text-white">
             <Icon name="na" />
@@ -360,100 +356,100 @@ const CardWidgets = () => {
     </div>
     </div>
 </PreviewAltCard>`}
-          </CodeBlock>
-        </Block>
+					</CodeBlock>
+				</Block>
 
-        <Block size="lg">
-          <BlockHead>
-            <BlockHeadContent>
-              <BlockTitle tag="h5">User Alternate Card</BlockTitle>
-              <BlockDes>
-                <p>
-                  Cards are built with as little markup and styles as possible, but still manage to deliver a ton of
-                  control and customization
-                </p>
-              </BlockDes>
-            </BlockHeadContent>
-          </BlockHead>
-          <PreviewCard>
-            <Row>
-              <Col md="6" lg="4">
-                <PreviewAltCard>
-                  <div className="team">
-                    <div className="team-options">
-                      <UncontrolledDropdown>
-                        <DropdownToggle tag="a" className="dropdown-toggle btn btn-icon btn-trigger">
-                          <Icon name="more-h"></Icon>
-                        </DropdownToggle>
-                        <DropdownMenu right>
-                          <ul className="link-list-opt no-bdr">
-                            <li>
-                              <DropdownItem
-                                tag="a"
-                                href="#edit"
-                                onClick={(ev) => {
-                                  ev.preventDefault();
-                                }}
-                              >
-                                <Icon name="edit"></Icon>
-                                <span>Edit</span>
-                              </DropdownItem>
-                            </li>
-                            <li className="divider"></li>
-                            <li>
-                              <DropdownItem
-                                href="#suspend"
-                                onClick={(ev) => {
-                                  ev.preventDefault();
-                                }}
-                              >
-                                <Icon name="na"></Icon>
-                                <span>Suspend User</span>
-                              </DropdownItem>
-                            </li>
-                          </ul>
-                        </DropdownMenu>
-                      </UncontrolledDropdown>
-                    </div>
-                    <div className="user-card user-card-s2">
-                      <UserAvatar theme="primary" className="lg" text={findUpper("Abu Bin")}>
-                        <div className="status dot dot-lg dot-success"></div>
-                      </UserAvatar>
-                      <div className="user-info">
-                        <h6>Abu Bin Ishtiak</h6>
-                      </div>
-                    </div>
-                    <div className="team-details">
-                      <p>UI/UX Designer</p>
-                    </div>
-                    <ul className="team-info">
-                      <li>
-                        <span>Join Date</span>
-                        <span>24 Jun 2015</span>
-                      </li>
-                      <li>
-                        <span>Contact</span>
-                        <span>+88 01713-123656</span>
-                      </li>
-                      <li>
-                        <span>Email</span>
-                        <span>info@softnio.com</span>
-                      </li>
-                    </ul>
-                    <div className="team-view">
-                      <Link to={`${process.env.PUBLIC_URL}/user-details-regular/1`}>
-                        <Button color="primary" className="btn-block btn-dim">
-                          <span>View Profile</span>
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </PreviewAltCard>
-              </Col>
-            </Row>
-          </PreviewCard>
-          <CodeBlock language="jsx">
-            {` <PreviewAltCard>
+				<Block size="lg">
+					<BlockHead>
+						<BlockHeadContent>
+							<BlockTitle tag="h5">User Alternate Card</BlockTitle>
+							<BlockDes>
+								<p>
+									Cards are built with as little markup and styles as possible, but still manage to deliver a ton of control and
+									customization
+								</p>
+							</BlockDes>
+						</BlockHeadContent>
+					</BlockHead>
+					<PreviewCard>
+						<Row>
+							<Col md="6" lg="4">
+								<PreviewAltCard>
+									<div className="team">
+										<div className="team-options">
+											<UncontrolledDropdown>
+												<DropdownToggle tag="a" className="dropdown-toggle btn btn-icon btn-trigger">
+													<Icon name="more-h"></Icon>
+												</DropdownToggle>
+												<DropdownMenu right>
+													<ul className="link-list-opt no-bdr">
+														<li>
+															<DropdownItem
+																tag="a"
+																href="#edit"
+																onClick={(ev) => {
+																	ev.preventDefault();
+																}}
+															>
+																<Icon name="edit"></Icon>
+																<span>Edit</span>
+															</DropdownItem>
+														</li>
+														<li className="divider"></li>
+														<li>
+															<DropdownItem
+																href="#suspend"
+																onClick={(ev) => {
+																	ev.preventDefault();
+																}}
+															>
+																<Icon name="na"></Icon>
+																<span>Suspend User</span>
+															</DropdownItem>
+														</li>
+													</ul>
+												</DropdownMenu>
+											</UncontrolledDropdown>
+										</div>
+										<div className="user-card user-card-s2">
+											<UserAvatar theme="primary" className="lg" text={findUpper("Abu Bin")}>
+												<div className="status dot dot-lg dot-success"></div>
+											</UserAvatar>
+											<div className="user-info">
+												<h6>Abu Bin Ishtiak</h6>
+											</div>
+										</div>
+										<div className="team-details">
+											<p>UI/UX Designer</p>
+										</div>
+										<ul className="team-info">
+											<li>
+												<span>Join Date</span>
+												<span>24 Jun 2015</span>
+											</li>
+											<li>
+												<span>Contact</span>
+												<span>+88 01713-123656</span>
+											</li>
+											<li>
+												<span>Email</span>
+												<span>info@softnio.com</span>
+											</li>
+										</ul>
+										<div className="team-view">
+											<Link to={`${process.env.PUBLIC_URL}/user-details-regular/1`}>
+												<Button color="primary" className="btn-block btn-dim">
+													<span>View Profile</span>
+												</Button>
+											</Link>
+										</div>
+									</div>
+								</PreviewAltCard>
+							</Col>
+						</Row>
+					</PreviewCard>
+					<CodeBlock language="jsx">
+						{` <PreviewAltCard>
   <div className="team">
     <div className="team-options">
       <UncontrolledDropdown>
@@ -524,29 +520,29 @@ const CardWidgets = () => {
     </div>
   </div>
 </PreviewAltCard>`}
-          </CodeBlock>
-        </Block>
+					</CodeBlock>
+				</Block>
 
-        <Block size="lg">
-          <BlockHead>
-            <BlockHeadContent>
-              <BlockTitle tag="h5">Card with tabs</BlockTitle>
-              <BlockDes>
-                <p>With this card design, you can use multiple tabs on a card.</p>
-              </BlockDes>
-            </BlockHeadContent>
-          </BlockHead>
-          <PreviewCard>
-            <Row>
-              <Col md="6">
-                <PreviewAltCard>
-                  <InvestOverview />
-                </PreviewAltCard>
-              </Col>
-            </Row>
-          </PreviewCard>
-          <CodeBlock language="jsx">
-            {`import React, { useState } from "react";
+				<Block size="lg">
+					<BlockHead>
+						<BlockHeadContent>
+							<BlockTitle tag="h5">Card with tabs</BlockTitle>
+							<BlockDes>
+								<p>With this card design, you can use multiple tabs on a card.</p>
+							</BlockDes>
+						</BlockHeadContent>
+					</BlockHead>
+					<PreviewCard>
+						<Row>
+							<Col md="6">
+								<PreviewAltCard>
+									<InvestOverview />
+								</PreviewAltCard>
+							</Col>
+						</Row>
+					</PreviewCard>
+					<CodeBlock language="jsx">
+						{`import React, { useState } from "react";
 import Icon from "../../../icon/Icon";
 
 const InvestOverview = () => {
@@ -773,67 +769,67 @@ const InvestOverview = () => {
     </React.Fragment>
   );
 };`}
-          </CodeBlock>
-        </Block>
+					</CodeBlock>
+				</Block>
 
-        <Block size="lg">
-          <BlockHead>
-            <BlockHeadContent>
-              <BlockTitle tag="h5">Pricing table</BlockTitle>
-              <BlockDes>
-                <p>You can customize it in a ton of ways.</p>
-              </BlockDes>
-            </BlockHeadContent>
-          </BlockHead>
-          <PreviewCard>
-            <Row>
-              <Col md="6" lg="4">
-                <Card className={`card-bordered pricing`}>
-                  <div className="pricing-head">
-                    <div className="pricing-title">
-                      <h4 className="card-title title">Starter</h4>
-                      <p className="sub-text">Enjoy entry level of invest & earn.</p>
-                    </div>
-                    <div className="card-text">
-                      <Row>
-                        <Col size={6}>
-                          <span className="h4 fw-500">1.67%</span>
-                          <span className="sub-text">Daily Interest</span>
-                        </Col>
-                        <Col size={6}>
-                          <span className="h4 fw-500">30</span>
-                          <span className="sub-text">Term Days</span>
-                        </Col>
-                      </Row>
-                    </div>
-                  </div>
-                  <div className="pricing-body">
-                    <ul className="pricing-features">
-                      <li>
-                        <span className="w-50">Min Deposit</span> - <span className="ml-auto">$250</span>
-                      </li>
-                      <li>
-                        <span className="w-50">Max Deposit</span> - <span className="ml-auto">$1,999</span>
-                      </li>
-                      <li>
-                        <span className="w-50">Deposit Return</span> - <span className="ml-auto">Yes</span>
-                      </li>
-                      <li>
-                        <span className="w-50">Total Return</span> - <span className="ml-auto">125%</span>
-                      </li>
-                    </ul>
-                    <div className="pricing-action">
-                      <Button color="light" outline>
-                        Choose this plan
-                      </Button>
-                    </div>
-                  </div>
-                </Card>
-              </Col>
-            </Row>
-          </PreviewCard>
-          <CodeBlock language="jsx">
-            {`<Card className="card-bordered pricing">
+				<Block size="lg">
+					<BlockHead>
+						<BlockHeadContent>
+							<BlockTitle tag="h5">Pricing table</BlockTitle>
+							<BlockDes>
+								<p>You can customize it in a ton of ways.</p>
+							</BlockDes>
+						</BlockHeadContent>
+					</BlockHead>
+					<PreviewCard>
+						<Row>
+							<Col md="6" lg="4">
+								<Card className={`card-bordered pricing`}>
+									<div className="pricing-head">
+										<div className="pricing-title">
+											<h4 className="card-title title">Starter</h4>
+											<p className="sub-text">Enjoy entry level of invest & earn.</p>
+										</div>
+										<div className="card-text">
+											<Row>
+												<Col size={6}>
+													<span className="h4 fw-500">1.67%</span>
+													<span className="sub-text">Daily Interest</span>
+												</Col>
+												<Col size={6}>
+													<span className="h4 fw-500">30</span>
+													<span className="sub-text">Term Days</span>
+												</Col>
+											</Row>
+										</div>
+									</div>
+									<div className="pricing-body">
+										<ul className="pricing-features">
+											<li>
+												<span className="w-50">Min Deposit</span> - <span className="ml-auto">$250</span>
+											</li>
+											<li>
+												<span className="w-50">Max Deposit</span> - <span className="ml-auto">$1,999</span>
+											</li>
+											<li>
+												<span className="w-50">Deposit Return</span> - <span className="ml-auto">Yes</span>
+											</li>
+											<li>
+												<span className="w-50">Total Return</span> - <span className="ml-auto">125%</span>
+											</li>
+										</ul>
+										<div className="pricing-action">
+											<Button color="light" outline>
+												Choose this plan
+											</Button>
+										</div>
+									</div>
+								</Card>
+							</Col>
+						</Row>
+					</PreviewCard>
+					<CodeBlock language="jsx">
+						{`<Card className="card-bordered pricing">
   <div className="pricing-head">
     <div className="pricing-title">
       <h4 className="card-title title">Starter</h4>
@@ -874,43 +870,43 @@ const InvestOverview = () => {
     </div>
   </div>
 </Card> `}
-          </CodeBlock>
-        </Block>
+					</CodeBlock>
+				</Block>
 
-        <Block size="lg">
-          <BlockHead>
-            <BlockHeadContent>
-              <BlockTitle tag="h5">Pricing table alt</BlockTitle>
-            </BlockHeadContent>
-          </BlockHead>
-          <PreviewCard>
-            <Row>
-              <Col md="6" lg="4">
-                <Card className="card-bordered pricing text-center">
-                  <div className="pricing-body">
-                    <div className="pricing-media">
-                      <img src={PlanS1} alt="" />
-                    </div>
-                    <div className="pricing-title w-220px mx-auto">
-                      <h5 className="title">Starter</h5>
-                      <span className="sub-text">If you are a small business amn please select this plan</span>
-                    </div>
-                    <div className="pricing-amount">
-                      <div className="amount">
-                        $99 <span>/yr</span>
-                      </div>
-                      <span className="bill">1 User, Billed Yearly</span>
-                    </div>
-                    <div className="pricing-action">
-                      <Button color="primary">Select Plan</Button>
-                    </div>
-                  </div>
-                </Card>
-              </Col>
-            </Row>
-          </PreviewCard>
-          <CodeBlock language="jsx">
-            {`<Card className="card-bordered pricing text-center">
+				<Block size="lg">
+					<BlockHead>
+						<BlockHeadContent>
+							<BlockTitle tag="h5">Pricing table alt</BlockTitle>
+						</BlockHeadContent>
+					</BlockHead>
+					<PreviewCard>
+						<Row>
+							<Col md="6" lg="4">
+								<Card className="card-bordered pricing text-center">
+									<div className="pricing-body">
+										<div className="pricing-media">
+											<img src={PlanS1} alt="" />
+										</div>
+										<div className="pricing-title w-220px mx-auto">
+											<h5 className="title">Starter</h5>
+											<span className="sub-text">If you are a small business amn please select this plan</span>
+										</div>
+										<div className="pricing-amount">
+											<div className="amount">
+												$99 <span>/yr</span>
+											</div>
+											<span className="bill">1 User, Billed Yearly</span>
+										</div>
+										<div className="pricing-action">
+											<Button color="primary">Select Plan</Button>
+										</div>
+									</div>
+								</Card>
+							</Col>
+						</Row>
+					</PreviewCard>
+					<CodeBlock language="jsx">
+						{`<Card className="card-bordered pricing text-center">
   <div className="pricing-body">
     <div className="pricing-media">
       <img src={PlanS1} alt="" />
@@ -930,103 +926,101 @@ const InvestOverview = () => {
     </div>
   </div>
 </Card>`}
-          </CodeBlock>
-        </Block>
+					</CodeBlock>
+				</Block>
 
-        <Block size="lg">
-          <BlockHead>
-            <BlockHeadContent>
-              <BlockTitle tag="h5">Project Card</BlockTitle>
-            </BlockHeadContent>
-          </BlockHead>
-          <PreviewCard>
-            <Row>
-              <Col md="6" lg="5">
-                <ProjectCard>
-                  <div className="project-head">
-                    <a
-                      href="#title"
-                      onClick={(ev) => {
-                        ev.preventDefault();
-                      }}
-                      className="project-title"
-                    >
-                      <UserAvatar className="sq" theme="primary" text={findUpper("Dashlite Dev")} />
-                      <div className="project-info">
-                        <h6 className="title">Dashlite Development</h6>
-                        <span className="sub-text">Softnio</span>
-                      </div>
-                    </a>
-                    <UncontrolledDropdown>
-                      <DropdownToggle tag="a" className="dropdown-toggle btn btn-sm btn-icon btn-trigger mt-n1 mr-n1">
-                        <Icon name="more-h"></Icon>
-                      </DropdownToggle>
-                      <DropdownMenu right>
-                        <ul className="link-list-opt no-bdr">
-                          <li>
-                            <DropdownItem
-                              tag="a"
-                              href="#edit"
-                              onClick={(ev) => {
-                                ev.preventDefault();
-                              }}
-                            >
-                              <Icon name="edit"></Icon>
-                              <span>Edit Project</span>
-                            </DropdownItem>
-                          </li>
-                          <li>
-                            <DropdownItem
-                              tag="a"
-                              href="#markasdone"
-                              onClick={(ev) => {
-                                ev.preventDefault();
-                              }}
-                            >
-                              <Icon name="check-round-cut"></Icon>
-                              <span>Mark As Done</span>
-                            </DropdownItem>
-                          </li>
-                        </ul>
-                      </DropdownMenu>
-                    </UncontrolledDropdown>
-                  </div>
-                  <div className="project-details">
-                    Design and develop the DashLite template for Envato Marketplace.
-                  </div>
-                  <div className="project-progress">
-                    <div className="project-progress-details">
-                      <div className="project-progress-task">
-                        <Icon name="check-round-cut"></Icon>
-                        <span>3 Tasks</span>
-                      </div>
-                      <div className="project-progress-percent">93%</div>
-                    </div>
-                    <Progress className="progress-pill progress-md bg-light" value={93}></Progress>
-                  </div>
-                  <div className="project-meta">
-                    <ul className="project-users g-1">
-                      <li>
-                        <UserAvatar className="sm" text={findUpper("Abu")} theme="primary" />
-                      </li>
-                      <li>
-                        <UserAvatar className="sm" text={findUpper("Desnis")} theme="blue" />
-                      </li>
-                      <li>
-                        <UserAvatar theme="light" className="sm" text={`+12`} />
-                      </li>
-                    </ul>
-                    <span className={`badge badge-dim badge-warning`}>
-                      <Icon name="clock"></Icon>
-                      <span>2 Days Left</span>
-                    </span>
-                  </div>
-                </ProjectCard>
-              </Col>
-            </Row>
-          </PreviewCard>
-          <CodeBlock language="jsx">
-            {`<ProjectCard>
+				<Block size="lg">
+					<BlockHead>
+						<BlockHeadContent>
+							<BlockTitle tag="h5">Project Card</BlockTitle>
+						</BlockHeadContent>
+					</BlockHead>
+					<PreviewCard>
+						<Row>
+							<Col md="6" lg="5">
+								<ProjectCard>
+									<div className="project-head">
+										<a
+											href="#title"
+											onClick={(ev) => {
+												ev.preventDefault();
+											}}
+											className="project-title"
+										>
+											<UserAvatar className="sq" theme="primary" text={findUpper("Dashlite Dev")} />
+											<div className="project-info">
+												<h6 className="title">Dashlite Development</h6>
+												<span className="sub-text">Softnio</span>
+											</div>
+										</a>
+										<UncontrolledDropdown>
+											<DropdownToggle tag="a" className="dropdown-toggle btn btn-sm btn-icon btn-trigger mt-n1 mr-n1">
+												<Icon name="more-h"></Icon>
+											</DropdownToggle>
+											<DropdownMenu right>
+												<ul className="link-list-opt no-bdr">
+													<li>
+														<DropdownItem
+															tag="a"
+															href="#edit"
+															onClick={(ev) => {
+																ev.preventDefault();
+															}}
+														>
+															<Icon name="edit"></Icon>
+															<span>Edit Project</span>
+														</DropdownItem>
+													</li>
+													<li>
+														<DropdownItem
+															tag="a"
+															href="#markasdone"
+															onClick={(ev) => {
+																ev.preventDefault();
+															}}
+														>
+															<Icon name="check-round-cut"></Icon>
+															<span>Mark As Done</span>
+														</DropdownItem>
+													</li>
+												</ul>
+											</DropdownMenu>
+										</UncontrolledDropdown>
+									</div>
+									<div className="project-details">Design and develop the DashLite template for Envato Marketplace.</div>
+									<div className="project-progress">
+										<div className="project-progress-details">
+											<div className="project-progress-task">
+												<Icon name="check-round-cut"></Icon>
+												<span>3 Tasks</span>
+											</div>
+											<div className="project-progress-percent">93%</div>
+										</div>
+										<Progress className="progress-pill progress-md bg-light" value={93}></Progress>
+									</div>
+									<div className="project-meta">
+										<ul className="project-users g-1">
+											<li>
+												<UserAvatar className="sm" text={findUpper("Abu")} theme="primary" />
+											</li>
+											<li>
+												<UserAvatar className="sm" text={findUpper("Desnis")} theme="blue" />
+											</li>
+											<li>
+												<UserAvatar theme="light" className="sm" text={`+12`} />
+											</li>
+										</ul>
+										<span className={`badge badge-dim badge-warning`}>
+											<Icon name="clock"></Icon>
+											<span>2 Days Left</span>
+										</span>
+									</div>
+								</ProjectCard>
+							</Col>
+						</Row>
+					</PreviewCard>
+					<CodeBlock language="jsx">
+						{`<ProjectCard>
   <div className="project-head">
     <a
       href="#title"
@@ -1106,29 +1100,29 @@ const InvestOverview = () => {
     </span>
   </div>
 </ProjectCard>`}
-          </CodeBlock>
-        </Block>
+					</CodeBlock>
+				</Block>
 
-        <Block size="lg">
-          <BlockHead>
-            <BlockHeadContent>
-              <BlockTitle tag="h5">User list card</BlockTitle>
-              <BlockDes>
-                <p>The following card can be use for User list, customer list related filed.</p>
-              </BlockDes>
-            </BlockHeadContent>
-          </BlockHead>
-          <PreviewCard>
-            <Row>
-              <Col lg="6">
-                <Card className="card-bordered card-full">
-                  <NewsUsers />
-                </Card>
-              </Col>
-            </Row>
-          </PreviewCard>
-          <CodeBlock language="jsx">
-            {`import React from "react";
+				<Block size="lg">
+					<BlockHead>
+						<BlockHeadContent>
+							<BlockTitle tag="h5">User list card</BlockTitle>
+							<BlockDes>
+								<p>The following card can be use for User list, customer list related filed.</p>
+							</BlockDes>
+						</BlockHeadContent>
+					</BlockHead>
+					<PreviewCard>
+						<Row>
+							<Col lg="6">
+								<Card className="card-bordered card-full">
+									<NewsUsers />
+								</Card>
+							</Col>
+						</Row>
+					</PreviewCard>
+					<CodeBlock language="jsx">
+						{`import React from "react";
 import UserAvatar from "../../../user/UserAvatar";
 import Icon from "../../../icon/Icon";
 import { newUserData } from "./UserData";
@@ -1206,29 +1200,29 @@ const NewsUsers = () => {
     </div>
   );
 };`}
-          </CodeBlock>
-        </Block>
+					</CodeBlock>
+				</Block>
 
-        <Block size="lg">
-          <BlockHead>
-            <BlockHeadContent>
-              <BlockTitle tag="h5">Activities card with tabs</BlockTitle>
-              <BlockDes>
-                <p>The following card can be use for Activities or related filed.</p>
-              </BlockDes>
-            </BlockHeadContent>
-          </BlockHead>
-          <PreviewCard>
-            <Row>
-              <Col lg="6">
-                <Card className="card-bordered card-full">
-                  <RecentActivity />
-                </Card>
-              </Col>
-            </Row>
-          </PreviewCard>
-          <CodeBlock language="jsx">
-            {`import React, { useState } from "react";
+				<Block size="lg">
+					<BlockHead>
+						<BlockHeadContent>
+							<BlockTitle tag="h5">Activities card with tabs</BlockTitle>
+							<BlockDes>
+								<p>The following card can be use for Activities or related filed.</p>
+							</BlockDes>
+						</BlockHeadContent>
+					</BlockHead>
+					<PreviewCard>
+						<Row>
+							<Col lg="6">
+								<Card className="card-bordered card-full">
+									<RecentActivity />
+								</Card>
+							</Col>
+						</Row>
+					</PreviewCard>
+					<CodeBlock language="jsx">
+						{`import React, { useState } from "react";
 import UserAvatar from "../../../user/UserAvatar";
 import { activityData } from "./ActivityData";
 import { CardTitle } from "reactstrap";
@@ -1306,29 +1300,29 @@ const RecentActivity = () => {
     </React.Fragment>
   );
 };`}
-          </CodeBlock>
-        </Block>
+					</CodeBlock>
+				</Block>
 
-        <Block size="lg">
-          <BlockHead>
-            <BlockHeadContent>
-              <BlockTitle tag="h5">Support Requests</BlockTitle>
-              <BlockDes>
-                <p>The following card can be use for Support Requests related filed.</p>
-              </BlockDes>
-            </BlockHeadContent>
-          </BlockHead>
-          <PreviewCard>
-            <Row>
-              <Col lg="6">
-                <Card className="card-bordered card-full">
-                  <Support />
-                </Card>
-              </Col>
-            </Row>
-          </PreviewCard>
-          <CodeBlock language="jsx">
-            {`import React from "react";
+				<Block size="lg">
+					<BlockHead>
+						<BlockHeadContent>
+							<BlockTitle tag="h5">Support Requests</BlockTitle>
+							<BlockDes>
+								<p>The following card can be use for Support Requests related filed.</p>
+							</BlockDes>
+						</BlockHeadContent>
+					</BlockHead>
+					<PreviewCard>
+						<Row>
+							<Col lg="6">
+								<Card className="card-bordered card-full">
+									<Support />
+								</Card>
+							</Col>
+						</Row>
+					</PreviewCard>
+					<CodeBlock language="jsx">
+						{`import React from "react";
 import UserAvatar from "../../../user/UserAvatar";
 import { supportData } from "./SupportData";
 import { CardTitle } from "reactstrap";
@@ -1375,29 +1369,29 @@ const Support = () => {
     </React.Fragment>
   );
 };`}
-          </CodeBlock>
-        </Block>
+					</CodeBlock>
+				</Block>
 
-        <Block size="lg">
-          <BlockHead>
-            <BlockHeadContent>
-              <BlockTitle tag="h5">Notification Card</BlockTitle>
-              <BlockDes>
-                <p>The following card can be use for Notifications related filed.</p>
-              </BlockDes>
-            </BlockHeadContent>
-          </BlockHead>
-          <PreviewCard>
-            <Row>
-              <Col lg="6">
-                <Card className="card-bordered card-full">
-                  <Notifications />
-                </Card>
-              </Col>
-            </Row>
-          </PreviewCard>
-          <CodeBlock language="jsx">
-            {`import React from "react";
+				<Block size="lg">
+					<BlockHead>
+						<BlockHeadContent>
+							<BlockTitle tag="h5">Notification Card</BlockTitle>
+							<BlockDes>
+								<p>The following card can be use for Notifications related filed.</p>
+							</BlockDes>
+						</BlockHeadContent>
+					</BlockHead>
+					<PreviewCard>
+						<Row>
+							<Col lg="6">
+								<Card className="card-bordered card-full">
+									<Notifications />
+								</Card>
+							</Col>
+						</Row>
+					</PreviewCard>
+					<CodeBlock language="jsx">
+						{`import React from "react";
 import Icon from "../../../icon/Icon";
 import { notificationData } from "./NotificationData";
 import { CardTitle } from "reactstrap";
@@ -1451,29 +1445,29 @@ const Notifications = () => {
   );
 };
 `}
-          </CodeBlock>
-        </Block>
+					</CodeBlock>
+				</Block>
 
-        <Block size="lg">
-          <BlockHead>
-            <BlockHeadContent>
-              <BlockTitle tag="h5">User Count</BlockTitle>
-              <BlockDes>
-                <p>The following card can be use for User Count, View Count related filed.</p>
-              </BlockDes>
-            </BlockHeadContent>
-          </BlockHead>
-          <PreviewCard>
-            <Row>
-              <Col lg="6">
-                <Card className="card-bordered card-full">
-                  <PageViewer />
-                </Card>
-              </Col>
-            </Row>
-          </PreviewCard>
-          <CodeBlock language="jsx">
-            {`import React, { useEffect, useState } from "react";
+				<Block size="lg">
+					<BlockHead>
+						<BlockHeadContent>
+							<BlockTitle tag="h5">User Count</BlockTitle>
+							<BlockDes>
+								<p>The following card can be use for User Count, View Count related filed.</p>
+							</BlockDes>
+						</BlockHeadContent>
+					</BlockHead>
+					<PreviewCard>
+						<Row>
+							<Col lg="6">
+								<Card className="card-bordered card-full">
+									<PageViewer />
+								</Card>
+							</Col>
+						</Row>
+					</PreviewCard>
+					<CodeBlock language="jsx">
+						{`import React, { useEffect, useState } from "react";
 import { pagePerUserData, pagePerUserDataSet2, pagePerUserDataSet3 } from "../../charts/analytics/AnalyticsData";
 import { DataTableRow, DataTableHead, DataTableItem } from "../../../table/DataTable";
 import { DropdownToggle, DropdownMenu, UncontrolledDropdown, DropdownItem } from "reactstrap";
@@ -1577,29 +1571,29 @@ const PageViewer = () => {
 };
 
 `}
-          </CodeBlock>
-        </Block>
+					</CodeBlock>
+				</Block>
 
-        <Block size="lg">
-          <BlockHead>
-            <BlockHeadContent>
-              <BlockTitle tag="h5">Action Center</BlockTitle>
-              <BlockDes>
-                <p>The following card can be use for Action Center, Settings related field.</p>
-              </BlockDes>
-            </BlockHeadContent>
-          </BlockHead>
-          <PreviewCard>
-            <Row>
-              <Col lg="6">
-                <Card className="card-bordered card-full">
-                  <ActionCenter />
-                </Card>
-              </Col>
-            </Row>
-          </PreviewCard>
-          <CodeBlock language="jsx">
-            {`import React from "react";
+				<Block size="lg">
+					<BlockHead>
+						<BlockHeadContent>
+							<BlockTitle tag="h5">Action Center</BlockTitle>
+							<BlockDes>
+								<p>The following card can be use for Action Center, Settings related field.</p>
+							</BlockDes>
+						</BlockHeadContent>
+					</BlockHead>
+					<PreviewCard>
+						<Row>
+							<Col lg="6">
+								<Card className="card-bordered card-full">
+									<ActionCenter />
+								</Card>
+							</Col>
+						</Row>
+					</PreviewCard>
+					<CodeBlock language="jsx">
+						{`import React from "react";
 import Icon from "../../../icon/Icon";
 import Button from "../../../button/Button";
 import { UncontrolledDropdown, CardTitle, DropdownMenu, DropdownItem, DropdownToggle } from "reactstrap";
@@ -1698,11 +1692,11 @@ const ActionCenter = () => {
     </React.Fragment>
   );
 };`}
-          </CodeBlock>
-        </Block>
-      </Content>
-    </React.Fragment>
-  );
+					</CodeBlock>
+				</Block>
+			</Content>
+		</React.Fragment>
+	);
 };
 
 export default CardWidgets;
