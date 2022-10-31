@@ -13,8 +13,8 @@ function SectionTwo() {
 						<h3 className="display-4 mb-7">Our three process steps on creating awesome projects.</h3>
 						<div className="d-flex flex-row mb-6">
 							<div>
-								<span className="icon btn btn-circle btn-soft-primary pe-none me-5">
-									<span className="number fs-18">1</span>
+								<span className="icon btn btn-circle btn-lg btn-primary pe-none me-4">
+									<span className="number">01</span>
 								</span>
 							</div>
 							<div>
@@ -26,8 +26,8 @@ function SectionTwo() {
 						</div>
 						<div className="d-flex flex-row mb-6">
 							<div>
-								<span className="icon btn btn-circle btn-soft-primary pe-none me-5">
-									<span className="number fs-18">2</span>
+								<span className="icon btn btn-circle btn-lg btn-primary pe-none me-4">
+									<span className="number">02</span>
 								</span>
 							</div>
 							<div>
@@ -39,8 +39,8 @@ function SectionTwo() {
 						</div>
 						<div className="d-flex flex-row">
 							<div>
-								<span className="icon btn btn-circle btn-soft-primary pe-none me-5">
-									<span className="number fs-18">3</span>
+								<span className="icon btn btn-circle btn-lg btn-primary pe-none me-4">
+									<span className="number">03</span>
 								</span>
 							</div>
 							<div>

@@ -9,7 +9,7 @@ const menu = [
 	},
 	{
 		text: "All shorten links",
-		link: "/all-shorten-links",
+		link: "/all-links",
 		icon: "link",
 	},
 	{
