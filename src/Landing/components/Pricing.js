@@ -4,8 +4,10 @@ import NavBar from "./NavBar";
 function Pricing() {
 	return (
 		<React.Fragment>
-			<NavBar />
-			<section class="wrapper bg-light">
+			<div style={{ backgroundColor: "#ffffff" }}>
+				<NavBar />
+			</div>
+			<section class="wrapper" style={{ backgroundColor: "#ffffff" }}>
 				<div class="container py-14 py-md-16">
 					<h2 class="display-4 mb-3">Our Pricing</h2>
 					<p class="lead fs-lg">

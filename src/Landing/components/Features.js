@@ -9,9 +9,9 @@ import { Icon } from "../../components/Component";
 
 function Features() {
 	return (
-		<div class="content-wrapper">
+		<div class="content-wrapper" style={{ backgroundColor: "#ffffff" }}>
 			<NavBar />
-			<section class="wrapper bg-light">
+			<section class="wrapper" style={{ backgroundColor: "#ffffff" }}>
 				<div class="container py-14 py-md-16">
 					<div class="row gx-lg-8 gx-xl-12 gy-10 mb-14 mb-md-18 align-items-center">
 						<div class="col-lg-6 position-relative">

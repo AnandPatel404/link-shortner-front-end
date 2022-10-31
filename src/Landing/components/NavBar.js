@@ -4,15 +4,12 @@ import { Link } from "react-router-dom";
 function NavBar() {
 	return (
 		<React.Fragment>
-			<nav class="navbar navbar-expand-lg extended navbar-light navbar-bg-light caret-none">
+			<nav class="navbar navbar-expand-lg extended navbar-light navbar-bg-light nk-header">
 				<div class="container flex-lg-column">
-					<div class="topbar d-flex flex-row w-100 justify-content-between align-items-center">
-						<div class="navbar-brand"></div>
-						<div class="navbar-other ms-auto"></div>
-					</div>
-
-					<div class="navbar-collapse-wrapper bg-white d-flex flex-row align-items-center justify-content-between">
-						<Logo />
+					<div class="navbar-collapse-wrapper d-flex flex-row align-items-center my-2 w-100 justify-content-between">
+						<div>
+							<Logo />
+						</div>
 						<div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start justify-content-center">
 							<div class="offcanvas-body d-flex flex-column h-100">
 								<ul class="navbar-nav">
@@ -501,15 +498,17 @@ function NavBar() {
 								</ul>
 							</div>
 						</div>
-						<div className="mx-2">
-							<Link to={`${process.env.PUBLIC_URL}/auth-login`} className="btn btn-primary">
-								Login
-							</Link>
-						</div>
-						<div className="mx-2">
-							<Link to={`${process.env.PUBLIC_URL}/auth-send-otp`} className="btn btn-dim btn-primary">
-								Sign up
-							</Link>
+						<div className="d-flex">
+							<div className="mx-2">
+								<Link to={`${process.env.PUBLIC_URL}/auth-login`} className="btn btn-primary">
+									Login
+								</Link>
+							</div>
+							<div className="mx-2">
+								<Link to={`${process.env.PUBLIC_URL}/auth-send-otp`} className="btn btn-dim btn-primary">
+									Sign up
+								</Link>
+							</div>
 						</div>
 					</div>
 				</div>
