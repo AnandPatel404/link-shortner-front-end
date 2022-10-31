@@ -14,7 +14,7 @@ const RecentInvest = ({ links }) => {
 						<h6 className="title">Recent Shorten Link</h6>
 					</div>
 					<div className="card-tools">
-						<Link className="link" to={process.env.PUBLIC_URL + "/all-shorten-links"}>
+						<Link className="link" to={process.env.PUBLIC_URL + "/all-links"}>
 							View All
 						</Link>
 					</div>

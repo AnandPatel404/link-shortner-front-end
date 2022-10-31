@@ -97,15 +97,15 @@ const Pages = () => {
 			<Switch>
 				{/*Dashboards and used route*/}
 				<Route exact path={`${process.env.PUBLIC_URL}/`} component={Invest}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/all-links`} component={ProductList}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/qr-list`} component={ProjectListPage}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/_blank`} component={Blank}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/link/:id`} component={KycDetailsRegular}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/link-details/:id`} component={Editlink}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/all-shorten-links`} component={ProductList}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/add-custom-domain`} component={AddDomain}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/set-error-page`} component={SetErrorPage}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-change-password`} component={ChangePassword}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-setting/`} component={UserProfileLayout}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/project-list`} component={ProjectListPage}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-regular/`} component={UserProfileLayout}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-notification/`} component={UserProfileLayout}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/user-profile-activity/`} component={UserProfileLayout}></Route>

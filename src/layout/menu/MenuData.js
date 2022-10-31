@@ -25,7 +25,7 @@ const menu = [
 	{
 		icon: "notes-alt",
 		text: "QR List",
-		link: "/project-list",
+		link: "/qr-list",
 	},
 	{
 		icon: "link-group",
