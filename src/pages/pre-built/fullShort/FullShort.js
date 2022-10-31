@@ -114,8 +114,8 @@ const FullShort = () => {
 										</li>
 										<li onClick={() => updateSm(false)}>
 											<Link
-												to={`${process.env.PUBLIC_URL}/project-card`}
-												className={window.location.pathname === `${process.env.PUBLIC_URL}/project-card` ? "active" : ""}
+												to={`${process.env.PUBLIC_URL}/create-qr-link`}
+												className={window.location.pathname === `${process.env.PUBLIC_URL}/create-qr-link` ? "active" : ""}
 											>
 												<Icon name="qr"></Icon>
 												<span>Qr</span>
@@ -181,7 +181,7 @@ const FullShort = () => {
 								></Route>
 								<Route
 									exact
-									path={`${process.env.PUBLIC_URL}/project-card`}
+									path={`${process.env.PUBLIC_URL}/create-qr-link`}
 									render={() => <ProjectCardPage updateSm={updateSm} sm={sm} />}
 								></Route>
 								<Route
