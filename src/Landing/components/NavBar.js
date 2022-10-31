@@ -11,7 +11,7 @@ function NavBar() {
 						<div class="navbar-other ms-auto"></div>
 					</div>
 
-					<div class="navbar-collapse-wrapper bg-white d-flex flex-row align-items-center justify-content-between bg-soft-primary">
+					<div class="navbar-collapse-wrapper bg-white d-flex flex-row align-items-center justify-content-between">
 						<Logo />
 						<div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start justify-content-center">
 							<div class="offcanvas-body d-flex flex-column h-100">
