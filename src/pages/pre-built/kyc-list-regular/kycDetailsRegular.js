@@ -4,7 +4,8 @@ import Head from "../../../layout/head/Head";
 import BrowserUser from "../../../components/partials/analytics/browser-users/BrowserUser";
 import SessionDevice from "../../../components/partials/analytics/session-devices/SessionDevice";
 import TrafficChannel from "../../../components/partials/analytics/traffic-channel/Traffic";
-import { Badge, Card, Spinner } from "reactstrap";
+import { Badge, Card } from "reactstrap";
+import Loader from "../../Loader/Loader";
 import {
 	Button,
 	Block,
@@ -48,7 +49,7 @@ const KycDetailsRegular = ({ match }) => {
 			<Head title="KYC Details - Regular"></Head>
 			{loading ? (
 				<div className="d-flex justify-content-center align-items-center" style={{ height: 100 + "vh" }}>
-					<Spinner />
+					<Loader />
 				</div>
 			) : (
 				<div>

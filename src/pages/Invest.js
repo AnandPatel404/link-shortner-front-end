@@ -12,6 +12,7 @@ import a from "../images/svg/dashboard-limit.svg";
 import rocketSvg from "../images/svg/dashboard.svg";
 import useUserDashBoard from "../zustand/DashBoard/userDashBoard";
 import { Link } from "react-router-dom";
+import Loader from "./Loader/Loader";
 
 const InvestHomePage = () => {
 	const [loading, setLoading] = useState(false);
@@ -41,7 +42,7 @@ const InvestHomePage = () => {
 			<Head title="Dashboard" />
 			{loadingTwo ? (
 				<div className="d-flex justify-content-center align-items-center" style={{ height: 100 + "vh" }}>
-					<Spinner />
+					<Loader />
 				</div>
 			) : (
 				<Content>

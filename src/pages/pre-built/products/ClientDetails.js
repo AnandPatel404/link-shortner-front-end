@@ -15,7 +15,7 @@ import {
 	DataTableRow,
 	DataTableItem,
 } from "../../../components/Component";
-import { Spinner } from "reactstrap";
+import Loader from "../../Loader/Loader";
 import userLinkClient from "../../../zustand/clientDetails/client";
 
 export const ClientDetails = ({ match, history }) => {
@@ -55,7 +55,7 @@ export const ClientDetails = ({ match, history }) => {
 			<Head title="Project List"></Head>
 			{loading ? (
 				<div className="d-flex justify-content-center align-items-center" style={{ height: 100 + "vh" }}>
-					<Spinner />
+					<Loader />
 				</div>
 			) : (
 				<Content>

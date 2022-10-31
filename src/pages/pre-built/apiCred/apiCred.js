@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Content from "../../../layout/content/Content";
 import Head from "../../../layout/head/Head";
-import { Card, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Modal, ModalBody, Form, Col, FormGroup, Spinner } from "reactstrap";
+import { Card, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Modal, ModalBody, Form, Col, FormGroup } from "reactstrap";
 import { Button, Block, BlockBetween, BlockHead, BlockHeadContent, BlockTitle, Icon } from "../../../components/Component";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import userApiCred from "../../../zustand/apiCred/apiCred";
+import Loader from "../../Loader/Loader";
 
 const ApiCred = () => {
 	const [data, setData] = useState([]);
@@ -41,7 +42,7 @@ const ApiCred = () => {
 			<Head title="Invoice List"></Head>
 			{loading ? (
 				<div className="d-flex justify-content-center align-items-center" style={{ height: 100 + "vh" }}>
-					<Spinner />
+					<Loader />
 				</div>
 			) : (
 				<Content>

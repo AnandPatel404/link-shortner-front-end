@@ -1,11 +1,11 @@
 import Head from "../../../layout/head/Head";
 import Content from "../../../layout/content/Content";
-import { Spinner } from "reactstrap";
 import React, { useEffect, useState, useCallback } from "react";
 import { FormGroup, Row, Col, Form } from "reactstrap";
 import { Block, BlockHead, BlockHeadContent, BlockTitle, PreviewCard, Button } from "../../../components/Component";
 import { useForm } from "react-hook-form";
 import userDashBoard from "../../../zustand/DashBoard/userDashBoard";
+import Loader from "../../Loader/Loader";
 
 function Editlink({ match, history }) {
 	const [loading, setLoading] = useState(true);
@@ -48,7 +48,7 @@ function Editlink({ match, history }) {
 			<Head title="Form Elements" />
 			{loading ? (
 				<div className="d-flex justify-content-center align-items-center" style={{ height: 100 + "vh" }}>
-					<Spinner />
+					<Loader />
 				</div>
 			) : (
 				<Content page="component">

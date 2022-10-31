@@ -15,9 +15,10 @@ import {
 	DataTableItem,
 	PaginationComponent,
 } from "../../../components/Component";
-import { Card, DropdownItem, UncontrolledDropdown, DropdownMenu, DropdownToggle, Badge, Spinner } from "reactstrap";
+import { Card, DropdownItem, UncontrolledDropdown, DropdownMenu, DropdownToggle, Badge } from "reactstrap";
 import userDashBoard from "../../../zustand/DashBoard/userDashBoard";
 import { Link } from "react-router-dom";
+import Loader from "../../Loader/Loader";
 
 const ProductList = () => {
 	const [loading, setLoading] = useState(true);
@@ -62,7 +63,7 @@ const ProductList = () => {
 			<Head title="Product List"></Head>
 			{loading ? (
 				<div className="d-flex justify-content-center align-items-center" style={{ height: 100 + "vh" }}>
-					<Spinner />
+					<Loader />
 				</div>
 			) : (
 				<Content>
