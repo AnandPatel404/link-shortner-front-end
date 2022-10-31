@@ -61,7 +61,7 @@ const ProductList = () => {
 		<React.Fragment>
 			<Head title="Product List"></Head>
 			{loading ? (
-				<div className="d-flex justify-content-center">
+				<div className="d-flex justify-content-center align-items-center" style={{ height: 100 + "vh" }}>
 					<Spinner />
 				</div>
 			) : (

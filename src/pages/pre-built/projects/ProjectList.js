@@ -41,21 +41,21 @@ export const ProjectListPage = () => {
 	});
 
 	// function to change the check property of an item
-	const selectorCheck = (e) => {
-		let newData;
-		newData = data.map((item) => {
-			item.checked = e.currentTarget.checked;
-			return item;
-		});
-		// setData([...newData]);
-	};
+	// const selectorCheck = (e) => {
+	// 	let newData;
+	// 	newData = data.map((item) => {
+	// 		item.checked = e.currentTarget.checked;
+	// 		return item;
+	// 	});
+	// 	// setData([...newData]);
+	// };
 
 	// function to delete the seletected item
-	const selectorDeleteProject = () => {
-		let newData;
-		newData = data.filter((item) => item.checked !== true);
-		// setData([...newData]);
-	};
+	// const selectorDeleteProject = () => {
+	// 	let newData;
+	// 	newData = data.filter((item) => item.checked !== true);
+	// 	// setData([...newData]);
+	// };
 
 	// function to change the check property of selected item
 	const onSelectChange = (e, id) => {

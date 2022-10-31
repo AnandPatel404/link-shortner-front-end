@@ -54,7 +54,7 @@ export const ClientDetails = ({ match, history }) => {
 		<React.Fragment>
 			<Head title="Project List"></Head>
 			{loading ? (
-				<div className="d-flex justify-content-center align-items-center mt-5 pt-5">
+				<div className="d-flex justify-content-center align-items-center" style={{ height: 100 + "vh" }}>
 					<Spinner />
 				</div>
 			) : (

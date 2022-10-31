@@ -47,7 +47,7 @@ const KycDetailsRegular = ({ match }) => {
 		<React.Fragment>
 			<Head title="KYC Details - Regular"></Head>
 			{loading ? (
-				<div className="d-flex justify-content-center mt-5 pt-5">
+				<div className="d-flex justify-content-center align-items-center" style={{ height: 100 + "vh" }}>
 					<Spinner />
 				</div>
 			) : (
