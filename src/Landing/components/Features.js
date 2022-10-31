@@ -147,9 +147,7 @@ function Features() {
 						</div>
 						<div class="col-lg-4">
 							<div class="px-md-15 px-lg-3">
-								<figure class="mb-6">
-									<img class="img-fluid" src={imgFive} alt="" />
-								</figure>
+								<img width={300} src={imgFive} alt="" />
 								<h3>3D Animation</h3>
 								<p class="mb-2">
 									Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna scelerisque.

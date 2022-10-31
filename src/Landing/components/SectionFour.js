@@ -11,7 +11,7 @@ function SectionFour() {
 						<p>
 							Enjoy a{" "}
 							<a href="/" class="hover">
-								free 30-day trial
+								free 7-day trial
 							</a>{" "}
 							and experience the full service. No credit card required!
 						</p>

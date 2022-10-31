@@ -9,14 +9,14 @@ function Pricing() {
 				<div class="container py-14 py-md-16">
 					<h2 class="display-4 mb-3">Our Pricing</h2>
 					<p class="lead fs-lg">
-						We offer <span class="underline">great prices</span>, premium and quality products for your business.
+						We offer <span class="underline">great prices</span>, premium and quality solution for your business.
 					</p>
 					<div class="row">
 						<div class="col-lg-4">
 							<p>
 								Enjoy a{" "}
 								<a href="/" class="hover">
-									free 30-day trial
+									free 7-day trial
 								</a>{" "}
 								and experience the full service. No credit card required!
 							</p>
