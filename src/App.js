@@ -1,6 +1,4 @@
-import React, { lazy, useEffect, useState } from "react";
-// import { Spinner } from "reactstrap";
-import Loader from "./pages/Loader/Loader";
+import React, { lazy } from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
 import { RedirectAs404 } from "./utils/Utils";
 import "./Landing/style.css";
@@ -26,47 +24,37 @@ const SectionOne = lazy(() => import("./Landing/components/SectionOne"));
 const Layout = lazy(() => import("./layout/Index"));
 
 const App = () => {
-	const [loading, setLoading] = useState(true);
-	useEffect(() => {
-		setTimeout(() => {
-			setLoading(false);
-		}, 2000);
-	}, []);
 	return (
 		<React.Fragment>
-			{loading ? (
-				<Loader />
-			) : (
-				<Switch>
-					<Route exact path="/pricing" component={Pricing}></Route>
-					<Route exact path="/features" component={Features}></Route>
-					<Route exact path="/home" component={SectionOne}></Route>
-					<Route exact path={`${process.env.PUBLIC_URL}/auth-success`} component={Success}></Route>
-					<Route exact path={`${process.env.PUBLIC_URL}/auth-reset`} component={ForgotPassword}></Route>
-					<Route exact path={`${process.env.PUBLIC_URL}/auth-register`} component={Register}></Route>
-					<Route exact path={`${process.env.PUBLIC_URL}/auth-login`} component={Login}></Route>
-					<Route exact path={`${process.env.PUBLIC_URL}/auth-send-otp`} component={SendOtp}></Route>
-					<Route exact path={`${process.env.PUBLIC_URL}/auth-verify-otp`} component={VerifyOtp}></Route>
-					<Route exact path={`${process.env.PUBLIC_URL}/auth-verify-otp-for-reset-password`} component={verifyOtpForResetPassword}></Route>
-					<Route exact path={`${process.env.PUBLIC_URL}/auth-reset-password`} component={ResetPassword}></Route>
-					<Route exact path={`${process.env.PUBLIC_URL}/password-protected-link/:id`} component={PasswordProtected}></Route>
+			<Switch>
+				<Route exact path="/pricing" component={Pricing}></Route>
+				<Route exact path="/features" component={Features}></Route>
+				<Route exact path="/home" component={SectionOne}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/auth-success`} component={Success}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/auth-reset`} component={ForgotPassword}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/auth-register`} component={Register}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/auth-login`} component={Login}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/auth-send-otp`} component={SendOtp}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/auth-verify-otp`} component={VerifyOtp}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/auth-verify-otp-for-reset-password`} component={verifyOtpForResetPassword}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/auth-reset-password`} component={ResetPassword}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/password-protected-link/:id`} component={PasswordProtected}></Route>
 
-					{/* Helper pages */}
-					<Route exact path={`${process.env.PUBLIC_URL}/auths/terms`} component={Terms}></Route>
-					<Route exact path={`${process.env.PUBLIC_URL}/auths/faq`} component={Faq}></Route>
+				{/* Helper pages */}
+				<Route exact path={`${process.env.PUBLIC_URL}/auths/terms`} component={Terms}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/auths/faq`} component={Faq}></Route>
 
-					{/*Error Pages*/}
-					<Route exact path={`${process.env.PUBLIC_URL}/errors/404-classic`} component={Error404Classic}></Route>
-					<Route exact path={`${process.env.PUBLIC_URL}/errors/504-modern`} component={Error504Modern}></Route>
-					<Route exact path={`${process.env.PUBLIC_URL}/errors/404-modern`} component={Error404Modern}></Route>
-					<Route exact path={`${process.env.PUBLIC_URL}/errors/504-classic`} component={Error504Classic}></Route>
+				{/*Error Pages*/}
+				<Route exact path={`${process.env.PUBLIC_URL}/errors/404-classic`} component={Error404Classic}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/errors/504-modern`} component={Error504Modern}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/errors/404-modern`} component={Error404Modern}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/errors/504-classic`} component={Error504Classic}></Route>
 
-					{/*Main Routes*/}
-					<PrivateRoute exact path="" component={Layout}></PrivateRoute>
+				{/*Main Routes*/}
+				<PrivateRoute exact path="" component={Layout}></PrivateRoute>
 
-					<Route component={RedirectAs404}></Route>
-				</Switch>
-			)}
+				<Route component={RedirectAs404}></Route>
+			</Switch>
 		</React.Fragment>
 	);
 };

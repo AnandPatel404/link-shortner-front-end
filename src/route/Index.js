@@ -2,6 +2,7 @@ import React, { Suspense, useLayoutEffect, lazy } from "react";
 import { Switch, Route } from "react-router-dom";
 import { RedirectAs404 } from "../utils/Utils";
 import { Spinner } from "reactstrap";
+import Loader from "../pages/Loader/Loader";
 
 const Component = lazy(() => import("../pages/components/Index"));
 const Accordian = lazy(() => import("../pages/components/Accordions"));
@@ -93,7 +94,7 @@ const Pages = () => {
 	});
 
 	return (
-		<Suspense fallback={<Spinner />}>
+		<Suspense fallback={<Loader />}>
 			<Switch>
 				{/*Dashboards and used route*/}
 				<Route exact path={`${process.env.PUBLIC_URL}/`} component={Invest}></Route>
