@@ -3,6 +3,7 @@ import Content from "../../../layout/content/Content";
 import Head from "../../../layout/head/Head";
 import BrowserUser from "../../../components/partials/analytics/browser-users/BrowserUser";
 import SessionDevice from "../../../components/partials/analytics/session-devices/SessionDevice";
+import TrafficChannel from "../../../components/partials/analytics/traffic-channel/Traffic";
 import { Badge, Card, Spinner } from "reactstrap";
 import {
 	Button,
@@ -255,6 +256,11 @@ const KycDetailsRegular = ({ match }) => {
 									<Col xxl="12">
 										<Card className="card-bordered h-100">
 											<BrowserUser />
+										</Card>
+									</Col>
+									<Col md="12">
+										<Card className="card-bordered h-100">
+											<TrafficChannel />
 										</Card>
 									</Col>
 									<Col xxl="12" className="d-flex justify-content-center">

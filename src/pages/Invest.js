@@ -3,7 +3,6 @@ import shallow from "zustand/shallow";
 import Content from "../layout/content/Content";
 import Head from "../layout/head/Head";
 import RecentInvest from "../components/partials/invest/recent-investment/RecentInvest";
-import TrafficChannel from "../components/partials/analytics/traffic-channel/Traffic";
 import { useForm } from "react-hook-form";
 import { Card, Form, Spinner } from "reactstrap";
 import { Block, Icon, Button, Row, Col, PreviewAltCard } from "../components/Component";
@@ -174,11 +173,6 @@ const InvestHomePage = () => {
 							) : (
 								""
 							)}
-							<Col md="12">
-								<Card className="card-bordered h-100">
-									<TrafficChannel />
-								</Card>
-							</Col>
 						</Row>
 					</Block>
 				</Content>
