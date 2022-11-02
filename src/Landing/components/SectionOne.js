@@ -10,9 +10,9 @@ const Footer = lazy(() => import("./footer"));
 
 function SectionOne() {
 	return (
-		<div class="content-wrapper" style={{ backgroundColor: "#ffffff" }}>
+		<div class="content-wrapper bg-light">
 			<NavBar />
-			<section class="wrapper">
+			<section class="wrapper bg-light">
 				<div class="container pt-10 pb-15 pt-md-14 pb-md-20">
 					<div class="row gx-lg-8 gx-xl-12 gy-10 mb-5 align-items-center">
 						<div

@@ -2,13 +2,13 @@ import create from "zustand";
 import axios from "../../axios/axiosconfig";
 
 const userPlan = create((set, get) => ({
-	linkAnalysis: async (id, setLoading) => {
+	plan: async (setLoading) => {
 		const data = await axios({
 			method: "get",
-			url: `link-analysis/${id}`,
+			url: "plan",
 		});
 		setLoading(false);
-		return data;
+		return data.data.data;
 	},
 }));
 

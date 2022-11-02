@@ -5,7 +5,7 @@ import g from "../assets/img/icons/lineal/cloud-computing-3.svg";
 import f from "../assets/img/icons/lineal/analytics.svg";
 function SectionSix() {
 	return (
-		<section class="wrapper">
+		<section class="wrapper bg-light">
 			<div class="container pt-14 pb-12 pt-md-16 pb-md-14">
 				<div class="row gx-lg-8 gx-xl-12 gy-10 mb-lg-22 mb-xl-24 align-items-center">
 					<div class="col-lg-7 order-lg-2">

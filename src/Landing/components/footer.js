@@ -4,7 +4,7 @@ import Logo from "../../layout/logo/Logo";
 function footer() {
 	return (
 		<footer>
-			<div class="container pb-10">
+			<div class="container pb-10 bg-light">
 				<div class="row gy-6 gy-lg-0">
 					<div class="col-md-4 col-lg-3">
 						<div class="widget">
@@ -91,7 +91,6 @@ function footer() {
 													placeholder="Email Address"
 													id="mce-EMAIL2"
 												/>
-												<label for="mce-EMAIL2">Email Address</label>
 												<input
 													type="submit"
 													value="Join"
