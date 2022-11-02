@@ -8,7 +8,6 @@ import AuthFooter from "./AuthFooter";
 import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button, PreviewCard } from "../../components/Component";
 import { FormGroup, Form, Spinner } from "reactstrap";
 import useUserAuth from "../../zustand/auth/userAuth";
-import { Link } from "react-router-dom";
 
 const ResetPassword = ({ history }) => {
 	const [loading, setLoading] = useState(false);

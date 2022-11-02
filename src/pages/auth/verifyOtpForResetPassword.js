@@ -6,7 +6,6 @@ import Head from "../../layout/head/Head";
 import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button, Icon, PreviewCard } from "../../components/Component";
 import { Form, FormGroup, Spinner, Alert, Row, Col } from "reactstrap";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
 import fevIcon from "../../images/svg/fevicon-and-logo.svg";
 import useUserAuth from "../../zustand/auth/userAuth";
 import o from "../../images/svg/otp.svg";
