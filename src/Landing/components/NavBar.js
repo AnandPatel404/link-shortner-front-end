@@ -14,12 +14,12 @@ function NavBar() {
 							<div class="offcanvas-body d-flex flex-column h-100">
 								<ul class="navbar-nav">
 									<li class="dropdown dropdown-submenu dropend">
-										<Link class="nav-link" to="/pricing">
+										<Link class="nav-link" to={`${process.env.PUBLIC_URL}/pricing`}>
 											Pricing
 										</Link>
 									</li>
 									<li class="dropdown dropdown-submenu dropend">
-										<Link class="nav-link" to="/features">
+										<Link class="nav-link" to={`${process.env.PUBLIC_URL}/features`}>
 											Features
 										</Link>
 									</li>

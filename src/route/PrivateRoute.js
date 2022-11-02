@@ -9,7 +9,7 @@ const PrivateRoute = ({ exact, component: Component, ...rest }) => (
 	<Route
 		exact={exact ? true : false}
 		rest
-		render={(props) => (auth ? <Component {...props} {...rest}></Component> : <Redirect to="/home"></Redirect>)}
+		render={(props) => (auth ? <Component {...props} {...rest}></Component> : <Redirect to={`${process.env.NODE_ENV}/home`}></Redirect>)}
 	></Route>
 );
 

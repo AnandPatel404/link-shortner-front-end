@@ -27,9 +27,9 @@ const App = () => {
 	return (
 		<React.Fragment>
 			<Switch>
-				<Route exact path="/pricing" component={Pricing}></Route>
-				<Route exact path="/features" component={Features}></Route>
-				<Route exact path="/home" component={SectionOne}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/pricing`} component={Pricing}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/features`} component={Features}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/home`} component={SectionOne}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/auth-success`} component={Success}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/auth-reset`} component={ForgotPassword}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/auth-register`} component={Register}></Route>

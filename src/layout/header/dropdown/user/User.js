@@ -68,10 +68,10 @@ const User = () => {
 				</div>
 				<div className="dropdown-inner">
 					<LinkList>
-						<Button type="button" onClick={handleSignout} className="p-0">
+						<LinkItem onClick={handleSignout} className="p-0" link="/home">
 							<Icon name="signout"></Icon>
 							<span>Sign Out</span>
-						</Button>
+						</LinkItem>
 					</LinkList>
 				</div>
 			</DropdownMenu>

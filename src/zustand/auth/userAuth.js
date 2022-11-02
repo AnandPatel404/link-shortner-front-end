@@ -82,7 +82,6 @@ const useUserAuth = create((set) => ({
 			.then((res) => {
 				if (res.data.status === "Success") {
 					localStorage.clear();
-					window.location.reload();
 				}
 			})
 			.catch((err) => {
