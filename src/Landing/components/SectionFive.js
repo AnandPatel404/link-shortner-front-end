@@ -1,5 +1,5 @@
 import React from "react";
-import a from "../assets/img/photos/sa1.jpg";
+// import a from "../assets/img/photos/sa1.jpg";
 function SectionFive() {
 	return (
 		<div>
@@ -31,7 +31,7 @@ function SectionFive() {
 			<div class="container">
 				<div class="row gx-0 mb-16 mb-mb-20">
 					<div class="col-9 col-sm-10 col-lg-9 mx-auto mt-n15 mt-md-n20">
-						<img class="img-fluid mx-auto rounded shadow-lg" data-cue="slideInUp" src={a} alt="" />
+						{/* <img class="img-fluid mx-auto rounded shadow-lg" data-cue="slideInUp" src={a} alt="" /> */}
 					</div>
 				</div>
 			</div>

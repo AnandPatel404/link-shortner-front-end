@@ -1,5 +1,7 @@
-import React from "react";
+import React, { lazy } from "react";
 import NavBar from "./NavBar";
+// import { Icon } from "../../components/Component";
+const Icon = lazy(() => import("../../components/icon/Icon"));
 
 function Pricing() {
 	return (
@@ -7,9 +9,242 @@ function Pricing() {
 			<div style={{ backgroundColor: "#ffffff" }}>
 				<NavBar />
 			</div>
+
+			<section class="wrapper bg-light">
+				<div class="container py-14 py-md-16">
+					<h2 class="display-5 mb-7 text-center">Our Pricing</h2>
+					<div class="pricing-wrapper">
+						<div class="row gx-2 gy-6 mt-2">
+							<div class="col-md-6 col-lg-3">
+								<div class="pricing card shadow-lg">
+									<div class="card-body">
+										<h4 class="card-title">Basic Plan</h4>
+										<div class="prices text-dark">
+											<div class="price price-show justify-content-start">
+												<span class="price-currency">$</span>
+												<span class="price-value">9</span> <span class="price-duration">mo</span>
+											</div>
+											<div class="price price-hide price-hidden justify-content-start">
+												<span class="price-currency">$</span>
+												<span class="price-value">99</span> <span class="price-duration">yr</span>
+											</div>
+										</div>
+
+										<ul class="icon-list bullet-bg bullet-soft-primary mt-7 mb-8">
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													<strong>1</strong> Project{" "}
+												</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													<strong>100K</strong> API Access{" "}
+												</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													<strong>100MB</strong> Storage{" "}
+												</span>
+											</li>
+											<li>
+												<Icon name="cross-fill-c" className="text-danger" />
+												<span>
+													{" "}
+													Weekly <strong>Reports</strong>{" "}
+												</span>
+											</li>
+											<li>
+												<Icon name="cross-fill-c" className="text-danger" />
+												<span>
+													{" "}
+													7/24 <strong>Support</strong>
+												</span>
+											</li>
+										</ul>
+										<a href="/" class="btn btn-primary rounded-pill">
+											Choose Plan
+										</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-6 col-lg-3">
+								<div class="pricing card shadow-lg">
+									<div class="card-body">
+										<h4 class="card-title">Premium Plan</h4>
+										<div class="prices text-dark">
+											<div class="price price-show justify-content-start">
+												<span class="price-currency">$</span>
+												<span class="price-value">19</span> <span class="price-duration">mo</span>
+											</div>
+											<div class="price price-hide price-hidden justify-content-start">
+												<span class="price-currency">$</span>
+												<span class="price-value">199</span> <span class="price-duration">yr</span>
+											</div>
+										</div>
+
+										<ul class="icon-list bullet-bg bullet-soft-primary mt-7 mb-8">
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													<strong>5</strong> Projects{" "}
+												</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													<strong>100K</strong> API Access{" "}
+												</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													<strong>200MB</strong> Storage{" "}
+												</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													{" "}
+													Weekly <strong>Reports</strong>
+												</span>
+											</li>
+											<li>
+												<Icon name="cross-fill-c" className="text-danger" />
+												<span>
+													{" "}
+													7/24 <strong>Support</strong>
+												</span>
+											</li>
+										</ul>
+										<a href="/" class="btn btn-primary rounded-pill">
+											Choose Plan
+										</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-6 col-lg-3">
+								<div class="pricing card bg-soft-primary">
+									<div class="card-body">
+										<h4 class="card-title">Corporate Plan</h4>
+										<div class="prices text-dark">
+											<div class="price price-show justify-content-start">
+												<span class="price-currency">$</span>
+												<span class="price-value">29</span> <span class="price-duration">mo</span>
+											</div>
+											<div class="price price-hide price-hidden justify-content-start">
+												<span class="price-currency">$</span>
+												<span class="price-value">299</span> <span class="price-duration">yr</span>
+											</div>
+										</div>
+
+										<ul class="icon-list bullet-bg bullet-primary mt-7 mb-8">
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													<strong>20</strong> Projects{" "}
+												</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													<strong>300K</strong> API Access{" "}
+												</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													<strong>500MB</strong> Storage{" "}
+												</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													{" "}
+													Weekly <strong>Reports</strong>
+												</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													{" "}
+													7/24 <strong>Support</strong>
+												</span>
+											</li>
+										</ul>
+										<a href="/" class="btn btn-primary rounded-pill">
+											Choose Plan
+										</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-6 col-lg-3">
+								<div class="pricing card shadow-lg">
+									<div class="card-body">
+										<h4 class="card-title">Community Plan</h4>
+										<div class="prices text-dark">
+											<div class="price price-show justify-content-start">
+												<span class="price-currency">$</span>
+												<span class="price-value">49</span> <span class="price-duration">mo</span>
+											</div>
+											<div class="price price-hide price-hidden justify-content-start">
+												<span class="price-currency">$</span>
+												<span class="price-value">499</span> <span class="price-duration">yr</span>
+											</div>
+										</div>
+
+										<ul class="icon-list bullet-bg bullet-soft-primary mt-7 mb-8">
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													<strong>90</strong> Projects{" "}
+												</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													<strong>900K</strong> API Access{" "}
+												</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													<strong>900MB</strong> Storage{" "}
+												</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													{" "}
+													Weekly <strong>Reports</strong>{" "}
+												</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													{" "}
+													7/24 <strong>Support</strong>
+												</span>
+											</li>
+										</ul>
+										<a href="/" class="btn btn-primary rounded-pill">
+											Choose Plan
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
 			<section class="wrapper" style={{ backgroundColor: "#ffffff" }}>
 				<div class="container py-14 py-md-16">
-					<h2 class="display-4 mb-3">Our Pricing</h2>
 					<p class="lead fs-lg">
 						We offer <span class="underline">great prices</span>, premium and quality solution for your business.
 					</p>
@@ -77,13 +312,13 @@ function Pricing() {
 									<td class="option text-start">Weekly Reports</td>
 									<td>-</td>
 									<td>
-										<i class="uil uil-check bg-pale-primary text-primary rounded-circle p-1"></i>
+										<Icon name="check-fill-c" className="text-yellow" />
 									</td>
 									<td>
-										<i class="uil uil-check bg-pale-primary text-primary rounded-circle p-1"></i>
+										<Icon name="check-fill-c" className="text-yellow" />
 									</td>
 									<td>
-										<i class="uil uil-check bg-pale-primary text-primary rounded-circle p-1"></i>
+										<Icon name="check-fill-c" className="text-yellow" />
 									</td>
 								</tr>
 								<tr>
@@ -91,10 +326,10 @@ function Pricing() {
 									<td>-</td>
 									<td>-</td>
 									<td>
-										<i class="uil uil-check bg-pale-primary text-primary rounded-circle p-1"></i>
+										<Icon name="check-fill-c" className="text-yellow" />
 									</td>
 									<td>
-										<i class="uil uil-check bg-pale-primary text-primary rounded-circle p-1"></i>
+										<Icon name="check-fill-c" className="text-yellow" />
 									</td>
 								</tr>
 							</tbody>
@@ -102,22 +337,22 @@ function Pricing() {
 								<tr>
 									<th class="w-25"></th>
 									<th>
-										<a href="/" class="btn btn-soft-primary rounded-pill mt-1">
+										<a href="/" class="btn btn-primary rounded-pill mt-1">
 											Choose Plan
 										</a>
 									</th>
 									<th>
-										<a href="/" class="btn btn-soft-primary rounded-pill mt-1">
+										<a href="/" class="btn btn-primary rounded-pill mt-1">
 											Choose Plan
 										</a>
 									</th>
 									<th>
-										<a href="/" class="btn btn-soft-primary rounded-pill mt-1">
+										<a href="/" class="btn btn-primary rounded-pill mt-1">
 											Choose Plan
 										</a>
 									</th>
 									<th>
-										<a href="/" class="btn btn-soft-primary rounded-pill mt-1">
+										<a href="/" class="btn btn-primary rounded-pill mt-1">
 											Choose Plan
 										</a>
 									</th>
