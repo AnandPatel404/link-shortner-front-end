@@ -1,7 +1,6 @@
 import React, { lazy } from "react";
 import img from "../assets/img/svg/growtwo.svg";
-import NavBar from "./NavBar";
-
+const NavBar = lazy(() => import("./NavBar"));
 const SectionTwo = lazy(() => import("./SectionTwo"));
 const SectionThree = lazy(() => import("./SectionThree"));
 const SectionFour = lazy(() => import("./SectionFour"));

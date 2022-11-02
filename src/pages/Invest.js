@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, lazy } from "react";
 import shallow from "zustand/shallow";
-import Content from "../layout/content/Content";
-import Head from "../layout/head/Head";
-import RecentInvest from "../components/partials/invest/recent-investment/RecentInvest";
 import { useForm } from "react-hook-form";
 import { Card, Form, Spinner } from "reactstrap";
 import { Block, Icon, Button, Row, Col, PreviewAltCard } from "../components/Component";
@@ -14,6 +11,9 @@ import useUserDashBoard from "../zustand/DashBoard/userDashBoard";
 import { Link } from "react-router-dom";
 import Loader from "./Loader/Loader";
 
+const RecentInvest = lazy(() => import("../components/partials/invest/recent-investment/RecentInvest"));
+const Head = lazy(() => import("../layout/head/Head"));
+const Content = lazy(() => import("../layout/content/Content"));
 const InvestHomePage = () => {
 	const [loading, setLoading] = useState(false);
 	const [loadingTwo, setLoadingTwo] = useState(true);

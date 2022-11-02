@@ -1,13 +1,13 @@
-import React from "react";
-import Content from "../../layout/content/Content";
-import Head from "../../layout/head/Head";
+import React, { lazy } from "react";
 import { useForm } from "react-hook-form";
 import { FormGroup, Row, Col, Form } from "reactstrap";
 import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, BlockBetween, PreviewCard } from "../../components/Component";
 import passwordProtected from "../../images/svg/passwordProtected.svg";
 import useCheckThePassword from "../../zustand/LinkPassowrdCheck/LinkPassowrdCheck";
-import Logo from "../../layout/logo/Logo";
 
+const Content = lazy(() => import("../../layout/content/Content"));
+const Head = lazy(() => import("../../layout/head/Head"));
+const Logo = lazy(() => import("../../layout/logo/Logo"));
 function PasswordProtected({ match }) {
 	const { checkThePassword } = useCheckThePassword((state) => ({
 		checkThePassword: state.checkThePassword,
