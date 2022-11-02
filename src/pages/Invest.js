@@ -151,8 +151,8 @@ const InvestHomePage = () => {
 								</Form>
 							</Col>
 							<Col md="3">
-								<Card className="card-bordered card-full d-flex justify-content-center">
-									<img src={rocketSvg} alt="rocket" width={350} />
+								<Card className="card-bordered card-full d-flex justify-content-center align-items-center">
+									<img src={rocketSvg} alt="rocket" />
 									<div className="d-flex justify-content-center mb-4">
 										<Link
 											className="btn btn-primary"
