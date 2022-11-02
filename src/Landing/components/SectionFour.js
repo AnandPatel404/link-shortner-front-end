@@ -1,43 +1,40 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Icon } from "../../components/Component";
 function SectionFour() {
 	return (
-		<section class="bg-soft-primary">
-			<div class="container py-14 pt-md-14 pb-md-18">
-				<div class="row gy-6 mb-14 mb-md-18">
-					<div class="col-lg-4">
-						<h2 class="fs-16 text-uppercase text-muted mt-lg-18 mb-3">Our Pricing</h2>
-						<h3 class="display-4 mb-3">We offer great and premium prices.</h3>
+		<section className="bg-soft-primary">
+			<div className="container py-14 pt-md-14 pb-md-18">
+				<div className="row gy-6 mb-14 mb-md-18">
+					<div className="col-lg-4">
+						<h2 className="fs-16 text-uppercase text-muted mt-lg-18 mb-3">Our Pricing</h2>
+						<h3 className="display-4 mb-3">We offer great and premium prices.</h3>
 						<p>
-							Enjoy a{" "}
-							<a href="/" class="hover">
-								free 7-day trial
-							</a>{" "}
-							and experience the full service. No credit card required!
+							Enjoy a <span className="text-yellow">free 7-day trial</span> and experience the full service. No credit card required!
 						</p>
-						<a href="/" class="btn btn-primary rounded-pill mt-2">
+						<Link to={`${process.env.PUBLIC_URL}/pricing`} className="btn btn-primary rounded-pill mt-2">
 							See All Prices
-						</a>
+						</Link>
 					</div>
 
-					<div class="col-lg-7 offset-lg-1 pricing-wrapper">
-						<div class="row gy-6 position-relative mt-5">
-							<div class="col-md-6">
-								<div class="pricing card shadow-lg">
-									<div class="card-body pb-12">
-										<div class="prices text-dark">
-											<div class="price price-show justify-content-start">
-												<span class="price-currency">$</span>
-												<span class="price-value">19</span> <span class="price-duration">mo</span>
+					<div className="col-lg-7 offset-lg-1 pricing-wrapper">
+						<div className="row gy-6 position-relative mt-5">
+							<div className="col-md-6">
+								<div className="pricing card shadow-lg">
+									<div className="card-body pb-12">
+										<div className="prices text-dark">
+											<div className="price price-show justify-content-start">
+												<span className="price-currency">$</span>
+												<span className="price-value">19</span> <span className="price-duration">mo</span>
 											</div>
-											<div class="price price-hide price-hidden justify-content-start">
-												<span class="price-currency">$</span>
-												<span class="price-value">199</span> <span class="price-duration">yr</span>
+											<div className="price price-hide price-hidden justify-content-start">
+												<span className="price-currency">$</span>
+												<span className="price-value">199</span> <span className="price-duration">yr</span>
 											</div>
 										</div>
 
-										<h4 class="card-title mt-2">Premium Plan</h4>
-										<ul class="icon-list bullet-soft-primary mt-7 mb-8">
+										<h4 className="card-title mt-2">Premium Plan</h4>
+										<ul className="icon-list bullet-soft-primary mt-7 mb-8">
 											<li>
 												<Icon name="check" />
 												<span>
@@ -71,29 +68,29 @@ function SectionFour() {
 												</span>
 											</li>
 										</ul>
-										<a href="/" class="btn btn-primary rounded-pill">
+										<a href="/" className="btn btn-primary rounded-pill">
 											Choose Plan
 										</a>
 									</div>
 								</div>
 							</div>
 
-							<div class="col-md-6 popular">
-								<div class="pricing card shadow-lg">
-									<div class="card-body pb-12">
-										<div class="prices text-dark">
-											<div class="price price-show justify-content-start">
-												<span class="price-currency">$</span>
-												<span class="price-value">49</span> <span class="price-duration">mo</span>
+							<div className="col-md-6 popular">
+								<div className="pricing card shadow-lg">
+									<div className="card-body pb-12">
+										<div className="prices text-dark">
+											<div className="price price-show justify-content-start">
+												<span className="price-currency">$</span>
+												<span className="price-value">49</span> <span className="price-duration">mo</span>
 											</div>
-											<div class="price price-hide price-hidden justify-content-start">
-												<span class="price-currency">$</span>
-												<span class="price-value">499</span> <span class="price-duration">yr</span>
+											<div className="price price-hide price-hidden justify-content-start">
+												<span className="price-currency">$</span>
+												<span className="price-value">499</span> <span className="price-duration">yr</span>
 											</div>
 										</div>
 
-										<h4 class="card-title mt-2">Corporate Plan</h4>
-										<ul class="icon-list bullet-soft-primary mt-7 mb-8">
+										<h4 className="card-title mt-2">Corporate Plan</h4>
+										<ul className="icon-list bullet-soft-primary mt-7 mb-8">
 											<li>
 												<Icon name="check" />
 												<span>
@@ -127,7 +124,7 @@ function SectionFour() {
 												</span>
 											</li>
 										</ul>
-										<a href="/" class="btn btn-primary rounded-pill">
+										<a href="/" className="btn btn-primary rounded-pill">
 											Choose Plan
 										</a>
 									</div>

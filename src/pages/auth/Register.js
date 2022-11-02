@@ -62,10 +62,10 @@ const Register = ({ history }) => {
 						<Block className="nk-auth-body py-5 my-4 wide-s">
 							<PreviewCard className="border-0" bodyClass="card-inner-lg" style={{ backgroundColor: "#f5f6fa" }}>
 								<div className="brand-logo pb-4">
-									<Link className="logo-link">
+									<span className="logo-link">
 										<img className="logo-light logo-img logo-img-lg" src={Logo} alt="logo" width={160} />
 										<img className="logo-dark logo-img logo-img-lg" src={LogoDark} alt="logodark" />
-									</Link>
+									</span>
 								</div>
 								<BlockHead>
 									<BlockContent>

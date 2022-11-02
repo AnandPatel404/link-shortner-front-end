@@ -60,7 +60,7 @@ const ForgotPassword = ({ history }) => {
 			<PageContainer>
 				<Block className="nk-block-middle nk-auth-body  wide-xs">
 					<div className="brand-logo pb-4 text-center">
-						<Link to="/home" className="logo-link">
+						<Link to={`${process.env.PUBLIC_URL}/home`} className="logo-link">
 							<img className="logo-light logo-img logo-img-lg" src={Logo} alt="logo" width={130} />
 							<img className="logo-dark logo-img logo-img-lg" src={LogoDark} alt="logo-dark" />
 						</Link>

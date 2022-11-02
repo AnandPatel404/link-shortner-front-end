@@ -28,61 +28,6 @@ function NavBar() {
 										<a class="nav-link dropdown-toggle" href="/" data-bs-toggle="dropdown">
 											Projects
 										</a>
-										<div class="dropdown-menu dropdown-lg">
-											<div class="dropdown-lg-content">
-												<div>
-													<h6 class="dropdown-header">Project Pages</h6>
-													<ul class="list-unstyled">
-														<li>
-															<a class="dropdown-item" href="./projects.html">
-																Projects I
-															</a>
-														</li>
-														<li>
-															<a class="dropdown-item" href="./projects2.html">
-																Projects II
-															</a>
-														</li>
-														<li>
-															<a class="dropdown-item" href="./projects3.html">
-																Projects III
-															</a>
-														</li>
-														<li>
-															<a class="dropdown-item" href="./projects4.html">
-																Projects IV
-															</a>
-														</li>
-													</ul>
-												</div>
-
-												<div>
-													<h6 class="dropdown-header">Single Projects</h6>
-													<ul class="list-unstyled">
-														<li>
-															<a class="dropdown-item" href="./single-project.html">
-																Single Project I
-															</a>
-														</li>
-														<li>
-															<a class="dropdown-item" href="./single-project2.html">
-																Single Project II
-															</a>
-														</li>
-														<li>
-															<a class="dropdown-item" href="./single-project3.html">
-																Single Project III
-															</a>
-														</li>
-														<li>
-															<a class="dropdown-item" href="./single-project4.html">
-																Single Project IV
-															</a>
-														</li>
-													</ul>
-												</div>
-											</div>
-										</div>
 									</li>
 									<li class="nav-item dropdown">
 										<a class="nav-link dropdown-toggle" href="/" data-bs-toggle="dropdown">

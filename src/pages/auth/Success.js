@@ -35,7 +35,7 @@ const Success = () => {
 					<Col xl="4" className="d-flex align-items-center">
 						<Block className="nk-auth-body wide-s">
 							<div className="brand-logo pb-5">
-								<Link to="/home" className="logo-link">
+								<Link to={`${process.env.PUBLIC_URL}/home`} className="logo-link">
 									<img className="logo-light logo-img logo-img-lg" src={Logo} alt="logo" width={160} />
 									<img className="logo-dark logo-img logo-img-lg" src={LogoDark} alt="logo-dark" />
 								</Link>
