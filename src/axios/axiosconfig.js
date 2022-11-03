@@ -13,7 +13,7 @@ instance.interceptors.response.use(
 	(error) => {
 		console.log();
 		if (error.response.status === 401 && error.response.data.message === "Please authenticate") {
-			window.location = `${process.env.PUBLIC_URL}/auth-login`;
+			window.location = `${process.env.PUBLIC_URL}/home`;
 			return;
 		}
 		return Promise.reject(error);

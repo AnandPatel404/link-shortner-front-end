@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { DropdownToggle, DropdownMenu, Dropdown } from "reactstrap";
-import { Button, Icon } from "../../../../components/Component";
+import { Icon } from "../../../../components/Component";
 import { LinkList, LinkItem } from "../../../../components/links/Links";
 import useUserStore from "../../../../zustand/userStore/userStore";
 import useUserAuth from "../../../../zustand/auth/userAuth";
