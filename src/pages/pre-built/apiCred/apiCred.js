@@ -1,27 +1,46 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Content from "../../../layout/content/Content";
 import Head from "../../../layout/head/Head";
-import { Card, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Modal, ModalBody, Form, Col, FormGroup } from "reactstrap";
+import { Card, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Modal, ModalBody, Form, Col, FormGroup, Spinner } from "reactstrap";
 import { Button, Block, BlockBetween, BlockHead, BlockHeadContent, BlockTitle, Icon } from "../../../components/Component";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import userApiCred from "../../../zustand/apiCred/apiCred";
 import Loader from "../../Loader/Loader";
+import Swal from "sweetalert2";
 
 const ApiCred = () => {
 	const [data, setData] = useState([]);
+	const [modelData, setModelData] = useState({
+		id: "",
+		keyId: "",
+		secret: "",
+		ip: "",
+	});
+	const [loadingTwo, setLoadingTwo] = useState(false);
 
 	const [modal, setModal] = useState({
 		add: false,
 	});
 
 	const [loading, setLoading] = useState(true);
-	const { getApiCred } = userApiCred((state) => ({
+
+	const { getApiCred, generateApiCred, updateApiCred, deleteApiCreds } = userApiCred((state) => ({
 		getApiCred: state.getApiCred,
+		generateApiCred: state.generateApiCred,
+		updateApiCred: state.updateApiCred,
+		deleteApiCreds: state.deleteApiCreds,
 	}));
 	// Changing state value when searching name
 	const onFormCancel = () => {
 		setModal({ add: false });
+		setModelData({
+			id: "",
+			keyId: "",
+			secret: "",
+			ip: "",
+		});
+		getData();
 	};
 	const getData = useCallback(async () => {
 		const newData = await getApiCred(setLoading);
@@ -32,7 +51,41 @@ const ApiCred = () => {
 	}, [getData]);
 
 	const onFormSubmit = async (sData) => {
+		const data = {
+			...sData,
+			credId: modelData.id,
+		};
+		await updateApiCred(data, setModelData);
 		setModal({ add: false });
+		getData();
+	};
+
+	const generateCred = async () => {
+		const data = await generateApiCred(setLoadingTwo);
+		setModelData(data);
+		setModal({ add: true });
+	};
+
+	const onGen = () => {
+		setLoadingTwo();
+		Swal.fire({
+			title: "Are you sure?",
+			text: "You won't be able to revert this!",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				generateCred();
+			}
+		});
+	};
+
+	const deleteApiCred = async (id) => {
+		await deleteApiCreds(id);
+		getData();
 	};
 
 	const currentItems = data;
@@ -63,8 +116,8 @@ const ApiCred = () => {
 											<h5 className="title">All Api Credentials</h5>
 										</div>
 										<BlockHeadContent>
-											<Button color="primary" type="button" onClick={() => setModal({ add: true })}>
-												Generate
+											<Button color="primary" type="button" onClick={onGen}>
+												{loadingTwo ? <Spinner /> : "Generate"}
 											</Button>
 										</BlockHeadContent>
 									</div>
@@ -74,8 +127,8 @@ const ApiCred = () => {
 										<thead className="tb-odr-head">
 											<tr className="tb-odr-item">
 												<th className="tb-odr-info">
-													<span className="tb-odr-id">No</span>
-													<span className="tb-odr-date d-none d-md-inline-block">Key ID</span>
+													<span className="tb-odr-id d-none d-md-inline-block	">No</span>
+													<span className="tb-odr-date">Key ID</span>
 												</th>
 												<th className="tb-odr-amount">
 													<span className="tb-odr-total"> IP Address</span>
@@ -135,7 +188,7 @@ const ApiCred = () => {
 																								href="#remove"
 																								onClick={(ev) => {
 																									ev.preventDefault();
-																									// deleteProduct(item.id);
+																									deleteApiCred(item.id);
 																								}}
 																								className="ml-2"
 																							>
@@ -159,53 +212,61 @@ const ApiCred = () => {
 							</div>
 						</Card>
 					</Block>
-					<Modal isOpen={modal.add} toggle={() => setModal({ add: false })} className="modal-dialog-centered" size="lg">
+					<Modal isOpen={modal.add} toggle={() => setModal({ add: false })} className="modal-dialog-centered" size="sm">
 						<ModalBody>
-							<a
-								href="#cancel"
-								onClick={(ev) => {
-									ev.preventDefault();
-									onFormCancel();
-								}}
-								className="close"
-							>
-								<Icon name="cross-sm"></Icon>
-							</a>
 							<div className="p-2">
-								<h5 className="title">Add Domain</h5>
+								<h5 className="title">Api cred</h5>
 								<div className="mt-4">
 									<Form className="row gy-4 mt-4" onSubmit={handleSubmit(onFormSubmit)}>
 										<Col md="12">
 											<FormGroup>
-												<label className="form-label">Domain name</label>
+												<label className="form-label">Key</label>
 												<input
 													className="form-control"
 													ref={register({ required: "This field is required" })}
 													type="text"
-													name="domainName"
-													placeholder="Enter Your domain name"
+													name="keyId"
+													defaultValue={modelData.keyId}
 												/>
-												{errors.domainName && <span className="invalid">{errors.domainName.message}</span>}
+												{errors.keyId && <span className="invalid">{errors.keyId.message}</span>}
 											</FormGroup>
 										</Col>
 										<Col md="12">
 											<FormGroup>
-												<label className="form-label">Root link</label>
+												<label className="form-label">Secrete</label>
 												<input
 													className="form-control"
 													ref={register({ required: "This field is required" })}
 													type="text"
-													name="rootDomainLink"
-													placeholder="Enter Your root domain link"
+													name="secret"
+													defaultValue={modelData.secret}
 												/>
-												{errors.rootDomainLink && <span className="invalid">{errors.rootDomainLink.message}</span>}
+												<p className="form-label my-2">
+													Note : Are you sure you have saved the key details? This is the last time we will show you the key
+													secret.
+												</p>
+												{errors.secret && <span className="invalid">{errors.secret.message}</span>}
+											</FormGroup>
+										</Col>
+										<Col md="12">
+											<FormGroup>
+												<label className="form-label">Ip</label>
+												<input
+													className="form-control"
+													ref={register({ required: false })}
+													type="text"
+													name="ip"
+													defaultValue={modelData.ip}
+												/>
+												<p className="form-label my-2">Leave Empty For All Ip</p>
+												{errors.ip && <span className="invalid">{errors.ip.message}</span>}
 											</FormGroup>
 										</Col>
 										<Col size="12">
 											<ul className="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
 												<li>
 													<Button color="primary" size="md" type="submit">
-														Add
+														Update
 													</Button>
 												</li>
 												<li>
@@ -217,7 +278,7 @@ const ApiCred = () => {
 														}}
 														className="link link-light"
 													>
-														Cancel
+														Done
 													</a>
 												</li>
 											</ul>
