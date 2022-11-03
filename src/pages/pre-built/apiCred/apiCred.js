@@ -248,7 +248,7 @@ const ApiCred = () => {
 												{errors.secret && <span className="invalid">{errors.secret.message}</span>}
 											</FormGroup>
 										</Col>
-										<Col md="12">
+										{/* <Col md="12">
 											<FormGroup>
 												<label className="form-label">Ip</label>
 												<input
@@ -261,7 +261,7 @@ const ApiCred = () => {
 												<p className="form-label my-2">Leave Empty For All Ip</p>
 												{errors.ip && <span className="invalid">{errors.ip.message}</span>}
 											</FormGroup>
-										</Col>
+										</Col> */}
 										<Col size="12">
 											<ul className="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
 												<li>

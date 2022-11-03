@@ -13,12 +13,12 @@ const userDomain = create((set, get) => ({
 			.then((res) => {
 				if (res.data.status === "Success") {
 					set((state) => ({ domains: [...state.domains, res.data.data] }));
-					messageToast(`${res.data.message} ✅✅`, res.data.status);
+					messageToast(res.data.message, res.data.status);
 				}
 			})
 			.catch((err) => {
 				console.log(err);
-				errorToast(`${err.response.data.message} ❌❌`, "Error");
+				errorToast(err.response.data.message, "Error");
 			});
 	},
 
@@ -34,7 +34,7 @@ const userDomain = create((set, get) => ({
 			})
 			.catch((err) => {
 				console.log(err);
-				errorToast(`${err.response.data.message} ❌❌`, "Error");
+				errorToast(err.response.data.message, "Error");
 			});
 	},
 	deleteDomain: async (id) => {
@@ -50,7 +50,7 @@ const userDomain = create((set, get) => ({
 			})
 			.catch((err) => {
 				console.log(err);
-				errorToast(`${err.response.data.message} ❌❌`, "Error");
+				errorToast(err.response.data.message, "Error");
 			});
 	},
 }));

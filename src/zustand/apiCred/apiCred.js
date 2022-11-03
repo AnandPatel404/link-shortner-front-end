@@ -63,12 +63,12 @@ const userApiCred = create(() => ({
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
-					messageToast(`${res.data.message} ✅✅`, res.data.status);
+					messageToast(res.data.message, res.data.status);
 				}
 			})
 			.catch((err) => {
 				console.log(err);
-				errorToast(`${err.response.data.message} ❌❌`, "Error");
+				errorToast(err.response.data.message, "Error");
 			});
 	},
 }));
