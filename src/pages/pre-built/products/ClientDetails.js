@@ -68,19 +68,28 @@ export const ClientDetails = ({ match, history }) => {
 							<DataTableBody>
 								<DataTableHead>
 									<DataTableRow sm>
-										<span>IP</span>
+										<span className="font-weight-bold">IP</span>
 									</DataTableRow>
 									<DataTableRow sm>
-										<span>BROWSER & VERSION</span>
+										<span className="font-weight-bold">BROWSER & VERSION</span>
 									</DataTableRow>
 									<DataTableRow sm>
-										<span>OS & VERSION</span>
+										<span className="font-weight-bold">OS & VERSION</span>
 									</DataTableRow>
 									<DataTableRow sm>
-										<span className="d-none d-md-inline-block">DEVICE</span>
+										<span className="d-none d-md-inline-block font-weight-bold">DEVICE</span>
 									</DataTableRow>
 									<DataTableRow sm>
-										<span className="d-none d-md-inline-block">CLICKED AT</span>
+										<span className="d-none d-md-inline-block font-weight-bold">Country</span>
+									</DataTableRow>
+									<DataTableRow sm>
+										<span className="d-none d-md-inline-block font-weight-bold">Region</span>
+									</DataTableRow>
+									<DataTableRow sm>
+										<span className="d-none d-md-inline-block font-weight-bold">City</span>
+									</DataTableRow>
+									<DataTableRow sm>
+										<span className="d-none d-md-inline-block font-weight-bold">CLICKED AT</span>
 									</DataTableRow>
 								</DataTableHead>
 								{currentItems &&
@@ -88,28 +97,28 @@ export const ClientDetails = ({ match, history }) => {
 										return (
 											<DataTableItem key={item.id}>
 												<DataTableRow sm>
-													<span>
-														<Icon name="linux-server" className="h5"></Icon>
-														{item.client_ip}
-													</span>
+													<span className="font-weight-bold">{item.client_ip}</span>
 												</DataTableRow>
 												<DataTableRow sm>
-													<span className="d-flex">
-														<Icon name={`b-${item.client_browser.split(" ")[0].toLowerCase()}`} className="h5"></Icon>
-														{item.client_browser}
-													</span>
+													<span className="d-flex font-weight-bold">{item.client_browser}</span>
 												</DataTableRow>
 												<DataTableRow sm>
-													<span className="d-flex">
-														<Icon name={`${item.client_os.split(" ")[0].toLowerCase()}`} className="h5"></Icon>
-														{item.client_os}
-													</span>
+													<span className="d-flex font-weight-bold">{item.client_os}</span>
 												</DataTableRow>
 												<DataTableRow sm>
-													<span className="d-none d-md-inline-block">{item.client_device}</span>
+													<span className="d-none d-md-inline-block font-weight-bold">{item.client_device}</span>
 												</DataTableRow>
-												<DataTableRow>
-													<span className="tb-sub d-none d-md-inline-block">
+												<DataTableRow sm>
+													<span className="tb-sub d-none d-md-inline-block font-weight-bold">{item.client_country}</span>
+												</DataTableRow>
+												<DataTableRow sm>
+													<span className="tb-sub d-none d-md-inline-block font-weight-bold">{item.client_region}</span>
+												</DataTableRow>
+												<DataTableRow sm>
+													<span className="tb-sub d-none d-md-inline-block font-weight-bold">{item.client_city}</span>
+												</DataTableRow>
+												<DataTableRow sm>
+													<span className="tb-sub d-none d-md-inline-block font-weight-bold">
 														{new Date(item.createdAt).toLocaleString()}
 													</span>
 												</DataTableRow>
