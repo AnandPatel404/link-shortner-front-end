@@ -21,7 +21,6 @@ import userLinkClient from "../../../zustand/clientDetails/client";
 export const ClientDetails = ({ match, history }) => {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState([]);
-	const [link, setLink] = useState({});
 	const [totalItems, setTotalItems] = useState(0);
 	const [itemPerPage] = useState(30);
 	const [currentPage, setCurrentPage] = useState(1);
@@ -33,9 +32,7 @@ export const ClientDetails = ({ match, history }) => {
 		const id = match.params.id;
 		const page = match.params.page;
 		const d = await getLinkClient(id, itemPerPage, page, setLoading);
-		console.log(d);
 		setData(d.results);
-		setLink(d.results.linkId);
 		setTotalItems(d.results.totalResults);
 	}, [match.params.id, match.params.page, getLinkClient, itemPerPage]);
 
@@ -62,10 +59,7 @@ export const ClientDetails = ({ match, history }) => {
 					<BlockHead size="sm">
 						<BlockBetween>
 							<BlockHeadContent>
-								<BlockTitle page>Client list of</BlockTitle>
-								<BlockTitle page>
-									<strong className="text-primary small">{link?.link_title}</strong>
-								</BlockTitle>
+								<BlockTitle page>Client list</BlockTitle>
 							</BlockHeadContent>
 						</BlockBetween>
 					</BlockHead>
@@ -73,20 +67,19 @@ export const ClientDetails = ({ match, history }) => {
 						<DataTable className="card-stretch">
 							<DataTableBody>
 								<DataTableHead>
-									<DataTableRow className="nk-tb-col-check">no</DataTableRow>
 									<DataTableRow sm>
 										<span>IP</span>
 									</DataTableRow>
-									<DataTableRow>
-										<span className="d-none d-md-inline-block">BROWSER & VERSION</span>
+									<DataTableRow sm>
+										<span>BROWSER & VERSION</span>
 									</DataTableRow>
-									<DataTableRow>
-										<span className="d-none d-md-inline-block">OS & VERSION</span>
+									<DataTableRow sm>
+										<span>OS & VERSION</span>
 									</DataTableRow>
-									<DataTableRow>
+									<DataTableRow sm>
 										<span className="d-none d-md-inline-block">DEVICE</span>
 									</DataTableRow>
-									<DataTableRow>
+									<DataTableRow sm>
 										<span className="d-none d-md-inline-block">CLICKED AT</span>
 									</DataTableRow>
 								</DataTableHead>
@@ -94,29 +87,26 @@ export const ClientDetails = ({ match, history }) => {
 									currentItems.map((item, index) => {
 										return (
 											<DataTableItem key={item.id}>
-												<DataTableRow className="nk-tb-col-check">
-													<span>{index + 1}</span>
-												</DataTableRow>
 												<DataTableRow sm>
 													<span>
 														<Icon name="linux-server" className="h5"></Icon>
 														{item.client_ip}
 													</span>
 												</DataTableRow>
-												<DataTableRow>
+												<DataTableRow sm>
 													<span className="d-flex">
 														<Icon name={`b-${item.client_browser.split(" ")[0].toLowerCase()}`} className="h5"></Icon>
 														{item.client_browser}
 													</span>
 												</DataTableRow>
-												<DataTableRow>
+												<DataTableRow sm>
 													<span className="d-flex">
 														<Icon name={`${item.client_os.split(" ")[0].toLowerCase()}`} className="h5"></Icon>
 														{item.client_os}
 													</span>
 												</DataTableRow>
-												<DataTableRow>
-													<span>{item.client_device}</span>
+												<DataTableRow sm>
+													<span className="d-none d-md-inline-block">{item.client_device}</span>
 												</DataTableRow>
 												<DataTableRow>
 													<span className="tb-sub d-none d-md-inline-block">
