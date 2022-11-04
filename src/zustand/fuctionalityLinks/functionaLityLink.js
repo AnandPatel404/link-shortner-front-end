@@ -15,12 +15,12 @@ const userFunctionalityLink = create((set, get) => ({
 			.then((res) => {
 				if (res.data.status === "Success") {
 					console.log(res.data.data);
-					messageToast(`${res.data.message} ✅✅`, res.data.status);
+					messageToast(res.data.message, res.data.status);
 					set({ SingleLink: res.data.data });
 				}
 			})
 			.catch((err) => {
-				errorToast(`${err.response.data.message} ❌❌`, "Error");
+				errorToast(err.response.data.message, "Error");
 			});
 	},
 	customDomain: async (data) => {
@@ -31,12 +31,12 @@ const userFunctionalityLink = create((set, get) => ({
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
-					messageToast(`${res.data.message} ✅✅`, res.data.status);
+					messageToast(res.data.message, res.data.status);
 					set({ SingleLink: res.data.data });
 				}
 			})
 			.catch((err) => {
-				errorToast(`${err.response.data.message} ❌❌`, "Error");
+				errorToast(err.response.data.message, "Error");
 			});
 	},
 	createExpirationLink: async (data) => {
@@ -47,11 +47,11 @@ const userFunctionalityLink = create((set, get) => ({
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
-					messageToast(`${res.data.message} ✅✅`, res.data.status);
+					messageToast(res.data.message, res.data.status);
 				}
 			})
 			.catch((err) => {
-				errorToast(`${err.response.data.message} ❌❌`, "Error");
+				errorToast(err.response.data.message, "Error");
 			});
 	},
 
@@ -63,11 +63,11 @@ const userFunctionalityLink = create((set, get) => ({
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
-					messageToast(`${res.data.message} ✅✅`, res.data.status);
+					messageToast(res.data.message, res.data.status);
 				}
 			})
 			.catch((err) => {
-				errorToast(`${err.response.data.message} ❌❌`, "Error");
+				errorToast(err.response.data.message, "Error");
 			});
 	},
 
@@ -133,7 +133,7 @@ const userFunctionalityLink = create((set, get) => ({
 				}
 			})
 			.catch((err) => {
-				errorToast(`${err.response.data.message} ❌❌`, "Error");
+				errorToast(err.response.data.message, "Error");
 			});
 	},
 	createBrandedLink: async (data) => {
@@ -144,12 +144,12 @@ const userFunctionalityLink = create((set, get) => ({
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
-					messageToast(`${res.data.message} ✅✅`, res.data.status);
+					messageToast(res.data.message, res.data.status);
 					set({ SingleLink: res.data.data });
 				}
 			})
 			.catch((err) => {
-				errorToast(`${err.response.data.message} ❌❌`, "Error");
+				errorToast(err.response.data.message, "Error");
 			});
 	},
 	createLimitedLink: async (data) => {
@@ -160,16 +160,32 @@ const userFunctionalityLink = create((set, get) => ({
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
-					messageToast(`${res.data.message} ✅✅`, res.data.status);
+					messageToast(res.data.message, res.data.status);
 				}
 			})
 			.catch((err) => {
-				errorToast(`${err.response.data.message} ❌❌`, "Error");
+				errorToast(err.response.data.message, "Error");
+			});
+	},
+
+	createDeviceTargetingLink: async (data) => {
+		await axios({
+			url: "short/device-targeting-link",
+			method: "post",
+			data,
+		})
+			.then((res) => {
+				if (res.data.status === "Success") {
+					messageToast(res.data.message, res.data.status);
+				}
+			})
+			.catch((err) => {
+				errorToast(err.response.data.message, "Error");
 			});
 	},
 
 	applyChanges: async () => {
-		messageToast(`Changes are applied ✅✅`, "Success");
+		messageToast(`Changes are applied`, "Success");
 		set({ SingleLink: {} });
 	},
 }));

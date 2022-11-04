@@ -7,6 +7,7 @@ import ProjectCardPage from "../projects/ProjectCard";
 import ShortLink from "../shortingFunctions/shortLink";
 import BrandedLink from "../shortingFunctions/BrandedLink";
 import LimitedLink from "../shortingFunctions/LimitedLink";
+import DeviceTargetingLink from "../shortingFunctions/DeviceTargetingLink";
 import { Route, Switch, Link } from "react-router-dom";
 import { Icon, BlockTitle, Button } from "../../../components/Component";
 import { Card } from "reactstrap";
@@ -130,6 +131,15 @@ const FullShort = () => {
 												<span>click limit</span>
 											</Link>
 										</li>
+										<li onClick={() => updateSm(false)}>
+											<Link
+												to={`${process.env.PUBLIC_URL}/device-targeting`}
+												className={window.location.pathname === `${process.env.PUBLIC_URL}/device-targeting` ? "active" : ""}
+											>
+												<Icon name="target"></Icon>
+												<span>Device & Os targeting</span>
+											</Link>
+										</li>
 									</ul>
 								</div>
 								<div className="d-flex justify-content-center align-item-center mt-3">
@@ -188,6 +198,11 @@ const FullShort = () => {
 									exact
 									path={`${process.env.PUBLIC_URL}/limited-link`}
 									render={() => <LimitedLink updateSm={updateSm} sm={sm} />}
+								></Route>
+								<Route
+									exact
+									path={`${process.env.PUBLIC_URL}/device-targeting`}
+									render={() => <DeviceTargetingLink updateSm={updateSm} sm={sm} />}
 								></Route>
 							</Switch>
 						</div>
