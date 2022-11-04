@@ -154,11 +154,7 @@ const InvestHomePage = () => {
 								<Card className="card-bordered card-full d-flex justify-content-center align-items-center">
 									<img src={rocketSvg} alt="rocket" />
 									<div className="d-flex justify-content-center mb-4">
-										<Link
-											className="btn btn-primary"
-											style={{ width: 200 + "px" }}
-											to={process.env.PUBLIC_URL + "/api-credentials"}
-										>
+										<Link className="btn btn-primary btn-sm" to={process.env.PUBLIC_URL + "/api-credentials"}>
 											<Icon name="hot"></Icon>
 											<span>Get api credentials</span>
 										</Link>

@@ -7,6 +7,8 @@ import { FormGroup, Row, Col, Form } from "reactstrap";
 import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetween } from "../../../components/Component";
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
 import { errorToast } from "../../../pages/components/misc/ReactToastify";
+import userDashBoard from "../../../zustand/DashBoard/userDashBoard";
+import { Link } from "react-router-dom";
 
 function Expirationlink({ sm, updateSm }) {
 	const [rangeStart] = useState(new Date());
@@ -15,6 +17,9 @@ function Expirationlink({ sm, updateSm }) {
 	const { SingleLink, createExpirationLink } = userFunctionalityLink((state) => ({
 		SingleLink: state.SingleLink,
 		createExpirationLink: state.createExpirationLink,
+	}));
+	const { sub } = userDashBoard((state) => ({
+		sub: state.subscription,
 	}));
 	const s = async () => {
 		if (!SingleLink || SingleLink.length === 0 || !SingleLink.id) {
@@ -60,78 +65,81 @@ function Expirationlink({ sm, updateSm }) {
 						</BlockHeadContent>
 					</BlockBetween>
 				</BlockHead>
-
-				<Block size="lg">
-					<Form className="gy-3" onSubmit={handleSubmit(s)}>
-						<Row className="g-3 align-center">
-							<Col lg="5">
-								<FormGroup>
-									<label className="form-label" htmlFor="site-name">
-										Date & Time
-									</label>
-									<span className="form-note">Specify the link you want short</span>
-								</FormGroup>
-							</Col>
-							<Col lg="7">
-								<FormGroup>
-									<div className="form-control-wrap">
-										<div className="form-note">
-											Date Format <code>mm/dd/yyyy</code>
+				{sub.planId?.expiration_link ? (
+					<Block size="lg">
+						<Form className="gy-3" onSubmit={handleSubmit(s)}>
+							<Row className="g-3 align-center">
+								<Col lg="5">
+									<FormGroup>
+										<label className="form-label" htmlFor="site-name">
+											Date & Time
+										</label>
+										<span className="form-note">Specify the link you want short</span>
+									</FormGroup>
+								</Col>
+								<Col lg="7">
+									<FormGroup>
+										<div className="form-control-wrap">
+											<div className="form-note">
+												Date Format <code>mm/dd/yyyy</code>
+											</div>
+											<div className="input-daterange date-picker-range input-group">
+												<DatePicker
+													selected={rangeEnd}
+													onChange={setRangeEnd}
+													startDate={rangeStart}
+													endDate={rangeEnd}
+													selectsEnd
+													minDate={rangeStart}
+													wrapperClassName="end-m"
+													className="form-control"
+												/>
+											</div>
 										</div>
-										<div className="input-daterange date-picker-range input-group">
-											<DatePicker
-												selected={rangeEnd}
-												onChange={setRangeEnd}
-												startDate={rangeStart}
-												endDate={rangeEnd}
-												selectsEnd
-												minDate={rangeStart}
-												wrapperClassName="end-m"
+									</FormGroup>
+								</Col>
+							</Row>
+							<Row className="g-3 align-center">
+								<Col lg="5">
+									<FormGroup>
+										<label className="form-label" htmlFor="site-name">
+											After expire link (optional)
+										</label>
+										<span className="form-note">
+											Specify the link that re-direct the client after expire the main link (optional)
+										</span>
+									</FormGroup>
+								</Col>
+								<Col lg="7">
+									<FormGroup>
+										<div className="form-control-wrap">
+											<input
+												type="text"
+												id="after_expired"
+												name="after_expired"
 												className="form-control"
+												onChange={(e) => {
+													afterExpiration(e.target.value);
+												}}
 											/>
 										</div>
-									</div>
-								</FormGroup>
-							</Col>
-						</Row>
-						<Row className="g-3 align-center">
-							<Col lg="5">
-								<FormGroup>
-									<label className="form-label" htmlFor="site-name">
-										After expire link (optional)
-									</label>
-									<span className="form-note">
-										Specify the link that re-direct the client after expire the main link (optional)
-									</span>
-								</FormGroup>
-							</Col>
-							<Col lg="7">
-								<FormGroup>
-									<div className="form-control-wrap">
-										<input
-											type="text"
-											id="after_expired"
-											name="after_expired"
-											className="form-control"
-											onChange={(e) => {
-												afterExpiration(e.target.value);
-											}}
-										/>
-									</div>
-								</FormGroup>
-							</Col>
-						</Row>
-						<Row className="g-3">
-							<Col lg="7" className="offset-lg-5">
-								<FormGroup className="mt-2">
-									<Button color="primary" size="lg" type="submit">
-										Save
-									</Button>
-								</FormGroup>
-							</Col>
-						</Row>
-					</Form>
-				</Block>
+									</FormGroup>
+								</Col>
+							</Row>
+							<Row className="g-3">
+								<Col lg="7" className="offset-lg-5">
+									<FormGroup className="mt-2">
+										<Button color="primary" size="lg" type="submit">
+											Save
+										</Button>
+									</FormGroup>
+								</Col>
+							</Row>
+						</Form>
+					</Block>
+				) : (
+					<Link to={`${process.env.PUBLIC_URL}/pricing-table`}>Upgrade Your Plan To Use This Functionality</Link>
+				)}
 			</Content>
 		</React.Fragment>
 	);

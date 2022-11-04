@@ -7,6 +7,8 @@ import { FormGroup, Form } from "reactstrap";
 import { useForm } from "react-hook-form";
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
 import { errorToast } from "../../../pages/components/misc/ReactToastify";
+import userDashBoard from "../../../zustand/DashBoard/userDashBoard";
+import { Link } from "react-router-dom";
 
 const ProjectCardPage = ({ sm, updateSm }) => {
 	const [colorCodes, setColorsCode] = useState("#000000");
@@ -15,6 +17,10 @@ const ProjectCardPage = ({ sm, updateSm }) => {
 	const { createQr, SingleLink } = userFunctionalityLink((state) => ({
 		createQr: state.createQr,
 		SingleLink: state.SingleLink,
+	}));
+
+	const { sub } = userDashBoard((state) => ({
+		sub: state.subscription,
 	}));
 
 	const handleDropChange = async (acceptedFiles, set) => {
@@ -70,77 +76,80 @@ const ProjectCardPage = ({ sm, updateSm }) => {
 						</BlockHeadContent>
 					</BlockBetween>
 				</BlockHead>
-
-				<Block size="lg">
-					<Form className="gy-3" onSubmit={handleSubmit(onSubmit)}>
-						<Row className="g-3 align-center">
-							<Col lg="5">
-								<FormGroup>
-									<label className="form-label" htmlFor="site-name">
-										Qr color
-									</label>
-									<span className="form-note">Specify the Qr color</span>
-								</FormGroup>
-							</Col>
-							<Col lg="7">
-								<FormGroup>
-									<input type="color" className="" name="backGroundColor" onChange={(e) => colorCode(e.target.value)} />
-								</FormGroup>
-							</Col>
-						</Row>
-						<Row className="g-3 align-center">
-							<Col lg="5">
-								<FormGroup>
-									<label className="form-label" htmlFor="site-name">
-										Qr with logo
-									</label>
-									<span className="form-note">Specify the Qr logo</span>
-								</FormGroup>
-							</Col>
-							<Col lg="7">
-								<FormGroup>
-									<Dropzone onDrop={(acceptedFiles) => handleDropChange(acceptedFiles, setFiles)} maxFiles={1}>
-										{({ getRootProps, getInputProps }) => (
-											<section>
-												<div {...getRootProps()} className="dropzone border-0 p-0 d-flex">
-													<input {...getInputProps()} />
-													{files.length === 0 && (
-														<div className="dz-message">
-															<span className="dz-message-text">Drag and drop file</span>
-															<span className="dz-message-or">or</span>
-															<Button color="primary" type="button">
-																SELECT
-															</Button>
-														</div>
-													)}
-													{files.map((file) => (
-														<div
-															key={file.name}
-															className="dz-preview dz-processing dz-image-preview dz-error dz-complete d-flex justify-content-center"
-														>
-															<div className="">
-																<img src={file.preview} alt="preview" width={300} />
+				{sub.planId?.qr_link ? (
+					<Block size="lg">
+						<Form className="gy-3" onSubmit={handleSubmit(onSubmit)}>
+							<Row className="g-3 align-center">
+								<Col lg="5">
+									<FormGroup>
+										<label className="form-label" htmlFor="site-name">
+											Qr color
+										</label>
+										<span className="form-note">Specify the Qr color</span>
+									</FormGroup>
+								</Col>
+								<Col lg="7">
+									<FormGroup>
+										<input type="color" className="" name="backGroundColor" onChange={(e) => colorCode(e.target.value)} />
+									</FormGroup>
+								</Col>
+							</Row>
+							<Row className="g-3 align-center">
+								<Col lg="5">
+									<FormGroup>
+										<label className="form-label" htmlFor="site-name">
+											Qr with logo
+										</label>
+										<span className="form-note">Specify the Qr logo</span>
+									</FormGroup>
+								</Col>
+								<Col lg="7">
+									<FormGroup>
+										<Dropzone onDrop={(acceptedFiles) => handleDropChange(acceptedFiles, setFiles)} maxFiles={1}>
+											{({ getRootProps, getInputProps }) => (
+												<section>
+													<div {...getRootProps()} className="dropzone border-0 p-0 d-flex">
+														<input {...getInputProps()} />
+														{files.length === 0 && (
+															<div className="dz-message">
+																<span className="dz-message-text">Drag and drop file</span>
+																<span className="dz-message-or">or</span>
+																<Button color="primary" type="button">
+																	SELECT
+																</Button>
 															</div>
-														</div>
-													))}
-												</div>
-											</section>
-										)}
-									</Dropzone>
-								</FormGroup>
-							</Col>
-						</Row>
-						<Row className="g-3">
-							<Col lg="7" className="offset-lg-5">
-								<FormGroup className="mt-2">
-									<Button color="primary" size="lg" type="submit">
-										Save
-									</Button>
-								</FormGroup>
-							</Col>
-						</Row>
-					</Form>
-				</Block>
+														)}
+														{files.map((file) => (
+															<div
+																key={file.name}
+																className="dz-preview dz-processing dz-image-preview dz-error dz-complete d-flex justify-content-center"
+															>
+																<div className="">
+																	<img src={file.preview} alt="preview" width={300} />
+																</div>
+															</div>
+														))}
+													</div>
+												</section>
+											)}
+										</Dropzone>
+									</FormGroup>
+								</Col>
+							</Row>
+							<Row className="g-3">
+								<Col lg="7" className="offset-lg-5">
+									<FormGroup className="mt-2">
+										<Button color="primary" size="lg" type="submit">
+											Save
+										</Button>
+									</FormGroup>
+								</Col>
+							</Row>
+						</Form>
+					</Block>
+				) : (
+					<Link to={`${process.env.PUBLIC_URL}/pricing-table`}>Upgrade Your Plan To Use This Functionality</Link>
+				)}
 			</Content>
 		</React.Fragment>
 	);
