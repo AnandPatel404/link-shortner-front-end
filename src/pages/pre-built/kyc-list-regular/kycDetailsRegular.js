@@ -28,8 +28,9 @@ const KycDetailsRegular = ({ match }) => {
 	const [loading, setLoading] = useState(true);
 	const [link, setLink] = useState({});
 	const [qr, setQr] = useState({});
-	const { getLinkById } = usersDashBoard((state) => ({
+	const { getLinkById, sub } = usersDashBoard((state) => ({
 		getLinkById: state.getLinkById,
+		sub: state.subscription,
 	}));
 
 	const getData = useCallback(async () => {
@@ -46,13 +47,13 @@ const KycDetailsRegular = ({ match }) => {
 	}, [getData]);
 	return (
 		<React.Fragment>
-			<Head title="KYC Details - Regular"></Head>
 			{loading ? (
 				<div className="d-flex justify-content-center align-items-center" style={{ height: 100 + "vh" }}>
 					<Loader />
 				</div>
 			) : (
 				<div>
+					<Head title={link.link_title ? link.link_title : "Link details"}></Head>
 					{link && (
 						<Content>
 							<BlockHead size="sm">
@@ -264,11 +265,17 @@ const KycDetailsRegular = ({ match }) => {
 											<TrafficChannel />
 										</Card>
 									</Col>
-									<Col xxl="12" className="d-flex justify-content-center">
-										<Link className="btn btn-primary" to={`${process.env.PUBLIC_URL}/client-details/${link.id}/${1}`}>
-											See client Details
-										</Link>
-									</Col>
+									{sub.planId?.plan_name !== "free" ? (
+										<Col xxl="12" className="d-flex justify-content-center">
+											<Link className="btn btn-primary" to={`${process.env.PUBLIC_URL}/client-details/${link.id}/${1}`}>
+												See client Details
+											</Link>
+										</Col>
+									) : (
+										<div className="d-flex justify-content-center">
+											<Link to={`${process.env.PUBLIC_URL}/pricing-table`}>Upgrade Plan To See Client Details</Link>
+										</div>
+									)}
 								</Row>
 							</Block>
 						</Content>

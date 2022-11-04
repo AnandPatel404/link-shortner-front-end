@@ -10,6 +10,7 @@ const UserProfileRegularPage = ({ sm, updateSm, setProfileName }) => {
 	const sub = useUserDashBoard((state) => state.subscription);
 	const [modalTab, setModalTab] = useState("1");
 	const [userInfo] = useState(userState);
+	console.log(userInfo);
 	const [formData, setFormData] = useState({});
 	const [modal, setModal] = useState(false);
 
@@ -89,6 +90,13 @@ const UserProfileRegularPage = ({ sm, updateSm, setProfileName }) => {
 					<div className="data-col">
 						<span className="data-label">Active plan</span>
 						<span className="data-value">{sub.planId?.plan_name}</span>
+					</div>
+					<div className="data-col data-col-end"></div>
+				</div>
+				<div className="data-item">
+					<div className="data-col">
+						<span className="data-label">Phase</span>
+						<span className="data-value">{userInfo.phase}</span>
 					</div>
 					<div className="data-col data-col-end"></div>
 				</div>
