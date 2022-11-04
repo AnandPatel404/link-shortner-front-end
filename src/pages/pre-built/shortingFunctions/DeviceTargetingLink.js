@@ -4,9 +4,8 @@ import Content from "../../../layout/content/Content";
 import Head from "../../../layout/head/Head";
 import { useForm } from "react-hook-form";
 import { FormGroup, Row, Col, Form } from "reactstrap";
-import { Block, BlockHead, BlockHeadContent, BlockTitle, BlockDes, Button, Icon, BlockBetween, RSelect } from "../../../components/Component";
+import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetween, RSelect } from "../../../components/Component";
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
-import { errorToast } from "../../../pages/components/misc/ReactToastify";
 import userDashBoard from "../../../zustand/DashBoard/userDashBoard";
 import { Link } from "react-router-dom";
 function DeviceTargetingLink({ sm, updateSm }) {
@@ -63,51 +62,51 @@ function DeviceTargetingLink({ sm, updateSm }) {
 						</BlockHeadContent>
 					</BlockBetween>
 				</BlockHead>
-				{/* {sub.planId?.custom_domain ? ( */}
-				<Block size="lg">
-					<Form className="gy-3" onSubmit={handleSubmit(s)}>
-						<Row className="g-3 align-center">
-							<Col lg="5">
-								<FormGroup>
-									<label className="form-label">Choose your Device and Os</label>
-									<span className="form-note">Select the your Device and Os that your link client can reach</span>
-								</FormGroup>
-							</Col>
-							<Col lg="7">
-								<FormGroup>
-									<div className="form-control-wrap">
-										<Col sm={6}>
-											<div className="form-group">
-												<RSelect
-													closeMenuOnSelect={false}
-													components={animatedComponents}
-													isMulti
-													options={colourData}
-													onChange={(e) => {
-														changeOs(e);
-													}}
-												/>
-											</div>
-										</Col>
-									</div>
-								</FormGroup>
-							</Col>
-						</Row>
+				{sub.planId?.custom_domain ? (
+					<Block size="lg">
+						<Form className="gy-3" onSubmit={handleSubmit(s)}>
+							<Row className="g-3 align-center">
+								<Col lg="5">
+									<FormGroup>
+										<label className="form-label">Choose your Device and Os</label>
+										<span className="form-note">Select the your Device and Os that your link client can reach</span>
+									</FormGroup>
+								</Col>
+								<Col lg="7">
+									<FormGroup>
+										<div className="form-control-wrap">
+											<Col sm={6}>
+												<div className="form-group">
+													<RSelect
+														closeMenuOnSelect={false}
+														components={animatedComponents}
+														isMulti
+														options={colourData}
+														onChange={(e) => {
+															changeOs(e);
+														}}
+													/>
+												</div>
+											</Col>
+										</div>
+									</FormGroup>
+								</Col>
+							</Row>
 
-						<Row className="g-3">
-							<Col lg="7" className="offset-lg-5">
-								<FormGroup className="mt-2">
-									<Button color="primary" size="lg" type="submit">
-										save
-									</Button>
-								</FormGroup>
-							</Col>
-						</Row>
-					</Form>
-				</Block>
-				{/* ) : (
+							<Row className="g-3">
+								<Col lg="7" className="offset-lg-5">
+									<FormGroup className="mt-2">
+										<Button color="primary" size="lg" type="submit">
+											save
+										</Button>
+									</FormGroup>
+								</Col>
+							</Row>
+						</Form>
+					</Block>
+				) : (
 					<Link to={`${process.env.PUBLIC_URL}/pricing-table`}>Upgrade Your Plan To Use This Functionality</Link>
-				)} */}
+				)}
 			</Content>
 		</React.Fragment>
 	);
