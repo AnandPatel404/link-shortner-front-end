@@ -273,7 +273,7 @@ const KycDetailsRegular = ({ match }) => {
 									</Col>
 									<Col xxl="12">
 										<Card className="card-bordered h-100">
-											<BrowserUser />
+											<BrowserUser id={match.params.id} />
 										</Card>
 									</Col>
 									<Col md="12">

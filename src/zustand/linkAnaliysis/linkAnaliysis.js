@@ -11,6 +11,14 @@ const userLinkAnalysis = create((set, get) => ({
 		setLoading(false);
 		return data;
 	},
+	linkBrowserAnalysis: async (id, setLoading) => {
+		const data = await axios({
+			method: "get",
+			url: `link-analysis/browser/${id}`,
+		});
+		setLoading(false);
+		return data.data;
+	},
 }));
 
 export default userLinkAnalysis;

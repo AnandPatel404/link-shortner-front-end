@@ -8,7 +8,6 @@ import {
 	BlockBetween,
 	BlockHeadContent,
 	BlockTitle,
-	BlockDes,
 	Icon,
 	Button,
 	Col,

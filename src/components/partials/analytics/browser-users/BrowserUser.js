@@ -1,101 +1,109 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Icon from "../../../icon/Icon";
 import Progress from "../../../progress/Progress";
-import { browserUserData, browserUserDataSet2, browserUserDataSet3 } from "../../charts/analytics/AnalyticsData";
-import { DropdownItem, UncontrolledDropdown, DropdownToggle, DropdownMenu } from "reactstrap";
+import { Spinner } from "reactstrap";
+import userLinkAnalysis from "../../../../zustand/linkAnaliysis/linkAnaliysis";
 import { DataTableRow, DataTableHead, DataTableItem } from "../../../table/DataTable";
 
-const BrowserUser = () => {
-	const [browser, setBrowser] = useState("30");
-	const [data, setData] = useState(browserUserData);
+const BrowserUser = ({ id }) => {
+	const { linkBrowserAnalysis } = userLinkAnalysis((state) => ({
+		linkBrowserAnalysis: state.linkBrowserAnalysis,
+	}));
+	const [loading, setLoading] = useState(true);
+	const [item, setItem] = useState([]);
+	const getdata = useCallback(async () => {
+		const data = await linkBrowserAnalysis(id, setLoading);
+		setItem(data.data);
+		console.log(data.data);
+	}, [id, linkBrowserAnalysis]);
 	useEffect(() => {
-		let newData;
-		if (browser === "7") {
-			newData = browserUserDataSet2;
-		} else if (browser === "15") {
-			newData = browserUserDataSet3;
-		} else {
-			newData = browserUserData;
-		}
-		setData(newData);
-	}, [browser]);
+		getdata();
+	}, [getdata]);
 	return (
 		<React.Fragment>
-			<div className="card-inner mb-n2">
-				<div className="card-title-group">
-					<div className="card-title card-title-sm">
-						<h6 className="title">Browser Used by Users</h6>
+			{loading ? (
+				<Spinner />
+			) : (
+				<React.Fragment>
+					{" "}
+					<div className="card-inner mb-n2">
+						<div className="card-title-group">
+							<div className="card-title card-title-sm">
+								<h6 className="title">Browser Used by Users</h6>
+							</div>
+							{/* <UncontrolledDropdown className="drodown">
+								<DropdownToggle className="dropdown-toggle dropdown-indicator btn btn-sm btn-outline-light btn-white">
+									{browser} Days
+								</DropdownToggle>
+								<DropdownMenu right className="dropdown-menu-xs">
+									<ul className="link-list-opt no-bdr">
+										<li className={browser === "7" ? "active" : ""}>
+											<DropdownItem
+												href="#dropdownitem"
+												onClick={(e) => {
+													e.preventDefault();
+													setBrowser("7");
+												}}
+											>
+												<span>7 Days</span>
+											</DropdownItem>
+										</li>
+										<li className={browser === "15" ? "active" : ""}>
+											<DropdownItem
+												href="#dropdownitem"
+												onClick={(e) => {
+													e.preventDefault();
+													setBrowser("15");
+												}}
+											>
+												<span>15 Days</span>
+											</DropdownItem>
+										</li>
+										<li className={browser === "30" ? "active" : ""}>
+											<DropdownItem
+												href="#dropdownitem"
+												onClick={(e) => {
+													e.preventDefault();
+													setBrowser("30");
+												}}
+											>
+												<span>30 Days</span>
+											</DropdownItem>
+										</li>
+									</ul>
+								</DropdownMenu>
+							</UncontrolledDropdown> */}
+						</div>
 					</div>
-					<UncontrolledDropdown className="drodown">
-						<DropdownToggle className="dropdown-toggle dropdown-indicator btn btn-sm btn-outline-light btn-white">
-							{browser} Days
-						</DropdownToggle>
-						<DropdownMenu right className="dropdown-menu-xs">
-							<ul className="link-list-opt no-bdr">
-								<li className={browser === "7" ? "active" : ""}>
-									<DropdownItem
-										href="#dropdownitem"
-										onClick={(e) => {
-											e.preventDefault();
-											setBrowser("7");
-										}}
-									>
-										<span>7 Days</span>
-									</DropdownItem>
-								</li>
-								<li className={browser === "15" ? "active" : ""}>
-									<DropdownItem
-										href="#dropdownitem"
-										onClick={(e) => {
-											e.preventDefault();
-											setBrowser("15");
-										}}
-									>
-										<span>15 Days</span>
-									</DropdownItem>
-								</li>
-								<li className={browser === "30" ? "active" : ""}>
-									<DropdownItem
-										href="#dropdownitem"
-										onClick={(e) => {
-											e.preventDefault();
-											setBrowser("30");
-										}}
-									>
-										<span>30 Days</span>
-									</DropdownItem>
-								</li>
-							</ul>
-						</DropdownMenu>
-					</UncontrolledDropdown>
-				</div>
-			</div>
-
-			<div className="nk-tb-list is-loose">
-				<DataTableHead>
-					<DataTableRow>
-						<span>Browser</span>
-					</DataTableRow>
-					<DataTableRow>
-						<span>% Users</span>
-					</DataTableRow>
-				</DataTableHead>
-				{data.map((item) => {
-					return (
-						<DataTableItem key={item.id}>
+					<div className="nk-tb-list is-loose">
+						<DataTableHead>
 							<DataTableRow>
-								<div className="icon-text">
-									<Icon className={`text-${item.theme}`} name="globe"></Icon>
-									<span className="tb-lead">{item.browser}</span>
-								</div>
+								<span>Browser</span>
 							</DataTableRow>
 							<DataTableRow>
-								<Progress value={item.userPercentage} size="md" className="progress-alt bg-transparent" />
+								<span>% Users</span>
 							</DataTableRow>
-						</DataTableItem>
-					);
-				})}
-			</div>
+						</DataTableHead>
+						{item.length > 0
+							? item.map((item) => {
+									return (
+										<DataTableItem key={item.id}>
+											<DataTableRow>
+												<div className="icon-text">
+													<Icon name={`b-${item.name.toLowerCase()}`} />
+													<span className="tb-lead">{item.name}</span>
+												</div>
+											</DataTableRow>
+											<DataTableRow>
+												<Progress value={item.Percentage} size="md" className="progress-alt bg-transparent" />
+											</DataTableRow>
+										</DataTableItem>
+									);
+							  })
+							: ""}
+					</div>
+				</React.Fragment>
+			)}
 		</React.Fragment>
 	);
 };
