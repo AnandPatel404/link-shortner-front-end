@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { trafficChannelData, trafficChannelDataSet2, trafficChannelDataSet3, trafficChannelDataSet4 } from "../../charts/analytics/AnalyticsData";
+// import { trafficChannelData, trafficChannelDataSet2, trafficChannelDataSet3, trafficChannelDataSet4 } from "../../charts/analytics/AnalyticsData";
 import { DropdownToggle, DropdownMenu, UncontrolledDropdown, DropdownItem } from "reactstrap";
 import { Icon, DataTableHead, DataTableRow, DataTableItem } from "../../../Component";
-import { WPCharts } from "../../charts/analytics/AnalyticsCharts";
+// import { WPCharts } from "../../charts/analytics/AnalyticsCharts";
 
 const TrafficChannel = () => {
 	const [dd, setdd] = useState("30");
-	const [trafficData, setTrafficData] = useState(trafficChannelData);
+	const [trafficData, setTrafficData] = useState([]);
 
-	useEffect(() => {
-		if (dd === "30") {
-			setTrafficData(trafficChannelDataSet3);
-		} else if (dd === "15") {
-			setTrafficData(trafficChannelDataSet4);
-		} else {
-			setTrafficData(trafficChannelDataSet2);
-		}
-	}, [dd]);
+	// useEffect(() => {
+	// 	if (dd === "30") {
+	// 		setTrafficData(trafficChannelDataSet3);
+	// 	} else if (dd === "15") {
+	// 		setTrafficData(trafficChannelDataSet4);
+	// 	} else {
+	// 		setTrafficData(trafficChannelDataSet2);
+	// 	}
+	// }, [dd]);
 
 	return (
 		<React.Fragment>
@@ -115,9 +115,7 @@ const TrafficChannel = () => {
 								</span>
 							</DataTableRow>
 							<DataTableRow className="nk-tb-trend text-right">
-								<div className="traffic-channel-ck ml-auto">
-									<WPCharts data={item.chart}></WPCharts>
-								</div>
+								<div className="traffic-channel-ck ml-auto">{/* <WPCharts data={item.chart}></WPCharts> */}</div>
 							</DataTableRow>
 						</DataTableItem>
 					);

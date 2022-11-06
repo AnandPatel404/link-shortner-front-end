@@ -62,9 +62,6 @@ const InvoiceList = lazy(() => import("../pages/pre-built/invoice/InvoiceList"))
 const InvoiceDetails = lazy(() => import("../pages/pre-built/invoice/InvoiceDetails"));
 const PricingTable = lazy(() => import("../pages/pre-built/pricing-table/PricingTable"));
 const DateTimePicker = lazy(() => import("../pages/components/forms/DateTimePicker"));
-const CardWidgets = lazy(() => import("../pages/components/widgets/CardWidgets"));
-const ChartWidgets = lazy(() => import("../pages/components/widgets/ChartWidgets"));
-const RatingWidgets = lazy(() => import("../pages/components/widgets/RatingWidgets"));
 const SlickPage = lazy(() => import("../pages/components/misc/Slick"));
 const SweetAlertPage = lazy(() => import("../pages/components/misc/SweetAlert"));
 const BeautifulDnd = lazy(() => import("../pages/components/misc/BeautifulDnd"));
@@ -163,9 +160,6 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/components/wizard-basic`} component={WizardForm}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/quill`} component={QuillPreview}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/tinymce`} component={TinymcePreview}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/widgets/cards`} component={CardWidgets}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/widgets/charts`} component={ChartWidgets}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/widgets/rating`} component={RatingWidgets}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/misc/slick-slider`} component={SlickPage}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/misc/sweet-alert`} component={SweetAlertPage}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/misc/beautiful-dnd`} component={BeautifulDnd}></Route>

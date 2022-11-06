@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from "react";
-// import { SessionDoughnut } from "../../charts/analytics/AnalyticsCharts";
 import { Spinner } from "reactstrap";
 import { Doughnut } from "react-chartjs-2";
 import { Icon } from "../../../Component";
