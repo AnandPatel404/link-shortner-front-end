@@ -14,7 +14,6 @@ const BrowserUser = ({ id }) => {
 	const getdata = useCallback(async () => {
 		const data = await linkBrowserAnalysis(id, setLoading);
 		setItem(data.data);
-		console.log(data.data);
 	}, [id, linkBrowserAnalysis]);
 	useEffect(() => {
 		getdata();

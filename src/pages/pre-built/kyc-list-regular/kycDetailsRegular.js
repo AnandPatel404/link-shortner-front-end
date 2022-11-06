@@ -249,11 +249,6 @@ const KycDetailsRegular = ({ match }) => {
 											</ul>
 										</Card>
 									</Col>
-									<Col lg="5">
-										<PreviewAltCard className="h-100" bodyclassName="h-100 stretch flex-column">
-											<SessionDevice />
-										</PreviewAltCard>
-									</Col>
 									<Col lg="7">
 										<PreviewAltCard className="h-100 d-flex justify-content-center align-items-center">
 											{qr !== null && qr.length !== 0 ? (
@@ -264,6 +259,11 @@ const KycDetailsRegular = ({ match }) => {
 													no qr find
 												</span>
 											)}
+										</PreviewAltCard>
+									</Col>
+									<Col lg="5">
+										<PreviewAltCard className="h-100" bodyclassName="h-100 stretch flex-column">
+											<SessionDevice id={match.params.id} />
 										</PreviewAltCard>
 									</Col>
 									<Col lg="12">

@@ -16,7 +16,6 @@ const AudienceOverview = ({ totalClick, id }) => {
 		const data = await linkAnalysis(id, setLoading);
 		setShortedData(data.data.data.finalData);
 		setShortedTImes(data.data.data.newDates);
-		console.log(data);
 	}, [id, linkAnalysis]);
 
 	useEffect(() => {

@@ -10,7 +10,6 @@ const userActivity = create((set, get) => ({
 	allLinks: [],
 	subscription: {},
 	plan: [],
-	chart: {},
 	browser: [],
 	getuserActivity: async () => {
 		await axios({

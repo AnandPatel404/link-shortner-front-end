@@ -206,21 +206,3 @@ export const TCDoughnut = ({ state, className }) => {
 		></Doughnut>
 	);
 };
-
-// export const SessionDoughnut = ({ state, className }) => {
-// 	const [data, setData] = useState(deviceStatusData);
-// 	useEffect(() => {
-// 		let filteredData;
-// 		if (state === "7") {
-// 			filteredData = deviceStatusDataSet2;
-// 		} else if (state === "15") {
-// 			filteredData = deviceStatusDataSet3;
-// 		} else {
-// 			filteredData = deviceStatusDataSet4;
-// 		}
-// 		setData(filteredData);
-// 	}, [state]);
-// 	return (
-
-// 	);
-// };
