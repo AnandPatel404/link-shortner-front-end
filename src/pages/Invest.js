@@ -5,6 +5,7 @@ import { Card, Form, Spinner } from "reactstrap";
 import { Block, Icon, Button, Row, Col, PreviewAltCard } from "../components/Component";
 import firstSvg from "../images/svg/dashboard-one.svg";
 import b from "../images/svg/dashboard-paln.svg";
+import c from "../images/svg/status.svg";
 import a from "../images/svg/dashboard-limit.svg";
 import rocketSvg from "../images/svg/dashboard.svg";
 import useUserDashBoard from "../zustand/DashBoard/userDashBoard";
@@ -27,7 +28,6 @@ const InvestHomePage = () => {
 		}),
 		shallow
 	);
-
 	useEffect(() => {
 		userDashBoard(setLoadingTwo);
 	}, [userDashBoard]);
@@ -83,6 +83,25 @@ const InvestHomePage = () => {
 										</Col>
 										<Col lg="4">
 											<img src={b} alt="Plan" className="d-none d-md-block" />
+										</Col>
+									</Row>
+								</PreviewAltCard>
+							</Col>
+							<Col md="4" lg="4" xl="4" xxl="4">
+								<PreviewAltCard className="card-full">
+									<Row>
+										<Col lg="8">
+											<div className="card-title-group align-start mb-0">
+												<div className="card-title">
+													<h4>Plan Status</h4>
+												</div>
+											</div>
+											<div className="card-amount">
+												<span className="amount mt-2">{subscription.subscription_status}</span>
+											</div>
+										</Col>
+										<Col lg="4">
+											<img src={c} alt="limit" className="d-none d-md-block" />
 										</Col>
 									</Row>
 								</PreviewAltCard>
