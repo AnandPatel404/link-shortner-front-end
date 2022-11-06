@@ -1,9 +1,6 @@
 import React, { useEffect, useState, useCallback, lazy } from "react";
 import Content from "../../../layout/content/Content";
 import Head from "../../../layout/head/Head";
-import BrowserUser from "../../../components/partials/analytics/browser-users/BrowserUser";
-import SessionDevice from "../../../components/partials/analytics/session-devices/SessionDevice";
-import TrafficChannel from "../../../components/partials/analytics/traffic-channel/Traffic";
 import { Badge, Card } from "reactstrap";
 import Loader from "../../Loader/Loader";
 import {
@@ -21,6 +18,9 @@ import {
 } from "../../../components/Component";
 import { Link } from "react-router-dom";
 import usersDashBoard from "../../../zustand/DashBoard/userDashBoard";
+const BrowserUser = lazy(() => import("../../../components/partials/analytics/browser-users/BrowserUser"));
+const SessionDevice = lazy(() => import("../../../components/partials/analytics/session-devices/SessionDevice"));
+const TrafficChannel = lazy(() => import("../../../components/partials/analytics/traffic-channel/Traffic"));
 const AudienceOverview = lazy(() => import("../../../components/partials/analytics/audience-overview/AudienceOverview"));
 
 const KycDetailsRegular = ({ match }) => {
