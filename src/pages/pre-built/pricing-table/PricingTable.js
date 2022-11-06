@@ -4,6 +4,7 @@ import Head from "../../../layout/head/Head";
 import { BlockBetween, BlockDes, Block, BlockContent, BlockHead, BlockTitle, Icon } from "../../../components/Component";
 import userPlan from "../../../zustand/plans/plan";
 import Loader from "../../Loader/Loader";
+import StripeCheckout from "react-stripe-checkout";
 
 const PricingTable = () => {
 	const [loading, setLoading] = useState(true);
