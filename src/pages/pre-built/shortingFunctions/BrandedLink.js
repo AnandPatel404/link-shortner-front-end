@@ -96,7 +96,7 @@ function BrandedLink({ sm, updateSm }) {
 											</Alert>
 										) : (
 											<Alert className="alert-icon" color="success">
-												<Icon name="cross-circle" />
+												<Icon name="check-fill-c" />
 												<strong>success</strong>You can use this back link
 											</Alert>
 										)}

@@ -226,6 +226,22 @@ const KycDetailsRegular = ({ match }) => {
 												</li>
 												<li className="data-item">
 													<div className="data-col">
+														<div className="data-label">Device Targeting</div>
+														<div className="data-value text-break">{link.device_targeting ? "True" : "-"}</div>
+													</div>
+												</li>
+												<li className="data-item">
+													<div className="data-col">
+														<div className="data-label">Available Device</div>
+														{link.available_on_device
+															? link.available_on_device.map((res) => (
+																	<div className="data-value text-break">{res}</div>
+															  ))
+															: "-"}
+													</div>
+												</li>
+												<li className="data-item">
+													<div className="data-col">
 														<div className="data-label">Updated At</div>
 														<div className="data-value text-break">{new Date(link.updatedAt).toLocaleString()}</div>
 													</div>

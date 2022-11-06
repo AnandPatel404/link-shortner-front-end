@@ -12,7 +12,6 @@ function DeviceTargetingLink({ sm, updateSm }) {
 	let newData = [];
 	const colourData = [
 		{ value: "Android", label: "Android" },
-		{ value: "Ios", label: "Ios" },
 		{ value: "Windows", label: "Windows" },
 		{ value: "Mac OS", label: "Mac OS" },
 	];
