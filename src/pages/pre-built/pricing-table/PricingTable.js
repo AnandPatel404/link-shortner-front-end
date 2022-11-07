@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useCallback } from "react";
 import Content from "../../../layout/content/Content";
 import Head from "../../../layout/head/Head";
-import { BlockBetween, BlockDes, Block, BlockContent, BlockHead, BlockTitle, Icon } from "../../../components/Component";
+import { BlockBetween, BlockDes, Block, BlockContent, BlockHead, BlockTitle, Icon, Button } from "../../../components/Component";
 import userPlan from "../../../zustand/plans/plan";
 import Loader from "../../Loader/Loader";
-import StripeCheckout from "react-stripe-checkout";
+import userPayment from "../../../zustand/payment/payment";
+import userStore from "../../../zustand/userStore/userStore";
+import Logo from "../../../images/logo.svg";
 
 const PricingTable = () => {
 	const [loading, setLoading] = useState(true);
@@ -12,7 +14,10 @@ const PricingTable = () => {
 	const { plan } = userPlan((state) => ({
 		plan: state.plan,
 	}));
-
+	const { createOrderOfRazorPay } = userPayment((state) => ({
+		createOrderOfRazorPay: state.createOrderOfRazorPay,
+	}));
+	const userData = userStore((state) => state.user);
 	const getAllPlan = useCallback(async () => {
 		const data = await plan(setLoading);
 		setData(data);
@@ -21,6 +26,36 @@ const PricingTable = () => {
 	useEffect(() => {
 		getAllPlan();
 	}, [getAllPlan]);
+
+	const choosePlan = async (id, planName) => {
+		const data = await createOrderOfRazorPay(id);
+		console.log(data);
+		const options = {
+			key: process.env.RAZORPAYKEYID,
+			amount: data.amount,
+			currency: data.currency,
+			name: planName,
+			description: "Test Transaction",
+			image: Logo,
+			order_id: data.id,
+			callback_url: `http://localhost:8000/v1/payment/RazorPay/paymentVerification/${id}`,
+			prefill: {
+				name: userData.name,
+				email: userData.email,
+				contact: userData.number,
+			},
+			notes: {
+				address: "Razorpay Corporate Office",
+			},
+			theme: {
+				color: "#f4bd0e",
+			},
+		};
+		const rzp1 = new window.Razorpay(options);
+
+		rzp1.open();
+	};
+
 	return (
 		<React.Fragment>
 			<Head title="Pricing Table"></Head>
@@ -134,9 +169,15 @@ const PricingTable = () => {
 																		</li>
 																	)}
 																</ul>
-																<a href="/" class="btn btn-primary rounded-pill">
+																<Button
+																	className="btn btn-primary rounded-pill"
+																	type="button"
+																	onClick={() => {
+																		choosePlan(item.id, item.plan_name);
+																	}}
+																>
 																	Choose Plan
-																</a>
+																</Button>
 															</div>
 														</div>
 													</div>
