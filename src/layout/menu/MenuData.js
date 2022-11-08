@@ -7,6 +7,11 @@ const menu = [
 		text: "Home",
 		link: "/",
 	},
+	{
+		icon: "tranx",
+		text: "Transaction",
+		link: "/transaction-basic",
+	},
 
 	{
 		heading: "Link Work",
@@ -44,17 +49,6 @@ const menu = [
 
 	{
 		heading: "Pre-built Pages",
-	},
-	{
-		icon: "tranx",
-		text: "Transaction",
-		active: false,
-		subMenu: [
-			{
-				text: "Trans List - Basic",
-				link: "/transaction-basic",
-			},
-		],
 	},
 	{
 		icon: "file-docs",
@@ -370,24 +364,6 @@ const menu = [
 			{
 				text: "Knobs",
 				link: "/charts/knobs",
-			},
-		],
-	},
-	{
-		icon: "puzzle",
-		text: "Widgets",
-		subMenu: [
-			{
-				text: "Card Widgets",
-				link: "/components/widgets/cards",
-			},
-			{
-				text: "Chart Widgets",
-				link: "/components/widgets/charts",
-			},
-			{
-				text: "Rating Widgets",
-				link: "/components/widgets/rating",
 			},
 		],
 	},
