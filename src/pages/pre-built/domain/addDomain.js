@@ -16,6 +16,7 @@ import {
 } from "../../../components/Component";
 import { useForm } from "react-hook-form";
 import userDomain from "../../../zustand/domainStuff/domain";
+import Swal from "sweetalert2";
 
 const AddDomain = () => {
 	const option = [
@@ -60,6 +61,22 @@ const AddDomain = () => {
 	};
 
 	const dd = (id) => {
+		Swal.fire({
+			title: "Are you sure?",
+			text: "You won't be able to revert this and your all domain link is deleted",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				confirmDelete(id);
+			}
+		});
+	};
+
+	const confirmDelete = (id) => {
 		deleteDomain(id, getData);
 	};
 
@@ -126,7 +143,7 @@ const AddDomain = () => {
 												<span className="tb-tnx-status d-none d-md-inline-block">Config</span>
 											</th>
 											<th className="tb-tnx-action">
-												<span>&nbsp;</span>
+												<span>More</span>
 											</th>
 										</tr>
 									</thead>
@@ -190,9 +207,7 @@ const AddDomain = () => {
 																					dd(item.id);
 																				}}
 																			>
-																				<DropdownItem tag="a" href="#view">
-																					Delete Domain
-																				</DropdownItem>
+																				<DropdownItem tag="a">Delete Domain</DropdownItem>
 																			</li>
 																		</ul>
 																	</DropdownMenu>

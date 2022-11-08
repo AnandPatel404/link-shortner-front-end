@@ -1,6 +1,7 @@
 import create from "zustand";
 import axios from "../../axios/axiosconfig";
 import { messageToast, errorToast } from "../../pages/components/misc/ReactToastify";
+import Swal from "sweetalert2";
 
 const userDomain = create((set, get) => ({
 	createDomains: async (data, setModal, getData) => {
@@ -35,7 +36,7 @@ const userDomain = create((set, get) => ({
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
-					messageToast(res.data.message, res.data.status);
+					Swal.fire("Success", res.data.message, "success");
 					getData();
 				}
 			})

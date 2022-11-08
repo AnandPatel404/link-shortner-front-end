@@ -7,6 +7,7 @@ import firstSvg from "../images/svg/dashboard-one.svg";
 import b from "../images/svg/dashboard-paln.svg";
 import c from "../images/svg/status.svg";
 import a from "../images/svg/dashboard-limit.svg";
+import d from "../images/svg/domain.svg";
 import rocketSvg from "../images/svg/dashboard.svg";
 import useUserDashBoard from "../zustand/DashBoard/userDashBoard";
 import { Link } from "react-router-dom";
@@ -113,7 +114,7 @@ const InvestHomePage = () => {
 										<Col lg="8">
 											<div className="card-title-group align-start mb-0">
 												<div className="card-title">
-													<h4>Limit</h4>
+													<h4>Link Creating Limit</h4>
 												</div>
 											</div>
 											<div className="card-amount">
@@ -126,6 +127,29 @@ const InvestHomePage = () => {
 									</Row>
 								</PreviewAltCard>
 							</Col>
+							{subscription.custom_domain_limit > 0 ? (
+								<Col md="4" lg="4" xl="4" xxl="4">
+									<PreviewAltCard className="card-full">
+										<Row>
+											<Col lg="8">
+												<div className="card-title-group align-start mb-0">
+													<div className="card-title">
+														<h4>Custom Domain</h4>
+													</div>
+												</div>
+												<div className="card-amount">
+													<span className="amount mt-2">{subscription.custom_domain_limit}</span>
+												</div>
+											</Col>
+											<Col lg="4">
+												<img src={d} alt="limit" className="d-none d-md-block" />
+											</Col>
+										</Row>
+									</PreviewAltCard>
+								</Col>
+							) : (
+								""
+							)}
 							<Col md="9">
 								<Form className="is-alter h-100" onSubmit={handleSubmit(onFormSubmit)}>
 									<Card className="card-bordered card-full p-3">
@@ -151,10 +175,6 @@ const InvestHomePage = () => {
 											/>
 										</div>
 										<div className="d-flex justify-content-center">
-											{/* <Button color="primary" type="submit" className="px-5 py-2 h5">
-											<Icon name="link-alt"></Icon>
-											<span>cut</span>
-										</Button> */}
 											<Button color="primary" type="submit" size="lg">
 												{loading ? (
 													<Spinner size="sm" color="light" />
