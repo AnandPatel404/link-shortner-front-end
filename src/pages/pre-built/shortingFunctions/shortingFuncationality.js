@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Content from "../../../layout/content/Content";
 import Head from "../../../layout/head/Head";
 import { useForm } from "react-hook-form";
@@ -10,9 +10,8 @@ import { errorToast } from "../../../pages/components/misc/ReactToastify";
 import userDashBoard from "../../../zustand/DashBoard/userDashBoard";
 import { Link } from "react-router-dom";
 function ShortingFuncationality({ sm, updateSm }) {
-	const [doamins, setDomains] = useState("shorterME.link/");
-	const { domains, getAllDomain } = userDomain((state) => ({
-		domains: state.domains,
+	const [domain, setDomains] = useState([]);
+	const { getAllDomain } = userDomain((state) => ({
 		getAllDomain: state.getAllDomain,
 	}));
 
@@ -24,10 +23,14 @@ function ShortingFuncationality({ sm, updateSm }) {
 	const { sub } = userDashBoard((state) => ({
 		sub: state.subscription,
 	}));
+	const getDomains = useCallback(async () => {
+		const data = await getAllDomain();
+		domain(data.data);
+	}, [domain, getAllDomain]);
 
 	useEffect(() => {
-		getAllDomain();
-	}, [getAllDomain]);
+		getDomains();
+	}, [getDomains]);
 
 	const s = async () => {
 		if (!SingleLink || SingleLink.length === 0 || !SingleLink.id) {
@@ -35,7 +38,7 @@ function ShortingFuncationality({ sm, updateSm }) {
 		}
 		const data = {
 			linkId: SingleLink.id,
-			domain: doamins,
+			domain: domain,
 		};
 		customDomain(data);
 	};
@@ -78,8 +81,8 @@ function ShortingFuncationality({ sm, updateSm }) {
 											<div className="form-control-select">
 												<Input type="select" onChange={(e) => setDomains(e.target.value)}>
 													<option value="shorterME.link/">shorterME.link/</option>
-													{domains.length > 0 ? (
-														domains.map((res) => (
+													{domain.length > 0 ? (
+														domain.map((res) => (
 															<option value={res.domain} key={res.id}>
 																{res.domain}/
 															</option>

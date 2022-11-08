@@ -8,7 +8,6 @@ import { Route, Switch, Link } from "react-router-dom";
 import { Icon } from "../../../components/Component";
 import { Card } from "reactstrap";
 import useUserStore from "../../../zustand/userStore/userStore";
-import WorkSvg from "../../../images/svg/work.svg";
 import female from "../../../images/user.png";
 import male from "../../../images/user2.png";
 
@@ -110,9 +109,6 @@ const UserProfileLayout = () => {
 										</li>
 									</ul>
 								</div>
-							</div>
-							<div className="d-flex justify-content-center mt-5 pt-5">
-								<img src={WorkSvg} alt="work" width={250} />
 							</div>
 						</div>
 						<div className="card-inner card-inner-lg">

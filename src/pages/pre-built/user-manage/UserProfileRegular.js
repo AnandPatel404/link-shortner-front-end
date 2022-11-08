@@ -8,9 +8,9 @@ import useUserDashBoard from "../../../zustand/DashBoard/userDashBoard";
 const UserProfileRegularPage = ({ sm, updateSm, setProfileName }) => {
 	const userState = useUserStore((state) => state.user);
 	const sub = useUserDashBoard((state) => state.subscription);
+	console.log(sub);
 	const [modalTab, setModalTab] = useState("1");
 	const [userInfo] = useState(userState);
-	console.log(userInfo);
 	const [formData, setFormData] = useState({});
 	const [modal, setModal] = useState(false);
 
@@ -130,20 +130,6 @@ const UserProfileRegularPage = ({ sm, updateSm, setProfileName }) => {
 					</a>
 					<div className="p-2">
 						<h5 className="title">Update Profile</h5>
-						<ul className="nk-nav nav nav-tabs">
-							<li className="nav-item">
-								<a
-									className={`nav-link ${modalTab === "1" && "active"}`}
-									onClick={(ev) => {
-										ev.preventDefault();
-										setModalTab("1");
-									}}
-									href="#personal"
-								>
-									Personal
-								</a>
-							</li>
-						</ul>
 						<div className="tab-content">
 							<div className={`tab-pane ${modalTab === "1" ? "active" : ""}`} id="personal">
 								<Row className="gy-4">

@@ -31,7 +31,7 @@ const userActivity = create((set, get) => ({
 			.then((res) => {
 				set({ linksLength: res.data.data.links.length });
 				set({ links: res.data.data.links });
-				set({ subscription: res.data.data.Subscriptions });
+				set({ subscription: res.data.data.subscriptions });
 				setLoadingTwo(false);
 			})
 			.catch((err) => {
