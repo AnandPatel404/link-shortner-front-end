@@ -3,8 +3,7 @@ import axios from "../../axios/axiosconfig";
 import { messageToast, errorToast } from "../../pages/components/misc/ReactToastify";
 
 const userDomain = create((set, get) => ({
-	domains: [],
-	createDomains: async (data) => {
+	createDomains: async (data, setModal, getData) => {
 		await axios({
 			method: "post",
 			url: `custom-domain/domain`,
@@ -12,40 +11,32 @@ const userDomain = create((set, get) => ({
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
-					set((state) => ({ domains: [...state.domains, res.data.data] }));
 					messageToast(res.data.message, res.data.status);
+					setModal({ add: false });
+					getData();
 				}
 			})
 			.catch((err) => {
-				console.log(err);
 				errorToast(err.response.data.message, "Error");
 			});
 	},
 
 	getAllDomain: async () => {
-		await axios({
+		const data = await axios({
 			method: "get",
 			url: `custom-domain/domain`,
-		})
-			.then((res) => {
-				if (res.data.status === "Success") {
-					set({ domains: res.data.data });
-				}
-			})
-			.catch((err) => {
-				console.log(err);
-				errorToast(err.response.data.message, "Error");
-			});
+		});
+		return data;
 	},
-	deleteDomain: async (id) => {
+	deleteDomain: async (id, getData) => {
 		await axios({
 			method: "delete",
 			url: `custom-domain/domain/${id}`,
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
-					const reFatch = get().getAllDomain;
-					reFatch();
+					messageToast(res.data.message, res.data.status);
+					getData();
 				}
 			})
 			.catch((err) => {

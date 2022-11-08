@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Content from "../../../layout/content/Content";
 import Head from "../../../layout/head/Head";
 import { UncontrolledDropdown, DropdownMenu, DropdownToggle, Card, FormGroup, Modal, ModalBody, Form, DropdownItem } from "reactstrap";
@@ -22,16 +22,21 @@ const AddDomain = () => {
 		{ value: "Enable", label: "Enable" },
 		{ value: "Disable", label: "Disable" },
 	];
-	const { data, createDomains, getAllDomain, deleteDomain } = userDomain((state) => ({
-		data: state.domains,
+	const [items, setItems] = useState([]);
+	const { createDomains, getAllDomain, deleteDomain } = userDomain((state) => ({
 		createDomains: state.createDomains,
 		getAllDomain: state.getAllDomain,
 		deleteDomain: state.deleteDomain,
 	}));
 
-	useEffect(() => {
-		getAllDomain();
+	const getData = useCallback(async () => {
+		const data = await getAllDomain();
+		setItems(data.data.data);
 	}, [getAllDomain]);
+
+	useEffect(() => {
+		getData();
+	}, [getData]);
 
 	const [modal, setModal] = useState({
 		add: false,
@@ -51,16 +56,14 @@ const AddDomain = () => {
 			rootDomainLink: sData.rootDomainLink,
 			status: formData,
 		};
-		console.log(data);
-		await createDomains(data);
-		setModal({ add: false });
+		createDomains(data, setModal, getData);
 	};
 
 	const dd = (id) => {
-		deleteDomain(id);
+		deleteDomain(id, getData);
 	};
 
-	const currentItems = data;
+	const currentItems = items;
 
 	// Change Page
 	const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -182,21 +185,6 @@ const AddDomain = () => {
 																	</DropdownToggle>
 																	<DropdownMenu right>
 																		<ul className="link-list-plain">
-																			{/* <li
-																				onClick={() => {
-																					setViewModal(true);
-																				}}
-																			>
-																				<DropdownItem
-																					tag="a"
-																					href="#view"
-																					onClick={(ev) => {
-																						ev.preventDefault();
-																					}}
-																				>
-																					View
-																				</DropdownItem>
-																			</li> */}
 																			<li
 																				onClick={() => {
 																					dd(item.id);
@@ -222,7 +210,7 @@ const AddDomain = () => {
 									<PaginationComponent
 										noDown
 										itemPerPage={itemPerPage}
-										totalItems={data.length}
+										totalItems={currentItems.length}
 										paginate={paginate}
 										currentPage={currentPage}
 									/>
