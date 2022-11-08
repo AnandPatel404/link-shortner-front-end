@@ -7,98 +7,44 @@ const menu = [
 		text: "Home",
 		link: "/",
 	},
+
 	{
-		text: "All shorten links",
+		heading: "Link Work",
+	},
+	{
+		text: "All Links",
 		link: "/all-links",
 		icon: "link",
 	},
+	{
+		icon: "qr",
+		text: "QR List",
+		link: "/qr-list",
+	},
+	{
+		icon: "puzzle",
+		text: "Create Link",
+		link: "/create-full-link",
+	},
+
+	{
+		heading: "Api & Plan",
+	},
+
 	{
 		icon: "sign-mxn",
 		text: "Pricing",
 		link: "/pricing-table",
 	},
 	{
-		icon: "puzzle",
-		text: "Create full link",
-		link: "/create-full-link",
-	},
-	{
-		icon: "notes-alt",
-		text: "QR List",
-		link: "/qr-list",
-	},
-	{
 		icon: "link-group",
 		text: "Api Credentials",
 		link: "/api-credentials",
 	},
-	// {
-	// 	icon: "sign-dollar",
-	// 	text: "Trans List",
-	// 	link: "/transaction-crypto",
-	// },
-	// {
-	// 	icon: "alert",
-	// 	text: "Error page",
-	// 	link: "/set-error-page",
-	// },
 
-	// {
-	// 	heading: "Api",
-	// },
-	// {
-	// 	icon: "code",
-	// 	text: "Api webhook",
-	// 	active: false,
-	// 	subMenu: [
-	// 		{
-	// 			text: "Project Cards",
-	// 			link: "/project-card",
-	// 		},
-	// 		{
-	// 			text: "Project List",
-	// 			link: "/project-list",
-	// 		},
-	// 	],
-	// },
-	// {
-	// 	heading: "UP-DOWNS",
-	// },
-	// {
-	// 	icon: "bar-chart",
-	// 	text: "Link analysis",
-	// 	active: false,
-	// 	subMenu: [
-	// 		{
-	// 			icon: "scan",
-	// 			text: "Generate QR",
-	// 			link: "/project-card",
-	// 		},
-	// 		{
-	// 			icon: "notes-alt",
-	// 			text: "QR List",
-	// 			link: "/project-list",
-	// 		},
-	// 	],
-	// },
 	{
 		heading: "Pre-built Pages",
 	},
-	// {
-	// 	icon: "tile-thumb",
-	// 	text: "Projects",
-	// 	active: false,
-	// 	subMenu: [
-	// 		{
-	// 			text: "Project Cards",
-	// 			link: "/project-card",
-	// 		},
-	// 		{
-	// 			text: "Project List",
-	// 			link: "/project-list",
-	// 		},
-	// 	],
-	// },
 	{
 		icon: "tranx",
 		text: "Transaction",
@@ -110,38 +56,6 @@ const menu = [
 			},
 		],
 	},
-	// {
-	// 	icon: "grid-alt",
-	// 	text: "Applications",
-	// 	active: false,
-	// 	subMenu: [
-	// 		{
-	// 			text: "Messages",
-	// 			link: "/app-messages",
-	// 		},
-	// 		{
-	// 			text: "Chats / Messenger",
-	// 			link: "/app-chat",
-	// 		},
-	// 		{
-	// 			text: "Inbox / Mail",
-	// 			link: "/app-inbox",
-	// 		},
-	// 		{
-	// 			text: "Calendar",
-	// 			link: "/app-calender",
-	// 		},
-	// 		{
-	// 			text: "File Manager",
-	// 			link: "/app-file-manager",
-	// 			badge: "new",
-	// 		},
-	// 		{
-	// 			text: "Kanban Board",
-	// 			link: "/app-kanban",
-	// 		},
-	// 	],
-	// },
 	{
 		icon: "file-docs",
 		text: "Invoice",
@@ -504,10 +418,6 @@ const menu = [
 			{
 				text: "React Beautiful Dnd",
 				link: "/components/misc/beautiful-dnd",
-			},
-			{
-				text: "Google Map",
-				link: "/components/misc/map",
 			},
 		],
 	},

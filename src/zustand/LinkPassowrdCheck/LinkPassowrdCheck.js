@@ -12,7 +12,6 @@ const useCheckThePassword = create((set) => ({
 				window.location.href = res.data.data;
 			})
 			.catch((err) => {
-				console.log(err);
 				Swal.fire("Error", err.response.data.message, "Error");
 			});
 	},
