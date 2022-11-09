@@ -6,7 +6,7 @@ import { FormGroup, Row, Col, Form } from "reactstrap";
 import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetween } from "../../../components/Component";
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
 import { errorToast } from "../../../pages/components/misc/ReactToastify";
-import userDashBoard from "../../../zustand/DashBoard/userDashBoard";
+import userSubStore from "../../../zustand/Subscription/sub";
 import { Link } from "react-router-dom";
 
 function LimitedLink({ sm, updateSm }) {
@@ -14,7 +14,7 @@ function LimitedLink({ sm, updateSm }) {
 		SingleLink: state.SingleLink,
 		createLimitedLink: state.createLimitedLink,
 	}));
-	const { sub } = userDashBoard((state) => ({
+	const { sub } = userSubStore((state) => ({
 		sub: state.subscription,
 	}));
 	const [afterUrl, setAfterUrl] = useState(null);

@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { FormGroup, Row, Col, Form } from "reactstrap";
 import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetween, RSelect } from "../../../components/Component";
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
-import userDashBoard from "../../../zustand/DashBoard/userDashBoard";
+import userSubStore from "../../../zustand/Subscription/sub";
 import { Link } from "react-router-dom";
 function DeviceTargetingLink({ sm, updateSm }) {
 	let newData = [];
@@ -22,7 +22,7 @@ function DeviceTargetingLink({ sm, updateSm }) {
 		createDeviceTargetingLink: state.createDeviceTargetingLink,
 	}));
 
-	const { sub } = userDashBoard((state) => ({
+	const { sub } = userSubStore((state) => ({
 		sub: state.subscription,
 	}));
 	const s = async () => {

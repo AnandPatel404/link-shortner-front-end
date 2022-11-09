@@ -8,7 +8,6 @@ import userSubStore from "../../../zustand/Subscription/sub";
 const UserProfileRegularPage = ({ sm, updateSm, setProfileName }) => {
 	const userState = useUserStore((state) => state.user);
 	const sub = userSubStore((state) => state.subscription);
-	console.log(sub);
 	const [modalTab, setModalTab] = useState("1");
 	const [userInfo] = useState(userState);
 	const [formData, setFormData] = useState({});

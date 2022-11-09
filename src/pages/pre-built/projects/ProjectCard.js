@@ -7,7 +7,7 @@ import { FormGroup, Form } from "reactstrap";
 import { useForm } from "react-hook-form";
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
 import { errorToast } from "../../../pages/components/misc/ReactToastify";
-import userDashBoard from "../../../zustand/DashBoard/userDashBoard";
+import userSubStore from "../../../zustand/Subscription/sub";
 import { Link } from "react-router-dom";
 
 const ProjectCardPage = ({ sm, updateSm }) => {
@@ -19,7 +19,7 @@ const ProjectCardPage = ({ sm, updateSm }) => {
 		SingleLink: state.SingleLink,
 	}));
 
-	const { sub } = userDashBoard((state) => ({
+	const { sub } = userSubStore((state) => ({
 		sub: state.subscription,
 	}));
 

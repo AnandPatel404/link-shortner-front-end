@@ -20,7 +20,7 @@ const FullShort = () => {
 	}));
 	const [sm, updateSm] = useState(false);
 	const [mobileView, setMobileView] = useState(false);
-	// function to change the design view under 990 px
+
 	const viewChange = () => {
 		if (window.innerWidth < 990) {
 			setMobileView(true);

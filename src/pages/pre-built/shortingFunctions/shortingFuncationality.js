@@ -7,7 +7,7 @@ import { Block, BlockHead, BlockHeadContent, BlockTitle, BlockDes, Button, Icon,
 import userDomain from "../../../zustand/domainStuff/domain";
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
 import { errorToast } from "../../../pages/components/misc/ReactToastify";
-import userDashBoard from "../../../zustand/DashBoard/userDashBoard";
+import userSubStore from "../../../zustand/Subscription/sub";
 import { Link } from "react-router-dom";
 function ShortingFuncationality({ sm, updateSm }) {
 	const [domain, setDomains] = useState([]);
@@ -20,7 +20,7 @@ function ShortingFuncationality({ sm, updateSm }) {
 		customDomain: state.customDomain,
 	}));
 
-	const { sub } = userDashBoard((state) => ({
+	const { sub } = userSubStore((state) => ({
 		sub: state.subscription,
 	}));
 	const getDomains = useCallback(async () => {
