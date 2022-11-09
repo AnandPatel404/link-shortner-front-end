@@ -5,50 +5,25 @@ import { Spinner } from "reactstrap";
 import Loader from "../pages/Loader/Loader";
 
 const Component = lazy(() => import("../pages/components/Index"));
-const Accordian = lazy(() => import("../pages/components/Accordions"));
-const Alerts = lazy(() => import("../pages/components/Alerts"));
-const Badges = lazy(() => import("../pages/components/Badges"));
-const Breadcrumbs = lazy(() => import("../pages/components/Breadcrumbs"));
-const ButtonGroup = lazy(() => import("../pages/components/ButtonGroup"));
-const Buttons = lazy(() => import("../pages/components/Buttons"));
-const Cards = lazy(() => import("../pages/components/Cards"));
 const Carousel = lazy(() => import("../pages/components/Carousel"));
 const Dropdowns = lazy(() => import("../pages/components/Dropdowns"));
 const FormElements = lazy(() => import("../pages/components/forms/FormElements"));
 const FormLayouts = lazy(() => import("../pages/components/forms/FormLayouts"));
 const FormValidation = lazy(() => import("../pages/components/forms/FormValidation"));
-const DataTablePage = lazy(() => import("../pages/components/table/DataTable"));
 const Modals = lazy(() => import("../pages/components/Modals"));
 const Pagination = lazy(() => import("../pages/components/Pagination"));
 const Popovers = lazy(() => import("../pages/components/Popovers"));
 const Progress = lazy(() => import("../pages/components/Progress"));
-const Tabs = lazy(() => import("../pages/components/Tabs"));
-const Tooltips = lazy(() => import("../pages/components/Tooltips"));
-const Typography = lazy(() => import("../pages/components/Typography"));
 const CheckboxRadio = lazy(() => import("../pages/components/forms/CheckboxRadio"));
 const InputGroup = lazy(() => import("../pages/components/forms/InputGroup"));
 const FormUpload = lazy(() => import("../pages/components/forms/FormUpload"));
 const NumberSpinner = lazy(() => import("../pages/components/forms/NumberSpinner"));
-const WizardForm = lazy(() => import("../pages/components/forms/WizardForm"));
-
-const UtilBorder = lazy(() => import("../pages/components/UtilBorder"));
-const UtilColors = lazy(() => import("../pages/components/UtilColors"));
-const UtilDisplay = lazy(() => import("../pages/components/UtilDisplay"));
-const UtilEmbeded = lazy(() => import("../pages/components/UtilEmbeded"));
-const UtilFlex = lazy(() => import("../pages/components/UtilFlex"));
-const UtilOthers = lazy(() => import("../pages/components/UtilOthers"));
-const UtilSizing = lazy(() => import("../pages/components/UtilSizing"));
-const UtilSpacing = lazy(() => import("../pages/components/UtilSpacing"));
-const UtilText = lazy(() => import("../pages/components/UtilText"));
 
 const Blank = lazy(() => import("../pages/others/Blank"));
 const Faq = lazy(() => import("../pages/others/Faq"));
 const Regularv1 = lazy(() => import("../pages/others/Regular-1"));
 const Regularv2 = lazy(() => import("../pages/others/Regular-2"));
 const Terms = lazy(() => import("../pages/others/Terms"));
-const BasicTable = lazy(() => import("../pages/components/table/BasicTable"));
-const SpecialTablePage = lazy(() => import("../pages/components/table/SpecialTable"));
-const ChartPage = lazy(() => import("../pages/components/charts/Charts"));
 const NioIconPage = lazy(() => import("../pages/components/crafted-icons/NioIcon"));
 
 const ProjectListPage = lazy(() => import("../pages/pre-built/projects/ProjectList"));
@@ -61,14 +36,6 @@ const InvoiceList = lazy(() => import("../pages/pre-built/invoice/InvoiceList"))
 const InvoiceDetails = lazy(() => import("../pages/pre-built/invoice/InvoiceDetails"));
 const PricingTable = lazy(() => import("../pages/pre-built/pricing-table/PricingTable"));
 const DateTimePicker = lazy(() => import("../pages/components/forms/DateTimePicker"));
-const SlickPage = lazy(() => import("../pages/components/misc/Slick"));
-const SweetAlertPage = lazy(() => import("../pages/components/misc/SweetAlert"));
-const BeautifulDnd = lazy(() => import("../pages/components/misc/BeautifulDnd"));
-const DualListPage = lazy(() => import("../pages/components/misc/DualListbox"));
-const JsTreePreview = lazy(() => import("../pages/components/misc/JsTree"));
-const QuillPreview = lazy(() => import("../pages/components/forms/rich-editor/QuillPreview"));
-const TinymcePreview = lazy(() => import("../pages/components/forms/rich-editor/TinymcePreview"));
-const KnobPreview = lazy(() => import("../pages/components/charts/KnobPreview"));
 const ChangePassword = lazy(() => import("../pages/auth/changePassword"));
 const Editlink = lazy(() => import("../pages/pre-built/editLink/editlink"));
 const AddDomain = lazy(() => import("../pages/pre-built/domain/addDomain"));
@@ -129,13 +96,6 @@ const Pages = () => {
 
 				{/*Components*/}
 				<Route exact path={`${process.env.PUBLIC_URL}/components`} component={Component}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/accordions`} component={Accordian}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/alerts`} component={Alerts}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/badges`} component={Badges}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/breadcrumbs`} component={Breadcrumbs}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/button-group`} component={ButtonGroup}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/buttons`} component={Buttons}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/cards`} component={Cards}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/carousel`} component={Carousel}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/dropdowns`} component={Dropdowns}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/form-elements`} component={FormElements}></Route>
@@ -151,36 +111,8 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/components/popovers`} component={Popovers}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/progress`} component={Progress}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/components/spinner`} component={Spinner}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/tabs`} component={Tabs}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/tooltips`} component={Tooltips}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/typography`} component={Typography}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/wizard-basic`} component={WizardForm}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/quill`} component={QuillPreview}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/tinymce`} component={TinymcePreview}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/misc/slick-slider`} component={SlickPage}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/misc/sweet-alert`} component={SweetAlertPage}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/misc/beautiful-dnd`} component={BeautifulDnd}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/misc/dual-list`} component={DualListPage}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/misc/jsTree`} component={JsTreePreview}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/util-border`} component={UtilBorder}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/util-colors`} component={UtilColors}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/util-display`} component={UtilDisplay}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/util-embeded`} component={UtilEmbeded}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/util-flex`} component={UtilFlex}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/util-others`} component={UtilOthers}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/util-sizing`} component={UtilSizing}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/util-spacing`} component={UtilSpacing}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/util-text`} component={UtilText}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/table-basic`} component={BasicTable}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/table-datatable`} component={DataTablePage}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/table-special`} component={SpecialTablePage}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/charts/chartjs`} component={ChartPage}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/charts/knobs`} component={KnobPreview}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/nioicon`} component={NioIconPage}></Route>
 				<Route component={RedirectAs404}></Route>
-				{/* <Route exact path={`${process.env.PUBLIC_URL}/app-messages`} component={AppMessages}></Route>
-			<Route exact path={`${process.env.PUBLIC_URL}/app-chat`} component={Chat}></Route>
-			<Route exact path={`${process.env.PUBLIC_URL}/app-calender`} component={Calender}></Route>*/}
 			</Switch>
 		</Suspense>
 	);

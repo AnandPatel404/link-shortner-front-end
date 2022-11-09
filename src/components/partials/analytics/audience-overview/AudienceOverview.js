@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Line } from "react-chartjs-2";
-import { Icon } from "../../../Component";
 import userLinkAnalysis from "../../../../zustand/linkAnaliysis/linkAnaliysis";
 import { Spinner } from "reactstrap";
 
@@ -8,6 +7,10 @@ const AudienceOverview = ({ totalClick, id }) => {
 	const [shortedData, setShortedData] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [shortedTimes, setShortedTImes] = useState([]);
+	const [reaching, setReaching] = useState({
+		percentageOfReaching: 0,
+		percentageOfReachingError: 0,
+	});
 	const { linkAnalysis } = userLinkAnalysis((state) => ({
 		linkAnalysis: state.linkAnalysis,
 	}));
@@ -16,6 +19,10 @@ const AudienceOverview = ({ totalClick, id }) => {
 		const data = await linkAnalysis(id, setLoading);
 		setShortedData(data.data.data.finalData);
 		setShortedTImes(data.data.data.newDates);
+		setReaching({
+			percentageOfReaching: data.data.data.percentageOfReaching,
+			percentageOfReachingError: data.data.data.percentageOfReachingError,
+		});
 	}, [id, linkAnalysis]);
 
 	useEffect(() => {
@@ -96,18 +103,12 @@ const AudienceOverview = ({ totalClick, id }) => {
 								<div className="amount">{totalClick}</div>
 							</div>
 							<div className="analytic-data analytic-ov-data">
-								<div className="title">Users</div>
-								<div className="amount">{auOverview === "month-1" ? "28.25" : "10.25"}%</div>
-								<div className="change down">
-									<Icon name="arrow-long-down"></Icon> {auOverview === "month-1" ? "12.57" : "18.21"}%
-								</div>
+								<div className="title">Users Reach Link</div>
+								<div className="amount">{reaching.percentageOfReaching}%</div>
 							</div>
 							<div className="analytic-data analytic-ov-data">
-								<div className="title">Users</div>
-								<div className="amount">{auOverview === "month-1" ? "7m 28" : "2m 36"}s</div>
-								<div className="change down">
-									<Icon name="arrow-long-down"></Icon> {auOverview === "month-1" ? "0.35" : "1.21"}%
-								</div>
+								<div className="title">Users Reach Error Page</div>
+								<div className="amount">{reaching.percentageOfReachingError}%</div>
 							</div>
 						</div>
 						<div className="analytic-ov-ck">
