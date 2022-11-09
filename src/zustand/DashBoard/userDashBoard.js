@@ -1,6 +1,7 @@
 import create from "zustand";
 import axios from "../../axios/axiosconfig";
 import { messageToast, errorToast } from "../../pages/components/misc/ReactToastify";
+import userSubStore from "../Subscription/sub";
 
 const userActivity = create((set, get) => ({
 	userActivitys: [],
@@ -8,7 +9,6 @@ const userActivity = create((set, get) => ({
 	AllLinksLength: "",
 	links: [],
 	allLinks: [],
-	subscription: {},
 	plan: [],
 	browser: [],
 	getuserActivity: async () => {
@@ -31,7 +31,7 @@ const userActivity = create((set, get) => ({
 			.then((res) => {
 				set({ linksLength: res.data.data.links.length });
 				set({ links: res.data.data.links });
-				set({ subscription: res.data.data.subscriptions });
+				userSubStore.setState({ subscription: res.data.data.subscriptions });
 				setLoadingTwo(false);
 			})
 			.catch((err) => {

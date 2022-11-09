@@ -10,21 +10,25 @@ import a from "../images/svg/dashboard-limit.svg";
 import d from "../images/svg/domain.svg";
 import rocketSvg from "../images/svg/dashboard.svg";
 import useUserDashBoard from "../zustand/DashBoard/userDashBoard";
+import userSubStore from "../zustand/Subscription/sub";
 import { Link } from "react-router-dom";
 import Loader from "./Loader/Loader";
 
 const RecentInvest = lazy(() => import("../components/partials/invest/recent-investment/RecentInvest"));
 const Head = lazy(() => import("../layout/head/Head"));
 const Content = lazy(() => import("../layout/content/Content"));
+
 const InvestHomePage = () => {
+	const { subscriptions } = userSubStore((state) => ({
+		subscriptions: state.subscription,
+	}));
 	const [loading, setLoading] = useState(false);
 	const [loadingTwo, setLoadingTwo] = useState(true);
-	const { linksLength, links, quickShort, subscription, userDashBoard } = useUserDashBoard(
+	const { linksLength, links, quickShort, userDashBoard } = useUserDashBoard(
 		(state) => ({
 			linksLength: state.linksLength,
 			links: state.links,
 			quickShort: state.quickShort,
-			subscription: state.subscription,
 			userDashBoard: state.userDashBoard,
 		}),
 		shallow
@@ -79,7 +83,7 @@ const InvestHomePage = () => {
 												</div>
 											</div>
 											<div className="card-amount">
-												<span className="amount mt-2">{`${subscription.planId?.plan_name} plan`}</span>
+												<span className="amount mt-2">{`${subscriptions.planId?.plan_name} plan`}</span>
 											</div>
 										</Col>
 										<Col lg="4">
@@ -98,7 +102,7 @@ const InvestHomePage = () => {
 												</div>
 											</div>
 											<div className="card-amount">
-												<span className="amount mt-2">{subscription.subscription_status}</span>
+												<span className="amount mt-2">{subscriptions.subscription_status}</span>
 											</div>
 										</Col>
 										<Col lg="4">
@@ -118,7 +122,7 @@ const InvestHomePage = () => {
 												</div>
 											</div>
 											<div className="card-amount">
-												<span className="amount mt-2">{subscription.link_creating_limit}</span>
+												<span className="amount mt-2">{subscriptions.link_creating_limit}</span>
 											</div>
 										</Col>
 										<Col lg="4">
@@ -127,7 +131,7 @@ const InvestHomePage = () => {
 									</Row>
 								</PreviewAltCard>
 							</Col>
-							{subscription.custom_domain_limit > 0 ? (
+							{subscriptions.custom_domain_limit > 0 ? (
 								<Col md="4" lg="4" xl="4" xxl="4">
 									<PreviewAltCard className="card-full">
 										<Row>
@@ -138,7 +142,7 @@ const InvestHomePage = () => {
 													</div>
 												</div>
 												<div className="card-amount">
-													<span className="amount mt-2">{subscription.custom_domain_limit}</span>
+													<span className="amount mt-2">{subscriptions.custom_domain_limit}</span>
 												</div>
 											</Col>
 											<Col lg="4">

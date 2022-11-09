@@ -5,7 +5,7 @@ import User from "./dropdown/user/User";
 // import Notification from "./dropdown/notification/Notification";
 import Mode from "./dropdown/mode/mode";
 import "./style.css";
-import userActivity from "../../zustand/DashBoard/userDashBoard";
+import userSubscription from "../../zustand/Subscription/sub";
 
 const Header = ({ fixed, theme, className, setVisibility, ...props }) => {
 	const headerClass = classNames({
@@ -15,7 +15,7 @@ const Header = ({ fixed, theme, className, setVisibility, ...props }) => {
 		[`is-${theme}`]: theme !== "white" && theme !== "light",
 		[`${className}`]: className,
 	});
-	const sub = userActivity((state) => state.subscription);
+	const sub = userSubscription((state) => state.subscription);
 	const date = new Date(sub.expireAt).setDate(new Date(sub.expireAt).getDate() - 6);
 	return (
 		<div className={`${headerClass} mt-md-2 borderReduis mx-md-4 `}>

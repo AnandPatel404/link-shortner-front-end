@@ -53,7 +53,6 @@ const NioIconPage = lazy(() => import("../pages/components/crafted-icons/NioIcon
 
 const ProjectListPage = lazy(() => import("../pages/pre-built/projects/ProjectList"));
 const UserProfileLayout = lazy(() => import("../pages/pre-built/user-manage/UserProfileLayout"));
-const KycListRegular = lazy(() => import("../pages/pre-built/kyc-list-regular/KycListRegular"));
 const KycDetailsRegular = lazy(() => import("../pages/pre-built/kyc-list-regular/kycDetailsRegular"));
 const TransListBasic = lazy(() => import("../pages/pre-built/trans-list/TransListBasic"));
 const TransListCrypto = lazy(() => import("../pages/pre-built/trans-list/TransListCrypto"));
@@ -115,8 +114,6 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/device-targeting`} component={FullShort}></Route>
 
 				{/*Pre-built Pages*/}
-
-				<Route exact path={`${process.env.PUBLIC_URL}/kyc-list-regular`} component={KycListRegular}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/transaction-basic`} component={TransListBasic}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/transaction-crypto`} component={TransListCrypto}></Route>
 

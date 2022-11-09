@@ -18,6 +18,7 @@ import {
 } from "../../../components/Component";
 import { Link } from "react-router-dom";
 import usersDashBoard from "../../../zustand/DashBoard/userDashBoard";
+import userSubStore from "../../../zustand/Subscription/sub";
 const BrowserUser = lazy(() => import("../../../components/partials/analytics/browser-users/BrowserUser"));
 const SessionDevice = lazy(() => import("../../../components/partials/analytics/session-devices/SessionDevice"));
 const TrafficChannel = lazy(() => import("../../../components/partials/analytics/traffic-channel/Traffic"));
@@ -28,8 +29,11 @@ const KycDetailsRegular = ({ match }) => {
 	const [loading, setLoading] = useState(true);
 	const [link, setLink] = useState({});
 	const [qr, setQr] = useState({});
-	const { getLinkById, sub } = usersDashBoard((state) => ({
+	const { getLinkById } = usersDashBoard((state) => ({
 		getLinkById: state.getLinkById,
+	}));
+
+	const { sub } = userSubStore((state) => ({
 		sub: state.subscription,
 	}));
 
