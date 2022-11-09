@@ -1,23 +1,7 @@
 import React, { Suspense, useLayoutEffect, lazy } from "react";
 import { Switch, Route } from "react-router-dom";
 import { RedirectAs404 } from "../utils/Utils";
-import { Spinner } from "reactstrap";
 import Loader from "../pages/Loader/Loader";
-
-const Component = lazy(() => import("../pages/components/Index"));
-const Carousel = lazy(() => import("../pages/components/Carousel"));
-const Dropdowns = lazy(() => import("../pages/components/Dropdowns"));
-const FormElements = lazy(() => import("../pages/components/forms/FormElements"));
-const FormLayouts = lazy(() => import("../pages/components/forms/FormLayouts"));
-const FormValidation = lazy(() => import("../pages/components/forms/FormValidation"));
-const Modals = lazy(() => import("../pages/components/Modals"));
-const Pagination = lazy(() => import("../pages/components/Pagination"));
-const Popovers = lazy(() => import("../pages/components/Popovers"));
-const Progress = lazy(() => import("../pages/components/Progress"));
-const CheckboxRadio = lazy(() => import("../pages/components/forms/CheckboxRadio"));
-const InputGroup = lazy(() => import("../pages/components/forms/InputGroup"));
-const FormUpload = lazy(() => import("../pages/components/forms/FormUpload"));
-const NumberSpinner = lazy(() => import("../pages/components/forms/NumberSpinner"));
 
 const Blank = lazy(() => import("../pages/others/Blank"));
 const Faq = lazy(() => import("../pages/others/Faq"));
@@ -35,7 +19,6 @@ const ProductList = lazy(() => import("../pages/pre-built/products/ProductList")
 const InvoiceList = lazy(() => import("../pages/pre-built/invoice/InvoiceList"));
 const InvoiceDetails = lazy(() => import("../pages/pre-built/invoice/InvoiceDetails"));
 const PricingTable = lazy(() => import("../pages/pre-built/pricing-table/PricingTable"));
-const DateTimePicker = lazy(() => import("../pages/components/forms/DateTimePicker"));
 const ChangePassword = lazy(() => import("../pages/auth/changePassword"));
 const Editlink = lazy(() => import("../pages/pre-built/editLink/editlink"));
 const AddDomain = lazy(() => import("../pages/pre-built/domain/addDomain"));
@@ -94,23 +77,6 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/pages/regular-v1`} component={Regularv1}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/pages/regular-v2`} component={Regularv2}></Route>
 
-				{/*Components*/}
-				<Route exact path={`${process.env.PUBLIC_URL}/components`} component={Component}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/carousel`} component={Carousel}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/dropdowns`} component={Dropdowns}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/form-elements`} component={FormElements}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/form-layouts`} component={FormLayouts}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/checkbox-radio`} component={CheckboxRadio}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/input-group`} component={InputGroup}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/form-upload`} component={FormUpload}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/number-spinner`} component={NumberSpinner}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/form-validation`} component={FormValidation}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/datetime-picker`} component={DateTimePicker}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/modals`} component={Modals}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/pagination`} component={Pagination}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/popovers`} component={Popovers}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/progress`} component={Progress}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/components/spinner`} component={Spinner}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/nioicon`} component={NioIconPage}></Route>
 				<Route component={RedirectAs404}></Route>
 			</Switch>
