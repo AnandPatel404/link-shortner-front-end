@@ -20,6 +20,7 @@ function VerifyOtp({ history }) {
 			email: localStorage.getItem("email"),
 			otp: formData.otp,
 		};
+		console.log(data);
 		await verifyOtp(data, history, setLoading);
 	};
 	const ReSendOtp = useUserAuth((state) => state.ReSendOtp);
@@ -80,13 +81,13 @@ function VerifyOtp({ history }) {
 										<div className="form-control-wrap">
 											<input
 												type="number"
-												id="Otp"
+												id="otp"
 												name="otp"
 												ref={register({ required: "This field is required" })}
 												placeholder="Enter Otp"
 												className="form-control-lg form-control is-shown"
 											/>
-											{errors.number && <span className="invalid">{errors.number.message}</span>}
+											{errors.otp && <span className="invalid">{errors.otp.message}</span>}
 										</div>
 									</FormGroup>
 									<FormGroup>

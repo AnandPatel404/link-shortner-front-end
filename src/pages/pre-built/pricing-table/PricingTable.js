@@ -79,109 +79,113 @@ const PricingTable = () => {
 								<div class="pricing-wrapper">
 									<div class="row gx-2 gy-6 mt-2">
 										{data.length > 0
-											? data.map((item) => (
-													<div class="col-md-6 col-lg-3" key={item.id}>
-														<div class="pricing card shadow-lg">
-															<div class="card-body">
-																<h4 class="card-title">{item.plan_name}</h4>
-																<div class="prices text-dark">
-																	<div class="price price-show justify-content-start">
-																		<span class="price-currency">$</span>
-																		<span class="price-value">{item.plan_price}</span>{" "}
-																		<span class="price-duration"> {item.validity} days</span>
+											? data.map((item) =>
+													item.plan_name !== "free" ? (
+														<div class="col-md-6 col-lg-3" key={item.id}>
+															<div class="pricing card shadow-lg">
+																<div class="card-body">
+																	<h4 class="card-title">{item.plan_name}</h4>
+																	<div class="prices text-dark">
+																		<div class="price price-show justify-content-start">
+																			<span class="price-currency">$</span>
+																			<span class="price-value">{item.plan_price}</span>{" "}
+																			<span class="price-duration"> {item.validity} days</span>
+																		</div>
 																	</div>
-																</div>
 
-																<ul class="icon-list bullet-bg bullet-soft-primary mt-7 mb-8">
-																	<li>
-																		<Icon name="check-fill-c" className="text-yellow" />
-																		<span>
-																			{" "}
-																			7/24 <strong>Support</strong>
-																		</span>
-																	</li>
-																	<li>
-																		<Icon name="check-fill-c" className="text-yellow" />
-																		<span>
-																			<strong>{item.link_creating_limit}</strong> Link creating{" "}
-																		</span>
-																	</li>
-																	{item.custom_domain ? (
+																	<ul class="icon-list bullet-bg bullet-soft-primary mt-7 mb-8">
 																		<li>
 																			<Icon name="check-fill-c" className="text-yellow" />
 																			<span>
-																				<strong>{item.custom_domain_limit}</strong> Custom Domain{" "}
+																				{" "}
+																				7/24 <strong>Support</strong>
 																			</span>
 																		</li>
-																	) : (
-																		<li>
-																			<Icon name="cross-fill-c" className="text-danger" />
-																			<span>
-																				<strong>{item.custom_domain_limit}</strong> Custom Domain{" "}
-																			</span>
-																		</li>
-																	)}
-																	{item.api_webhook ? (
 																		<li>
 																			<Icon name="check-fill-c" className="text-yellow" />
 																			<span>
-																				<strong>{item.api_webhook_limit}</strong> Api Hit per Day{" "}
+																				<strong>{item.link_creating_limit}</strong> Link creating{" "}
 																			</span>
 																		</li>
-																	) : (
-																		<li>
-																			<Icon name="cross-fill-c" className="text-danger" />
-																			<span>
-																				<strong>{item.api_webhook_limit}</strong> Api Hit per Day{" "}
-																			</span>
-																		</li>
-																	)}
-																	{item.qr_link ? (
-																		<li>
-																			<Icon name="check-fill-c" className="text-yellow" />
-																			<span>
-																				<strong>{item.qr_link_limit}</strong> QR{" "}
-																			</span>
-																		</li>
-																	) : (
-																		<li>
-																			<Icon name="cross-fill-c" className="text-danger" />
-																			<span>
-																				<strong>{item.qr_link_limit}</strong> QR{" "}
-																			</span>
-																		</li>
-																	)}
-																	{item.custom_link_redirect ? (
-																		<li>
-																			<Icon name="check-fill-c" className="text-yellow" />
-																			<span>
-																				<strong>{item.custom_link_redirect_limit}</strong> Custom Link
-																				Redirect{" "}
-																			</span>
-																		</li>
-																	) : (
-																		<li>
-																			<Icon name="cross-fill-c" className="text-danger" />
-																			<span>
-																				<strong>{item.custom_link_redirect_limit}</strong> Custom Link
-																				Redirect{" "}
-																			</span>
-																		</li>
-																	)}
-																</ul>
-																<Button
-																	className="btn btn-primary rounded-pill"
-																	type="button"
-																	onClick={() => {
-																		choosePlan(item.id, item.plan_name);
-																	}}
-																>
-																	Choose Plan
-																</Button>
+																		{item.custom_domain ? (
+																			<li>
+																				<Icon name="check-fill-c" className="text-yellow" />
+																				<span>
+																					<strong>{item.custom_domain_limit}</strong> Custom Domain{" "}
+																				</span>
+																			</li>
+																		) : (
+																			<li>
+																				<Icon name="cross-fill-c" className="text-danger" />
+																				<span>
+																					<strong>{item.custom_domain_limit}</strong> Custom Domain{" "}
+																				</span>
+																			</li>
+																		)}
+																		{item.api_webhook ? (
+																			<li>
+																				<Icon name="check-fill-c" className="text-yellow" />
+																				<span>
+																					<strong>{item.api_webhook_limit}</strong> Api Hit per Day{" "}
+																				</span>
+																			</li>
+																		) : (
+																			<li>
+																				<Icon name="cross-fill-c" className="text-danger" />
+																				<span>
+																					<strong>{item.api_webhook_limit}</strong> Api Hit per Day{" "}
+																				</span>
+																			</li>
+																		)}
+																		{item.qr_link ? (
+																			<li>
+																				<Icon name="check-fill-c" className="text-yellow" />
+																				<span>
+																					<strong>{item.qr_link_limit}</strong> QR{" "}
+																				</span>
+																			</li>
+																		) : (
+																			<li>
+																				<Icon name="cross-fill-c" className="text-danger" />
+																				<span>
+																					<strong>{item.qr_link_limit}</strong> QR{" "}
+																				</span>
+																			</li>
+																		)}
+																		{item.custom_link_redirect ? (
+																			<li>
+																				<Icon name="check-fill-c" className="text-yellow" />
+																				<span>
+																					<strong>{item.custom_link_redirect_limit}</strong> Custom Link
+																					Redirect{" "}
+																				</span>
+																			</li>
+																		) : (
+																			<li>
+																				<Icon name="cross-fill-c" className="text-danger" />
+																				<span>
+																					<strong>{item.custom_link_redirect_limit}</strong> Custom Link
+																					Redirect{" "}
+																				</span>
+																			</li>
+																		)}
+																	</ul>
+																	<Button
+																		className="btn btn-primary rounded-pill"
+																		type="button"
+																		onClick={() => {
+																			choosePlan(item.id, item.plan_name);
+																		}}
+																	>
+																		Choose Plan
+																	</Button>
+																</div>
 															</div>
 														</div>
-													</div>
-											  ))
+													) : (
+														""
+													)
+											  )
 											: null}
 									</div>
 								</div>

@@ -73,17 +73,6 @@ const UserProfileRegularPage = ({ sm, updateSm, setProfileName }) => {
 							</span>
 						</div>
 					</div>
-					<div className="data-item" onClick={() => setModal(true)}>
-						<div className="data-col">
-							<span className="data-label">Number</span>
-							<span className="data-value">{userInfo.number}</span>
-						</div>
-						<div className="data-col data-col-end">
-							<span className="data-more">
-								<Icon name="forward-ios"></Icon>
-							</span>
-						</div>
-					</div>
 				</div>
 				<div className="data-item">
 					<div className="data-col">
