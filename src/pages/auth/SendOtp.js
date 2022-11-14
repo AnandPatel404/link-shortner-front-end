@@ -1,59 +1,25 @@
-import React, { useState, useEffect } from "react";
-import axios from "../../axios/axiosconfig";
+import React, { useState } from "react";
 import Logo from "../../images/only-charecter.svg";
 import LogoDark from "../../images/only-charecter.svg";
 import PageContainer from "../../layout/page-container/PageContainer";
 import Head from "../../layout/head/Head";
-import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button, PreviewCard, RSelect } from "../../components/Component";
+import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button, PreviewCard } from "../../components/Component";
 import { Form, FormGroup, Spinner, Row, Col } from "reactstrap";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { errorToast } from "../../pages/components/misc/ReactToastify";
 import fevIcon from "../../images/svg/fevicon-and-logo.svg";
 import useUserAuth from "../../zustand/auth/userAuth";
 import o from "../../images/svg/oo.svg";
 
 function SendOtp({ history }) {
 	const [loading, setLoading] = useState(false);
-	const [option, setOption] = useState([]);
-	const [CountryCodes, setCountryCodes] = useState("");
-	const getCountryCode = async () => {
-		await axios({
-			method: "get",
-			url: "auth/country-code",
-		})
-			.then((res) => {
-				if (res.data.status === "Success") {
-					let a = [];
-					res.data.data.forEach((e) => {
-						a.push({ value: e.dial_code, label: `${e.dial_code} ${e.name}` });
-					});
-					setOption(a);
-				}
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-	};
-	useEffect(() => {
-		getCountryCode();
-	}, []);
-
 	const sendOtp = useUserAuth((state) => state.sendOtp);
 	const onFormSubmit = async (formData) => {
-		if (!CountryCodes || CountryCodes === null || CountryCodes === undefined || CountryCodes === " ") {
-			return errorToast("Please select the country code");
-		}
 		setLoading(!loading);
-		const newCode = CountryCodes.slice(1);
 		const data = {
-			number: formData.number,
-			countryCode: newCode,
+			email: formData.email,
 		};
 		await sendOtp(data, history, setLoading);
-	};
-	const countryCode = (e) => {
-		setCountryCodes(e.value);
 	};
 	const { errors, register, handleSubmit } = useForm();
 	return (
@@ -78,7 +44,7 @@ function SendOtp({ history }) {
 							</BlockHead>
 						</div>
 					</Col>
-					<Col lg="4">
+					<Col lg="4" className="d-flex flex-column justify-content-center">
 						<Block className="nk-auth-body py-5 my-5 wide-s">
 							<PreviewCard className="border-0" bodyClass="card-inner-lg" style={{ backgroundColor: "#f5f6fa" }}>
 								<div className="brand-logo pb-4">
@@ -91,42 +57,27 @@ function SendOtp({ history }) {
 									<BlockContent>
 										<BlockTitle tag="h3">Send Otp</BlockTitle>
 										<BlockDes>
-											<p>Otp will send to your WhatsApp number</p>
+											<p>Otp Will Send To Your Email</p>
 										</BlockDes>
 									</BlockContent>
 								</BlockHead>
 								<Form className="is-alter" onSubmit={handleSubmit(onFormSubmit)}>
 									<FormGroup>
 										<div className="form-label-group">
-											<label className="form-label" htmlFor="default-01">
-												Country Code
-											</label>
-										</div>
-										<div className="form-control-wrap">
-											<RSelect
-												options={option}
-												className=""
-												placeholder="Country Code"
-												onChange={(e) => countryCode(e)}
-											></RSelect>
-										</div>
-									</FormGroup>
-									<FormGroup>
-										<div className="form-label-group">
-											<label className="form-label" htmlFor="number">
-												Number
+											<label className="form-label" htmlFor="email">
+												Email
 											</label>
 										</div>
 										<div className="form-control-wrap">
 											<input
-												type="number"
-												id="number"
-												name="number"
+												type="email"
+												id="email"
+												name="email"
 												ref={register({ required: "This field is required" })}
-												placeholder="Enter your WhatsApp number"
+												placeholder="Enter Your Email"
 												className="form-control-lg form-control is-shown"
 											/>
-											{errors.number && <span className="invalid">{errors.number.message}</span>}
+											{errors.email && <span className="invalid">{errors.email.message}</span>}
 										</div>
 									</FormGroup>
 									<FormGroup>

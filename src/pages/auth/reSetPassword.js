@@ -15,7 +15,7 @@ const ResetPassword = ({ history }) => {
 	const onFormSubmit = async (formData) => {
 		setLoading(true);
 		const data = {
-			number: localStorage.getItem("number"),
+			email: localStorage.getItem("email"),
 			password: formData.password,
 		};
 		await passwordReset(data, history, setLoading);

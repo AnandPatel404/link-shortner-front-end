@@ -29,8 +29,7 @@ const Register = ({ history }) => {
 		setLoading(true);
 		const data = {
 			...formData,
-			number: localStorage.getItem("number"),
-			countryCode: localStorage.getItem("countryCode"),
+			email: localStorage.getItem("email"),
 			gender: Gender,
 		};
 		await registerUser(data, history, setLoading);
@@ -89,24 +88,6 @@ const Register = ({ history }) => {
 												className="form-control-lg form-control"
 											/>
 											{errors.name && <p className="invalid">This field is required</p>}
-										</div>
-									</FormGroup>
-									<FormGroup>
-										<div className="form-label-group">
-											<label className="form-label" htmlFor="default-01">
-												Email
-											</label>
-										</div>
-										<div className="form-control-wrap">
-											<input
-												type="email"
-												id="default-01"
-												name="email"
-												ref={register({ required: true })}
-												className="form-control-lg form-control"
-												placeholder="Enter your email address "
-											/>
-											{errors.email && <p className="invalid">This field is required</p>}
 										</div>
 									</FormGroup>
 									<FormGroup>

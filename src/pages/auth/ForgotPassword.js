@@ -1,56 +1,21 @@
-import React, { useState, useEffect } from "react";
-import axios from "../../axios/axiosconfig";
+import React, { useState} from "react";
 import { useForm } from "react-hook-form";
 import Logo from "../../images/only-charecter.svg";
 import LogoDark from "../../images/only-charecter.svg";
 import PageContainer from "../../layout/page-container/PageContainer";
 import Head from "../../layout/head/Head";
 import AuthFooter from "./AuthFooter";
-import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button, PreviewCard, RSelect } from "../../components/Component";
+import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button, PreviewCard } from "../../components/Component";
 import { FormGroup, Form, Spinner } from "reactstrap";
 import useUserAuth from "../../zustand/auth/userAuth";
-import { errorToast } from "../../pages/components/misc/ReactToastify";
 import { Link } from "react-router-dom";
 
 const ForgotPassword = ({ history }) => {
 	const [loading, setLoading] = useState(false);
-	const [CountryCodes, setCountryCodes] = useState("");
-	const [option, setOption] = useState([]);
-	const getCountryCode = async () => {
-		await axios({
-			method: "get",
-			url: "auth/country-code",
-		})
-			.then((res) => {
-				if (res.data.status === "Success") {
-					let a = [];
-					res.data.data.forEach((e) => {
-						a.push({ value: e.dial_code, label: `${e.dial_code} ${e.name}` });
-					});
-					setOption(a);
-				}
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-	};
-	useEffect(() => {
-		getCountryCode();
-	}, []);
-	const countryCode = (e) => {
-		setCountryCodes(e.value);
-	};
 	const sendOtp = useUserAuth((state) => state.forgotPassword);
 	const onFormSubmit = async (formData) => {
-		if (!CountryCodes || CountryCodes === null || CountryCodes === undefined || CountryCodes === " ") {
-			return errorToast("Please select the country code");
-		}
 		setLoading(!loading);
-		const newCode = CountryCodes.slice(1);
-		const data = {
-			number: formData.number,
-			countryCode: newCode,
-		};
+		const data = {};
 		await sendOtp(data, history, setLoading);
 	};
 	const { errors, register, handleSubmit } = useForm();
@@ -77,30 +42,20 @@ const ForgotPassword = ({ history }) => {
 						<Form className="is-alter" onSubmit={handleSubmit(onFormSubmit)}>
 							<FormGroup>
 								<div className="form-label-group">
-									<label className="form-label" htmlFor="default-01">
-										Country Code
-									</label>
-								</div>
-								<div className="form-control-wrap">
-									<RSelect options={option} className="" placeholder="Country Code" onChange={(e) => countryCode(e)}></RSelect>
-								</div>
-							</FormGroup>
-							<FormGroup>
-								<div className="form-label-group">
-									<label className="form-label" htmlFor="number">
-										Number
+									<label className="form-label" htmlFor="email">
+										Email
 									</label>
 								</div>
 								<div className="form-control-wrap">
 									<input
-										type="number"
-										id="number"
-										name="number"
+										type="email"
+										id="email"
+										name="email"
 										ref={register({ required: "This field is required" })}
-										placeholder="Enter your number"
+										placeholder="Enter your Email"
 										className="form-control-lg form-control is-shown"
 									/>
-									{errors.number && <span className="invalid">{errors.number.message}</span>}
+									{errors.email && <span className="invalid">{errors.email.message}</span>}
 								</div>
 							</FormGroup>
 							<FormGroup>

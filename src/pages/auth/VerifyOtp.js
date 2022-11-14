@@ -17,7 +17,7 @@ function VerifyOtp({ history }) {
 	const onFormSubmit = async (formData) => {
 		setLoading(true);
 		const data = {
-			number: localStorage.getItem("number"),
+			email: localStorage.getItem("email"),
 			otp: formData.otp,
 		};
 		await verifyOtp(data, history, setLoading);
@@ -26,8 +26,7 @@ function VerifyOtp({ history }) {
 	const reSendOtp = async () => {
 		setLoadingTwo(true);
 		const data = {
-			number: localStorage.getItem("number"),
-			countryCode: localStorage.getItem("countryCode"),
+			email: localStorage.getItem("email"),
 		};
 		await ReSendOtp(data, setLoadingTwo);
 	};

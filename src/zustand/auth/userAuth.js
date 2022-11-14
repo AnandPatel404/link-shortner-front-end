@@ -12,8 +12,7 @@ const useUserAuth = create((set) => ({
 				if (res.data.status === "Success") {
 					messageToast(`${res.data.message}`, res.data.status);
 					history.push(`${process.env.PUBLIC_URL}/auth-verify-otp`);
-					localStorage.setItem("number", data.number);
-					localStorage.setItem("countryCode", data.countryCode);
+					localStorage.setItem("email", data.email);
 				}
 			})
 			.catch((err) => {
