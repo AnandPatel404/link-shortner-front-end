@@ -64,8 +64,7 @@ const useUserAuth = create((set) => ({
 				if (res.data.status === "Success") {
 					messageToast(`${res.data.message}`, res.data.status);
 					history.push(`${process.env.PUBLIC_URL}/auth-success`);
-					localStorage.removeItem("number");
-					localStorage.removeItem("countryCode");
+					localStorage.removeItem("email");
 				}
 			})
 			.catch((err) => {
@@ -114,8 +113,7 @@ const useUserAuth = create((set) => ({
 				if (res.data.status === "Success") {
 					messageToast(`${res.data.message}`, res.data.status);
 					history.push(`${process.env.PUBLIC_URL}/auth-verify-otp-for-reset-password`);
-					localStorage.setItem("number", data.number);
-					localStorage.setItem("countryCode", data.countryCode);
+					localStorage.setItem("email", data.email);
 				}
 			})
 			.catch((err) => {
@@ -152,8 +150,7 @@ const useUserAuth = create((set) => ({
 				if (res.data.status === "Success") {
 					messageToast(`${res.data.message}`, res.data.status);
 					history.push(`${process.env.PUBLIC_URL}/auth-login`);
-					localStorage.removeItem("number");
-					localStorage.removeItem("countryCode");
+					localStorage.removeItem("email");
 				}
 			})
 			.catch((err) => {
