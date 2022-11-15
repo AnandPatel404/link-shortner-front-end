@@ -1,16 +1,26 @@
 import create from "zustand";
 import axios from "../../axios/axiosconfig";
+import { messageToast, errorToast } from "../../pages/components/misc/ReactToastify";
 
 const useqrCode = create((set) => ({
-	allQr: [],
-
 	getAllQr: async () => {
-		await axios({
+		const data = await axios({
 			method: "get",
 			url: "qr-link/all-qr",
-		}).then((res) => {
-			set({ allQr: res.data.data });
 		});
+		return data;
+	},
+	deleteQr: async (id) => {
+		await axios({
+			method: "delete",
+			url: `qr-link/${id}`,
+		})
+			.then((res) => {
+				messageToast(res.data.message, res.data.status);
+			})
+			.catch((err) => {
+				errorToast(err.response.data.message, "Error");
+			});
 	},
 }));
 

@@ -10,7 +10,7 @@ const Regularv2 = lazy(() => import("../pages/others/Regular-2"));
 const Terms = lazy(() => import("../pages/others/Terms"));
 const NioIconPage = lazy(() => import("../pages/components/crafted-icons/NioIcon"));
 
-const ProjectListPage = lazy(() => import("../pages/pre-built/projects/ProjectList"));
+const QrList = lazy(() => import("../pages/pre-built/projects/QrList"));
 const UserProfileLayout = lazy(() => import("../pages/pre-built/user-manage/UserProfileLayout"));
 const KycDetailsRegular = lazy(() => import("../pages/pre-built/kyc-list-regular/kycDetailsRegular"));
 const TransListBasic = lazy(() => import("../pages/pre-built/trans-list/TransListBasic"));
@@ -38,7 +38,7 @@ const Pages = () => {
 				{/*Dashboards and used route*/}
 				<Route exact path={`${process.env.PUBLIC_URL}/`} component={Invest}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/all-links`} component={ProductList}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/qr-list`} component={ProjectListPage}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/qr-list`} component={QrList}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/_blank`} component={Blank}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/link/:id`} component={KycDetailsRegular}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/link-details/:id`} component={Editlink}></Route>

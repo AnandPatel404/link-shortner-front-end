@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Head from "../../../layout/head/Head";
 import Content from "../../../layout/content/Content";
 import { DropdownMenu, DropdownToggle, UncontrolledDropdown, FormGroup, ModalBody, Modal, DropdownItem, Form } from "reactstrap";
@@ -21,66 +21,49 @@ import {
 import { Link } from "react-router-dom";
 import useqrCode from "../../../zustand/qrCode/qrCode";
 
-export const ProjectListPage = () => {
+export const QrList = () => {
 	const [itemPerPage] = useState(7);
 	const [currentPage, setCurrentPage] = useState(1);
-	const { getAllQr, data } = useqrCode((state) => ({
-		data: state.allQr,
+	const [data, setData] = useState([]);
+	const { getAllQr, deleteQr } = useqrCode((state) => ({
 		getAllQr: state.getAllQr,
+		deleteQr: state.deleteQr,
 	}));
 
-	useEffect(() => {
-		getAllQr();
+	const getData = useCallback(async () => {
+		const data = await getAllQr();
+		console.log(data.data.data);
+		setData(data.data.data);
 	}, [getAllQr]);
 
-	const [sm, updateSm] = useState(false);
+	useEffect(() => {
+		getData();
+	}, [getData]);
+
 	const [modal, setModal] = useState({
 		edit: false,
 		add: false,
 	});
 
-	// function to change the check property of an item
-	// const selectorCheck = (e) => {
-	// 	let newData;
-	// 	newData = data.map((item) => {
-	// 		item.checked = e.currentTarget.checked;
-	// 		return item;
-	// 	});
-	// 	// setData([...newData]);
-	// };
-
-	// function to delete the seletected item
-	// const selectorDeleteProject = () => {
-	// 	let newData;
-	// 	newData = data.filter((item) => item.checked !== true);
-	// 	// setData([...newData]);
-	// };
-
-	// function to change the check property of selected item
-	const onSelectChange = (e, id) => {
-		let newData = data;
-		let index = newData.findIndex((item) => item.id === id);
-		newData[index].checked = e.currentTarget.checked;
-		// setData([...newData]);
+	const deleteProduct = async (id) => {
+		await deleteQr(id);
+		getData();
 	};
-
 	const currentItems = data;
-	console.log(currentItems);
 
 	// Change Page
 	const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
 	return (
 		<React.Fragment>
-			<Head title="Project List"></Head>
+			<Head title="Qr List"></Head>
 			<Content>
 				<BlockHead size="sm">
 					<BlockBetween>
 						<BlockHeadContent>
 							<BlockTitle page>QR list</BlockTitle>
-							{/* <BlockDes className="text-soft">You have total {data.length} projects</BlockDes> */}
 						</BlockHeadContent>
-						<BlockHeadContent>
+						{/* <BlockHeadContent>
 							<div className="toggle-wrap nk-block-tools-toggle">
 								<Button className={`btn-icon btn-trigger toggle-expand mr-n1 ${sm ? "active" : ""}`} onClick={() => updateSm(!sm)}>
 									<Icon name="menu-alt-r"></Icon>
@@ -136,67 +119,30 @@ export const ProjectListPage = () => {
 									</ul>
 								</div>
 							</div>
-						</BlockHeadContent>
+						</BlockHeadContent> */}
 					</BlockBetween>
 				</BlockHead>
 				<Block>
 					<DataTable className="card-stretch">
 						<DataTableBody>
 							<DataTableHead>
-								<DataTableRow className="nk-tb-col-check"></DataTableRow>
 								<DataTableRow sm>
-									<span>title</span>
+									<span>Title</span>
 								</DataTableRow>
 								<DataTableRow>
-									<span className="d-none d-md-inline-block">shorten</span>
+									<span className="d-none d-md-inline-block">Shorted Link</span>
 								</DataTableRow>
 								<DataTableRow>
-									<span className="d-none d-md-inline-block">time&date</span>
+									<span className="d-none d-md-inline-block">Time & Date</span>
 								</DataTableRow>
-								<DataTableRow className="nk-tb-col-tools">
-									<ul className="nk-tb-actions gx-1 my-n1">
-										<li className="mr-n1">
-											<UncontrolledDropdown>
-												<DropdownToggle
-													tag="a"
-													href="#toggle"
-													onClick={(ev) => ev.preventDefault()}
-													className="dropdown-toggle btn btn-icon btn-trigger"
-												>
-													<Icon name="more-h"></Icon>
-												</DropdownToggle>
-												<DropdownMenu right>
-													<ul className="link-list-opt no-bdr">
-														{/* <li>
-															<DropdownItem tag="a" href="#remove" onClick={selectorDeleteProduct}>
-																<Icon name="trash"></Icon>
-																<span>Remove Selected</span>
-															</DropdownItem>
-														</li> */}
-													</ul>
-												</DropdownMenu>
-											</UncontrolledDropdown>
-										</li>
-									</ul>
+								<DataTableRow>
+									<span className="d-none d-md-inline-block"></span>
 								</DataTableRow>
 							</DataTableHead>
 							{currentItems.length > 0
 								? currentItems.map((item) => {
 										return (
 											<DataTableItem key={item.id}>
-												<DataTableRow className="nk-tb-col-check">
-													<div className="custom-control custom-control-sm custom-checkbox notext">
-														<input
-															type="checkbox"
-															className="custom-control-input form-control"
-															defaultChecked={false}
-															id={item.id + "uid1"}
-															key={Math.random()}
-															onChange={(e) => onSelectChange(e, item.id)}
-														/>
-														<label className="custom-control-label" htmlFor={item.id + "uid1"}></label>
-													</div>
-												</DataTableRow>
 												<DataTableRow sm className="d-flex align-items-center">
 													<img src={item.QRdata} alt="" width={70} className="mx-2" />
 													<span className="tb-product align-items-start d-flex flex-column">
@@ -259,7 +205,7 @@ export const ProjectListPage = () => {
 																				href="#remove"
 																				onClick={(ev) => {
 																					ev.preventDefault();
-																					// deleteProduct(item.id);
+																					deleteProduct(item.id);
 																				}}
 																				className="ml-2"
 																			>
@@ -385,4 +331,4 @@ export const ProjectListPage = () => {
 	);
 };
 
-export default ProjectListPage;
+export default QrList;
