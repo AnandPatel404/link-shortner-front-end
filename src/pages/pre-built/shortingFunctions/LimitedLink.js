@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Content from "../../../layout/content/Content";
 import Head from "../../../layout/head/Head";
 import { useForm } from "react-hook-form";
-import { FormGroup, Row, Col, Form } from "reactstrap";
+import { FormGroup, Row, Col, Form, Spinner } from "reactstrap";
 import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetween } from "../../../components/Component";
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
 import { errorToast } from "../../../pages/components/misc/ReactToastify";
@@ -18,8 +18,11 @@ function LimitedLink({ sm, updateSm }) {
 		sub: state.subscription,
 	}));
 	const [afterUrl, setAfterUrl] = useState(null);
+	const [loading, setLoading] = useState(false);
 	const s = async (sData) => {
+		setLoading(true);
 		if (!SingleLink || SingleLink.length === 0 || !SingleLink.id) {
+			setLoading(false);
 			return errorToast("Please select link first", "Error");
 		}
 		if (afterUrl !== null && afterUrl !== "") {
@@ -28,13 +31,13 @@ function LimitedLink({ sm, updateSm }) {
 				clickCount: sData.number,
 				after_click_limit_reach: afterUrl,
 			};
-			createLimitedLink(data);
+			createLimitedLink(data, setLoading);
 		} else {
 			let datat = {
 				linkId: SingleLink.id,
 				clickCount: sData.number,
 			};
-			createLimitedLink(datat);
+			createLimitedLink(datat, setLoading);
 		}
 	};
 
@@ -116,7 +119,7 @@ function LimitedLink({ sm, updateSm }) {
 								<Col lg="7" className="offset-lg-5">
 									<FormGroup className="mt-2">
 										<Button color="primary" size="lg" type="submit">
-											Save
+											{loading ? <Spinner /> : "Save"}
 										</Button>
 									</FormGroup>
 								</Col>

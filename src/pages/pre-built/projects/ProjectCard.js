@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Head from "../../../layout/head/Head";
 import Content from "../../../layout/content/Content";
 import { Block, BlockHead, BlockBetween, BlockHeadContent, BlockTitle, Row, Button, Col, Icon } from "../../../components/Component";
-import { FormGroup, Form } from "reactstrap";
+import { FormGroup, Form, Spinner } from "reactstrap";
 import { useForm } from "react-hook-form";
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
 import { errorToast } from "../../../pages/components/misc/ReactToastify";
@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 
 const ProjectCardPage = ({ sm, updateSm }) => {
 	const [colorCodes, setColorsCode] = useState("#000000");
+	const [loading, setLoading] = useState(false);
 
 	const { createQr, SingleLink } = userFunctionalityLink((state) => ({
 		createQr: state.createQr,
@@ -26,14 +27,16 @@ const ProjectCardPage = ({ sm, updateSm }) => {
 	};
 
 	const onSubmit = async () => {
+		setLoading(true);
 		if (!SingleLink || !SingleLink.id || SingleLink.length === 0) {
+			setLoading(false);
 			return errorToast("Please select link first", "Error");
 		}
 
 		const data = {
 			qrColor: colorCodes.toString(),
 		};
-		await createQr(data, SingleLink.id);
+		await createQr(data, SingleLink.id, setLoading);
 	};
 
 	const { handleSubmit } = useForm();
@@ -78,7 +81,7 @@ const ProjectCardPage = ({ sm, updateSm }) => {
 								<Col lg="7" className="offset-lg-5">
 									<FormGroup className="mt-2">
 										<Button color="primary" size="lg" type="submit">
-											Save
+											{loading ? <Spinner /> : "Save"}
 										</Button>
 									</FormGroup>
 								</Col>

@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import makeAnimated from "react-select/animated";
 import Content from "../../../layout/content/Content";
 import Head from "../../../layout/head/Head";
 import { useForm } from "react-hook-form";
-import { FormGroup, Row, Col, Form } from "reactstrap";
+import { FormGroup, Row, Col, Form, Spinner } from "reactstrap";
 import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetween, RSelect } from "../../../components/Component";
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
 import userSubStore from "../../../zustand/Subscription/sub";
@@ -16,7 +16,7 @@ function DeviceTargetingLink({ sm, updateSm }) {
 		{ value: "Mac OS", label: "Mac OS" },
 	];
 	const animatedComponents = makeAnimated();
-
+	const [loading, setLoading] = useState(false);
 	const { SingleLink, createDeviceTargetingLink } = userFunctionalityLink((state) => ({
 		SingleLink: state.SingleLink,
 		createDeviceTargetingLink: state.createDeviceTargetingLink,
@@ -30,7 +30,7 @@ function DeviceTargetingLink({ sm, updateSm }) {
 			linkId: SingleLink.id,
 			deviceTargetingData: newData,
 		};
-		await createDeviceTargetingLink(data);
+		await createDeviceTargetingLink(data, setLoading);
 		newData = [];
 	};
 	const changeOs = (e) => {
@@ -96,7 +96,7 @@ function DeviceTargetingLink({ sm, updateSm }) {
 								<Col lg="7" className="offset-lg-5">
 									<FormGroup className="mt-2">
 										<Button color="primary" size="lg" type="submit">
-											save
+											{loading ? <Spinner /> : "Save"}
 										</Button>
 									</FormGroup>
 								</Col>

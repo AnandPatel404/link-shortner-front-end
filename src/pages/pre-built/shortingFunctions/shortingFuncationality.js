@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import Content from "../../../layout/content/Content";
 import Head from "../../../layout/head/Head";
 import { useForm } from "react-hook-form";
-import { FormGroup, Input, Row, Col, Form } from "reactstrap";
+import { FormGroup, Input, Row, Col, Form, Spinner } from "reactstrap";
 import { Block, BlockHead, BlockHeadContent, BlockTitle, BlockDes, Button, Icon, BlockBetween } from "../../../components/Component";
 import userDomain from "../../../zustand/domainStuff/domain";
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
@@ -11,6 +11,7 @@ import userSubStore from "../../../zustand/Subscription/sub";
 import { Link } from "react-router-dom";
 function ShortingFuncationality({ sm, updateSm }) {
 	const [domain, setDomains] = useState([]);
+	const [loading, setLoading] = useState(false);
 	const { getAllDomain } = userDomain((state) => ({
 		getAllDomain: state.getAllDomain,
 	}));
@@ -33,14 +34,16 @@ function ShortingFuncationality({ sm, updateSm }) {
 	}, [getDomains]);
 
 	const s = async () => {
+		setLoading(true);
 		if (!SingleLink || SingleLink.length === 0 || !SingleLink.id) {
+			setLoading(false);
 			return errorToast("Please select link first", "Error");
 		}
 		const data = {
 			linkId: SingleLink.id,
 			domain: domain,
 		};
-		customDomain(data);
+		customDomain(data, setLoading);
 	};
 
 	const { handleSubmit } = useForm();
@@ -101,7 +104,7 @@ function ShortingFuncationality({ sm, updateSm }) {
 								<Col lg="7" className="offset-lg-5">
 									<FormGroup className="mt-2">
 										<Button color="primary" size="lg" type="submit">
-											save
+											{loading ? <Spinner /> : "Save"}
 										</Button>
 									</FormGroup>
 								</Col>

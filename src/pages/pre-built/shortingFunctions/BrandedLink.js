@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Content from "../../../layout/content/Content";
 import Head from "../../../layout/head/Head";
 import { useForm } from "react-hook-form";
-import { FormGroup, Row, Col, Form, Alert } from "reactstrap";
+import { FormGroup, Row, Col, Form, Alert, Spinner } from "reactstrap";
 import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetween } from "../../../components/Component";
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
 import { errorToast } from "../../../pages/components/misc/ReactToastify";
@@ -16,6 +16,7 @@ function BrandedLink({ sm, updateSm }) {
 		checkForBrandedLink: state.checkForBrandedLink,
 		createBrandedLink: state.createBrandedLink,
 	}));
+	const [loading, setLoading] = useState(false);
 
 	const { sub } = userSubStore((state) => ({
 		sub: state.subscription,
@@ -23,6 +24,7 @@ function BrandedLink({ sm, updateSm }) {
 
 	const [targetValue, setTargetValue] = useState("");
 	const s = async () => {
+		setLoading(true);
 		if (!SingleLink || SingleLink.length === 0 || !SingleLink.id) {
 			return errorToast("Please select link first", "Error");
 		}
@@ -30,7 +32,7 @@ function BrandedLink({ sm, updateSm }) {
 			backlink: targetValue,
 			linkId: SingleLink.id,
 		};
-		createBrandedLink(data);
+		createBrandedLink(data, setLoading);
 	};
 
 	const brandedLink = () => {
@@ -107,7 +109,7 @@ function BrandedLink({ sm, updateSm }) {
 								<Col lg="7" className="offset-lg-5">
 									<FormGroup className="mt-2">
 										<Button color="primary" size="lg" type="submit">
-											Save
+											{loading ? <Spinner /> : "Save"}
 										</Button>
 									</FormGroup>
 								</Col>

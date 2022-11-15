@@ -3,7 +3,7 @@ import Content from "../../../layout/content/Content";
 import Head from "../../../layout/head/Head";
 import DatePicker from "react-datepicker";
 import { useForm } from "react-hook-form";
-import { FormGroup, Row, Col, Form } from "reactstrap";
+import { FormGroup, Row, Col, Form, Spinner } from "reactstrap";
 import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetween } from "../../../components/Component";
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
 import { errorToast } from "../../../pages/components/misc/ReactToastify";
@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 function Expirationlink({ sm, updateSm }) {
 	const [rangeStart] = useState(new Date());
 	const [expireLink, setExpirationLink] = useState(null);
+	const [loading, setLoading] = useState(false);
 	const [rangeEnd, setRangeEnd] = useState();
 	const { SingleLink, createExpirationLink } = userFunctionalityLink((state) => ({
 		SingleLink: state.SingleLink,
@@ -22,7 +23,9 @@ function Expirationlink({ sm, updateSm }) {
 		sub: state.subscription,
 	}));
 	const s = async () => {
+		setLoading(true);
 		if (!SingleLink || SingleLink.length === 0 || !SingleLink.id) {
+			setLoading(false);
 			return errorToast("Please select link first", "Error");
 		}
 
@@ -32,13 +35,13 @@ function Expirationlink({ sm, updateSm }) {
 				after_expired: expireLink,
 				expireDate: rangeEnd,
 			};
-			createExpirationLink(data);
+			createExpirationLink(data, setLoading);
 		} else {
 			const data = {
 				linkId: SingleLink.id,
 				expireDate: rangeEnd,
 			};
-			createExpirationLink(data);
+			createExpirationLink(data, setLoading);
 		}
 	};
 
@@ -130,7 +133,7 @@ function Expirationlink({ sm, updateSm }) {
 								<Col lg="7" className="offset-lg-5">
 									<FormGroup className="mt-2">
 										<Button color="primary" size="lg" type="submit">
-											Save
+											{loading ? <Spinner /> : "Save"}
 										</Button>
 									</FormGroup>
 								</Col>

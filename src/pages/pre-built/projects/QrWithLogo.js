@@ -3,7 +3,7 @@ import Head from "../../../layout/head/Head";
 import Content from "../../../layout/content/Content";
 import Dropzone from "react-dropzone";
 import { Block, BlockHead, BlockBetween, BlockHeadContent, BlockTitle, Row, Button, Col, Icon } from "../../../components/Component";
-import { FormGroup, Form } from "reactstrap";
+import { FormGroup, Form, Spinner } from "reactstrap";
 import { useForm } from "react-hook-form";
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
 import { errorToast } from "../../../pages/components/misc/ReactToastify";
@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 
 const QrWithLogo = ({ sm, updateSm }) => {
 	const [files, setFiles] = useState([]);
+	const [loading, setLoading] = useState(false);
 
 	const { createQrwithLogo, SingleLink } = userFunctionalityLink((state) => ({
 		createQrwithLogo: state.createQrwithLogo,
@@ -33,7 +34,9 @@ const QrWithLogo = ({ sm, updateSm }) => {
 	};
 
 	const onSubmit = async () => {
+		setLoading(true);
 		if (!SingleLink || !SingleLink.id || SingleLink.length === 0) {
+			setLoading(false);
 			return errorToast("Please select link first", "Error");
 		}
 
@@ -41,7 +44,7 @@ const QrWithLogo = ({ sm, updateSm }) => {
 			const data = new FormData();
 			data.append("img", files[0]);
 
-			await createQrwithLogo(data, SingleLink.id);
+			await createQrwithLogo(data, SingleLink.id, setLoading);
 		}
 	};
 
@@ -114,7 +117,7 @@ const QrWithLogo = ({ sm, updateSm }) => {
 								<Col lg="7" className="offset-lg-5">
 									<FormGroup className="mt-2">
 										<Button color="primary" size="lg" type="submit">
-											Save
+											{loading ? <Spinner /> : "Save"}
 										</Button>
 									</FormGroup>
 								</Col>

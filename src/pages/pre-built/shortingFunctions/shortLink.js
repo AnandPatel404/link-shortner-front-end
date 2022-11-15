@@ -2,29 +2,31 @@ import React, { useState } from "react";
 import Content from "../../../layout/content/Content";
 import Head from "../../../layout/head/Head";
 import { useForm } from "react-hook-form";
-import { FormGroup, Row, Col, Form } from "reactstrap";
+import { FormGroup, Row, Col, Form, Spinner } from "reactstrap";
 import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetween } from "../../../components/Component";
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
 function ShortLink({ sm, updateSm }) {
 	const [linkStatus, setLinkStatus] = useState("Enable");
+	const [loading, setLoading] = useState(false);
 	const [title, setTitle] = useState(null);
 	const { createLink } = userFunctionalityLink((state) => ({
 		createLink: state.createLink,
 	}));
 	const s = async (sData) => {
+		setLoading(true);
 		if (title !== null && title !== "") {
 			const data = {
 				link: sData.link,
 				link_title: sData.title,
 				link_status: linkStatus,
 			};
-			createLink(data);
+			createLink(data, setLoading);
 		} else {
 			const data = {
 				link: sData.link,
 				link_status: linkStatus,
 			};
-			createLink(data);
+			createLink(data, setLoading);
 		}
 	};
 	const set = (e) => {
@@ -42,7 +44,7 @@ function ShortLink({ sm, updateSm }) {
 	const { handleSubmit, register } = useForm();
 	return (
 		<React.Fragment>
-			<Head title="Form Elements" />
+			<Head title="Create Full Link" />
 			<Content page="component">
 				<BlockHead size="lg" wide="sm">
 					<BlockBetween>
@@ -156,7 +158,7 @@ function ShortLink({ sm, updateSm }) {
 							<Col lg="7" className="offset-lg-5">
 								<FormGroup className="mt-2">
 									<Button color="primary" size="lg" type="submit">
-										Create
+										{loading ? <Spinner /> : "Create"}
 									</Button>
 								</FormGroup>
 							</Col>
