@@ -68,7 +68,7 @@ const QrWithLogo = ({ sm, updateSm }) => {
 						</BlockHeadContent>
 					</BlockBetween>
 				</BlockHead>
-				{sub.planId?.qr_link ? (
+				{sub.planId?.custom_qr_link ? (
 					<Block size="lg">
 						<Form className="gy-3" onSubmit={handleSubmit(onSubmit)}>
 							<Row className="g-3 align-center">
