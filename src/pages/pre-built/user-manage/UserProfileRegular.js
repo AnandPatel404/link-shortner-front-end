@@ -8,7 +8,7 @@ import userSubStore from "../../../zustand/Subscription/sub";
 const UserProfileRegularPage = ({ sm, updateSm, setProfileName }) => {
 	const userState = useUserStore((state) => state.user);
 	const sub = userSubStore((state) => state.subscription);
-	const [modalTab, setModalTab] = useState("1");
+	const [modalTab] = useState("1");
 	const [userInfo] = useState(userState);
 	const [formData, setFormData] = useState({});
 	const [modal, setModal] = useState(false);
@@ -149,21 +149,6 @@ const UserProfileRegularPage = ({ sm, updateSm, setProfileName }) => {
 												name="email"
 												onChange={(e) => onInputChange(e)}
 												defaultValue={userInfo.email}
-											/>
-										</FormGroup>
-									</Col>
-									<Col md="6">
-										<FormGroup>
-											<label className="form-label" htmlFor="phone-no">
-												Number
-											</label>
-											<input
-												type="email"
-												id="email"
-												className="form-control"
-												name="email"
-												onChange={(e) => onInputChange(e)}
-												defaultValue={userInfo.number}
 											/>
 										</FormGroup>
 									</Col>

@@ -14,8 +14,7 @@ const QrList = lazy(() => import("../pages/pre-built/projects/QrList"));
 const UserProfileLayout = lazy(() => import("../pages/pre-built/user-manage/UserProfileLayout"));
 const KycDetailsRegular = lazy(() => import("../pages/pre-built/kyc-list-regular/kycDetailsRegular"));
 const TransListBasic = lazy(() => import("../pages/pre-built/trans-list/TransListBasic"));
-const TransListCrypto = lazy(() => import("../pages/pre-built/trans-list/TransListCrypto"));
-const ProductList = lazy(() => import("../pages/pre-built/products/ProductList"));
+const AllLinks = lazy(() => import("../pages/pre-built/products/ProductList"));
 const InvoiceList = lazy(() => import("../pages/pre-built/invoice/InvoiceList"));
 const InvoiceDetails = lazy(() => import("../pages/pre-built/invoice/InvoiceDetails"));
 const PricingTable = lazy(() => import("../pages/pre-built/pricing-table/PricingTable"));
@@ -37,7 +36,7 @@ const Pages = () => {
 			<Switch>
 				{/*Dashboards and used route*/}
 				<Route exact path={`${process.env.PUBLIC_URL}/`} component={Invest}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/all-links`} component={ProductList}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/all-links`} component={AllLinks}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/qr-list`} component={QrList}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/_blank`} component={Blank}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/link/:id`} component={KycDetailsRegular}></Route>
@@ -66,7 +65,6 @@ const Pages = () => {
 
 				{/*Pre-built Pages*/}
 				<Route exact path={`${process.env.PUBLIC_URL}/transaction-basic`} component={TransListBasic}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/transaction-crypto`} component={TransListCrypto}></Route>
 
 				<Route exact path={`${process.env.PUBLIC_URL}/invoice-list`} component={InvoiceList}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/invoice-details/:id`} component={InvoiceDetails}></Route>

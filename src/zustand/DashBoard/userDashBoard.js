@@ -137,6 +137,14 @@ const userActivity = create((set, get) => ({
 		setLoading(false);
 		return link;
 	},
+
+	getAllTransaction: async () => {
+		const data = await axios({
+			method: "get",
+			url: `logged-user/transaction`,
+		});
+		return data;
+	},
 }));
 
 export default userActivity;
