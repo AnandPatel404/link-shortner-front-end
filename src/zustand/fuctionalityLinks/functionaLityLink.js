@@ -76,6 +76,53 @@ const userFunctionalityLink = create((set, get) => ({
 			resolve(
 				axios({
 					url: `qr-link/${linkId}`,
+					method: "post",
+					data,
+				})
+			)
+		);
+		toast.promise(resolvePromise, {
+			pending: {
+				render() {
+					return "Qr is in process";
+				},
+				icon: "🤖",
+			},
+			success: {
+				render({ data }) {
+					return `${data.data.message}`;
+				},
+				icon: "🟢",
+				position: "top-center",
+				autoClose: true,
+				hideProgressBar: true,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: false,
+			},
+			error: {
+				render({ data }) {
+					console.log(data);
+					return `${data.response.data.message}`;
+				},
+				icon: "❌",
+				position: "top-center",
+				autoClose: true,
+				hideProgressBar: true,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: false,
+			},
+		});
+	},
+
+	createQrwithLogo: async (data, linkId) => {
+		const resolvePromise = new Promise((resolve) =>
+			resolve(
+				axios({
+					url: `qr-link/qr-with-logo/${linkId}`,
 					headers: {
 						"Content-Type": "multipart/form-data",
 					},

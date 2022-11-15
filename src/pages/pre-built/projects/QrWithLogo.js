@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Head from "../../../layout/head/Head";
 import Content from "../../../layout/content/Content";
+import Dropzone from "react-dropzone";
 import { Block, BlockHead, BlockBetween, BlockHeadContent, BlockTitle, Row, Button, Col, Icon } from "../../../components/Component";
 import { FormGroup, Form } from "reactstrap";
 import { useForm } from "react-hook-form";
@@ -9,11 +10,11 @@ import { errorToast } from "../../../pages/components/misc/ReactToastify";
 import userSubStore from "../../../zustand/Subscription/sub";
 import { Link } from "react-router-dom";
 
-const ProjectCardPage = ({ sm, updateSm }) => {
-	const [colorCodes, setColorsCode] = useState("#000000");
+const QrWithLogo = ({ sm, updateSm }) => {
+	const [files, setFiles] = useState([]);
 
-	const { createQr, SingleLink } = userFunctionalityLink((state) => ({
-		createQr: state.createQr,
+	const { createQrwithLogo, SingleLink } = userFunctionalityLink((state) => ({
+		createQrwithLogo: state.createQrwithLogo,
 		SingleLink: state.SingleLink,
 	}));
 
@@ -21,8 +22,14 @@ const ProjectCardPage = ({ sm, updateSm }) => {
 		sub: state.subscription,
 	}));
 
-	const colorCode = (e) => {
-		setColorsCode(e);
+	const handleDropChange = async (acceptedFiles, set) => {
+		set(
+			acceptedFiles.map((file) =>
+				Object.assign(file, {
+					preview: URL.createObjectURL(file),
+				})
+			)
+		);
 	};
 
 	const onSubmit = async () => {
@@ -30,10 +37,12 @@ const ProjectCardPage = ({ sm, updateSm }) => {
 			return errorToast("Please select link first", "Error");
 		}
 
-		const data = {
-			qrColor: colorCodes.toString(),
-		};
-		await createQr(data, SingleLink.id);
+		if (files.length > 0) {
+			const data = new FormData();
+			data.append("img", files[0]);
+
+			await createQrwithLogo(data, SingleLink.id);
+		}
 	};
 
 	const { handleSubmit } = useForm();
@@ -63,14 +72,41 @@ const ProjectCardPage = ({ sm, updateSm }) => {
 								<Col lg="5">
 									<FormGroup>
 										<label className="form-label" htmlFor="site-name">
-											Qr color
+											Qr with logo
 										</label>
-										<span className="form-note">Specify the Qr color</span>
+										<span className="form-note">Specify the Qr logo</span>
 									</FormGroup>
 								</Col>
 								<Col lg="7">
 									<FormGroup>
-										<input type="color" className="" name="backGroundColor" onChange={(e) => colorCode(e.target.value)} />
+										<Dropzone onDrop={(acceptedFiles) => handleDropChange(acceptedFiles, setFiles)} maxFiles={1}>
+											{({ getRootProps, getInputProps }) => (
+												<section>
+													<div {...getRootProps()} className="dropzone border-0 p-0 d-flex">
+														<input {...getInputProps()} />
+														{files.length === 0 && (
+															<div className="dz-message">
+																<span className="dz-message-text">Drag and drop file</span>
+																<span className="dz-message-or">or</span>
+																<Button color="primary" type="button">
+																	SELECT
+																</Button>
+															</div>
+														)}
+														{files.map((file) => (
+															<div
+																key={file.name}
+																className="dz-preview dz-processing dz-image-preview dz-error dz-complete d-flex justify-content-center"
+															>
+																<div className="">
+																	<img src={file.preview} alt="preview" width={300} />
+																</div>
+															</div>
+														))}
+													</div>
+												</section>
+											)}
+										</Dropzone>
 									</FormGroup>
 								</Col>
 							</Row>
@@ -92,4 +128,4 @@ const ProjectCardPage = ({ sm, updateSm }) => {
 		</React.Fragment>
 	);
 };
-export default ProjectCardPage;
+export default QrWithLogo;

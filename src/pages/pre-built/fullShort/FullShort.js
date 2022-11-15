@@ -7,6 +7,7 @@ import ProjectCardPage from "../projects/ProjectCard";
 import ShortLink from "../shortingFunctions/shortLink";
 import BrandedLink from "../shortingFunctions/BrandedLink";
 import LimitedLink from "../shortingFunctions/LimitedLink";
+import QrWithLogo from "../projects/QrWithLogo";
 import DeviceTargetingLink from "../shortingFunctions/DeviceTargetingLink";
 import { Route, Switch, Link } from "react-router-dom";
 import { Icon, BlockTitle, Button } from "../../../components/Component";
@@ -124,6 +125,17 @@ const FullShort = () => {
 										</li>
 										<li onClick={() => updateSm(false)}>
 											<Link
+												to={`${process.env.PUBLIC_URL}/create-qr-link-with-logo`}
+												className={
+													window.location.pathname === `${process.env.PUBLIC_URL}/create-qr-link-with-logo` ? "active" : ""
+												}
+											>
+												<Icon name="qr"></Icon>
+												<span>Qr With Logo</span>
+											</Link>
+										</li>
+										<li onClick={() => updateSm(false)}>
+											<Link
 												to={`${process.env.PUBLIC_URL}/limited-link`}
 												className={window.location.pathname === `${process.env.PUBLIC_URL}/limited-link` ? "active" : ""}
 											>
@@ -193,6 +205,12 @@ const FullShort = () => {
 									exact
 									path={`${process.env.PUBLIC_URL}/create-qr-link`}
 									render={() => <ProjectCardPage updateSm={updateSm} sm={sm} />}
+								></Route>
+								{/* This is for logo qr */}
+								<Route
+									exact
+									path={`${process.env.PUBLIC_URL}/create-qr-link-with-logo`}
+									render={() => <QrWithLogo updateSm={updateSm} sm={sm} />}
 								></Route>
 								<Route
 									exact

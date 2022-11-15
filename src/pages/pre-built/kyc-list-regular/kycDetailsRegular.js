@@ -42,7 +42,7 @@ const KycDetailsRegular = ({ match }) => {
 		const data = await getLinkById(id, setLoading);
 		console.log(data.data.data);
 		setLink(data.data.data.link);
-		setQr(data.data.data.isQrExist);
+		setQr(data.data.data.isQrExist.QRdata);
 		setCount(data.data.data.count);
 	}, [getLinkById, match.params.id]);
 
@@ -256,7 +256,7 @@ const KycDetailsRegular = ({ match }) => {
 									<Col lg="7">
 										<PreviewAltCard className="h-100 d-flex justify-content-center align-items-center">
 											{qr !== null && qr.length !== 0 ? (
-												<img src={qr.QRdata} alt="qr" width={350} />
+												<img src={qr} alt="qr" />
 											) : (
 												<span className="d-flex justify-content-center align-items-center flex-column">
 													<Icon name="qr" className="h2" />

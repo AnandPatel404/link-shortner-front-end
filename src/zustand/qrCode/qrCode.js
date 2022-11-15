@@ -11,7 +11,6 @@ const useqrCode = create((set) => ({
 		}).then((res) => {
 			set({ allQr: res.data.data });
 		});
-		// return data.data.data;
 	},
 }));
 
