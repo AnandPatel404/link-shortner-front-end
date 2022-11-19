@@ -1,13 +1,17 @@
 import React from "react";
-import eye from "../assets/img/svg/pro.svg";
+import eye from "../assets/img/svg/growTwo2.svg";
 function SectionTwo() {
 	return (
 		<section className="wrapper">
 			<div className="container py-14 py-md-16">
 				<div className="row gx-lg-8 gx-xl-12 gy-10 mb-14 mb-md-17 align-items-center">
+					<div className="col-lg-7 d-flex justify-content-center align-items-center order-first order-lg-last">
+						<img src={eye} alt="svg" width={700} />
+					</div>
 					<div className="col-lg-5">
-						<h3 className="display-4 mb-7">Our three process steps on creating awesome projects.</h3>
-						<div className="d-flex flex-row mb-6">
+						<h2 className="fs-16 text-uppercase text-muted">How We Work</h2>
+						<h3 className="my-5">Our Three Process Steps On Creating Awesome Links</h3>
+						<div className="d-flex flex-row my-10">
 							<div>
 								<span className="icon btn btn-circle btn-lg btn-primary pe-none me-4">
 									<span className="number">01</span>
@@ -46,9 +50,6 @@ function SectionTwo() {
 								</p>
 							</div>
 						</div>
-					</div>
-					<div className="col-lg-7 d-flex">
-						<img src={eye} alt="svg" width={700} />
 					</div>
 				</div>
 			</div>

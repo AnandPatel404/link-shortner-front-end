@@ -1,5 +1,5 @@
 import React, { lazy } from "react";
-import img from "../assets/img/svg/growtwo.svg";
+import img from "../assets/img/svg/growthree.svg";
 const NavBar = lazy(() => import("./NavBar"));
 const SectionTwo = lazy(() => import("./SectionTwo"));
 const SectionThree = lazy(() => import("./SectionThree"));
@@ -15,17 +15,13 @@ function SectionOne() {
 			<section class="wrapper bg-light">
 				<div class="container pt-10 pb-15 pt-md-14 pb-md-20">
 					<div class="row gx-lg-8 gx-xl-12 gy-10 mb-5 align-items-center">
-						<div
-							class="col-md-10 offset-md-1 offset-lg-0 col-lg-6 text-center text-lg-start order-2 order-lg-0"
-							data-cues="slideInDown"
-							data-group="page-title"
-							data-delay="600"
-						>
+						<div class="col-md-10 offset-md-1 offset-lg-0 col-lg-6 text-center text-lg-start order-2 order-lg-0">
 							<h1 class=" mb-5 mx-md-n5 mx-lg-0">Grow Your Business with Our Link Solutions</h1>
-							<p class=" mb-7">
-								Link Management Platform with all features you need in one place. Shorten, brand, manage and track your links the easy
+							<p class="my-7">
+								Link Management Platform with all features you need in one place. Short, brand, manage and track your links the easy
 								way.
 							</p>
+							<hr className="d-none d-md-block" />
 							<div
 								class="d-flex justify-content-center justify-content-lg-start"
 								data-cues="slideInDown"
@@ -41,7 +37,7 @@ function SectionOne() {
 						</div>
 
 						<div class="col-lg-6 d-flex justify-content-center">
-							<img src={img} alt="heroOne" width={600} />
+							<img src={img} alt="heroOne" width={800} />
 						</div>
 					</div>
 				</div>

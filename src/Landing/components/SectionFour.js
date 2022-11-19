@@ -1,13 +1,15 @@
 import React from "react";
+// import PriceSvg from "../assets/img/svg/finance.svg";
 import { Link } from "react-router-dom";
 import { Icon } from "../../components/Component";
 function SectionFour() {
 	return (
-		<section className="bg-soft-primary">
+		<section className="">
 			<div className="container py-14 pt-md-14 pb-md-18">
 				<div className="row gy-6 mb-14 mb-md-18">
 					<div className="col-lg-4">
 						<h2 className="fs-16 text-uppercase text-muted mt-lg-18 mb-3">Our Pricing</h2>
+						{/* <img src={PriceSvg} alt="" /> */}
 						<h3 className="display-4 mb-3">We offer great and premium prices.</h3>
 						<p>
 							Enjoy a <span className="text-yellow">free 7-day trial</span> and experience the full service. No credit card required!
@@ -20,7 +22,7 @@ function SectionFour() {
 					<div className="col-lg-7 offset-lg-1 pricing-wrapper">
 						<div className="row gy-6 position-relative mt-5">
 							<div className="col-md-6">
-								<div className="pricing card shadow-lg">
+								<div className="pricing card shadow-lg bg-soft-primary">
 									<div className="card-body pb-12">
 										<div className="prices text-dark">
 											<div className="price price-show justify-content-start">
@@ -76,7 +78,7 @@ function SectionFour() {
 							</div>
 
 							<div className="col-md-6 popular">
-								<div className="pricing card shadow-lg">
+								<div className="pricing card shadow-lg bg-soft-primary">
 									<div className="card-body pb-12">
 										<div className="prices text-dark">
 											<div className="price price-show justify-content-start">

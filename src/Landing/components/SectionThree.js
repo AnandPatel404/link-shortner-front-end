@@ -1,12 +1,17 @@
 import React from "react";
-import paichart from "../assets/img/svg/paichart.svg";
+import paichart from "../assets/img/svg/paichart2.svg";
 function SectionThree() {
 	return (
-		<section className="wrapper bg-soft-primary ">
+		<section className="wrapper">
 			<div className="container py-14 pt-md-17 pb-md-15">
 				<div className="row gx-md-8 gx-xl-12 gy-10 mb-14 mb-md-18 align-items-center">
-					<div className="col-lg-6 order-lg-2">
-						<div className="card shadow-lg me-lg-6">
+					<div className="col-lg-6 d-flex flex-column text-center text-lg-start">
+						<h2 className="fs-16 text-uppercase text-muted mb-3">Main Benefit</h2>
+						<h3 className="mb-5">Here 3 Main Benefit In Shorterme.</h3>
+						<img src={paichart} alt="" />
+					</div>
+					<div className="col-lg-6">
+						<div className="card shadow-lg me-lg-6 bg-soft-primary">
 							<div className="card-body p-6">
 								<div className="d-flex flex-row">
 									<div>
@@ -25,7 +30,7 @@ function SectionThree() {
 							</div>
 						</div>
 
-						<div className="card shadow-lg ms-lg-13 mt-6">
+						<div className="card shadow-lg ms-lg-13 mt-6 bg-soft-primary ">
 							<div className="card-body p-6">
 								<div className="d-flex flex-row">
 									<div>
@@ -44,7 +49,7 @@ function SectionThree() {
 							</div>
 						</div>
 
-						<div className="card shadow-lg mx-lg-6 mt-6">
+						<div className="card shadow-lg mx-lg-6 mt-6 bg-soft-primary ">
 							<div className="card-body p-6">
 								<div className="d-flex flex-row">
 									<div>
@@ -54,17 +59,11 @@ function SectionThree() {
 									</div>
 									<div>
 										<h4 className="mb-1">Goog Pricing</h4>
-										<p className="mb-0">Good quality at good and cheap price is only found in shortme.</p>
+										<p className="mb-0">Good quality at good and cheap price is only found in Shorterme.</p>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-
-					<div className="col-lg-6">
-						<h2 className="fs-16 text-uppercase text-muted mb-3"> Main benefit</h2>
-						<h3 className="mb-5">Here 3 Main benefit in shorterme.</h3>
-						<img src={paichart} alt="" />
 					</div>
 				</div>
 			</div>
