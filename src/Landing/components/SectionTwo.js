@@ -3,12 +3,8 @@ import eye from "../assets/img/svg/pro.svg";
 function SectionTwo() {
 	return (
 		<section className="wrapper">
-			<div className="container py-14 py-md-16 pb-md-17">
+			<div className="container py-14 py-md-16">
 				<div className="row gx-lg-8 gx-xl-12 gy-10 mb-14 mb-md-17 align-items-center">
-					<div className="col-lg-7 d-flex justify-content-center">
-						<img src={eye} alt="svg" width={700} />
-					</div>
-
 					<div className="col-lg-5">
 						<h3 className="display-4 mb-7">Our three process steps on creating awesome projects.</h3>
 						<div className="d-flex flex-row mb-6">
@@ -50,6 +46,9 @@ function SectionTwo() {
 								</p>
 							</div>
 						</div>
+					</div>
+					<div className="col-lg-7 d-flex">
+						<img src={eye} alt="svg" width={700} />
 					</div>
 				</div>
 			</div>
