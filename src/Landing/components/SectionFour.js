@@ -1,5 +1,4 @@
 import React from "react";
-// import PriceSvg from "../assets/img/svg/finance.svg";
 import { Link } from "react-router-dom";
 import { Icon } from "../../components/Component";
 function SectionFour() {
@@ -9,7 +8,6 @@ function SectionFour() {
 				<div className="row gy-6 mb-14 mb-md-18">
 					<div className="col-lg-4">
 						<h2 className="fs-16 text-uppercase text-muted mt-lg-18 mb-3">Our Pricing</h2>
-						{/* <img src={PriceSvg} alt="" /> */}
 						<h3 className="display-4 mb-3">We offer great and premium prices.</h3>
 						<p>
 							Enjoy a <span className="text-yellow">free 7-day trial</span> and experience the full service. No credit card required!
@@ -29,50 +27,44 @@ function SectionFour() {
 												<span className="price-currency">$</span>
 												<span className="price-value">19</span> <span className="price-duration">mo</span>
 											</div>
-											<div className="price price-hide price-hidden justify-content-start">
-												<span className="price-currency">$</span>
-												<span className="price-value">199</span> <span className="price-duration">yr</span>
-											</div>
 										</div>
 
 										<h4 className="card-title mt-2">Premium Plan</h4>
 										<ul className="icon-list bullet-soft-primary mt-7 mb-8">
 											<li>
-												<Icon name="check" />
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>1000000</span> Link Creating Limit
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>1000000</span> Qr Link limit
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
 												<span>
-													<strong>5</strong> Projects{" "}
+													<strong>Custom Domain Link</strong>
 												</span>
 											</li>
 											<li>
-												<Icon name="check" />
+												<Icon name="check-fill-c" className="text-yellow" />
 												<span>
-													<strong>100K</strong> API Access{" "}
+													<strong>API Access</strong>
 												</span>
 											</li>
 											<li>
-												<Icon name="check" />
+												<Icon name="check-fill-c" className="text-yellow" />
 												<span>
-													<strong>200MB</strong> Storage{" "}
+													<strong>ShorterMe Branded Link</strong>
 												</span>
 											</li>
 											<li>
-												<Icon name="check" />
-												<span>
-													{" "}
-													Weekly <strong>Reports</strong>
-												</span>
-											</li>
-											<li>
-												<Icon name="check" />
-												<span>
-													{" "}
-													7/24 <strong>Support</strong>
-												</span>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>Click Limit Link</span>
 											</li>
 										</ul>
-										<a href="/" className="btn btn-primary rounded-pill">
+										<Link to={`${process.env.PUBLIC_URL}/auth-login`} className="btn btn-primary rounded-pill">
 											Choose Plan
-										</a>
+										</Link>
 									</div>
 								</div>
 							</div>
@@ -85,50 +77,65 @@ function SectionFour() {
 												<span className="price-currency">$</span>
 												<span className="price-value">49</span> <span className="price-duration">mo</span>
 											</div>
-											<div className="price price-hide price-hidden justify-content-start">
-												<span className="price-currency">$</span>
-												<span className="price-value">499</span> <span className="price-duration">yr</span>
-											</div>
 										</div>
 
-										<h4 className="card-title mt-2">Corporate Plan</h4>
+										<h4 className="card-title mt-2">Premium Pro Plan</h4>
 										<ul className="icon-list bullet-soft-primary mt-7 mb-8">
 											<li>
-												<Icon name="check" />
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>Qr Link</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>Custom Logo Qr Link</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
 												<span>
-													<strong>20</strong> Projects{" "}
+													<strong>Custom Domain Link</strong>
 												</span>
 											</li>
 											<li>
-												<Icon name="check" />
+												<Icon name="check-fill-c" className="text-yellow" />
 												<span>
-													<strong>300K</strong> API Access{" "}
+													<strong>API Access</strong>
 												</span>
 											</li>
 											<li>
-												<Icon name="check" />
+												<Icon name="check-fill-c" className="text-yellow" />
 												<span>
-													<strong>500MB</strong> Storage{" "}
+													<strong>ShorterMe Branded Link</strong>
 												</span>
 											</li>
 											<li>
-												<Icon name="check" />
+												<Icon name="check-fill-c" className="text-yellow" />
 												<span>
-													{" "}
-													Weekly <strong>Reports</strong>
+													<strong>Your Branded Link</strong>
 												</span>
 											</li>
 											<li>
-												<Icon name="check" />
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>Click Limit Link</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>Device Targeting Links</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>Browser Targeting Links</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
 												<span>
 													{" "}
 													7/24 <strong>Support</strong>
 												</span>
 											</li>
 										</ul>
-										<a href="/" className="btn btn-primary rounded-pill">
+										<Link to={`${process.env.PUBLIC_URL}/auth-login`} className="btn btn-primary rounded-pill">
 											Choose Plan
-										</a>
+										</Link>
 									</div>
 								</div>
 							</div>

@@ -10,7 +10,7 @@ function SectionTwo() {
 					</div>
 					<div className="col-lg-5">
 						<h2 className="fs-16 text-uppercase text-muted">How We Work</h2>
-						<h3 className="my-5">Our Three Process Steps On Creating Awesome Links</h3>
+						<h3 className="my-8">Our Three Process Steps On Creating Awesome Links</h3>
 						<div className="d-flex flex-row my-10">
 							<div>
 								<span className="icon btn btn-circle btn-lg btn-primary pe-none me-4">
