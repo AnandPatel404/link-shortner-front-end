@@ -39,8 +39,8 @@ function SectionOne() {
 			</section>
 			<SectionThree />
 			<SectionSeven />
-			<SectionTwo />
 			<SectionFour />
+			<SectionTwo />
 			<SectionFive />
 			<SectionSix />
 			<Footer />

@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "../../layout/logo/Logo";
 import Footer from "../../layout/footer/Footer";
+import { Link } from "react-router-dom";
 
 function footer() {
 	return (
@@ -46,7 +47,7 @@ function footer() {
 							<h4 class="widget-title  mb-3">Learn More</h4>
 							<ul class="list-unstyled text-reset mb-0">
 								<li>
-									<a href="/">About Us</a>
+									<Link to={`${process.env.PUBLIC_URL}/contact-us`}>Contact Us</Link>
 								</li>
 								<li>
 									<a href="/">Our Story</a>
@@ -70,15 +71,7 @@ function footer() {
 							<p class="mb-5">Subscribe to our newsletter to get our news & deals delivered to you.</p>
 							<div class="newsletter-wrapper">
 								<div id="mc_embed_signup2">
-									<form
-										action="https://elemisfreebies.us20.list-manage.com/subscribe/post?u=aa4947f70a475ce162057838d&amp;id=b49ef47a9a"
-										method="post"
-										id="mc-embedded-subscribe-form2"
-										name="mc-embedded-subscribe-form"
-										class="validate "
-										target="_blank"
-										novalidate
-									>
+									<form>
 										<div id="mc_embed_signup_scroll2">
 											<div class="mc-field-group input-group form-floating">
 												<input
