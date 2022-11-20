@@ -8,8 +8,8 @@ import { Form, FormGroup, Spinner, Row, Col } from "reactstrap";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import useUserStore from "../../zustand/userStore/userStore";
-import l from "../../images/svg/l.svg";
-import fevIcon from "../../images/svg/fevicon-and-logo.svg";
+import l from "../../images/svg/loginThree.svg";
+import Footer from "../../layout/footer/Footer";
 
 const Login = ({ history }) => {
 	const [loading, setLoading] = useState(false);
@@ -25,16 +25,17 @@ const Login = ({ history }) => {
 	return (
 		<React.Fragment>
 			<Head title="Login" />
-			<PageContainer>
-				<Row style={{ height: 100 + "vh" }}>
-					<Col lg="8" xl="8" className="position-relative" style={{ backgroundColor: "#f1c40f4a" }}>
-						<img src={fevIcon} alt="" width={50} className="position-absolute mt-3 ml-3  mt-md-5 ml-md-5" />
-						<div className="d-md-flex justify-content-md-center align-items-md-center flex-column text-center mt-3 pt-md-5">
-							<img src={l} alt="" width={500} />
+			<PageContainer style={{ backgroundColor: "#f5f6fa" }}>
+				<Row className="d-flex justify-content-center align-items-center">
+					<Col lg="8" xl="8">
+						<div className="d-md-flex justify-content-md-center align-items-md-center flex-column text-center ">
+							<img src={l} alt="" width={700} />
 							<BlockHead>
 								<BlockContent>
-									<BlockTitle tag="h3">Get start with us 😊😊</BlockTitle>
 									<BlockDes>
+										<BlockTitle tag="h3" className="d-flex justify-content-center align-items-center">
+											<BlockDes>Get start with us 😊😊</BlockDes>
+										</BlockTitle>
 										<p>
 											Create engaging customer experiences boost your business with ShorterMe <br /> No extra charge on our
 											plan. Start your 7 days free trial now
@@ -44,9 +45,9 @@ const Login = ({ history }) => {
 							</BlockHead>
 						</div>
 					</Col>
-					<Col lg="4" xl="4">
+					<Col lg="4" xl="4" className="d-flex justify-content-center">
 						<Block className="nk-auth-body py-lg-5 my-lg-5 wide-s">
-							<PreviewCard className="border-0" bodyClass="card-inner-lg" style={{ backgroundColor: "#f5f6fa" }}>
+							<PreviewCard className="border-1" bodyClass="card-inner-lg">
 								<div className="brand-logo pb-4">
 									<Link to={`${process.env.PUBLIC_URL}/home`} className="logo-link">
 										<img className="logo-light logo-img logo-img-lg" src={Logo} alt="logo" width={130} />
@@ -127,6 +128,7 @@ const Login = ({ history }) => {
 						</Block>
 					</Col>
 				</Row>
+				<Footer />
 			</PageContainer>
 		</React.Fragment>
 	);

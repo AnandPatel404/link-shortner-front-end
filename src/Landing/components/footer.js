@@ -1,31 +1,46 @@
 import React from "react";
 import Logo from "../../layout/logo/Logo";
+import Footer from "../../layout/footer/Footer";
 
 function footer() {
 	return (
 		<footer>
 			<div class="container pb-10 bg-light">
-				<div class="row gy-6 gy-lg-0">
+				<hr />
+				<div class="row gy-6 gy-lg-0 d-flex justify-content-between py-10 py-md-20">
 					<div class="col-md-4 col-lg-3">
 						<div class="widget">
 							<Logo />
-							<p class="mb-4">
-								© 2022 Shortnerme. <br class="d-none d-lg-block" />
-								All rights reserved.
+							<p class="my-4">
+								Shorterme link solution is web app for those who want to create short link from long link{" "}
+								<br class="d-none d-lg-block" />
+								And Analytics link Performance and much more
 							</p>
 						</div>
 					</div>
 
 					<div class="col-md-4 col-lg-3">
 						<div class="widget">
-							<h4 class="widget-title  mb-3">Get in Touch</h4>
-							<address class="pe-xl-15 pe-xxl-17"> Upleta, Gujarat-360490</address>
-							<a href="mailto:/" class="link-body">
-								shorterme@gmail.com
-							</a>
+							<h4 class="widget-title  mb-3">SOLUTIONS</h4>
+							<ul class="list-unstyled text-reset mb-0">
+								<li>
+									<a href="/">About Us</a>
+								</li>
+								<li>
+									<a href="/">Our Story</a>
+								</li>
+								<li>
+									<a href="/">Projects</a>
+								</li>
+								<li>
+									<a href="/">Terms of Use</a>
+								</li>
+								<li>
+									<a href="/">Privacy Policy</a>
+								</li>
+							</ul>
 						</div>
 					</div>
-
 					<div class="col-md-4 col-lg-3">
 						<div class="widget">
 							<h4 class="widget-title  mb-3">Learn More</h4>
@@ -93,6 +108,7 @@ function footer() {
 						</div>
 					</div>
 				</div>
+				<Footer />
 			</div>
 		</footer>
 	);

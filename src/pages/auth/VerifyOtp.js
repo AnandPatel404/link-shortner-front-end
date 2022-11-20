@@ -8,7 +8,7 @@ import { Form, FormGroup, Spinner, Row, Col } from "reactstrap";
 import { useForm } from "react-hook-form";
 import fevIcon from "../../images/svg/fevicon-and-logo.svg";
 import useUserAuth from "../../zustand/auth/userAuth";
-import o from "../../images/svg/otp.svg";
+import o from "../../images/svg/otpTwo.svg";
 
 function VerifyOtp({ history }) {
 	const [loading, setLoading] = useState(false);
@@ -36,11 +36,11 @@ function VerifyOtp({ history }) {
 		<React.Fragment>
 			<Head title="Send Otp" />
 			<PageContainer>
-				<Row style={{ height: 100 + "vh" }}>
-					<Col lg="8" className="position-relative" style={{ backgroundColor: "#f1c40f4a" }}>
+				<Row>
+					<Col lg="8" className="position-relative">
 						<img src={fevIcon} alt="" width={50} className="position-absolute mt-3 ml-3  mt-md-5 ml-md-5" />
 						<div className="d-md-flex justify-content-md-center align-items-md-center mt-lg-3 pt-lg-5 flex-column text-center">
-							<img src={o} alt="" width={700} />
+							<img src={o} alt="" width={650} />
 							<BlockHead>
 								<BlockContent>
 									<BlockTitle tag="h3">Please enter your Otp 1️⃣ 2️⃣ 3️⃣ 4️⃣</BlockTitle>
@@ -54,9 +54,9 @@ function VerifyOtp({ history }) {
 							</BlockHead>
 						</div>
 					</Col>
-					<Col lg="4">
+					<Col lg="4" className="d-flex flex-column justify-content-center">
 						<Block className="nk-auth-body pt-lg-5 mt-lg-5 wide-s">
-							<PreviewCard className="border-0 mt-lg-5" bodyClass="card-inner-lg" style={{ backgroundColor: "#f5f6fa" }}>
+							<PreviewCard className="border-1 mt-lg-5" bodyClass="card-inner-lg">
 								<div className="brand-logo pb-4">
 									<span className="logo-link">
 										<img className="logo-light logo-img logo-img-lg" src={Logo} alt="logo" width={160} />

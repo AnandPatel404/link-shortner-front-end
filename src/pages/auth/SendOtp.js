@@ -25,9 +25,9 @@ function SendOtp({ history }) {
 	return (
 		<React.Fragment>
 			<Head title="Send Otp" />
-			<PageContainer>
-				<Row style={{ height: 100 + "vh" }}>
-					<Col lg="8" className="position-relative" style={{ backgroundColor: "#f1c40f4a" }}>
+			<PageContainer style={{ backgroundColor: "#f5f6fa" }}>
+				<Row>
+					<Col lg="8" className="position-relative">
 						<img src={fevIcon} alt="" width={50} className="position-absolute mt-3 ml-3  mt-md-5 ml-md-5" />
 						<div className="d-md-flex justify-content-md-center align-items-md-center flex-column text-center">
 							<img src={o} alt="" width={600} />
@@ -37,7 +37,7 @@ function SendOtp({ history }) {
 									<BlockDes>
 										<p>
 											feel free we do not share any details with anyone <br />
-											👉 Please enter your whatApp number for receive otp 👈
+											Please enter your whatApp number for receive otp
 										</p>
 									</BlockDes>
 								</BlockContent>
@@ -46,7 +46,7 @@ function SendOtp({ history }) {
 					</Col>
 					<Col lg="4" className="d-flex flex-column justify-content-center">
 						<Block className="nk-auth-body py-5 my-5 wide-s">
-							<PreviewCard className="border-0" bodyClass="card-inner-lg" style={{ backgroundColor: "#f5f6fa" }}>
+							<PreviewCard className="border-1" bodyClass="card-inner-lg">
 								<div className="brand-logo pb-4">
 									<Link to={`${process.env.PUBLIC_URL}/home`} className="logo-link">
 										<img className="logo-light logo-img logo-img-lg" src={Logo} alt="logo" width={130} />

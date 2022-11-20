@@ -20,10 +20,10 @@ function SectionThree() {
 										</span>
 									</div>
 									<div>
-										<h4 className="mb-1">URL Shortener</h4>
+										<h4 className="mb-1">Lots Of Features At a Great Price</h4>
 										<p className="mb-0">
-											Free custom URL Shortener with many features that gives you better quality for links shortening. Shortened
-											URLs will never expire. We do not display ads during direct redirecting to the original url.
+											We provide many facilities at this price and we do not charge any hidden cost, customer's satisfaction is
+											our first goal.
 										</p>
 									</div>
 								</div>
@@ -41,8 +41,8 @@ function SectionThree() {
 									<div>
 										<h4 className="mb-1">Link Analytics Platform</h4>
 										<p className="mb-0">
-											Track each shortened link and measure its performance to understand it. Detailed analytics provides you
-											info about clicks, devices, brands, browsers, systems, geo location.
+											Track Each Shortened Link And Measure Its Performance To Understand It. Detailed Analytics Provides You
+											Info About Clicks, Devices, Brands, Browsers, Systems, Geo Location Many More.
 										</p>
 									</div>
 								</div>
@@ -58,8 +58,8 @@ function SectionThree() {
 										</span>
 									</div>
 									<div>
-										<h4 className="mb-1">Goog Pricing</h4>
-										<p className="mb-0">Good quality at good and cheap price is only found in Shorterme.</p>
+										<h4 className="mb-1">Easy To Understand User Interface</h4>
+										<p className="mb-0">We do not provide complex dashboards, we provide easy to understand dashboards</p>
 									</div>
 								</div>
 							</div>
