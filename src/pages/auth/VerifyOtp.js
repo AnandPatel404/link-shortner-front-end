@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import fevIcon from "../../images/svg/fevicon-and-logo.svg";
 import useUserAuth from "../../zustand/auth/userAuth";
 import o from "../../images/svg/otpTwo.svg";
+import Footer from "../../layout/footer/Footer";
 
 function VerifyOtp({ history }) {
 	const [loading, setLoading] = useState(false);
@@ -105,6 +106,7 @@ function VerifyOtp({ history }) {
 						</Block>
 					</Col>
 				</Row>
+				<Footer />
 			</PageContainer>
 		</React.Fragment>
 	);

@@ -8,7 +8,8 @@ import { Form, FormGroup, Spinner, Alert, Row, Col } from "reactstrap";
 import { useForm } from "react-hook-form";
 import fevIcon from "../../images/svg/fevicon-and-logo.svg";
 import useUserAuth from "../../zustand/auth/userAuth";
-import o from "../../images/svg/otp.svg";
+import o from "../../images/svg/otpTwo.svg";
+import Footer from "../../layout/footer/Footer";
 
 function VerifyOtpForResetPassword({ history }) {
 	const [loading] = useState(false);
@@ -111,6 +112,7 @@ function VerifyOtpForResetPassword({ history }) {
 						</Block>
 					</Col>
 				</Row>
+				<Footer />
 			</PageContainer>
 		</React.Fragment>
 	);

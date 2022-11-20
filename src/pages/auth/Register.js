@@ -6,10 +6,11 @@ import Head from "../../layout/head/Head";
 import { Block, BlockContent, BlockDes, BlockHead, BlockTitle, Button, Icon, PreviewCard, RSelect } from "../../components/Component";
 import { FormGroup, Row, Col, Spinner } from "reactstrap";
 import { useForm } from "react-hook-form";
-import r from "../../images/svg/rr.svg";
+import r from "../../images/svg/rrr.svg";
 import useUserAuth from "../../zustand/auth/userAuth";
 import fevIcon from "../../images/svg/fevicon-and-logo.svg";
 import { errorToast } from "../../pages/components/misc/ReactToastify";
+import Footer from "../../layout/footer/Footer";
 
 const Register = ({ history }) => {
 	const [loading, setLoading] = useState(false);
@@ -38,11 +39,11 @@ const Register = ({ history }) => {
 		<React.Fragment>
 			<Head title="Register" />
 			<PageContainer>
-				<Row style={{ height: 100 + "vh" }}>
-					<Col lg="8" className="position-relative" style={{ backgroundColor: "#f1c40f4a" }}>
+				<Row>
+					<Col lg="8" className="position-relative">
 						<img src={fevIcon} alt="" width={50} className="position-absolute mt-3 ml-3  mt-md-5 ml-md-5" />
 						<div className="d-md-flex justify-content-md-center align-items-md-center flex-column text-center mt-5">
-							<img src={r} alt="" width={550} />
+							<img src={r} alt="" width={600} />
 							<BlockHead>
 								<BlockContent>
 									<BlockTitle tag="h3">privacy & security 😊😊</BlockTitle>
@@ -58,7 +59,7 @@ const Register = ({ history }) => {
 					</Col>
 					<Col lg="4">
 						<Block className="nk-auth-body py-5 my-4 wide-s">
-							<PreviewCard className="border-0" bodyClass="card-inner-lg" style={{ backgroundColor: "#f5f6fa" }}>
+							<PreviewCard className="border-1" bodyClass="card-inner-lg">
 								<div className="brand-logo pb-4">
 									<span className="logo-link">
 										<img className="logo-light logo-img logo-img-lg" src={Logo} alt="logo" width={160} />
@@ -140,6 +141,7 @@ const Register = ({ history }) => {
 						</Block>
 					</Col>
 				</Row>
+				<Footer />
 			</PageContainer>
 		</React.Fragment>
 	);
