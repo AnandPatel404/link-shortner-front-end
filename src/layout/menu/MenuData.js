@@ -46,6 +46,11 @@ const menu = [
 		text: "Api Credentials",
 		link: "/api-credentials",
 	},
+	{
+		icon: "book",
+		text: "Api Docs",
+		link: "/api-credentials",
+	},
 
 	{
 		heading: "Pre-built Pages",
