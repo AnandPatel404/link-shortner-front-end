@@ -20,6 +20,7 @@ const PasswordProtected = lazy(() => import("./pages/passwordProtectedLinkPage/P
 const Pricing = lazy(() => import("./Landing/components/Pricing"));
 const Features = lazy(() => import("./Landing/components/Features"));
 const SectionOne = lazy(() => import("./Landing/components/SectionOne"));
+const ContectUs = lazy(() => import("./Landing/components/ContectUs"));
 const Layout = lazy(() => import("./layout/Index"));
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
 		<React.Fragment>
 			<Switch>
 				<Route exact path={`${process.env.PUBLIC_URL}/pricing`} component={Pricing}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/contact-us`} component={ContectUs}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/features`} component={Features}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/home`} component={SectionOne}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/auth-reset`} component={ForgotPassword}></Route>

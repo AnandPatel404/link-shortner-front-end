@@ -38,8 +38,8 @@ function SectionOne() {
 				</div>
 			</section>
 			<SectionThree />
-			<SectionTwo />
 			<SectionSeven />
+			<SectionTwo />
 			<SectionFour />
 			<SectionFive />
 			<SectionSix />

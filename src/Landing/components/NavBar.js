@@ -23,6 +23,11 @@ function NavBar() {
 											Features
 										</Link>
 									</li>
+									<li className="dropdown dropdown-submenu dropend">
+										<Link className="nav-link" to={`${process.env.PUBLIC_URL}/contact-us`}>
+											Contact Us
+										</Link>
+									</li>
 								</ul>
 							</div>
 						</div>
