@@ -8,8 +8,8 @@ import { Route, Switch, Link } from "react-router-dom";
 import { Icon } from "../../../components/Component";
 import { Card } from "reactstrap";
 import useUserStore from "../../../zustand/userStore/userStore";
-import female from "../../../images/user.png";
-import male from "../../../images/user2.png";
+import male from "../../../images/user.png";
+import female from "../../../images/user2.png";
 
 const UserProfileLayout = () => {
 	const [sm, updateSm] = useState(false);

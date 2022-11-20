@@ -106,7 +106,7 @@ const userActivity = create((set, get) => ({
 			.then((res) => {
 				if (res.data.status === "Success") {
 					messageToast(`${res.data.message}`, res.data.status);
-					history.push(`${process.env.PUBLIC_URL}/all-shorten-links`);
+					history.push(`${process.env.PUBLIC_URL}/all-links`);
 				}
 			})
 			.catch((err) => {
