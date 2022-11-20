@@ -90,10 +90,6 @@ function footer() {
 													class="btn btn-primary "
 												/>
 											</div>
-											<div id="mce-responses2" class="clear">
-												<div class="response" id="mce-error-response2"></div>
-												<div class="response" id="mce-success-response2"></div>
-											</div>
 										</div>
 									</form>
 								</div>
