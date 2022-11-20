@@ -40,13 +40,15 @@ function VerifyOtp({ history }) {
 				<Row>
 					<Col lg="8" className="position-relative">
 						<img src={fevIcon} alt="" width={50} className="position-absolute mt-3 ml-3  mt-md-5 ml-md-5" />
-						<div className="d-md-flex justify-content-md-center align-items-md-center mt-lg-3 pt-lg-5 flex-column text-center">
+						<div className="d-md-flex justify-content-md-center align-items-md-center mt-lg-3 pt-lg-5 flex-column text-center my-10 my-md-0">
 							<img src={o} alt="" width={650} />
 							<BlockHead>
-								<BlockContent>
-									<BlockTitle tag="h3">Please enter your Otp 1️⃣ 2️⃣ 3️⃣ 4️⃣</BlockTitle>
+								<BlockContent className="my-10">
+									<BlockTitle tag="h3" className="my-4">
+										Please enter your Otp 1️⃣ 2️⃣ 3️⃣ 4️⃣
+									</BlockTitle>
 									<BlockDes>
-										<p>
+										<p className="my-5">
 											Please enter your otp to verify your account <br />
 											👉 feel free we do not share any details with anyone <br /> don't share otp with others 👈
 										</p>

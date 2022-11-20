@@ -63,7 +63,7 @@ const useUserAuth = create((set) => ({
 			.then((res) => {
 				if (res.data.status === "Success") {
 					messageToast(`${res.data.message}`, res.data.status);
-					history.push(`${process.env.PUBLIC_URL}/auth-success`);
+					history.push(`${process.env.PUBLIC_URL}/home`);
 					localStorage.removeItem("email");
 				}
 			})

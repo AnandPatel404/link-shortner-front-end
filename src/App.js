@@ -16,7 +16,6 @@ const VerifyOtp = lazy(() => import("./pages/auth/VerifyOtp"));
 const ForgotPassword = lazy(() => import("./pages/auth/ForgotPassword"));
 const verifyOtpForResetPassword = lazy(() => import("./pages/auth/verifyOtpForResetPassword"));
 const ResetPassword = lazy(() => import("./pages/auth/reSetPassword"));
-const Success = lazy(() => import("./pages/auth/Success"));
 const PasswordProtected = lazy(() => import("./pages/passwordProtectedLinkPage/PasswordProtectedLink"));
 const Pricing = lazy(() => import("./Landing/components/Pricing"));
 const Features = lazy(() => import("./Landing/components/Features"));
@@ -30,7 +29,6 @@ const App = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/pricing`} component={Pricing}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/features`} component={Features}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/home`} component={SectionOne}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/auth-success`} component={Success}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/auth-reset`} component={ForgotPassword}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/auth-register`} component={Register}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/auth-login`} component={Login}></Route>
