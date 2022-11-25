@@ -62,6 +62,7 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/branded-link`} component={FullShort}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/limited-link`} component={FullShort}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/device-targeting`} component={FullShort}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/re-direction-link`} component={FullShort}></Route>
 
 				{/*Pre-built Pages*/}
 				<Route exact path={`${process.env.PUBLIC_URL}/transaction-basic`} component={TransListBasic}></Route>

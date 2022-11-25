@@ -9,6 +9,7 @@ import BrandedLink from "../shortingFunctions/BrandedLink";
 import LimitedLink from "../shortingFunctions/LimitedLink";
 import QrWithLogo from "../projects/QrWithLogo";
 import DeviceTargetingLink from "../shortingFunctions/DeviceTargetingLink";
+import ReDirectionPage from "../shortingFunctions/ReDirectionPage";
 import { Route, Switch, Link } from "react-router-dom";
 import { Icon, BlockTitle, Button } from "../../../components/Component";
 import { Card } from "reactstrap";
@@ -152,6 +153,15 @@ const FullShort = () => {
 												<span>Device & Os targeting</span>
 											</Link>
 										</li>
+										<li onClick={() => updateSm(false)}>
+											<Link
+												to={`${process.env.PUBLIC_URL}/re-direction-link`}
+												className={window.location.pathname === `${process.env.PUBLIC_URL}/re-direction-link` ? "active" : ""}
+											>
+												<Icon name="curve-up-right"></Icon>
+												<span>Re-Direction Page</span>
+											</Link>
+										</li>
 									</ul>
 								</div>
 								<div className="d-flex justify-content-center align-item-center mt-3">
@@ -221,6 +231,12 @@ const FullShort = () => {
 									exact
 									path={`${process.env.PUBLIC_URL}/device-targeting`}
 									render={() => <DeviceTargetingLink updateSm={updateSm} sm={sm} />}
+								></Route>
+
+								<Route
+									exact
+									path={`${process.env.PUBLIC_URL}/re-direction-link`}
+									render={() => <ReDirectionPage updateSm={updateSm} sm={sm} />}
 								></Route>
 							</Switch>
 						</div>
