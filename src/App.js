@@ -20,6 +20,7 @@ const PasswordProtected = lazy(() => import("./pages/passwordProtectedLinkPage/P
 const Pricing = lazy(() => import("./Landing/components/Pricing"));
 const Features = lazy(() => import("./Landing/components/Features"));
 const SectionOne = lazy(() => import("./Landing/components/SectionOne"));
+const LinkVerification = lazy(() => import("./pages/linkVerification/linkVerification"));
 const ContectUs = lazy(() => import("./Landing/components/ContectUs"));
 const Layout = lazy(() => import("./layout/Index"));
 
@@ -39,6 +40,7 @@ const App = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/auth-verify-otp-for-reset-password`} component={verifyOtpForResetPassword}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/auth-reset-password`} component={ResetPassword}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/password-protected-link/:id`} component={PasswordProtected}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/link-verification/:id/:orderId`} component={LinkVerification}></Route>
 
 				{/* Helper pages */}
 				<Route exact path={`${process.env.PUBLIC_URL}/auths/terms`} component={Terms}></Route>
