@@ -40,13 +40,27 @@ function ReDirectionPage({ sm, updateSm }) {
 			setLoading(false);
 			return errorToast("Please select link first", "Error");
 		}
-		const data = {
-			linkId: SingleLink.id,
-			title,
-			pageLink: formData.pageLink,
-			PageButtonColor: colorCodes,
-			verificationButtonColor: colorCodesTwo,
-		};
+		let data;
+		if (title) {
+			data = {
+				linkId: SingleLink.id,
+				title,
+				pageLink: formData.pageLink,
+				pageButton: formData.pageButton,
+				PageButtonColor: colorCodes,
+				verificationButton: formData.verificationButton,
+				verificationButtonColor: colorCodesTwo,
+			};
+		} else {
+			data = {
+				linkId: SingleLink.id,
+				pageLink: formData.pageLink,
+				pageButton: formData.pageButton,
+				PageButtonColor: colorCodes,
+				verificationButton: formData.verificationButton,
+				verificationButtonColor: colorCodesTwo,
+			};
+		}
 		await createLinkReDirectionPage(data, setLoading);
 	};
 
