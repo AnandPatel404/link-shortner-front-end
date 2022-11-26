@@ -37,7 +37,7 @@ function SendOtp({ history }) {
 									<BlockDes>
 										<p>
 											feel free we do not share any details with anyone <br />
-											Please enter your whatApp number for receive otp
+											Please enter your Email for receive otp
 										</p>
 									</BlockDes>
 								</BlockContent>
