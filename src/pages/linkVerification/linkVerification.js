@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Content from "../../layout/content/Content";
-import Head from "../../layout/head/Head";
-import { Spinner } from "reactstrap";
-import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, BlockBetween } from "../../components/Component";
+import { Block, BlockHead, BlockHeadContent, BlockTitle, BlockBetween } from "../../components/Component";
 import userFunctionalityLink from "../../zustand/fuctionalityLinks/functionaLityLink";
 function LinkVerification({ match }) {
 	const { verifyLinkReDirectPage } = userFunctionalityLink((state) => ({
