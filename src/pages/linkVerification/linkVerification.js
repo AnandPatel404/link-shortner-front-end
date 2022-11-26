@@ -1,29 +1,50 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Content from "../../layout/content/Content";
 import Head from "../../layout/head/Head";
-import { useForm } from "react-hook-form";
-import { FormGroup, Row, Col, Form, Spinner } from "reactstrap";
-import { Block, BlockHead, BlockHeadContent, BlockTitle, BlockDes, Button, Icon, BlockBetween } from "../../components/Component";
+import { Spinner } from "reactstrap";
+import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, BlockBetween } from "../../components/Component";
+import userFunctionalityLink from "../../zustand/fuctionalityLinks/functionaLityLink";
 function LinkVerification({ match }) {
-	useEffect(() => {
+	const { verifyLinkReDirectPage } = userFunctionalityLink((state) => ({
+		verifyLinkReDirectPage: state.verifyLinkReDirectPage,
+	}));
+
+	const [item, setItem] = useState({});
+
+	const getData = useCallback(async () => {
 		const id = match.params.id;
-	}, []);
+		const orderId = match.params.orderId;
+		const data = await verifyLinkReDirectPage({ id, orderId });
+		setItem(data.data);
+	}, [match.params.id, match.params.orderId, verifyLinkReDirectPage]);
+
+	useEffect(() => {
+		getData();
+	}, [getData]);
+
 	return (
 		<React.Fragment>
-			<Head title="Create Full Link" />
-			<Content page="component">
-				<BlockHead size="lg" wide="sm">
-					<BlockBetween>
-						<BlockHeadContent>
-							<BlockTitle tag="h2" className="fw-normal">
-								Create a Link or find link
-							</BlockTitle>
-						</BlockHeadContent>
-					</BlockBetween>
-				</BlockHead>
+			{item !== null && item !== undefined ? (
+				<React.Fragment>
+					<Content page="component">
+						<BlockHead size="lg" wide="sm">
+							<BlockBetween>
+								<BlockHeadContent>
+									<BlockTitle tag="h2" className="fw-normal">
+										{item.pageLinkTitle}
+									</BlockTitle>
+								</BlockHeadContent>
+							</BlockBetween>
+						</BlockHead>
 
-				<Block size="lg">{/* <iframe src={} frameborder="0"></iframe> */}</Block>
-			</Content>
+						<Block size="lg">
+							<iframe src={item.pageLink} frameborder="0" title={item.pageLinkTitle} width="100%" height="1000"></iframe>
+						</Block>
+					</Content>
+				</React.Fragment>
+			) : (
+				""
+			)}
 		</React.Fragment>
 	);
 }

@@ -263,6 +263,14 @@ const userFunctionalityLink = create((set, get) => ({
 			});
 	},
 
+	verifyLinkReDirectPage: async (d) => {
+		const data = await axios({
+			url: `short/verification-link/${d.id}/${d.orderId}`,
+			method: "get",
+		});
+		return data.data;
+	},
+
 	applyChanges: async () => {
 		messageToast(`Changes are applied`, "Success");
 		set({ SingleLink: {} });

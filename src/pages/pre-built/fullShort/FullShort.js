@@ -173,11 +173,15 @@ const FullShort = () => {
 											: ""}
 									</BlockTitle>
 								</div>
-								<div className="d-flex justify-content-center my-4">
-									<Button type="button" color="primary" size="lg" className="btn-dim" onClick={applyChange}>
-										Apply Changes
-									</Button>
-								</div>
+								{SingleLink.shorterLink ? (
+									<div className="d-flex justify-content-center my-4">
+										<Button type="button" color="primary" size="lg" className="btn-dim" onClick={applyChange}>
+											Apply Changes
+										</Button>
+									</div>
+								) : (
+									""
+								)}
 								<div className="d-flex justify-content-center mt-5 pt-5">
 									<img src={WorkSvg} alt="work" width={250} />
 								</div>

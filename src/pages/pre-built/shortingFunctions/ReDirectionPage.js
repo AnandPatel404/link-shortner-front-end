@@ -8,6 +8,7 @@ import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaL
 import { errorToast } from "../../../pages/components/misc/ReactToastify";
 import userSubStore from "../../../zustand/Subscription/sub";
 import { Link } from "react-router-dom";
+
 function ReDirectionPage({ sm, updateSm }) {
 	const [loading, setLoading] = useState(false);
 	const [colorCodes, setColorsCode] = useState("#000000");
@@ -44,7 +45,7 @@ function ReDirectionPage({ sm, updateSm }) {
 		if (title) {
 			data = {
 				linkId: SingleLink.id,
-				title,
+				pageLinkTitle: title,
 				pageLink: formData.pageLink,
 				pageButton: formData.pageButton,
 				PageButtonColor: colorCodes,
@@ -62,6 +63,7 @@ function ReDirectionPage({ sm, updateSm }) {
 			};
 		}
 		await createLinkReDirectionPage(data, setLoading);
+		console.log(data);
 	};
 
 	const { handleSubmit, register } = useForm();
@@ -93,7 +95,7 @@ function ReDirectionPage({ sm, updateSm }) {
 								<Col lg="5">
 									<FormGroup>
 										<label className="form-label" htmlFor="site-name">
-											pageLink
+											page Link
 										</label>
 										<span className="form-note">Specify the link that render on the verification page</span>
 									</FormGroup>
@@ -153,7 +155,6 @@ function ReDirectionPage({ sm, updateSm }) {
 										<div className="form-control-wrap">
 											<input
 												type="text"
-												id="title"
 												name="pageButton"
 												className="form-control"
 												ref={register({ required: "This field is required" })}
@@ -214,7 +215,6 @@ function ReDirectionPage({ sm, updateSm }) {
 								<Col lg="7">
 									<FormGroup>
 										<div className="form-control-wrap">
-											{/* TODO : change on change */}
 											<input type="color" className="" name="backGroundColor" onChange={(e) => colorCodeTwo(e.target.value)} />
 										</div>
 									</FormGroup>
