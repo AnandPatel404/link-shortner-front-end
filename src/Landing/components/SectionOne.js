@@ -1,4 +1,5 @@
 import React, { lazy } from "react";
+import { Link } from "react-router-dom";
 import img from "../assets/img/svg/growthree.svg";
 const NavBar = lazy(() => import("./NavBar"));
 const SectionTwo = lazy(() => import("./SectionTwo"));
@@ -24,9 +25,9 @@ function SectionOne() {
 							</p>
 							<div className="d-flex justify-content-center justify-content-lg-start">
 								<span>
-									<a className="btn btn-primary rounded me-2" href="/">
+									<Link className="btn btn-primary rounded me-2" to="/">
 										Learn More
-									</a>
+									</Link>
 								</span>
 							</div>
 						</div>

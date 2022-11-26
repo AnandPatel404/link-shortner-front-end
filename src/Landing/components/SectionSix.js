@@ -1,67 +1,58 @@
 import React from "react";
-import s from "../assets/img/icons/lineal/telephone-3.svg";
-import v from "../assets/img/icons/lineal/shield.svg";
-import g from "../assets/img/icons/lineal/cloud-computing-3.svg";
-import f from "../assets/img/icons/lineal/analytics.svg";
+import manPixal from "../assets/img/manypixelOne.png";
+import flexiple from "../assets/img/flexiple.png";
+import storySet from "../assets/img/stroyset.png";
+import fontawosam from "../assets/img/fontawosamOne.png";
+import bootstrap from "../assets/img/bootstrapOne.png";
 function SectionSix() {
 	return (
 		<section class="wrapper bg-light">
-			<div class="container pt-14 pb-12 pt-md-16 pb-md-14">
-				<div class="row gx-lg-8 gx-xl-12 gy-10 mb-lg-22 mb-xl-24 align-items-center">
-					<div class="col-lg-7 order-lg-2">
-						<div class="row gx-md-5 gy-5">
-							<div class="col-md-5 offset-md-1 align-self-end">
-								<div class="card bg-pale-yellow">
-									<div class="card-body">
-										<img src={s} class="icon-svg icon-svg-md text-yellow mb-3" alt="" />
-										<h4>24/7 Support</h4>
-										<p class="mb-0">Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta.</p>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-md-6 align-self-end">
-								<div class="card bg-pale-red">
-									<div class="card-body">
-										<img src={v} class="svg-inject icon-svg icon-svg-md text-red mb-3" alt="" />
-										<h4>Secure Payments</h4>
-										<p class="mb-0">Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta.</p>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-md-5">
-								<div class="card bg-pale-leaf">
-									<div class="card-body">
-										<img src={g} class="svg-inject icon-svg icon-svg-md text-leaf mb-3" alt="" />
-										<h4>Daily Updates</h4>
-										<p class="mb-0">Nulla vitae elit libero, a pharetra augue.</p>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-md-6 align-self-start">
-								<div class="card bg-pale-primary">
-									<div class="card-body">
-										<img src={f} class="svg-inject icon-svg icon-svg-md text-primary mb-3" alt="" />
-										<h4>Market Research</h4>
-										<p class="mb-0">Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida at eget.</p>
-									</div>
-								</div>
-							</div>
-						</div>
+			<div className="container pt-md-14 text-center">
+				<div className="row">
+					<div className="col-md-10 col-lg-8 col-xl-8 col-xxl-6 mx-auto mb-13">
+						<h3 className="mb-4">Special Thanks To This Company Who Make Our Work Easy</h3>
+						<hr />
+						<p className=" px-xl-12 px-xxl-6 mb-7">We Appreciate Other Work And Other Company Who Make Our Work Easy</p>
 					</div>
+				</div>
+			</div>
+			<div class="container py-14 py-md-16">
+				<div class="grid grid-view projects-masonry">
+					<div class="row gx-md-8 gy-10 gy-md-13 isotope">
+						<div class="project item col-md-6 col-xl-4 product">
+							<a href="https://www.manypixels.co/">
+								{" "}
+								<img src={manPixal} alt="" width={300} />
+							</a>
+						</div>
 
-					<div class="col-lg-5">
-						<h2 class="fs-15 text-uppercase text-muted mb-3">What We Do?</h2>
-						<h3 class="display-4 mb-5">The service we offer is specifically designed to meet your needs.</h3>
-						<p>
-							Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas sed diam eget risus varius blandit sit
-							amet non magna. Maecenas faucibus mollis interdum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-						</p>
-						<a href="/" class="btn btn-primary rounded-pill mt-3">
-							More Details
-						</a>
+						<div class="project item col-md-6 col-xl-4 workshop">
+							<a href="https://flexiple.com/illustrations/">
+								{" "}
+								<img src={flexiple} alt="" width={300} />
+							</a>
+						</div>
+
+						<div class="project item col-md-6 col-xl-4 still-life">
+							<a href="https://storyset.com/">
+								{" "}
+								<img src={storySet} alt="" width={300} />
+							</a>
+						</div>
+
+						<div class="project item col-md-6 col-xl-4 product">
+							<a href="https://fontawesome.com/">
+								{" "}
+								<img src={fontawosam} alt="" width={400} />
+							</a>
+						</div>
+
+						<div class="project item col-md-6 col-xl-4 product">
+							<a href="https://getbootstrap.com/">
+								{" "}
+								<img src={bootstrap} alt="" width={300} />
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>

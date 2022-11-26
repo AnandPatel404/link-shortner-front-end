@@ -15,7 +15,7 @@ function NavBar() {
 						<div onClick={navbarShow} className="d-md-none">
 							<Icon name="menu" className="h2" />
 						</div>
-						<div className="navbar-brand">
+						<div className="navbar-brand d-none d-md-flex">
 							<Logo />
 						</div>
 						<ul className="d-none d-md-flex g-5 py-md-5">
