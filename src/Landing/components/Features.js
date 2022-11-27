@@ -1,17 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import imgOne from "../assets/img/svg/reach.svg";
 import imgTwo from "../assets/img/svg/collect.svg";
 import imgThree from "../assets/img/svg/password.svg";
 import imgFour from "../assets/img/svg/time.svg";
 import imgFive from "../assets/img/svg/click.svg";
 import NavBar from "./NavBar";
-import { Icon } from "../../components/Component";
+import { Icon, BlockTitle, Button } from "../../components/Component";
+import { Card } from "reactstrap";
+import Content from "../../layout/content/Content";
+import { Route, Switch, Link } from "react-router-dom";
+import PasswordProtectedF from "./Features/PasswordProtectedF";
 
 function Features() {
+	const [sm, updateSm] = useState(false);
+	const [mobileView, setMobileView] = useState(false);
+
+	const viewChange = () => {
+		if (window.innerWidth < 990) {
+			setMobileView(true);
+		} else {
+			setMobileView(false);
+			updateSm(false);
+		}
+	};
 	return (
 		<div class="content-wrapper" style={{ backgroundColor: "#ffffff" }}>
 			<NavBar />
-			<section class="wrapper" style={{ backgroundColor: "#ffffff" }}>
+			{/* <section class="wrapper" style={{ backgroundColor: "#ffffff" }}>
 				<div class="container py-14 py-md-16">
 					<div class="row gx-lg-8 gx-xl-12 gy-10 mb-14 mb-md-18 align-items-center">
 						<div class="col-lg-6 position-relative">
@@ -156,7 +171,48 @@ function Features() {
 						</div>
 					</div>
 				</div>
-			</section>
+			</section> */}
+			<Content>
+				<Card className="card-bordered">
+					<div className="card-aside-wrap">
+						<div
+							className={`card-aside card-aside-left user-aside toggle-slide toggle-slide-left toggle-break-lg ${
+								sm ? "content-active" : ""
+							}`}
+						>
+							<div className="card-inner-group">
+								<div className="card-inner p-0">
+									<ul className="link-list-menu">
+										<li onClick={() => updateSm(false)}>
+											<Link
+												to={`${process.env.PUBLIC_URL}/password-protected-link-features`}
+												className={
+													window.location.pathname === `${process.env.PUBLIC_URL}/password-protected-link-features`
+														? "active"
+														: ""
+												}
+											>
+												<Icon name="link-alt"></Icon>
+												<span>Password Protected Link</span>
+											</Link>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div className="card-inner card-inner-lg">
+							{sm && mobileView && <div className="toggle-overlay" onClick={() => updateSm(!sm)}></div>}
+							<Switch>
+								<Route
+									exact
+									path={`${process.env.PUBLIC_URL}/password-protected-link-features`}
+									render={() => <PasswordProtectedF updateSm={updateSm} sm={sm} />}
+								></Route>
+							</Switch>
+						</div>
+					</div>
+				</Card>
+			</Content>
 		</div>
 	);
 }
