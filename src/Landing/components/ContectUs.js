@@ -6,7 +6,7 @@ import ContectUsSvg from "../assets/img/svg/aaa.svg";
 function ContectUs() {
 	return (
 		// TODO : Not Con to Back End
-		<section>
+		<section className="bg-light">
 			<NavBar />
 			<section className="wrapper bg-dark text-white">
 				<div className="container pt-18 pt-md-20 pb-21 pb-md-21 text-center">
