@@ -4,6 +4,7 @@ import flexiple from "../assets/img/flexiple.png";
 import storySet from "../assets/img/stroyset.png";
 import fontawosam from "../assets/img/fontawosamOne.png";
 import bootstrap from "../assets/img/bootstrapOne.png";
+import thinkwhat from "../assets/img/logotext.png";
 function SectionSix() {
 	return (
 		<section class="wrapper bg-light">
@@ -51,6 +52,12 @@ function SectionSix() {
 							<a href="https://getbootstrap.com/">
 								{" "}
 								<img src={bootstrap} alt="" width={300} />
+							</a>
+						</div>
+						<div class="project item col-md-6 col-xl-4 product">
+							<a href="https://getbootstrap.com/">
+								{" "}
+								<img src={thinkwhat} alt="" width={100} />
 							</a>
 						</div>
 					</div>

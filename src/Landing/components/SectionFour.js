@@ -20,24 +20,27 @@ function SectionFour() {
 					<div className="col-lg-7 offset-lg-1 pricing-wrapper">
 						<div className="row gy-6 position-relative mt-5">
 							<div className="col-md-6">
-								<div className="pricing card shadow-lg bg-soft-primary">
+								<div className="pricing card bg-soft-primary">
 									<div className="card-body pb-12">
 										<div className="prices text-dark">
 											<div className="price price-show justify-content-start">
 												<span className="price-currency">$</span>
-												<span className="price-value">19</span> <span className="price-duration">mo</span>
+												<span className="price-value">8</span> <span className="price-duration">mo</span>
 											</div>
 										</div>
 
-										<h4 className="card-title mt-2">Premium Plan</h4>
+										<h4 className="card-title mt-2">Gold Plan</h4>
 										<ul className="icon-list bullet-soft-primary mt-7 mb-8">
 											<li>
 												<Icon name="check-fill-c" className="text-yellow" />
-												<span>1000000</span> Link Creating Limit
+												<span>
+													<strong>100000</strong>
+												</span>{" "}
+												<strong>Link Creating Limit</strong>
 											</li>
 											<li>
 												<Icon name="check-fill-c" className="text-yellow" />
-												<span>1000000</span> Qr Link limit
+												<strong> Qr Link</strong>
 											</li>
 											<li>
 												<Icon name="check-fill-c" className="text-yellow" />
@@ -59,7 +62,40 @@ function SectionFour() {
 											</li>
 											<li>
 												<Icon name="check-fill-c" className="text-yellow" />
-												<span>Click Limit Link</span>
+												<span>
+													<strong>Click Limit Link</strong>
+												</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													<strong>User Analytics</strong>
+												</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													<strong>Unique Link</strong>
+												</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													<strong>Password Protected Link</strong>
+												</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													<strong>Expiration Link</strong>
+												</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													<strong>validity</strong>
+												</span>{" "}
+												<strong>28 day</strong>
 											</li>
 										</ul>
 										<Link to={`${process.env.PUBLIC_URL}/auth-login`} className="btn btn-primary rounded-pill">
@@ -70,24 +106,29 @@ function SectionFour() {
 							</div>
 
 							<div className="col-md-6 popular">
-								<div className="pricing card shadow-lg bg-soft-primary">
+								<div className="pricing card bg-soft-primary">
 									<div className="card-body pb-12">
 										<div className="prices text-dark">
 											<div className="price price-show justify-content-start">
 												<span className="price-currency">$</span>
-												<span className="price-value">49</span> <span className="price-duration">mo</span>
+												<span className="price-value">28</span> <span className="price-duration">mo</span>
 											</div>
 										</div>
 
-										<h4 className="card-title mt-2">Premium Pro Plan</h4>
+										<h4 className="card-title mt-2">Premium Plan</h4>
 										<ul className="icon-list bullet-soft-primary mt-7 mb-8">
 											<li>
 												<Icon name="check-fill-c" className="text-yellow" />
-												<span>Qr Link</span>
+												<span>
+													<strong>1000000</strong>
+												</span>{" "}
+												<strong>Link Creating Limit</strong>
 											</li>
 											<li>
 												<Icon name="check-fill-c" className="text-yellow" />
-												<span>Custom Logo Qr Link</span>
+												<span>
+													<strong>Qr Link</strong>
+												</span>
 											</li>
 											<li>
 												<Icon name="check-fill-c" className="text-yellow" />
@@ -110,29 +151,60 @@ function SectionFour() {
 											<li>
 												<Icon name="check-fill-c" className="text-yellow" />
 												<span>
-													<strong>Your Branded Link</strong>
+													<strong>Click Limit Link</strong>
 												</span>
-											</li>
-											<li>
-												<Icon name="check-fill-c" className="text-yellow" />
-												<span>Click Limit Link</span>
-											</li>
-											<li>
-												<Icon name="check-fill-c" className="text-yellow" />
-												<span>Device Targeting Links</span>
-											</li>
-											<li>
-												<Icon name="check-fill-c" className="text-yellow" />
-												<span>Browser Targeting Links</span>
 											</li>
 											<li>
 												<Icon name="check-fill-c" className="text-yellow" />
 												<span>
-													{" "}
-													7/24 <strong>Support</strong>
+													<strong>User Analytics</strong>
 												</span>
 											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													<strong>Unique Link</strong>
+												</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													<strong>Unique Branded Link</strong>
+												</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													<strong>Password Protected Link</strong>
+												</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													<strong>Expiration Link</strong>
+												</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													<strong>Device Targeting Link</strong>
+												</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													<strong>Browser Targeting Link</strong>
+												</span>
+											</li>
+											<li>
+												<Icon name="check-fill-c" className="text-yellow" />
+												<span>
+													<strong>validity</strong>
+												</span>
+												<strong> 28 day</strong>
+											</li>
 										</ul>
+
 										<Link to={`${process.env.PUBLIC_URL}/auth-login`} className="btn btn-primary rounded-pill">
 											Choose Plan
 										</Link>

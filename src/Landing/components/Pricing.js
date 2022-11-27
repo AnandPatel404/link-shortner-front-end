@@ -60,24 +60,9 @@ function Pricing() {
 																<li>
 																	<Icon name="check-fill-c" className="text-yellow" />
 																	<span>
-																		<strong>{item.link_creating_limit}</strong> Link creating{" "}
+																		<strong>{item.link_creating_limit}</strong> Link creating Limit{" "}
 																	</span>
 																</li>
-																{item.custom_domain ? (
-																	<li>
-																		<Icon name="check-fill-c" className="text-yellow" />
-																		<span>
-																			<strong>{item.custom_domain_limit}</strong> Custom Domain{" "}
-																		</span>
-																	</li>
-																) : (
-																	<li>
-																		<Icon name="cross-fill-c" className="text-danger" />
-																		<span>
-																			<strong>{item.custom_domain_limit}</strong> Custom Domain{" "}
-																		</span>
-																	</li>
-																)}
 																{item.api_webhook ? (
 																	<li>
 																		<Icon name="check-fill-c" className="text-yellow" />
@@ -97,29 +82,179 @@ function Pricing() {
 																	<li>
 																		<Icon name="check-fill-c" className="text-yellow" />
 																		<span>
-																			<strong>{item.qr_link_limit}</strong> QR{" "}
+																			<strong>QR Link</strong>
 																		</span>
 																	</li>
 																) : (
 																	<li>
 																		<Icon name="cross-fill-c" className="text-danger" />
 																		<span>
-																			<strong>{item.qr_link_limit}</strong> QR{" "}
+																			<strong>QR Link</strong>
 																		</span>
 																	</li>
 																)}
-																{item.custom_link_redirect ? (
+																{item.user_analytics ? (
 																	<li>
 																		<Icon name="check-fill-c" className="text-yellow" />
 																		<span>
-																			<strong>{item.custom_link_redirect_limit}</strong> Custom Link Redirect{" "}
+																			<strong>User Analytics</strong>
 																		</span>
 																	</li>
 																) : (
 																	<li>
 																		<Icon name="cross-fill-c" className="text-danger" />
 																		<span>
-																			<strong>{item.custom_link_redirect_limit}</strong> Custom Link Redirect{" "}
+																			<strong>User Analytics</strong>
+																		</span>
+																	</li>
+																)}
+																{item.password_protected_link ? (
+																	<li>
+																		<Icon name="check-fill-c" className="text-yellow" />
+																		<span>
+																			<strong>Password Protected Link</strong>
+																		</span>
+																	</li>
+																) : (
+																	<li>
+																		<Icon name="cross-fill-c" className="text-danger" />
+																		<span>
+																			<strong>Password Protected Link</strong>
+																		</span>
+																	</li>
+																)}
+																{item.custom_domain ? (
+																	<li>
+																		<Icon name="check-fill-c" className="text-yellow" />
+																		<span>
+																			<strong>Custom Domain</strong>
+																		</span>
+																	</li>
+																) : (
+																	<li>
+																		<Icon name="cross-fill-c" className="text-danger" />
+																		<span>
+																			<strong>Custom Domain</strong>
+																		</span>
+																	</li>
+																)}
+																{item.unique_link ? (
+																	<li>
+																		<Icon name="check-fill-c" className="text-yellow" />
+																		<span>
+																			<strong>Unique Link</strong>
+																		</span>
+																	</li>
+																) : (
+																	<li>
+																		<Icon name="cross-fill-c" className="text-danger" />
+																		<span>
+																			<strong>Unique Link</strong>
+																		</span>
+																	</li>
+																)}
+																{item.limited_click_link ? (
+																	<li>
+																		<Icon name="check-fill-c" className="text-yellow" />
+																		<span>
+																			<strong>Limited Click Link</strong>
+																		</span>
+																	</li>
+																) : (
+																	<li>
+																		<Icon name="cross-fill-c" className="text-danger" />
+																		<span>
+																			<strong>Limited Click Link</strong>
+																		</span>
+																	</li>
+																)}
+																{item.expiration_link ? (
+																	<li>
+																		<Icon name="check-fill-c" className="text-yellow" />
+																		<span>
+																			<strong>Expiration Link</strong>
+																		</span>
+																	</li>
+																) : (
+																	<li>
+																		<Icon name="cross-fill-c" className="text-danger" />
+																		<span>
+																			<strong>Expiration Link</strong>
+																		</span>
+																	</li>
+																)}
+																{item.device_targeting_link ? (
+																	<li>
+																		<Icon name="check-fill-c" className="text-yellow" />
+																		<span>
+																			<strong>Device Targeting Link</strong>
+																		</span>
+																	</li>
+																) : (
+																	<li>
+																		<Icon name="cross-fill-c" className="text-danger" />
+																		<span>
+																			<strong>Device Targeting Link</strong>
+																		</span>
+																	</li>
+																)}
+																{item.browser_targeting_link ? (
+																	<li>
+																		<Icon name="check-fill-c" className="text-yellow" />
+																		<span>
+																			<strong>Browser Targeting Link</strong>
+																		</span>
+																	</li>
+																) : (
+																	<li>
+																		<Icon name="cross-fill-c" className="text-danger" />
+																		<span>
+																			<strong>Browser Targeting Link</strong>
+																		</span>
+																	</li>
+																)}
+																{item.unique_branded_link ? (
+																	<li>
+																		<Icon name="check-fill-c" className="text-yellow" />
+																		<span>
+																			<strong>Unique Branded Link</strong>
+																		</span>
+																	</li>
+																) : (
+																	<li>
+																		<Icon name="cross-fill-c" className="text-danger" />
+																		<span>
+																			<strong>Unique Branded Link</strong>
+																		</span>
+																	</li>
+																)}
+																{item.custom_qr_link ? (
+																	<li>
+																		<Icon name="check-fill-c" className="text-yellow" />
+																		<span>
+																			<strong>Custom QR Link</strong>
+																		</span>
+																	</li>
+																) : (
+																	<li>
+																		<Icon name="cross-fill-c" className="text-danger" />
+																		<span>
+																			<strong>Custom QR Link</strong>
+																		</span>
+																	</li>
+																)}
+																{item.custom_link_redirection_page ? (
+																	<li>
+																		<Icon name="check-fill-c" className="text-yellow" />
+																		<span>
+																			<strong>Custom Link Redirection Page</strong>
+																		</span>
+																	</li>
+																) : (
+																	<li>
+																		<Icon name="cross-fill-c" className="text-danger" />
+																		<span>
+																			<strong>Custom Link Redirection Page</strong>
 																		</span>
 																	</li>
 																)}
@@ -158,49 +293,49 @@ function Pricing() {
 									<thead>
 										<tr>
 											<th class="w-25"></th>
-											<th>
-												<div class="h4 mb-1">Basic Plan</div>
-												<div class="fs-15 fw-normal text-secondary">$9 / Monthly</div>
-											</th>
-											<th>
-												<div class="h4 mb-1">Premium Plan</div>
-												<div class="fs-15 fw-normal text-secondary">$19 / Monthly</div>
-											</th>
-											<th>
-												<div class="h4 mb-1">Corporate Plan</div>
-												<div class="fs-15 fw-normal text-secondary">$29 / Monthly</div>
-											</th>
-											<th>
-												<div class="h4 mb-1">Business Plan</div>
-												<div class="fs-15 fw-normal text-secondary">$49 / Monthly</div>
-											</th>
+											{data.map((res) => (
+												<th>
+													<div class="h4 mb-1">{res.plan_name}</div>
+													<div class="fs-15 fw-normal text-secondary">{`$${res.plan_price} / ${res.validity} Days`}</div>
+												</th>
+											))}
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
-											<td class="option text-start">Project</td>
-											<td>1</td>
-											<td>5</td>
-											<td>20</td>
-											<td>90</td>
+											<td class="option text-start">Link creating Limit</td>
+											<td>100</td>
+											<td>100000</td>
+											<td>1000000</td>
+											<td>10000000</td>
 										</tr>
 										<tr>
-											<td class="option text-start">API Access</td>
-											<td>100K</td>
-											<td>200K</td>
-											<td>300K</td>
-											<td>900K</td>
+											<td class="option text-start">API Access (Api Hit Per Day)</td>
+											<td>100</td>
+											<td>100000</td>
+											<td>1000000</td>
+											<td>10000000</td>
 										</tr>
 										<tr>
-											<td class="option text-start">Storage</td>
-											<td>100MB</td>
-											<td>200MB</td>
-											<td>500MB</td>
-											<td>900MB</td>
+											<td class="option text-start">QR Link</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
 										</tr>
 										<tr>
-											<td class="option text-start">Weekly Reports</td>
-											<td>-</td>
+											<td class="option text-start">User Analytics</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
 											<td>
 												<Icon name="check-fill-c" className="text-yellow" />
 											</td>
@@ -213,10 +348,164 @@ function Pricing() {
 										</tr>
 										<tr>
 											<td class="option text-start">24/7 Support</td>
-											<td>-</td>
-											<td>-</td>
 											<td>
 												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+										</tr>
+										<tr>
+											<td class="option text-start">Password Protected Link</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+										</tr>
+										<tr>
+											<td class="option text-start">Custom Domain</td>
+											<td>
+												<Icon name="cross-fill-c" className="text-danger" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+										</tr>
+										<tr>
+											<td class="option text-start">Unique Link</td>
+											<td>
+												<Icon name="cross-fill-c" className="text-danger" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+										</tr>
+										<tr>
+											<td class="option text-start">Limited Click Link</td>
+											<td>
+												<Icon name="cross-fill-c" className="text-danger" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+										</tr>
+										<tr>
+											<td class="option text-start">Expiration Link</td>
+											<td>
+												<Icon name="cross-fill-c" className="text-danger" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+										</tr>
+										<tr>
+											<td class="option text-start">Device Targeting Link</td>
+											<td>
+												<Icon name="cross-fill-c" className="text-danger" />
+											</td>
+											<td>
+												<Icon name="cross-fill-c" className="text-danger" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+										</tr>
+										<tr>
+											<td class="option text-start">Browser Targeting Link</td>
+											<td>
+												<Icon name="cross-fill-c" className="text-danger" />
+											</td>
+											<td>
+												<Icon name="cross-fill-c" className="text-danger" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+										</tr>
+										<tr>
+											<td class="option text-start">Unique Branded Link</td>
+											<td>
+												<Icon name="cross-fill-c" className="text-danger" />
+											</td>
+											<td>
+												<Icon name="cross-fill-c" className="text-danger" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+										</tr>
+										<tr>
+											<td class="option text-start">Custom QR Link</td>
+											<td>
+												<Icon name="cross-fill-c" className="text-danger" />
+											</td>
+											<td>
+												<Icon name="cross-fill-c" className="text-danger" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+											<td>
+												<Icon name="check-fill-c" className="text-yellow" />
+											</td>
+										</tr>
+										<tr>
+											<td class="option text-start">Custom Link Redirection Page</td>
+											<td>
+												<Icon name="cross-fill-c" className="text-danger" />
+											</td>
+											<td>
+												<Icon name="cross-fill-c" className="text-danger" />
+											</td>
+											<td>
+												<Icon name="cross-fill-c" className="text-danger" />
 											</td>
 											<td>
 												<Icon name="check-fill-c" className="text-yellow" />
