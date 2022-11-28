@@ -41,7 +41,6 @@ const userDomain = create((set, get) => ({
 				}
 			})
 			.catch((err) => {
-				console.log(err);
 				errorToast(err.response.data.message, "Error");
 			});
 	},

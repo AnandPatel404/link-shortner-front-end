@@ -1,9 +1,19 @@
 import React from "react";
 import NavBar from "./NavBar";
 import Footer from "./footer";
+import { useForm } from "react-hook-form";
+import { Form } from "reactstrap";
 import ContectUsSvg from "../assets/img/svg/aaa.svg";
+import useUserMode from "../../zustand/userMode/userMode";
 
 function ContectUs() {
+	const { createFeedBack } = useUserMode((state) => ({
+		createFeedBack: state.createFeedBack,
+	}));
+	const onFormSubmit = async (formData) => {
+		await createFeedBack(formData);
+	};
+	const { handleSubmit, register } = useForm();
 	return (
 		// TODO : Not Con to Back End
 		<section className="bg-light">
@@ -50,22 +60,18 @@ function ContectUs() {
 						<div className="col-xl-10 mx-auto">
 							<div className="row gy-10 gx-lg-8 gx-xl-12">
 								<div className="col-lg-8">
-									<form className="contact-form needs-validation">
+									<Form className="contact-form needs-validation" onSubmit={handleSubmit(onFormSubmit)}>
 										<div className="messages"></div>
 										<div className="row gx-4">
 											<div className="col-md-6">
 												<div className="form-floating mb-4">
-													<input id="form_name" type="text" name="name" className="form-control" placeholder="Name" />
-												</div>
-											</div>
-											<div className="col-md-6">
-												<div className="form-floating mb-4">
 													<input
-														id="form_lastname"
+														id="form_name"
 														type="text"
-														name="surname"
+														name="name"
 														className="form-control"
-														placeholder="Sure-Name"
+														placeholder="Name"
+														ref={register({ required: "This field is required" })}
 													/>
 												</div>
 											</div>
@@ -75,9 +81,9 @@ function ContectUs() {
 														id="form_email"
 														type="email"
 														name="email"
+														ref={register({ required: "This field is required" })}
 														className="form-control"
 														placeholder="Email"
-														required
 													/>
 												</div>
 											</div>
@@ -87,19 +93,16 @@ function ContectUs() {
 														id="form_message"
 														name="message"
 														className="form-control"
+														ref={register({ required: "This field is required" })}
 														placeholder="Your message"
-														required
 													></textarea>
-													<label for="form_message">Message *</label>
-													<div className="valid-feedback"> Looks good! </div>
-													<div className="invalid-feedback"> Please enter your messsage. </div>
 												</div>
 											</div>
 											<div className="col-12">
 												<input type="submit" className="btn btn-primary rounded-pill btn-send mb-3" value="Send message" />
 											</div>
 										</div>
-									</form>
+									</Form>
 								</div>
 							</div>
 						</div>

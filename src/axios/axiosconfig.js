@@ -5,13 +5,9 @@ const instance = axios.create({
 	withCredentials: true,
 });
 
-/**
- * Catch the AunAuthorized Request
- */
 instance.interceptors.response.use(
 	(response) => response,
 	(error) => {
-		console.log();
 		if (error.response.status === 401 && error.response.data.message === "Please authenticate") {
 			window.location = `${process.env.PUBLIC_URL}/home`;
 			return;
