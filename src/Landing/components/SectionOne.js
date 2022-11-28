@@ -1,5 +1,6 @@
 import React, { lazy } from "react";
 import { Link } from "react-router-dom";
+import Head from "../../layout/head/Head";
 import img from "../assets/img/svg/growthree.svg";
 const NavBar = lazy(() => import("./NavBar"));
 const SectionTwo = lazy(() => import("./SectionTwo"));
@@ -13,6 +14,7 @@ const Footer = lazy(() => import("./footer"));
 function SectionOne() {
 	return (
 		<div className="content-wrapper bg-light">
+			<Head title="Home" />
 			<NavBar />
 			<section className="wrapper bg-light">
 				<div className="container pt-10 pb-15 pt-md-14 pb-md-20">
