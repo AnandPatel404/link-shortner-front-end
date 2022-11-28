@@ -1,6 +1,7 @@
 import React from "react";
 import NavBar from "./NavBar";
 import Footer from "./footer";
+import Head from "../../layout/head/Head";
 import { useForm } from "react-hook-form";
 import { Form } from "reactstrap";
 import ContectUsSvg from "../assets/img/svg/aaa.svg";
@@ -15,8 +16,8 @@ function ContectUs() {
 	};
 	const { handleSubmit, register } = useForm();
 	return (
-		// TODO : Not Con to Back End
 		<section className="bg-light">
+			<Head title="Contact Us And Talk With Us" />
 			<NavBar />
 			<section className="wrapper bg-dark text-white">
 				<div className="container pt-18 pt-md-20 pb-21 pb-md-21 text-center">

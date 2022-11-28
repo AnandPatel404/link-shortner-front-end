@@ -1,5 +1,6 @@
 import React, { lazy, useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
+import Head from "../../layout/head/Head";
 import Loader from "../../pages/Loader/Loader";
 import userPlan from "../../zustand/plans/plan";
 const Footer = lazy(() => import("./footer"));
@@ -23,6 +24,7 @@ function Pricing() {
 	}, [getAllPlan]);
 	return (
 		<React.Fragment>
+			<Head title="Pricing And Plans" />
 			{loading ? (
 				<Loader />
 			) : (

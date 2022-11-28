@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 // import imgFour from "../assets/img/svg/time.svg";
 // import imgFive from "../assets/img/svg/click.svg";
 import NavBar from "./NavBar";
+import Head from "../../layout/head/Head";
 import { Icon } from "../../components/Component";
 import { Card } from "reactstrap";
 import Content from "../../layout/content/Content";
@@ -38,6 +39,7 @@ function Features() {
 
 	return (
 		<div style={{ backgroundColor: "#ffffff" }}>
+			<Head title="Features And Tutorials" />
 			<NavBar />
 			<section class="">
 				<Content>
