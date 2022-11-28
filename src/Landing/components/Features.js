@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import imgOne from "../assets/img/svg/reach.svg";
-import imgTwo from "../assets/img/svg/collect.svg";
-import imgThree from "../assets/img/svg/password.svg";
-import imgFour from "../assets/img/svg/time.svg";
-import imgFive from "../assets/img/svg/click.svg";
+// import imgOne from "../assets/img/svg/reach.svg";
+// import imgTwo from "../assets/img/svg/collect.svg";
+// import imgThree from "../assets/img/svg/password.svg";
+// import imgFour from "../assets/img/svg/time.svg";
+// import imgFive from "../assets/img/svg/click.svg";
 import NavBar from "./NavBar";
 import { Icon } from "../../components/Component";
 import { Card } from "reactstrap";
@@ -37,9 +37,9 @@ function Features() {
 	}, []);
 
 	return (
-		<div class="content-wrapper" style={{ backgroundColor: "#ffffff" }}>
+		<div style={{ backgroundColor: "#ffffff" }}>
 			<NavBar />
-			<section class="wrapper container">
+			<section class="">
 				<Content>
 					<Card className="card-bordered">
 						<div className="card-aside-wrap">
@@ -60,10 +60,153 @@ function Features() {
 															: ""
 													}
 												>
-													<Icon name="link-alt"></Icon>
+													<Icon name="eye-off"></Icon>
 													<span>Password Protected Link</span>
 												</Link>
 											</li>
+											{/* <li onClick={() => updateSm(false)}>
+												<Link
+													to={`${process.env.PUBLIC_URL}/password-protected-link-features`}
+													className={
+														window.location.pathname === `${process.env.PUBLIC_URL}/password-protected-link-features`
+															? "active"
+															: ""
+													}
+												>
+													<Icon name="line-chart-down"></Icon>
+													<span>User Analytics</span>
+												</Link>
+											</li>
+											<li onClick={() => updateSm(false)}>
+												<Link
+													to={`${process.env.PUBLIC_URL}/password-protected-link-features`}
+													className={
+														window.location.pathname === `${process.env.PUBLIC_URL}/password-protected-link-features`
+															? "active"
+															: ""
+													}
+												>
+													<Icon name="qr"></Icon>
+													<span>QR Link</span>
+												</Link>
+											</li>
+											<li onClick={() => updateSm(false)}>
+												<Link
+													to={`${process.env.PUBLIC_URL}/password-protected-link-features`}
+													className={
+														window.location.pathname === `${process.env.PUBLIC_URL}/password-protected-link-features`
+															? "active"
+															: ""
+													}
+												>
+													<Icon name="qr"></Icon>
+													<span>Custom QR Link</span>
+												</Link>
+											</li>
+											<li onClick={() => updateSm(false)}>
+												<Link
+													to={`${process.env.PUBLIC_URL}/password-protected-link-features`}
+													className={
+														window.location.pathname === `${process.env.PUBLIC_URL}/password-protected-link-features`
+															? "active"
+															: ""
+													}
+												>
+													<Icon name="text-a"></Icon>
+													<span>Custom Domain</span>
+												</Link>
+											</li>
+											<li onClick={() => updateSm(false)}>
+												<Link
+													to={`${process.env.PUBLIC_URL}/password-protected-link-features`}
+													className={
+														window.location.pathname === `${process.env.PUBLIC_URL}/password-protected-link-features`
+															? "active"
+															: ""
+													}
+												>
+													<Icon name="underline"></Icon>
+													<span>Unique Link</span>
+												</Link>
+											</li>
+											<li onClick={() => updateSm(false)}>
+												<Link
+													to={`${process.env.PUBLIC_URL}/password-protected-link-features`}
+													className={
+														window.location.pathname === `${process.env.PUBLIC_URL}/password-protected-link-features`
+															? "active"
+															: ""
+													}
+												>
+													<Icon name="clipboad-check"></Icon>
+													<span>Limited Click Link</span>
+												</Link>
+											</li>
+											<li onClick={() => updateSm(false)}>
+												<Link
+													to={`${process.env.PUBLIC_URL}/password-protected-link-features`}
+													className={
+														window.location.pathname === `${process.env.PUBLIC_URL}/password-protected-link-features`
+															? "active"
+															: ""
+													}
+												>
+													<Icon name="clock"></Icon>
+													<span>Expiration Link</span>
+												</Link>
+											</li>
+											<li onClick={() => updateSm(false)}>
+												<Link
+													to={`${process.env.PUBLIC_URL}/password-protected-link-features`}
+													className={
+														window.location.pathname === `${process.env.PUBLIC_URL}/password-protected-link-features`
+															? "active"
+															: ""
+													}
+												>
+													<Icon name="android"></Icon>
+													<span>Device Targeting Link</span>
+												</Link>
+											</li>
+											<li onClick={() => updateSm(false)}>
+												<Link
+													to={`${process.env.PUBLIC_URL}/password-protected-link-features`}
+													className={
+														window.location.pathname === `${process.env.PUBLIC_URL}/password-protected-link-features`
+															? "active"
+															: ""
+													}
+												>
+													<Icon name="b-chrome"></Icon>
+													<span>Browser Targeting Link</span>
+												</Link>
+											</li>
+											<li onClick={() => updateSm(false)}>
+												<Link
+													to={`${process.env.PUBLIC_URL}/password-protected-link-features`}
+													className={
+														window.location.pathname === `${process.env.PUBLIC_URL}/password-protected-link-features`
+															? "active"
+															: ""
+													}
+												>
+													<Icon name="link-alt"></Icon>
+													<span>Unique Branded Link</span>
+												</Link>
+											</li>
+											<li onClick={() => updateSm(false)}>
+												<Link
+													to={`${process.env.PUBLIC_URL}/password-protected-link-features`}
+													className={
+														window.location.pathname === `${process.env.PUBLIC_URL}/password-protected-link-features`
+															? "active"
+															: ""
+													}
+												>
+													<Icon name="view-x1"></Icon>
+													<span>Custom Link Redirection Page</span>
+												</Link>
+											</li> */}
 										</ul>
 									</div>
 								</div>
