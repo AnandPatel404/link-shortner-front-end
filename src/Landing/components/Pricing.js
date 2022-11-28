@@ -1,4 +1,5 @@
 import React, { lazy, useState, useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
 import Loader from "../../pages/Loader/Loader";
 import userPlan from "../../zustand/plans/plan";
 const Footer = lazy(() => import("./footer"));
@@ -30,26 +31,26 @@ function Pricing() {
 						<NavBar />
 					</div>
 
-					<section class="wrapper bg-light">
-						<div class="container py-14 py-md-16">
-							<h2 class="display-5 mb-7 text-center">Our Pricing</h2>
-							<div class="pricing-wrapper">
-								<div class="row gx-2 gy-6 mt-2">
+					<section className="wrapper bg-light">
+						<div className="container py-14 py-md-16">
+							<h2 className="display-5 mb-7 text-center">Our Pricing</h2>
+							<div className="pricing-wrapper">
+								<div className="row gx-2 gy-6 mt-2">
 									{data.length > 0
 										? data.map((item) => (
-												<div class="col-md-6 col-lg-3" key={item.id}>
-													<div class="pricing card shadow-lg">
-														<div class="card-body">
-															<h4 class="card-title">{item.plan_name}</h4>
-															<div class="prices text-dark">
-																<div class="price price-show justify-content-start">
-																	<span class="price-currency">$</span>
-																	<span class="price-value">{item.plan_price}</span>{" "}
-																	<span class="price-duration"> {item.validity} days</span>
+												<div className="col-md-6 col-lg-3" key={item.id}>
+													<div className="pricing card shadow-lg">
+														<div className="card-body">
+															<h4 className="card-title">{item.plan_name}</h4>
+															<div className="prices text-dark">
+																<div className="price price-show justify-content-start">
+																	<span className="price-currency">$</span>
+																	<span className="price-value">{item.plan_price}</span>{" "}
+																	<span className="price-duration"> {item.validity} days</span>
 																</div>
 															</div>
 
-															<ul class="icon-list bullet-bg bullet-soft-primary mt-7 mb-8">
+															<ul className="icon-list bullet-bg bullet-soft-primary mt-7 mb-8">
 																<li>
 																	<Icon name="check-fill-c" className="text-yellow" />
 																	<span>
@@ -259,9 +260,12 @@ function Pricing() {
 																	</li>
 																)}
 															</ul>
-															<a href="/" class="btn btn-primary rounded-pill">
+															<Link
+																to={`${process.env.PUBLIC_URL}/auth-login`}
+																className="btn btn-primary rounded-pill mt-1"
+															>
 																Choose Plan
-															</a>
+															</Link>
 														</div>
 													</div>
 												</div>
@@ -272,52 +276,52 @@ function Pricing() {
 						</div>
 					</section>
 
-					<section class="wrapper" style={{ backgroundColor: "#ffffff" }}>
-						<div class="container py-14 py-md-16">
-							<p class="lead fs-lg">
-								We offer <span class="underline">great prices</span>, premium and quality solution for your business.
+					<section className="wrapper" style={{ backgroundColor: "#ffffff" }}>
+						<div className="container py-14 py-md-16">
+							<p className="lead fs-lg">
+								We offer <span className="underline">great prices</span>, premium and quality solution for your business.
 							</p>
-							<div class="row">
-								<div class="col-lg-4">
+							<div className="row">
+								<div className="col-lg-4">
 									<p>
 										Enjoy a{" "}
-										<a href="/" class="hover">
+										<a href="/" className="hover">
 											free 7-day trial
 										</a>{" "}
 										and experience the full service. No credit card required!
 									</p>
 								</div>
 							</div>
-							<div class="table-responsive">
-								<table class="table table-borderless table-striped text-center">
+							<div className="table-responsive">
+								<table className="table table-borderless table-striped text-center">
 									<thead>
 										<tr>
-											<th class="w-25"></th>
+											<th className="w-25"></th>
 											{data.map((res) => (
 												<th>
-													<div class="h4 mb-1">{res.plan_name}</div>
-													<div class="fs-15 fw-normal text-secondary">{`$${res.plan_price} / ${res.validity} Days`}</div>
+													<div className="h4 mb-1">{res.plan_name}</div>
+													<div className="fs-15 fw-normal text-secondary">{`$${res.plan_price} / ${res.validity} Days`}</div>
 												</th>
 											))}
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
-											<td class="option text-start">Link creating Limit</td>
+											<td className="option text-start">Link creating Limit</td>
 											<td>100</td>
 											<td>100000</td>
 											<td>1000000</td>
 											<td>10000000</td>
 										</tr>
 										<tr>
-											<td class="option text-start">API Access (Api Hit Per Day)</td>
+											<td className="option text-start">API Access (Api Hit Per Day)</td>
 											<td>100</td>
 											<td>100000</td>
 											<td>1000000</td>
 											<td>10000000</td>
 										</tr>
 										<tr>
-											<td class="option text-start">QR Link</td>
+											<td className="option text-start">QR Link</td>
 											<td>
 												<Icon name="check-fill-c" className="text-yellow" />
 											</td>
@@ -332,7 +336,7 @@ function Pricing() {
 											</td>
 										</tr>
 										<tr>
-											<td class="option text-start">User Analytics</td>
+											<td className="option text-start">User Analytics</td>
 											<td>
 												<Icon name="check-fill-c" className="text-yellow" />
 											</td>
@@ -347,7 +351,7 @@ function Pricing() {
 											</td>
 										</tr>
 										<tr>
-											<td class="option text-start">24/7 Support</td>
+											<td className="option text-start">24/7 Support</td>
 											<td>
 												<Icon name="check-fill-c" className="text-yellow" />
 											</td>
@@ -362,7 +366,7 @@ function Pricing() {
 											</td>
 										</tr>
 										<tr>
-											<td class="option text-start">Password Protected Link</td>
+											<td className="option text-start">Password Protected Link</td>
 											<td>
 												<Icon name="check-fill-c" className="text-yellow" />
 											</td>
@@ -377,7 +381,7 @@ function Pricing() {
 											</td>
 										</tr>
 										<tr>
-											<td class="option text-start">Custom Domain</td>
+											<td className="option text-start">Custom Domain</td>
 											<td>
 												<Icon name="cross-fill-c" className="text-danger" />
 											</td>
@@ -392,7 +396,7 @@ function Pricing() {
 											</td>
 										</tr>
 										<tr>
-											<td class="option text-start">Unique Link</td>
+											<td className="option text-start">Unique Link</td>
 											<td>
 												<Icon name="cross-fill-c" className="text-danger" />
 											</td>
@@ -407,7 +411,7 @@ function Pricing() {
 											</td>
 										</tr>
 										<tr>
-											<td class="option text-start">Limited Click Link</td>
+											<td className="option text-start">Limited Click Link</td>
 											<td>
 												<Icon name="cross-fill-c" className="text-danger" />
 											</td>
@@ -422,7 +426,7 @@ function Pricing() {
 											</td>
 										</tr>
 										<tr>
-											<td class="option text-start">Expiration Link</td>
+											<td className="option text-start">Expiration Link</td>
 											<td>
 												<Icon name="cross-fill-c" className="text-danger" />
 											</td>
@@ -437,7 +441,7 @@ function Pricing() {
 											</td>
 										</tr>
 										<tr>
-											<td class="option text-start">Device Targeting Link</td>
+											<td className="option text-start">Device Targeting Link</td>
 											<td>
 												<Icon name="cross-fill-c" className="text-danger" />
 											</td>
@@ -452,7 +456,7 @@ function Pricing() {
 											</td>
 										</tr>
 										<tr>
-											<td class="option text-start">Browser Targeting Link</td>
+											<td className="option text-start">Browser Targeting Link</td>
 											<td>
 												<Icon name="cross-fill-c" className="text-danger" />
 											</td>
@@ -467,7 +471,7 @@ function Pricing() {
 											</td>
 										</tr>
 										<tr>
-											<td class="option text-start">Unique Branded Link</td>
+											<td className="option text-start">Unique Branded Link</td>
 											<td>
 												<Icon name="cross-fill-c" className="text-danger" />
 											</td>
@@ -482,7 +486,7 @@ function Pricing() {
 											</td>
 										</tr>
 										<tr>
-											<td class="option text-start">Custom QR Link</td>
+											<td className="option text-start">Custom QR Link</td>
 											<td>
 												<Icon name="cross-fill-c" className="text-danger" />
 											</td>
@@ -497,7 +501,7 @@ function Pricing() {
 											</td>
 										</tr>
 										<tr>
-											<td class="option text-start">Custom Link Redirection Page</td>
+											<td className="option text-start">Custom Link Redirection Page</td>
 											<td>
 												<Icon name="cross-fill-c" className="text-danger" />
 											</td>
@@ -514,26 +518,26 @@ function Pricing() {
 									</tbody>
 									<tfoot>
 										<tr>
-											<th class="w-25"></th>
+											<th className="w-25"></th>
 											<th>
-												<a href="/" class="btn btn-primary rounded-pill mt-1">
+												<Link to={`${process.env.PUBLIC_URL}/auth-login`} className="btn btn-primary rounded-pill mt-1">
 													Choose Plan
-												</a>
+												</Link>
 											</th>
 											<th>
-												<a href="/" class="btn btn-primary rounded-pill mt-1">
+												<Link to={`${process.env.PUBLIC_URL}/auth-login`} className="btn btn-primary rounded-pill mt-1">
 													Choose Plan
-												</a>
+												</Link>
 											</th>
 											<th>
-												<a href="/" class="btn btn-primary rounded-pill mt-1">
+												<Link to={`${process.env.PUBLIC_URL}/auth-login`} className="btn btn-primary rounded-pill mt-1">
 													Choose Plan
-												</a>
+												</Link>
 											</th>
 											<th>
-												<a href="/" class="btn btn-primary rounded-pill mt-1">
+												<Link to={`${process.env.PUBLIC_URL}/auth-login`} className="btn btn-primary rounded-pill mt-1">
 													Choose Plan
-												</a>
+												</Link>
 											</th>
 										</tr>
 									</tfoot>
