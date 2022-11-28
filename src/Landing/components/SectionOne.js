@@ -27,8 +27,11 @@ function SectionOne() {
 							</p>
 							<div className="d-flex justify-content-center justify-content-lg-start">
 								<span>
-									<Link className="btn btn-primary rounded me-2" to="/">
-										Learn More
+									<Link className="btn btn-primary rounded me-2" to={`${process.env.PUBLIC_URL}/auth-send-otp`}>
+										Start Free Trail
+									</Link>
+									<Link className="btn btn-primary btn-dim rounded me-2" to={`${process.env.PUBLIC_URL}/auth-login`}>
+										Log-in
 									</Link>
 								</span>
 							</div>
@@ -46,6 +49,7 @@ function SectionOne() {
 			<SectionTwo />
 			<SectionFive />
 			<SectionSix />
+
 			<Footer />
 		</div>
 	);

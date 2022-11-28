@@ -7,9 +7,9 @@ import { Link } from "react-router-dom";
 
 function SectionSeven() {
 	return (
-		<section className="wrapper bg-light wrapper-border">
-			<div className="container-card pt-14 pt-md-16 shadowforfeTwo">
-				<div className="card image-wrapper bg-overlay bg-overlay-light-400 pb-15">
+		<section className="wrapper wrapper-border">
+			<div className="container pt-14 pt-md-16">
+				<div className="card image-wrapper pb-15">
 					<div className="card-body py-14 px-0">
 						<div className="container">
 							<div className="row gx-lg-8 gx-xl-12 gy-10 gy-lg-0">
@@ -49,7 +49,7 @@ function SectionSeven() {
 				<div className="grid mb-15">
 					<div className="row isotope gy-6 mt-n18">
 						<div className="item col-md-6 col-xl-3">
-							<PreviewCard className="shadowforfe p-3 mb-5 bg-white rounded">
+							<PreviewCard className="p-3 shadow-lg mb-5 bg-white rounded">
 								<div className="icon mb-0">
 									<div className="blockquote-details">
 										<div className="info ps-0">
@@ -63,7 +63,7 @@ function SectionSeven() {
 							</PreviewCard>
 						</div>
 						<div className="item col-md-6 col-xl-3">
-							<PreviewCard className="shadowforfe p-3 mb-5 bg-white rounded">
+							<PreviewCard className="p-3 mb-5 shadow-lg bg-white rounded">
 								<div className="icon mb-0">
 									<div className="blockquote-details">
 										<div className="info ps-0">
@@ -77,7 +77,7 @@ function SectionSeven() {
 							</PreviewCard>
 						</div>
 						<div className="item col-md-6 col-xl-3">
-							<PreviewCard className="shadowforfe p-3 mb-5 bg-white rounded">
+							<PreviewCard className="p-3 mb-5 shadow-lg bg-white rounded">
 								<div className="icon mb-0">
 									<div className="blockquote-details">
 										<div className="info ps-0">
@@ -91,7 +91,7 @@ function SectionSeven() {
 							</PreviewCard>
 						</div>
 						<div className="item col-md-6 col-xl-3">
-							<PreviewCard className="shadowforfe p-3 mb-5 bg-white rounded">
+							<PreviewCard className="p-3 mb-5 shadow-lg bg-white rounded">
 								<div className="icon mb-0">
 									<div className="blockquote-details">
 										<div className="info ps-0">
@@ -105,7 +105,7 @@ function SectionSeven() {
 							</PreviewCard>
 						</div>
 						<div className="item col-md-6 col-xl-3">
-							<PreviewCard className="shadowforfe p-3 mb-5 bg-white rounded">
+							<PreviewCard className="p-3 mb-5 shadow-lg bg-white rounded">
 								<div className="icon mb-0">
 									<div className="blockquote-details">
 										<div className="info ps-0">
@@ -119,7 +119,7 @@ function SectionSeven() {
 							</PreviewCard>
 						</div>
 						<div className="item col-md-6 col-xl-3">
-							<PreviewCard className="shadowforfe p-3 mb-5 bg-white rounded">
+							<PreviewCard className="p-3 mb-5 shadow-lg bg-white rounded">
 								<div className="icon mb-0">
 									<div className="blockquote-details">
 										<div className="info ps-0">
@@ -133,7 +133,7 @@ function SectionSeven() {
 							</PreviewCard>
 						</div>
 						<div className="item col-md-6 col-xl-3">
-							<PreviewCard className="shadowforfe p-3 mb-5 bg-white rounded">
+							<PreviewCard className="p-3 mb-5 shadow-lg bg-white rounded">
 								<div className="icon mb-0">
 									<div className="blockquote-details">
 										<div className="info ps-0">
@@ -147,7 +147,7 @@ function SectionSeven() {
 							</PreviewCard>
 						</div>
 						<div className="item col-md-6 col-xl-3">
-							<PreviewCard className="shadowforfe p-3 mb-5 bg-white rounded">
+							<PreviewCard className="p-3 mb-5 shadow-lg bg-white rounded">
 								<div className="icon mb-0">
 									<div className="blockquote-details">
 										<div className="info ps-0">
@@ -162,7 +162,7 @@ function SectionSeven() {
 						</div>
 						<div className="item col-md-6 col-xl-3">
 							<div className="icon mb-0">
-								<Link to="/" className="btn btn-primary">
+								<Link to={`${process.env.PUBLIC_URL}/features`} className="btn btn-primary">
 									See Features
 								</Link>
 							</div>
