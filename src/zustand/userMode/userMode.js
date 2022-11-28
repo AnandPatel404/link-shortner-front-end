@@ -13,13 +13,13 @@ const useUserMode = create((set) => ({
 	lightMode: () => set((state) => ({ mode: { main: "default", sidebar: "white", header: "white", skin: "light" } })),
 	createFeedBack: async (data) => {
 		await axios({
-			method: "patch",
+			method: "post",
 			url: "feedback/",
 			data,
 		})
 			.then((res) => {
 				if (res.data.status === "Success") {
-					Swal.fire(res.data.status, res.data.message, res.data.status);
+					Swal.fire("Success", res.data.message, "success");
 				}
 			})
 			.catch((err) => {

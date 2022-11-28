@@ -99,7 +99,7 @@ function ContectUs() {
 												</div>
 											</div>
 											<div className="col-12">
-												<input type="submit" className="btn btn-primary rounded-pill btn-send mb-3" value="Send message" />
+												<input type="submit" className="btn btn-primary rounded-pill btn-send mb-3" />
 											</div>
 										</div>
 									</Form>
