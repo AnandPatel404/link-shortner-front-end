@@ -49,7 +49,7 @@ function ShortingFuncationality({ sm, updateSm }) {
 	const { handleSubmit } = useForm();
 	return (
 		<React.Fragment>
-			<Head title="Form Elements" />
+			<Head title="Custom Domain" />
 			<Content page="component">
 				<BlockHead size="lg" wide="sm">
 					<BlockBetween>

@@ -69,7 +69,7 @@ function ReDirectionPage({ sm, updateSm }) {
 	const { handleSubmit, register } = useForm();
 	return (
 		<React.Fragment>
-			<Head title="Form Elements" />
+			<Head title="Create Redirecting Page" />
 			<Content page="component">
 				<BlockHead size="lg" wide="sm">
 					<BlockBetween>

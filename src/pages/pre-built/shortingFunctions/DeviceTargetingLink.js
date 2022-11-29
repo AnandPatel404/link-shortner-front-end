@@ -45,7 +45,7 @@ function DeviceTargetingLink({ sm, updateSm }) {
 	const { handleSubmit } = useForm();
 	return (
 		<React.Fragment>
-			<Head title="Form Elements" />
+			<Head title="Device Targeting Link" />
 			<Content page="component">
 				<BlockHead size="lg" wide="sm">
 					<BlockBetween>

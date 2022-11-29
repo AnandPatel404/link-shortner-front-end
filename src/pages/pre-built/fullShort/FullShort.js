@@ -5,6 +5,7 @@ import PasswordProtectedLink from "../shortingFunctions/PasswordProtectedLink";
 import Expirationlink from "../shortingFunctions/Expirationlink";
 import ProjectCardPage from "../projects/ProjectCard";
 import ShortLink from "../shortingFunctions/shortLink";
+import Head from "../../../layout/head/Head";
 import BrandedLink from "../shortingFunctions/BrandedLink";
 import LimitedLink from "../shortingFunctions/LimitedLink";
 import QrWithLogo from "../projects/QrWithLogo";
@@ -51,6 +52,7 @@ const FullShort = () => {
 
 	return (
 		<React.Fragment>
+			<Head title="Create Link With Full Functionality" />
 			<Content>
 				<Card className="card-bordered">
 					<div className="card-aside-wrap">
@@ -220,7 +222,6 @@ const FullShort = () => {
 									path={`${process.env.PUBLIC_URL}/create-qr-link`}
 									render={() => <ProjectCardPage updateSm={updateSm} sm={sm} />}
 								></Route>
-								{/* This is for logo qr */}
 								<Route
 									exact
 									path={`${process.env.PUBLIC_URL}/create-qr-link-with-logo`}

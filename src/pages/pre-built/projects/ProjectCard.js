@@ -43,7 +43,7 @@ const ProjectCardPage = ({ sm, updateSm }) => {
 
 	return (
 		<React.Fragment>
-			<Head title="Form Elements" />
+			<Head title="Create Link With QR Code" />
 			<Content page="component">
 				<BlockHead size="lg" wide="sm">
 					<BlockBetween>

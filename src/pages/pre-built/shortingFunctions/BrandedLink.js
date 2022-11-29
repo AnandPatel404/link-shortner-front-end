@@ -45,7 +45,7 @@ function BrandedLink({ sm, updateSm }) {
 	const { handleSubmit } = useForm();
 	return (
 		<React.Fragment>
-			<Head title="Form Elements" />
+			<Head title="Branded Link" />
 			<Content page="component">
 				<BlockHead size="lg" wide="sm">
 					<BlockBetween>

@@ -52,7 +52,7 @@ const QrWithLogo = ({ sm, updateSm }) => {
 
 	return (
 		<React.Fragment>
-			<Head title="Form Elements" />
+			<Head title="Create Link With QR Code With Your Logo" />
 			<Content page="component">
 				<BlockHead size="lg" wide="sm">
 					<BlockBetween>

@@ -52,7 +52,7 @@ function Expirationlink({ sm, updateSm }) {
 	const { handleSubmit } = useForm();
 	return (
 		<React.Fragment>
-			<Head title="Form Elements" />
+			<Head title="Expiration Link" />
 			<Content page="component">
 				<BlockHead size="lg" wide="sm">
 					<BlockBetween>

@@ -48,7 +48,7 @@ function LimitedLink({ sm, updateSm }) {
 	const { handleSubmit, register } = useForm();
 	return (
 		<React.Fragment>
-			<Head title="Form Elements" />
+			<Head title="Click Limit Link" />
 			<Content page="component">
 				<BlockHead size="lg" wide="sm">
 					<BlockBetween>

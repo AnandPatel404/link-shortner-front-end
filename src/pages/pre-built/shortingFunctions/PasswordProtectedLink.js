@@ -35,7 +35,7 @@ function PasswordProtectedLink({ sm, updateSm }) {
 	const { handleSubmit, register } = useForm();
 	return (
 		<React.Fragment>
-			<Head title="Form Elements" />
+			<Head title="Password Protected Link" />
 			<Content page="component">
 				<BlockHead size="lg" wide="sm">
 					<BlockBetween>
