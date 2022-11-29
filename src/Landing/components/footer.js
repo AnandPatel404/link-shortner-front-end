@@ -43,12 +43,6 @@ function footer() {
 								<li>
 									<a href="/">About Us</a>
 								</li>
-								<li>
-									<a href="/">Terms of Use</a>
-								</li>
-								<li>
-									<a href="/">Privacy Policy</a>
-								</li>
 							</ul>
 						</div>
 					</div>
