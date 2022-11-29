@@ -4,8 +4,8 @@ import { Icon } from "../../../../components/Component";
 import { LinkList, LinkItem } from "../../../../components/links/Links";
 import useUserStore from "../../../../zustand/userStore/userStore";
 import useUserAuth from "../../../../zustand/auth/userAuth";
-import male from "../../../../images/user.png";
-import female from "../../../../images/user2.png";
+import female from "../../../../images/user.png";
+import male from "../../../../images/user2.png";
 
 const User = () => {
 	const userData = useUserStore((state) => state.user);

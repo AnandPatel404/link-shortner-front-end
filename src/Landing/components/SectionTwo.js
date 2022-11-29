@@ -5,7 +5,7 @@ function SectionTwo() {
 		<section className="wrapper">
 			<div className="container py-14 py-md-16">
 				<div className="row gx-lg-8 gx-xl-12 gy-10 mb-14 mb-md-17 align-items-center">
-					<div className="col-lg-7 d-flex justify-content-center align-items-center order-first order-lg-last">
+					<div className="col-lg-7 d-flex justify-content-center align-items-center order-first ">
 						<img src={eye} alt="svg" width={700} />
 					</div>
 					<div className="col-lg-5">

@@ -34,6 +34,7 @@ function SectionOne() {
 										Log-in
 									</Link>
 								</span>
+								
 							</div>
 						</div>
 
@@ -44,9 +45,9 @@ function SectionOne() {
 				</div>
 			</section>
 			<SectionThree />
+			<SectionTwo />
 			<SectionSeven />
 			<SectionFour />
-			<SectionTwo />
 			<SectionFive />
 			<SectionSix />
 

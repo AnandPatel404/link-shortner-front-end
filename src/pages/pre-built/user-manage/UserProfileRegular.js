@@ -13,10 +13,6 @@ const UserProfileRegularPage = ({ sm, updateSm, setProfileName }) => {
 	const [formData, setFormData] = useState({});
 	const [modal, setModal] = useState(false);
 
-	// useEffect(() => {
-	// 	setProfileName(formData.name);
-	// }, [formData, setProfileName]);
-
 	const onInputChange = (e) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
 	};

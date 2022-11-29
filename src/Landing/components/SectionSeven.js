@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 function SectionSeven() {
 	return (
 		<section className="wrapper wrapper-border">
-			<div className="container pt-14 pt-md-16">
-				<div className="card image-wrapper pb-15">
+			<div className="container-card pt-14 pt-md-16">
+				<div className="card image-wrapper shadow-lg pb-15">
 					<div className="card-body py-14 px-0">
 						<div className="container">
 							<div className="row gx-lg-8 gx-xl-12 gy-10 gy-lg-0">
