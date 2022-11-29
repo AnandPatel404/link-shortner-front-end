@@ -1,14 +1,13 @@
 import React from "react";
-import paichart from "../assets/img/svg/paichart2.svg";
+import paichart from "../assets/img/svg/Advantages-bro.svg";
 function SectionThree() {
 	return (
 		<section className="wrapper">
 			<div className="container py-14 pt-md-17 pb-md-15">
 				<div className="row gx-md-8 gx-xl-12 gy-10 mb-14 mb-md-18 align-items-center">
-					<div className="col-lg-6 d-flex flex-column text-center text-lg-start">
-						<h2 className="fs-16 text-uppercase text-muted mb-3">Main Benefit</h2>
-						<h3 className="mb-5">Here 3 Main Benefit In Shorterme.</h3>
-						<img src={paichart} alt="" />
+					<div className="col-lg-6 d-flex flex-column text-center text-lg-start align-items-center">
+						<h2 className="fs-16 text-uppercase text-muted mb-3">Main Advantages</h2>
+						<img src={paichart} alt="" width={400} />
 					</div>
 					<div className="col-lg-6">
 						<div className="card shadow-lg me-lg-6 bg-soft-primary">

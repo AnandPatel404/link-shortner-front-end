@@ -1,7 +1,7 @@
 import React, { lazy } from "react";
 import { Link } from "react-router-dom";
 import Head from "../../layout/head/Head";
-import img from "../assets/img/svg/growthree.svg";
+import img from "../../images/svg/www-bro.svg";
 const NavBar = lazy(() => import("./NavBar"));
 const SectionTwo = lazy(() => import("./SectionTwo"));
 const SectionThree = lazy(() => import("./SectionThree"));
@@ -20,7 +20,10 @@ function SectionOne() {
 				<div className="container pt-10 pb-15 pt-md-14 pb-md-20">
 					<div className="row mb-5 align-items-center">
 						<div className="col-md-10 offset-md-1 offset-lg-0 col-lg-6 text-center text-lg-start order-2 order-lg-0">
-							<h2 className="mb-5 mx-md-n5 mx-lg-0">Grow And Manage Your Link Business with Our Link Solutions</h2>
+							<h2 className="mb-5 mx-md-n5 mx-lg-0">
+								Relax And
+								<br /> Grow And Manage Your Link Business with Our Link Solutions
+							</h2>
 							<p className="my-7">
 								Link Management Platform With All Features You Need In One Place. Short, brand, Manage Links And Track Your Links In
 								Easy Way.
@@ -38,7 +41,7 @@ function SectionOne() {
 						</div>
 
 						<div className="col-lg-6 d-flex justify-content-center">
-							<img src={img} alt="heroOne" />
+							<img src={img} alt="heroOne" width={500} />
 						</div>
 					</div>
 				</div>

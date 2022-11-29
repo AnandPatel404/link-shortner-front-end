@@ -9,8 +9,8 @@ function SectionTwo() {
 						<img src={eye} alt="svg" width={700} />
 					</div>
 					<div className="col-lg-5">
-						<h2 className="fs-16 text-uppercase text-muted">How We Work</h2>
-						<h3 className="my-8">Our Three Process Steps On Creating Awesome Links</h3>
+						<h2 className="fs-16 text-uppercase text-muted">Why Shorterme</h2>
+						<h3 className="my-8">Here Is The Reason Why Shorterme</h3>
 						<div className="d-flex flex-row my-10">
 							<div>
 								<span className="icon btn btn-circle btn-lg btn-primary pe-none me-4">
@@ -18,10 +18,8 @@ function SectionTwo() {
 								</span>
 							</div>
 							<div>
-								<h4 className="mb-1">Collect Ideas</h4>
-								<p className="mb-0">
-									Nulla vitae elit libero pharetra augue dapibus. Praesent commodo cursus. Donec ullamcorper nulla non metus.
-								</p>
+								<h4 className="mb-1">Simple And Fast</h4>
+								<p className="mb-0">Our user interface is the most simple and easy to use.</p>
 							</div>
 						</div>
 						<div className="d-flex flex-row mb-6">
@@ -31,10 +29,8 @@ function SectionTwo() {
 								</span>
 							</div>
 							<div>
-								<h4 className="mb-1">Data Analysis</h4>
-								<p className="mb-0">
-									Vivamus sagittis lacus vel augue laoreet. Etiam porta sem malesuada magna auctor fringilla augue.
-								</p>
+								<h4 className="mb-1">Video tutorial to build good links</h4>
+								<p className="mb-0">We provide video tutorials so that you can build the best links and grow your business.</p>
 							</div>
 						</div>
 						<div className="d-flex flex-row">
@@ -44,10 +40,8 @@ function SectionTwo() {
 								</span>
 							</div>
 							<div>
-								<h4 className="mb-1">Finalize Product</h4>
-								<p className="mb-0">
-									Cras mattis consectetur purus sit amet. Aenean lacinia bibendum nulla sed. Nulla vitae elit libero pharetra.
-								</p>
+								<h4 className="mb-1">Free 7 day trail for free </h4>
+								<p className="mb-0">Login and get 7 days trail for free and use lot of features we provide 12+ feature</p>
 							</div>
 						</div>
 					</div>
