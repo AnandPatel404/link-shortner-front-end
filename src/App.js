@@ -44,8 +44,8 @@ const App = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/link-verification/:id/:orderId`} component={LinkVerification}></Route>
 
 				{/* Helper pages */}
-				<Route exact path={`${process.env.PUBLIC_URL}/auths/terms`} component={Terms}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/auths/faq`} component={Faq}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/pages/terms-policy`} component={Terms}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/pages/faq`} component={Faq}></Route>
 
 				{/*Error Pages*/}
 				<Route exact path={`${process.env.PUBLIC_URL}/errors/404-classic`} component={Error404Classic}></Route>

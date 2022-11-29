@@ -4,10 +4,10 @@ import { RedirectAs404 } from "../utils/Utils";
 import Loader from "../pages/Loader/Loader";
 
 const Blank = lazy(() => import("../pages/others/Blank"));
-const Faq = lazy(() => import("../pages/others/Faq"));
+
 const Regularv1 = lazy(() => import("../pages/others/Regular-1"));
 const Regularv2 = lazy(() => import("../pages/others/Regular-2"));
-const Terms = lazy(() => import("../pages/others/Terms"));
+
 const NioIconPage = lazy(() => import("../pages/components/crafted-icons/NioIcon"));
 
 const QrList = lazy(() => import("../pages/pre-built/projects/QrList"));
@@ -72,8 +72,6 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/pricing-table`} component={PricingTable}></Route>
 
 				{/*Demo Pages*/}
-				<Route exact path={`${process.env.PUBLIC_URL}/pages/terms-policy`} component={Terms}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/pages/faq`} component={Faq}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/pages/regular-v1`} component={Regularv1}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/pages/regular-v2`} component={Regularv2}></Route>
 
