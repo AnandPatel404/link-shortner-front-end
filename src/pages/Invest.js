@@ -165,7 +165,7 @@ const InvestHomePage = () => {
 												<div className="input-group input-group-md">
 													<div className="input-group-prepend">
 														<span className="input-group-text" id="inputGroup-sizing-lg">
-															shorterMe.link
+															shortedurl.link
 														</span>
 													</div>
 												</div>

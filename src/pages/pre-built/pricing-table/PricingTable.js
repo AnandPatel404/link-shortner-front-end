@@ -93,7 +93,7 @@ const PricingTable = () => {
 																		</div>
 																	</div>
 
-																	<ul class="icon-list bullet-bg bullet-soft-primary mt-7 mb-8">
+																	<ul className="icon-list bullet-bg bullet-soft-primary mt-7 mb-8">
 																		<li>
 																			<Icon name="check-fill-c" className="text-yellow" />
 																			<span>
@@ -104,24 +104,9 @@ const PricingTable = () => {
 																		<li>
 																			<Icon name="check-fill-c" className="text-yellow" />
 																			<span>
-																				<strong>{item.link_creating_limit}</strong> Link creating{" "}
+																				<strong>{item.link_creating_limit}</strong> Link creating Limit{" "}
 																			</span>
 																		</li>
-																		{item.custom_domain ? (
-																			<li>
-																				<Icon name="check-fill-c" className="text-yellow" />
-																				<span>
-																					<strong>{item.custom_domain_limit}</strong> Custom Domain{" "}
-																				</span>
-																			</li>
-																		) : (
-																			<li>
-																				<Icon name="cross-fill-c" className="text-danger" />
-																				<span>
-																					<strong>{item.custom_domain_limit}</strong> Custom Domain{" "}
-																				</span>
-																			</li>
-																		)}
 																		{item.api_webhook ? (
 																			<li>
 																				<Icon name="check-fill-c" className="text-yellow" />
@@ -141,31 +126,179 @@ const PricingTable = () => {
 																			<li>
 																				<Icon name="check-fill-c" className="text-yellow" />
 																				<span>
-																					<strong>{item.qr_link_limit}</strong> QR{" "}
+																					<strong>QR Link</strong>
 																				</span>
 																			</li>
 																		) : (
 																			<li>
 																				<Icon name="cross-fill-c" className="text-danger" />
 																				<span>
-																					<strong>{item.qr_link_limit}</strong> QR{" "}
+																					<strong>QR Link</strong>
 																				</span>
 																			</li>
 																		)}
-																		{item.custom_link_redirect ? (
+																		{item.user_analytics ? (
 																			<li>
 																				<Icon name="check-fill-c" className="text-yellow" />
 																				<span>
-																					<strong>{item.custom_link_redirect_limit}</strong> Custom Link
-																					Redirect{" "}
+																					<strong>User Analytics</strong>
 																				</span>
 																			</li>
 																		) : (
 																			<li>
 																				<Icon name="cross-fill-c" className="text-danger" />
 																				<span>
-																					<strong>{item.custom_link_redirect_limit}</strong> Custom Link
-																					Redirect{" "}
+																					<strong>User Analytics</strong>
+																				</span>
+																			</li>
+																		)}
+																		{item.password_protected_link ? (
+																			<li>
+																				<Icon name="check-fill-c" className="text-yellow" />
+																				<span>
+																					<strong>Password Protected Link</strong>
+																				</span>
+																			</li>
+																		) : (
+																			<li>
+																				<Icon name="cross-fill-c" className="text-danger" />
+																				<span>
+																					<strong>Password Protected Link</strong>
+																				</span>
+																			</li>
+																		)}
+																		{item.custom_domain ? (
+																			<li>
+																				<Icon name="check-fill-c" className="text-yellow" />
+																				<span>
+																					<strong>Custom Domain</strong>
+																				</span>
+																			</li>
+																		) : (
+																			<li>
+																				<Icon name="cross-fill-c" className="text-danger" />
+																				<span>
+																					<strong>Custom Domain</strong>
+																				</span>
+																			</li>
+																		)}
+																		{item.unique_link ? (
+																			<li>
+																				<Icon name="check-fill-c" className="text-yellow" />
+																				<span>
+																					<strong>Unique Link</strong>
+																				</span>
+																			</li>
+																		) : (
+																			<li>
+																				<Icon name="cross-fill-c" className="text-danger" />
+																				<span>
+																					<strong>Unique Link</strong>
+																				</span>
+																			</li>
+																		)}
+																		{item.limited_click_link ? (
+																			<li>
+																				<Icon name="check-fill-c" className="text-yellow" />
+																				<span>
+																					<strong>Limited Click Link</strong>
+																				</span>
+																			</li>
+																		) : (
+																			<li>
+																				<Icon name="cross-fill-c" className="text-danger" />
+																				<span>
+																					<strong>Limited Click Link</strong>
+																				</span>
+																			</li>
+																		)}
+																		{item.expiration_link ? (
+																			<li>
+																				<Icon name="check-fill-c" className="text-yellow" />
+																				<span>
+																					<strong>Expiration Link</strong>
+																				</span>
+																			</li>
+																		) : (
+																			<li>
+																				<Icon name="cross-fill-c" className="text-danger" />
+																				<span>
+																					<strong>Expiration Link</strong>
+																				</span>
+																			</li>
+																		)}
+																		{item.device_targeting_link ? (
+																			<li>
+																				<Icon name="check-fill-c" className="text-yellow" />
+																				<span>
+																					<strong>Device Targeting Link</strong>
+																				</span>
+																			</li>
+																		) : (
+																			<li>
+																				<Icon name="cross-fill-c" className="text-danger" />
+																				<span>
+																					<strong>Device Targeting Link</strong>
+																				</span>
+																			</li>
+																		)}
+																		{item.browser_targeting_link ? (
+																			<li>
+																				<Icon name="check-fill-c" className="text-yellow" />
+																				<span>
+																					<strong>Browser Targeting Link</strong>
+																				</span>
+																			</li>
+																		) : (
+																			<li>
+																				<Icon name="cross-fill-c" className="text-danger" />
+																				<span>
+																					<strong>Browser Targeting Link</strong>
+																				</span>
+																			</li>
+																		)}
+																		{item.unique_branded_link ? (
+																			<li>
+																				<Icon name="check-fill-c" className="text-yellow" />
+																				<span>
+																					<strong>Unique Branded Link</strong>
+																				</span>
+																			</li>
+																		) : (
+																			<li>
+																				<Icon name="cross-fill-c" className="text-danger" />
+																				<span>
+																					<strong>Unique Branded Link</strong>
+																				</span>
+																			</li>
+																		)}
+																		{item.custom_qr_link ? (
+																			<li>
+																				<Icon name="check-fill-c" className="text-yellow" />
+																				<span>
+																					<strong>Custom QR Link</strong>
+																				</span>
+																			</li>
+																		) : (
+																			<li>
+																				<Icon name="cross-fill-c" className="text-danger" />
+																				<span>
+																					<strong>Custom QR Link</strong>
+																				</span>
+																			</li>
+																		)}
+																		{item.custom_link_redirection_page ? (
+																			<li>
+																				<Icon name="check-fill-c" className="text-yellow" />
+																				<span>
+																					<strong>Custom Link Redirection Page</strong>
+																				</span>
+																			</li>
+																		) : (
+																			<li>
+																				<Icon name="cross-fill-c" className="text-danger" />
+																				<span>
+																					<strong>Custom Link Redirection Page</strong>
 																				</span>
 																			</li>
 																		)}
