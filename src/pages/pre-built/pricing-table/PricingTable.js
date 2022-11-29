@@ -6,6 +6,7 @@ import userPlan from "../../../zustand/plans/plan";
 import Loader from "../../Loader/Loader";
 import userPayment from "../../../zustand/payment/payment";
 import userStore from "../../../zustand/userStore/userStore";
+import Swal from "sweetalert2";
 import Logo from "../../../images/logo.svg";
 
 const PricingTable = () => {
@@ -28,17 +29,21 @@ const PricingTable = () => {
 	}, [getAllPlan]);
 
 	const choosePlan = async (id, planName) => {
+		if (planName === "free") {
+			return Swal.fire("Error", "This plan is not valid", "error");
+		}
+
 		const data = await createOrderOfRazorPay(id);
-		console.log(data);
 		const options = {
 			key: process.env.RAZORPAYKEYID,
 			amount: data.amount,
 			currency: data.currency,
 			name: planName,
-			description: "Test Transaction",
+			description: "Buy ShorterMe Plan And Subscription",
 			image: Logo,
 			order_id: data.id,
-			callback_url: `http://localhost:8000/v1/payment/RazorPay/paymentVerification/${id}`,
+			// TODO: this is change in development
+			callback_url: `${process.env.RAZORPAY_CALLBACK_URL}/${id}`,
 			prefill: {
 				name: userData.name,
 				email: userData.email,
