@@ -20,7 +20,7 @@ function SectionFour() {
 					<div className="col-lg-7 offset-lg-1 pricing-wrapper">
 						<div className="row gy-6 position-relative mt-5">
 							<div className="col-md-6">
-								<div className="pricing card bg-soft-primary">
+								<div className="pricing card border shadow round-lg">
 									<div className="card-body pb-12">
 										<div className="prices text-dark">
 											<div className="price price-show justify-content-start">
@@ -106,7 +106,7 @@ function SectionFour() {
 							</div>
 
 							<div className="col-md-6 popular">
-								<div className="pricing card bg-soft-primary">
+								<div className="pricing card border shadow round-lg">
 									<div className="card-body pb-12">
 										<div className="prices text-dark">
 											<div className="price price-show justify-content-start">

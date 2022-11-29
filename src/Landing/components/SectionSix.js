@@ -4,7 +4,7 @@ import flexiple from "../assets/img/flexiple.png";
 import storySet from "../assets/img/stroyset.png";
 import fontawosam from "../assets/img/fontawosamOne.png";
 import bootstrap from "../assets/img/bootstrapOne.png";
-import thinkwhat from "../assets/img/logotext.png";
+import thinkwhat from "../assets/img/razorpay.png";
 function SectionSix() {
 	return (
 		<section class="wrapper bg-light">
@@ -21,43 +21,43 @@ function SectionSix() {
 				<div class="grid grid-view projects-masonry">
 					<div class="row gx-md-8 gy-10 gy-md-13 isotope">
 						<div class="project item col-md-6 col-xl-4 product">
-							<a href="https://www.manypixels.co/">
+							<a href="https://www.manypixels.co/" target="_blank" rel="noreferrer">
 								{" "}
 								<img src={manPixal} alt="" width={300} />
 							</a>
 						</div>
 
 						<div class="project item col-md-6 col-xl-4 workshop">
-							<a href="https://flexiple.com/illustrations/">
+							<a href="https://flexiple.com/illustrations/" target="_blank" rel="noreferrer">
 								{" "}
 								<img src={flexiple} alt="" width={300} />
 							</a>
 						</div>
 
 						<div class="project item col-md-6 col-xl-4 still-life">
-							<a href="https://storyset.com/">
+							<a href="https://storyset.com/" target="_blank" rel="noreferrer">
 								{" "}
 								<img src={storySet} alt="" width={300} />
 							</a>
 						</div>
 
 						<div class="project item col-md-6 col-xl-4 product">
-							<a href="https://fontawesome.com/">
+							<a href="https://fontawesome.com/" target="_blank" rel="noreferrer">
 								{" "}
 								<img src={fontawosam} alt="" width={400} />
 							</a>
 						</div>
 
 						<div class="project item col-md-6 col-xl-4 product">
-							<a href="https://getbootstrap.com/">
+							<a href="https://getbootstrap.com/" target="_blank" rel="noreferrer">
 								{" "}
 								<img src={bootstrap} alt="" width={300} />
 							</a>
 						</div>
 						<div class="project item col-md-6 col-xl-4 product">
-							<a href="https://getbootstrap.com/">
+							<a href="https://razorpay.com/" target="_blank" rel="noreferrer">
 								{" "}
-								<img src={thinkwhat} alt="" width={100} />
+								<img src={thinkwhat} alt="" width={400} />
 							</a>
 						</div>
 					</div>
