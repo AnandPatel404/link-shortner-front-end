@@ -25,19 +25,10 @@ function footer() {
 							<h4 className="widget-title  mb-3">SOLUTIONS</h4>
 							<ul className="list-unstyled text-reset mb-0">
 								<li>
-									<a href="/">About Us</a>
-								</li>
-								<li>
 									<a href="/">Our Story</a>
 								</li>
 								<li>
 									<a href="/">Projects</a>
-								</li>
-								<li>
-									<a href="/">Terms of Use</a>
-								</li>
-								<li>
-									<a href="/">Privacy Policy</a>
 								</li>
 							</ul>
 						</div>
@@ -50,10 +41,7 @@ function footer() {
 									<Link to={`${process.env.PUBLIC_URL}/contact-us`}>Contact Us</Link>
 								</li>
 								<li>
-									<a href="/">Our Story</a>
-								</li>
-								<li>
-									<a href="/">Projects</a>
+									<a href="/">About Us</a>
 								</li>
 								<li>
 									<a href="/">Terms of Use</a>
