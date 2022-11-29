@@ -10,25 +10,25 @@ const menu = [
 	{
 		icon: "tranx",
 		text: "Transaction",
-		link: "/transaction-basic",
+		link: "/transaction-list",
 	},
 
 	{
 		heading: "Link Work",
 	},
 	{
-		text: "All Links",
+		text: "All links",
 		link: "/all-links",
 		icon: "link",
 	},
 	{
 		icon: "qr",
-		text: "QR List",
+		text: "QR list",
 		link: "/qr-list",
 	},
 	{
 		icon: "puzzle",
-		text: "Create Link",
+		text: "Create link",
 		link: "/create-full-link",
 	},
 
@@ -43,12 +43,12 @@ const menu = [
 	},
 	{
 		icon: "link-group",
-		text: "Api Credentials",
+		text: "Api credentials",
 		link: "/api-credentials",
 	},
 	{
 		icon: "book",
-		text: "Api Docs",
+		text: "Api docs",
 		link: "/api-credentials",
 	},
 
