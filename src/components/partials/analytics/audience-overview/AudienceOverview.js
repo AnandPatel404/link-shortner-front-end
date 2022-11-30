@@ -17,6 +17,7 @@ const AudienceOverview = ({ totalClick, id }) => {
 
 	const getData = useCallback(async () => {
 		const data = await linkAnalysis(id, setLoading);
+		console.log(data.data.data);
 		setShortedData(data.data.data.finalData);
 		setShortedTImes(data.data.data.newDates);
 		setReaching({
@@ -29,7 +30,7 @@ const AudienceOverview = ({ totalClick, id }) => {
 		getData();
 	}, [getData]);
 
-	const [auOverview, setAuOverview] = useState("month-1");
+	// const [auOverview, setAuOverview] = useState("month-1");
 	const analyticOvDataSet2 = {
 		labels: shortedTimes,
 		dataUnit: "People",
@@ -67,7 +68,7 @@ const AudienceOverview = ({ totalClick, id }) => {
 							<h6 className="title">Audience Overview</h6>
 							<p>How have your users, sessions, bounce rate metrics trended.</p>
 						</div>
-						<div className="card-tools shrink-0 d-none d-sm-block">
+						{/* <div className="card-tools shrink-0 d-none d-sm-block">
 							<ul className="nav nav-switch-s2 nav-tabs bg-white">
 								<li className="nav-item">
 									<a
@@ -94,7 +95,7 @@ const AudienceOverview = ({ totalClick, id }) => {
 									</a>
 								</li>
 							</ul>
-						</div>
+						</div> */}
 					</div>
 					<div className="analytic-ov">
 						<div className="analytic-data-group analytic-ov-group g-3">
@@ -181,9 +182,7 @@ const AudienceOverview = ({ totalClick, id }) => {
 							></Line>
 						</div>
 						<div className="chart-label-group ml-5">
-							<div className="chart-label">01 Jan, 2020</div>
-							<div className="chart-label d-none d-sm-block">{auOverview === "month-1" ? "15" : "4"} Jan, 2020</div>
-							<div className="chart-label"> {auOverview === "month-1" ? "30" : "7"} Jan, 2020</div>
+							{shortedTimes.length > 0 ? shortedTimes.map((res) => <div className="chart-label"> {res}</div>) : ""}
 						</div>
 					</div>
 				</React.Fragment>

@@ -169,7 +169,7 @@ const FullShort = () => {
 								<div className="d-flex justify-content-center align-item-center mt-3">
 									<BlockTitle tag="h6" className="text-primary">
 										{SingleLink
-											? `${SingleLink.coustomDomain ? SingleLink.coustomDomain.domain : "shorterMe.link"}/${
+											? `${SingleLink.coustomDomain ? SingleLink.coustomDomain.domain : "shortedurl.link"}/${
 													SingleLink.shorterLink
 											  }`
 											: ""}
