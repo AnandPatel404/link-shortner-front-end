@@ -49,7 +49,7 @@ export const ClientDetails = ({ match, history }) => {
 	const currentItems = data;
 	return (
 		<React.Fragment>
-			<Head title="Project List"></Head>
+			<Head title="Client Details"></Head>
 			{loading ? (
 				<div className="d-flex justify-content-center align-items-center" style={{ height: 100 + "vh" }}>
 					<Loader />
