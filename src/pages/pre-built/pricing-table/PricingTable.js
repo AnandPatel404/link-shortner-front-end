@@ -43,7 +43,7 @@ const PricingTable = () => {
 			image: Logo,
 			order_id: data.id,
 			// TODO: this is change in development
-			callback_url: `${process.env.RAZORPAY_CALLBACK_URL}/${id}`,
+			callback_url: `http://localhost:8000/v1/payment/RazorPay/paymentVerification/${id}`,
 			prefill: {
 				name: userData.name,
 				email: userData.email,
