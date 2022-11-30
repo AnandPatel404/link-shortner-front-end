@@ -78,7 +78,7 @@ const KycDetailsRegular = ({ match }) => {
 										</BlockDes>
 									</BlockHeadContent>
 									<BlockHeadContent>
-										<Link to={`${process.env.PUBLIC_URL}/all-shorten-links`}>
+										<Link to={`${process.env.PUBLIC_URL}/all-links`}>
 											<Button color="light" outline className="bg-white d-none d-sm-inline-flex">
 												<Icon name="arrow-left"></Icon>
 												<span>Back</span>
