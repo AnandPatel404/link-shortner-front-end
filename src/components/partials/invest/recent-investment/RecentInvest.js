@@ -49,9 +49,17 @@ const RecentInvest = ({ links }) => {
 							<DataTableRow size="sm">
 								<div className="user-card">
 									<div className="user-name d-flex align-items-center">
-										<spam className="tb-lead">{`localhost:8000/${item.shorterLink}`}</spam>
+										<spam className="tb-lead">{`${item.coustomDomain?.domain ? item.coustomDomain?.domain : "shortedurl.link"}/${
+											item.shorterLink
+										}`}</spam>
 										<Button
-											onClick={() => navigator.clipboard.writeText(`localhost:8000/${item.shorterLink}`)}
+											onClick={() =>
+												navigator.clipboard.writeText(
+													`${item.coustomDomain?.domain ? item.coustomDomain?.domain : "shortedurl.link"}/${
+														item.shorterLink
+													}`
+												)
+											}
 											className="btn-dim mx-2 btn-primary px-3 py-1"
 										>
 											copy

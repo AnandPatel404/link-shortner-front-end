@@ -11,6 +11,7 @@ import userSubStore from "../../../zustand/Subscription/sub";
 import { Link } from "react-router-dom";
 function ShortingFuncationality({ sm, updateSm }) {
 	const [domain, setDomains] = useState([]);
+	const [domainForData, setDomainForData] = useState("");
 	const [loading, setLoading] = useState(false);
 	const { getAllDomain } = userDomain((state) => ({
 		getAllDomain: state.getAllDomain,
@@ -26,8 +27,8 @@ function ShortingFuncationality({ sm, updateSm }) {
 	}));
 	const getDomains = useCallback(async () => {
 		const data = await getAllDomain();
-		domain(data.data);
-	}, [domain, getAllDomain]);
+		setDomains(data.data.data);
+	}, [getAllDomain]);
 
 	useEffect(() => {
 		getDomains();
@@ -41,9 +42,13 @@ function ShortingFuncationality({ sm, updateSm }) {
 		}
 		const data = {
 			linkId: SingleLink.id,
-			domain: domain,
+			domain: domainForData,
 		};
 		customDomain(data, setLoading);
+	};
+
+	const setDomainsForData = (e) => {
+		setDomainForData(e);
 	};
 
 	const { handleSubmit } = useForm();
@@ -82,17 +87,15 @@ function ShortingFuncationality({ sm, updateSm }) {
 									<FormGroup>
 										<div className="form-control-wrap">
 											<div className="form-control-select">
-												<Input type="select" onChange={(e) => setDomains(e.target.value)}>
-													<option value="shorterME.link/">shorterME.link/</option>
-													{domain.length > 0 ? (
-														domain.map((res) => (
-															<option value={res.domain} key={res.id}>
-																{res.domain}/
-															</option>
-														))
-													) : (
-														<option value="shorterME.link/">shorterME.link/</option>
-													)}
+												<Input type="select" onChange={(e) => setDomainsForData(e.target.value)}>
+													<option value="shortedurl.link/">shortedurl.link/</option>
+													{domain.length > 0
+														? domain.map((res) => (
+																<option value={res.domain} key={res.id}>
+																	{res.domain}/
+																</option>
+														  ))
+														: ""}
 												</Input>
 											</div>
 										</div>
