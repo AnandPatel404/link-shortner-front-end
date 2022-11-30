@@ -60,7 +60,7 @@ const ProductList = () => {
 
 	return (
 		<React.Fragment>
-			<Head title="Product List"></Head>
+			<Head title="Link List"></Head>
 			{loading ? (
 				<div className="d-flex justify-content-center align-items-center" style={{ height: 100 + "vh" }}>
 					<Loader />
@@ -153,7 +153,9 @@ const ProductList = () => {
 															<DataTableRow>
 																<a
 																	className="tb-lead d-none d-md-inline-block"
-																	href={`localhost:8000/${item.shorterLink}`}
+																	href={`${item.coustomDomain ? item.coustomDomain?.domain : "shortedurl.link"}/${
+																		item.shorterLink
+																	}`}
 																	target="_blank"
 																	rel="noreferrer"
 																>
