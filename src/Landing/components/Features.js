@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy } from "react";
 // import imgOne from "../assets/img/svg/reach.svg";
 // import imgTwo from "../assets/img/svg/collect.svg";
 // import imgThree from "../assets/img/svg/password.svg";
@@ -10,7 +10,8 @@ import { Icon } from "../../components/Component";
 import { Card } from "reactstrap";
 import Content from "../../layout/content/Content";
 import { Route, Switch, Link } from "react-router-dom";
-import PasswordProtectedF from "./Features/PasswordProtectedF";
+const QRLinkFeature = lazy(() => import("./Features/QRLinkFeature"));
+const PasswordProtectedF = lazy(() => import("./Features/PasswordProtectedF"));
 
 function Features() {
 	const [sm, updateSm] = useState(false);
@@ -66,6 +67,17 @@ function Features() {
 													<span>Password Protected Link</span>
 												</Link>
 											</li>
+											<li onClick={() => updateSm(false)}>
+												<Link
+													to={`${process.env.PUBLIC_URL}/qr-link-features`}
+													className={
+														window.location.pathname === `${process.env.PUBLIC_URL}/qr-link-features` ? "active" : ""
+													}
+												>
+													<Icon name="qr"></Icon>
+													<span>QR Link</span>
+												</Link>
+											</li>
 											{/* <li onClick={() => updateSm(false)}>
 												<Link
 													to={`${process.env.PUBLIC_URL}/password-protected-link-features`}
@@ -77,19 +89,6 @@ function Features() {
 												>
 													<Icon name="line-chart-down"></Icon>
 													<span>User Analytics</span>
-												</Link>
-											</li>
-											<li onClick={() => updateSm(false)}>
-												<Link
-													to={`${process.env.PUBLIC_URL}/password-protected-link-features`}
-													className={
-														window.location.pathname === `${process.env.PUBLIC_URL}/password-protected-link-features`
-															? "active"
-															: ""
-													}
-												>
-													<Icon name="qr"></Icon>
-													<span>QR Link</span>
 												</Link>
 											</li>
 											<li onClick={() => updateSm(false)}>
@@ -220,6 +219,11 @@ function Features() {
 										exact
 										path={`${process.env.PUBLIC_URL}/password-protected-link-features`}
 										render={() => <PasswordProtectedF updateSm={updateSm} sm={sm} />}
+									></Route>
+									<Route
+										exact
+										path={`${process.env.PUBLIC_URL}/qr-link-features`}
+										render={() => <QRLinkFeature updateSm={updateSm} sm={sm} />}
 									></Route>
 								</Switch>
 							</div>
