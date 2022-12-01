@@ -1,13 +1,16 @@
-import React from "react";
+import React, { lazy } from "react";
 import manPixal from "../assets/img/manypixelOne.png";
 import flexiple from "../assets/img/flexiple.png";
 import storySet from "../assets/img/stroyset.png";
 import fontawosam from "../assets/img/fontawosamOne.png";
 import bootstrap from "../assets/img/bootstrapOne.png";
 import thinkwhat from "../assets/img/razorpay.png";
+const NavBar = lazy(() => import("./NavBar"));
+const Footer = lazy(() => import("./footer"));
 function SectionSix() {
 	return (
 		<section class="wrapper bg-light">
+			<NavBar />
 			<div className="container pt-md-14 text-center">
 				<div className="row">
 					<div className="col-md-10 col-lg-8 col-xl-8 col-xxl-6 mx-auto mb-13">
@@ -63,6 +66,7 @@ function SectionSix() {
 					</div>
 				</div>
 			</div>
+			<Footer />
 		</section>
 	);
 }

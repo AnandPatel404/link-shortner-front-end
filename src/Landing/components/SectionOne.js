@@ -7,7 +7,6 @@ const SectionTwo = lazy(() => import("./SectionTwo"));
 const SectionThree = lazy(() => import("./SectionThree"));
 const SectionFour = lazy(() => import("./SectionFour"));
 const SectionFive = lazy(() => import("./SectionFive"));
-const SectionSix = lazy(() => import("./SectionSix"));
 const SectionSeven = lazy(() => import("./SectionSeven"));
 const Footer = lazy(() => import("./footer"));
 
@@ -51,8 +50,6 @@ function SectionOne() {
 			<SectionTwo />
 			<SectionFour />
 			<SectionFive />
-			<SectionSix />
-
 			<Footer />
 		</div>
 	);

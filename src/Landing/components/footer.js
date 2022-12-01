@@ -43,6 +43,9 @@ function footer() {
 								<li>
 									<a href="/">About Us</a>
 								</li>
+								<li>
+									<Link to={`${process.env.PUBLIC_URL}/credits`}>Credits</Link>
+								</li>
 							</ul>
 						</div>
 					</div>

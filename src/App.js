@@ -20,6 +20,7 @@ const PasswordProtected = lazy(() => import("./pages/passwordProtectedLinkPage/P
 const Pricing = lazy(() => import("./Landing/components/Pricing"));
 const Features = lazy(() => import("./Landing/components/Features"));
 const SectionOne = lazy(() => import("./Landing/components/SectionOne"));
+const Credits = lazy(() => import("./Landing/components/SectionSix"));
 const LinkVerification = lazy(() => import("./pages/linkVerification/linkVerification"));
 const ContectUs = lazy(() => import("./Landing/components/ContectUs"));
 const Layout = lazy(() => import("./layout/Index"));
@@ -29,6 +30,7 @@ const App = () => {
 		<React.Fragment>
 			<Switch>
 				<Route exact path={`${process.env.PUBLIC_URL}/pricing`} component={Pricing}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/credits`} component={Credits}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/contact-us`} component={ContectUs}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/features`} component={Features}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/password-protected-link-features`} component={Features}></Route>
