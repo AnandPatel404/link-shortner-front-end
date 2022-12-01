@@ -50,13 +50,13 @@ function PasswordProtectedF({ sm, updateSm }) {
 
 	return (
 		<React.Fragment>
-			<Head title="Form Elements" />
+			<Head title="Guide To Create A Password Protected Link" />
 			<Content page="component">
 				<BlockHead size="lg" wide="sm">
 					<BlockBetween>
 						<BlockHeadContent>
 							<BlockTitle tag="h2" className="fw-normal">
-								Password Protected Link
+								Create Password Protected link
 							</BlockTitle>
 						</BlockHeadContent>
 						<BlockHeadContent className="align-self-start d-lg-none">
@@ -75,6 +75,35 @@ function PasswordProtectedF({ sm, updateSm }) {
 								<CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} className="lfnp " />
 								<CarouselControl direction="next" directionText="Next" onClickHandler={next} className="lfnp" />
 							</Carousel>
+						</Col>
+					</Row>
+					<Row>
+						<Col lg="12">
+							<h5 className="mb-5 mx-md-n5 mx-lg-0">Step 1 :-</h5>
+							<p>
+								✅ First of all click on create link , After that when the link menu opens, click on Create or find link Now sort your
+								link in that or find it.
+							</p>
+							<h5 className="mb-5 mx-md-n5 mx-lg-0">Step 2 :-</h5>
+							<p>
+								✅ Now click on the password protected link in the menu of the link Now enter your password and click on save You will
+								see a success message saying that your link has been updated.
+							</p>
+							<h5 className="mb-5 mx-md-n5 mx-lg-0">Step 3 :-</h5>
+							<p>
+								✅ After all this is done, it is an important step that you will see your link in blue color, below it will be the
+								button of apply changes, do not forget to press it.
+							</p>
+							<p>
+								✅ If you forget to press this button, then your link will be password protected, but if you do any other work, then
+								it will be on current link so it is important to press this button.
+							</p>
+							<h5 className="mb-5 mx-md-n5 mx-lg-0">Note :-</h5>
+							<p>
+								✅ These passwords are saved in encrypted form, so once you save your password, you cannot change it after that, If
+								you want to see this password, then you can go to the dashboard and click on your link details.
+							</p>
+							<p>✅ You can definitely unlock this password protected link</p>
 						</Col>
 					</Row>
 				</Block>
