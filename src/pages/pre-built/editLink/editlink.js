@@ -2,7 +2,7 @@ import Head from "../../../layout/head/Head";
 import Content from "../../../layout/content/Content";
 import React, { useEffect, useState, useCallback } from "react";
 import { FormGroup, Row, Col, Form } from "reactstrap";
-import { Block, BlockHead, BlockHeadContent, BlockTitle, PreviewCard, Button } from "../../../components/Component";
+import { Block, BlockHead, BlockHeadContent, BlockTitle, PreviewCard, Button, InputSwitch } from "../../../components/Component";
 import { useForm } from "react-hook-form";
 import userDashBoard from "../../../zustand/DashBoard/userDashBoard";
 import Loader from "../../Loader/Loader";
@@ -11,29 +11,47 @@ function Editlink({ match, history }) {
 	const [loading, setLoading] = useState(true);
 	const [data, SetData] = useState({});
 	const [status, setStatus] = useState("");
+	const [isPasswordProtected, setIsPasswordProtected] = useState(null);
 	const { updateLink, getLinkById } = userDashBoard((state) => ({
 		getLinkById: state.getLinkById,
 		updateLink: state.updateLink,
 	}));
 	const getLink = useCallback(async () => {
 		const id = match.params.id;
+
 		const data = await getLinkById(id, setLoading);
+
 		SetData(data.data.data.link);
+
+		setIsPasswordProtected(data.data.data.link.isPassword_protected);
+
 		setStatus(data.data.data.link.link_status);
 	}, [getLinkById, match.params.id]);
+
 	useEffect(() => {
 		getLink();
 	}, [getLink, match.params.id]);
+
 	const onFormSubmit = async (formData) => {
-		const data = {
+		let data = {
 			link_title: formData.link_title,
+
 			backlink: formData.backlink,
+
 			domain: formData.domain,
+
 			link_status: status,
+
 			protocol: formData.protocol,
 		};
+
+		if (data.isPassword_protected !== isPasswordProtected) {
+			data["isPassword_protected"] = isPasswordProtected;
+		}
+
 		await updateLink(data, match.params.id, history);
 	};
+
 	const { errors, register, handleSubmit } = useForm();
 
 	const set = () => {
@@ -43,6 +61,11 @@ function Editlink({ match, history }) {
 			setStatus("Enable");
 		}
 	};
+
+	const changeinPasswordProtected = () => {
+		setIsPasswordProtected(!isPasswordProtected);
+	};
+
 	return (
 		<React.Fragment>
 			<Head title="Form Elements" />
@@ -299,6 +322,30 @@ function Editlink({ match, history }) {
 										</FormGroup>
 									</Col>
 								</Row>
+								{data.isPassword_protected || data.link_password ? (
+									<Row className="g-3 align-center">
+										<Col lg="5">
+											<FormGroup>
+												<label className="form-label"> Shorter Link</label>
+												<span className="form-note">if you want to unlock to it then turn off this button</span>
+											</FormGroup>
+										</Col>
+										<Col lg="7">
+											<FormGroup>
+												<div className="custom-control custom-switch">
+													<InputSwitch
+														id="feature-update"
+														label="This link is Password Protected"
+														checked={data.isPassword_protected}
+														onClick={changeinPasswordProtected}
+													/>
+												</div>
+											</FormGroup>
+										</Col>
+									</Row>
+								) : (
+									""
+								)}
 
 								<Row className="g-3">
 									<Col lg="7" className="offset-lg-5">

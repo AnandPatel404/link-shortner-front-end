@@ -195,7 +195,7 @@ const ProductList = () => {
 																					<li>
 																						<DropdownItem>
 																							<Link
-																								to={`${process.env.PUBLIC_URL}/link-details/${item.id}`}
+																								to={`${process.env.PUBLIC_URL}/update-link/${item.id}`}
 																							>
 																								<Icon name="edit"></Icon>
 																								<span>Edit link</span>
