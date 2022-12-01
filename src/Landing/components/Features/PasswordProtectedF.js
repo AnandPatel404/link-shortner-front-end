@@ -78,7 +78,7 @@ function PasswordProtectedF({ sm, updateSm }) {
 						</Col>
 					</Row>
 					<Row>
-						<Col lg="12">
+						<Col lg="12" className="mt-5">
 							<h5 className="mb-5 mx-md-n5 mx-lg-0">Step 1 :-</h5>
 							<p>
 								✅ First of all click on create link , After that when the link menu opens, click on Create or find link Now sort your
@@ -103,7 +103,13 @@ function PasswordProtectedF({ sm, updateSm }) {
 								✅ These passwords are saved in encrypted form, so once you save your password, you cannot change it after that, If
 								you want to see this password, then you can go to the dashboard and click on your link details.
 							</p>
-							<p>✅ You can definitely unlock this password protected link</p>
+							<p>✅ You can definitely unlock this password protected link </p>
+							<h5 className="mb-5 mx-md-n5 mx-lg-0">For unlock the link</h5>
+							<p>✅ To turn off password protected, first of all you have to click on the edit link.</p>
+							<p>
+								✅ After that a button will appear only if your link is password protected then turn off that button your link will be
+								unlocked.
+							</p>
 						</Col>
 					</Row>
 				</Block>
