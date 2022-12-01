@@ -29,7 +29,7 @@ const menu = [
 	{
 		icon: "puzzle",
 		text: "Create link",
-		link: "/create-full-link",
+		link: "/create-or-find-link",
 	},
 
 	{

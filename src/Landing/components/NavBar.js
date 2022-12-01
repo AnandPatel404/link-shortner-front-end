@@ -25,7 +25,7 @@ function NavBar() {
 								</Link>
 							</li>
 							<li className="dropdown dropdown-submenu dropend">
-								<Link className="nav-link" to={`${process.env.PUBLIC_URL}/features`}>
+								<Link className="nav-link" to={`${process.env.PUBLIC_URL}/password-protected-link-features`}>
 									Features
 								</Link>
 							</li>
