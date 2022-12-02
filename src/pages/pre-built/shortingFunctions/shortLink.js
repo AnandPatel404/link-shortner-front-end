@@ -16,7 +16,8 @@ function ShortLink({ sm, updateSm }) {
 		immediatelyApplyChange: state.immediatelyApplyChange,
 	}));
 	const s = async (sData) => {
-		if (SingleLink || SingleLink.id) {
+		setLoading(true);
+		if (SingleLink.id !== undefined) {
 			Swal.fire({
 				title: "Are you sure?",
 				text: "You are currently working on another link, do you want to shorten the new link?",
@@ -24,28 +25,42 @@ function ShortLink({ sm, updateSm }) {
 				showCancelButton: true,
 				confirmButtonColor: "#3085d6",
 				cancelButtonColor: "#d33",
-				confirmButtonText: "Yes, delete it!",
+				confirmButtonText: "Yes!",
 			}).then(async (result) => {
 				if (result.isConfirmed) {
 					await immediatelyApplyChange();
 					Swal.fire("Link is Saved", "Your link has been save.", "success");
+					if (title !== null && title !== "") {
+						const data = {
+							link: sData.link,
+							link_title: sData.title,
+							link_status: linkStatus,
+						};
+						await createLink(data, setLoading);
+					} else {
+						const data = {
+							link: sData.link,
+							link_status: linkStatus,
+						};
+						await createLink(data, setLoading);
+					}
 				}
 			});
-		}
-		setLoading(true);
-		if (title !== null && title !== "") {
-			const data = {
-				link: sData.link,
-				link_title: sData.title,
-				link_status: linkStatus,
-			};
-			createLink(data, setLoading);
 		} else {
-			const data = {
-				link: sData.link,
-				link_status: linkStatus,
-			};
-			createLink(data, setLoading);
+			if (title !== null && title !== "") {
+				const data = {
+					link: sData.link,
+					link_title: sData.title,
+					link_status: linkStatus,
+				};
+				await createLink(data, setLoading);
+			} else {
+				const data = {
+					link: sData.link,
+					link_status: linkStatus,
+				};
+				await createLink(data, setLoading);
+			}
 		}
 	};
 	const set = (e) => {
