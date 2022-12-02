@@ -44,6 +44,8 @@ function ShortLink({ sm, updateSm }) {
 						};
 						await createLink(data, setLoading);
 					}
+				} else {
+					setLoading(false);
 				}
 			});
 		} else {
