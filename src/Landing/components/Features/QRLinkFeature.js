@@ -92,8 +92,8 @@ function QRLinkFeature({ sm, updateSm }) {
 								button of apply changes, do not forget to press it.
 							</p>
 							<p>
-								✅ If you forget to press this button, then your link will be password protected, but if you do any other work, then
-								it will be on current link so it is important to press this button.
+								✅ If you forget to press this button, then your link will be Qr Created, but if you do any other work, then it will
+								be on current link so it is important to press this button.
 							</p>
 							<h5 className="mb-5 mx-md-n5 mx-lg-0">Note :-</h5>
 							<p>✅ Once you have created the QR, after that you cannot make any changes in it.</p>

@@ -7,6 +7,7 @@ import "./style.css";
 import secondPng from "../../assets/img/second.png";
 import qrWithLogoPng from "../../assets/img/qrwithlogo.png";
 import qrWithLogoTwoPng from "../../assets/img/qrwithlogotwo.png";
+import qrListPng from "../../assets/img/qrlistWithlogo.png";
 function QRWithLogo({ sm, updateSm }) {
 	const items = [
 		{
@@ -85,8 +86,8 @@ function QRWithLogo({ sm, updateSm }) {
 							</p>
 							<h5 className="mb-5 mx-md-n5 mx-lg-0">Step 2 :-</h5>
 							<p>
-								✅ Now click on the password protected link in the menu of the link Now enter your password and click on save You will
-								see a success message saying that your link has been updated.
+								✅ Now the one who has already made his own QR is fine but the one who has not made his own Qr then just upload the
+								photo And the QR will be created automatically with your logo, after that you click on save
 							</p>
 							<h5 className="mb-5 mx-md-n5 mx-lg-0">Step 3 :-</h5>
 							<p>
@@ -94,21 +95,18 @@ function QRWithLogo({ sm, updateSm }) {
 								button of apply changes, do not forget to press it.
 							</p>
 							<p>
-								✅ If you forget to press this button, then your link will be password protected, but if you do any other work, then
-								it will be on current link so it is important to press this button.
+								✅ If you forget to press this button, then your link will be QR created, but if you do any other work, then it will
+								be on current link so it is important to press this button.
 							</p>
 							<h5 className="mb-5 mx-md-n5 mx-lg-0">Note :-</h5>
-							<p>
-								✅ These passwords are saved in encrypted form, so once you save your password, you cannot change it after that, If
-								you want to see this password, then you can go to the dashboard and click on your link details.
-							</p>
-							<p>✅ You can definitely unlock this password protected link </p>
-							<h5 className="mb-5 mx-md-n5 mx-lg-0">For unlock the link</h5>
-							<p>✅ To turn off password protected, first of all you have to click on the edit link.</p>
-							<p>
-								✅ After that a button will appear only if your link is password protected then turn off that button your link will be
-								unlocked.
-							</p>
+							<p>✅ Once you have created the QR, after that you cannot make any changes in it.</p>
+							<Col lg="12" className="mt-5">
+								<img src={qrListPng} alt="" />
+								<p>✅ You can see your QR list in the dashboard.</p>
+								<p>
+									✅ Yes but you can definitely do this when you don't need QR then you can delete it and your link will still work
+								</p>
+							</Col>
 						</Col>
 					</Row>
 				</Block>
