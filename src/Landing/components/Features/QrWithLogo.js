@@ -4,22 +4,21 @@ import Head from "../../../layout/head/Head";
 import { Row, Col, Carousel, CarouselItem, CarouselControl, CarouselIndicators } from "reactstrap";
 import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetween } from "../../../components/Component";
 import "./style.css";
-import qrPng from "../../assets/img/qr.png";
-import firstPng from "../../assets/img/second.png";
-import qrTwoPng from "../../assets/img/qrtwo.png";
-import qrListPng from "../../assets/img/qrlist.png";
-function QRLinkFeature({ sm, updateSm }) {
+import firstPng from "../../assets/img/first.png";
+import secondPng from "../../assets/img/second.png";
+import thirdPng from "../../assets/img/third.png";
+function QRWithLogo({ sm, updateSm }) {
 	const items = [
 		{
 			src: firstPng,
 			key: 1,
 		},
 		{
-			src: qrPng,
+			src: secondPng,
 			key: 2,
 		},
 		{
-			src: qrTwoPng,
+			src: thirdPng,
 			key: 3,
 		},
 	];
@@ -50,13 +49,13 @@ function QRLinkFeature({ sm, updateSm }) {
 	});
 	return (
 		<React.Fragment>
-			<Head title="Guide To Create A Link With Qr" />
+			<Head title="Guide To Create Qr Link With Your Logo" />
 			<Content page="component">
 				<BlockHead size="lg" wide="sm">
 					<BlockBetween>
 						<BlockHeadContent>
 							<BlockTitle tag="h2" className="fw-normal">
-								Create Qr link
+								Create Qr Link With Your Logo
 							</BlockTitle>
 						</BlockHeadContent>
 						<BlockHeadContent className="align-self-start d-lg-none">
@@ -85,7 +84,10 @@ function QRLinkFeature({ sm, updateSm }) {
 								link in that or find it.
 							</p>
 							<h5 className="mb-5 mx-md-n5 mx-lg-0">Step 2 :-</h5>
-							<p>✅ Now click on the QR in the menu of the link select the color of your qr and save it</p>
+							<p>
+								✅ Now click on the password protected link in the menu of the link Now enter your password and click on save You will
+								see a success message saying that your link has been updated.
+							</p>
 							<h5 className="mb-5 mx-md-n5 mx-lg-0">Step 3 :-</h5>
 							<p>
 								✅ After all this is done, it is an important step that you will see your link in blue color, below it will be the
@@ -96,12 +98,17 @@ function QRLinkFeature({ sm, updateSm }) {
 								it will be on current link so it is important to press this button.
 							</p>
 							<h5 className="mb-5 mx-md-n5 mx-lg-0">Note :-</h5>
-							<p>✅ Once you have created the QR, after that you cannot make any changes in it.</p>
-						</Col>
-						<Col lg="12" className="mt-5">
-							<img src={qrListPng} alt="" />
-							<p>✅ You can see your QR list in the dashboard.</p>
-							<p>✅ Yes but you can definitely do this when you don't need QR then you can delete it and your link will still work</p>
+							<p>
+								✅ These passwords are saved in encrypted form, so once you save your password, you cannot change it after that, If
+								you want to see this password, then you can go to the dashboard and click on your link details.
+							</p>
+							<p>✅ You can definitely unlock this password protected link </p>
+							<h5 className="mb-5 mx-md-n5 mx-lg-0">For unlock the link</h5>
+							<p>✅ To turn off password protected, first of all you have to click on the edit link.</p>
+							<p>
+								✅ After that a button will appear only if your link is password protected then turn off that button your link will be
+								unlocked.
+							</p>
 						</Col>
 					</Row>
 				</Block>
@@ -110,4 +117,4 @@ function QRLinkFeature({ sm, updateSm }) {
 	);
 }
 
-export default QRLinkFeature;
+export default QRWithLogo;

@@ -159,7 +159,7 @@ const ProductList = () => {
 																	target="_blank"
 																	rel="noreferrer"
 																>
-																	{`${item.coustomDomain ? item.coustomDomain?.domain : "localhost:8000"}/${
+																	{`${item.coustomDomain ? item.coustomDomain?.domain : "shortedurl.link"}/${
 																		item.shorterLink
 																	}`}
 																</a>

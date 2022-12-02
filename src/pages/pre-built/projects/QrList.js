@@ -18,7 +18,6 @@ import {
 	DataTableRow,
 	DataTableItem,
 } from "../../../components/Component";
-import { Link } from "react-router-dom";
 import useqrCode from "../../../zustand/qrCode/qrCode";
 
 export const QrList = () => {
@@ -63,63 +62,6 @@ export const QrList = () => {
 						<BlockHeadContent>
 							<BlockTitle page>QR list</BlockTitle>
 						</BlockHeadContent>
-						{/* <BlockHeadContent>
-							<div className="toggle-wrap nk-block-tools-toggle">
-								<Button className={`btn-icon btn-trigger toggle-expand mr-n1 ${sm ? "active" : ""}`} onClick={() => updateSm(!sm)}>
-									<Icon name="menu-alt-r"></Icon>
-								</Button>
-								<div className="toggle-expand-content" style={{ display: sm ? "block" : "none" }}>
-									<ul className="nk-block-tools g-3">
-										<li>
-											<UncontrolledDropdown>
-												<DropdownToggle tag="a" className="dropdown-toggle btn btn-white btn-dim btn-outline-light">
-													<Icon name="filter-alt" className="d-none d-sm-inline"></Icon>
-													<span>Filtered By</span>
-													<Icon name="chevron-right" className="dd-indc"></Icon>
-												</DropdownToggle>
-												<DropdownMenu right>
-													<ul className="link-list-opt no-bdr">
-														<li>
-															<DropdownItem
-																tag="a"
-																href="#dropdownitem"
-																onClick={(ev) => {
-																	ev.preventDefault();
-																}}
-															>
-																<span>Open</span>
-															</DropdownItem>
-														</li>
-														<li>
-															<DropdownItem
-																tag="a"
-																href="#dropdownitem"
-																onClick={(ev) => {
-																	ev.preventDefault();
-																}}
-															>
-																<span>Closed</span>
-															</DropdownItem>
-														</li>
-														<li>
-															<DropdownItem
-																tag="a"
-																href="#dropdownitem"
-																onClick={(ev) => {
-																	ev.preventDefault();
-																}}
-															>
-																<span>Onhold</span>
-															</DropdownItem>
-														</li>
-													</ul>
-												</DropdownMenu>
-											</UncontrolledDropdown>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</BlockHeadContent> */}
 					</BlockBetween>
 				</BlockHead>
 				<Block>
@@ -163,11 +105,15 @@ export const QrList = () => {
 												<DataTableRow>
 													<a
 														className="tb-lead d-none d-md-inline-block"
-														href={`localhost:8000/${item.linkId?.shorterLink}`}
+														href={`${item.coustomDomain ? item.coustomDomain?.domain : "shortedurl.link"}/${
+															item.linkId?.shorterLink
+														}`}
 														target="_blank"
 														rel="noreferrer"
 													>
-														{`localhost:8000/${item.linkId?.shorterLink}`}
+														{`${item.coustomDomain ? item.coustomDomain?.domain : "shortedurl.link"}/${
+															item.linkId?.shorterLink
+														}`}
 													</a>
 												</DataTableRow>
 												<DataTableRow>
@@ -189,17 +135,6 @@ export const QrList = () => {
 																</DropdownToggle>
 																<DropdownMenu right>
 																	<ul className="link-list-opt no-bdr">
-																		<li>
-																			<DropdownItem>
-																				<Link
-																					to={`${process.env.PUBLIC_URL}/link-details/${item.linkId?.id}`}
-																					className=""
-																				>
-																					<Icon name="edit"></Icon>
-																					<span>Edit Product</span>
-																				</Link>
-																			</DropdownItem>
-																		</li>
 																		<li>
 																			<DropdownItem
 																				href="#remove"

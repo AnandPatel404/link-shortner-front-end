@@ -256,7 +256,7 @@ const KycDetailsRegular = ({ match }) => {
 									<Col lg="7">
 										<PreviewAltCard className="h-100 d-flex justify-content-center align-items-center">
 											{qr !== null && qr.length !== 0 ? (
-												<img src={qr} alt="qr" />
+												<img src={qr} alt="qr" width={300} />
 											) : (
 												<span className="d-flex justify-content-center align-items-center flex-column">
 													<Icon name="qr" className="h2" />
