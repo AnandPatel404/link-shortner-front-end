@@ -8,6 +8,7 @@ import { Route, Switch, Link } from "react-router-dom";
 const QRLinkFeature = lazy(() => import("./Features/QRLinkFeature"));
 const PasswordProtectedF = lazy(() => import("./Features/PasswordProtectedF"));
 const QrLinkWithLogoFeature = lazy(() => import("./Features/QrWithLogo"));
+const BrandedLinkFeature = lazy(() => import("./Features/BrandedLinkFeature"));
 
 function Features() {
 	const [sm, updateSm] = useState(false);
@@ -85,6 +86,17 @@ function Features() {
 												>
 													<Icon name="qr"></Icon>
 													<span>QR With Logo Link</span>
+												</Link>
+											</li>
+											<li onClick={() => updateSm(false)}>
+												<Link
+													to={`${process.env.PUBLIC_URL}/branded-link-features`}
+													className={
+														window.location.pathname === `${process.env.PUBLIC_URL}/branded-link-features` ? "active" : ""
+													}
+												>
+													<Icon name="link-alt"></Icon>
+													<span>Branded Link</span>
 												</Link>
 											</li>
 											{/* <li onClick={() => updateSm(false)}>
@@ -200,19 +212,6 @@ function Features() {
 															: ""
 													}
 												>
-													<Icon name="link-alt"></Icon>
-													<span>Unique Branded Link</span>
-												</Link>
-											</li>
-											<li onClick={() => updateSm(false)}>
-												<Link
-													to={`${process.env.PUBLIC_URL}/password-protected-link-features`}
-													className={
-														window.location.pathname === `${process.env.PUBLIC_URL}/password-protected-link-features`
-															? "active"
-															: ""
-													}
-												>
 													<Icon name="view-x1"></Icon>
 													<span>Custom Link Redirection Page</span>
 												</Link>
@@ -238,6 +237,11 @@ function Features() {
 										exact
 										path={`${process.env.PUBLIC_URL}/qr-with-logo-link-features`}
 										render={() => <QrLinkWithLogoFeature updateSm={updateSm} sm={sm} />}
+									></Route>
+									<Route
+										exact
+										path={`${process.env.PUBLIC_URL}/branded-link-features`}
+										render={() => <BrandedLinkFeature updateSm={updateSm} sm={sm} />}
 									></Route>
 								</Switch>
 							</div>

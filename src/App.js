@@ -36,6 +36,7 @@ const App = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/password-protected-link-features`} component={Features}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/qr-link-features`} component={Features}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/qr-with-logo-link-features`} component={Features}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/branded-link-features`} component={Features}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/home`} component={SectionOne}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/auth-reset`} component={ForgotPassword}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/auth-register`} component={Register}></Route>

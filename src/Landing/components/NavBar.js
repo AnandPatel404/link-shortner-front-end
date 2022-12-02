@@ -20,13 +20,18 @@ function NavBar() {
 						</div>
 						<ul className="d-none d-md-flex g-5 py-md-5">
 							<li className="dropdown dropdown-submenu dropend">
-								<Link className="nav-link" to={`${process.env.PUBLIC_URL}/pricing`}>
-									Pricing
+								<Link className="nav-link" to={`${process.env.PUBLIC_URL}/contact-us`}>
+									Solutions
 								</Link>
 							</li>
 							<li className="dropdown dropdown-submenu dropend">
 								<Link className="nav-link" to={`${process.env.PUBLIC_URL}/password-protected-link-features`}>
 									Features
+								</Link>
+							</li>
+							<li className="dropdown dropdown-submenu dropend">
+								<Link className="nav-link" to={`${process.env.PUBLIC_URL}/pricing`}>
+									Pricing
 								</Link>
 							</li>
 							<li className="dropdown dropdown-submenu dropend">
@@ -50,17 +55,22 @@ function NavBar() {
 					</div>
 					<div className={`${ShowNavBar ? "d-flex" : "d-none"} justify-content-center w-100`}>
 						<ul className="navbar-nav">
-							<li className="">
-								<Link className="nav-link" to={`${process.env.PUBLIC_URL}/pricing`}>
-									Pricing
+							<li className="dropdown dropdown-submenu dropend">
+								<Link className="nav-link" to={`${process.env.PUBLIC_URL}/contact-us`}>
+									Solutions
 								</Link>
 							</li>
-							<li className="">
+							<li className="dropdown dropdown-submenu dropend">
 								<Link className="nav-link" to={`${process.env.PUBLIC_URL}/password-protected-link-features`}>
 									Features
 								</Link>
 							</li>
-							<li className="">
+							<li className="dropdown dropdown-submenu dropend">
+								<Link className="nav-link" to={`${process.env.PUBLIC_URL}/pricing`}>
+									Pricing
+								</Link>
+							</li>
+							<li className="dropdown dropdown-submenu dropend">
 								<Link className="nav-link" to={`${process.env.PUBLIC_URL}/contact-us`}>
 									Contact Us
 								</Link>
