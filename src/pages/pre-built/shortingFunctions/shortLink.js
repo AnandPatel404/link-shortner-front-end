@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Content from "../../../layout/content/Content";
 import Head from "../../../layout/head/Head";
+import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import { FormGroup, Row, Col, Form, Spinner } from "reactstrap";
 import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetween } from "../../../components/Component";
@@ -9,10 +10,28 @@ function ShortLink({ sm, updateSm }) {
 	const [linkStatus, setLinkStatus] = useState("Enable");
 	const [loading, setLoading] = useState(false);
 	const [title, setTitle] = useState(null);
-	const { createLink } = userFunctionalityLink((state) => ({
+	const { createLink, SingleLink, immediatelyApplyChange } = userFunctionalityLink((state) => ({
 		createLink: state.createLink,
+		SingleLink: state.SingleLink,
+		immediatelyApplyChange: state.immediatelyApplyChange,
 	}));
 	const s = async (sData) => {
+		if (SingleLink || SingleLink.id) {
+			Swal.fire({
+				title: "Are you sure?",
+				text: "You are currently working on another link, do you want to shorten the new link?",
+				icon: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#3085d6",
+				cancelButtonColor: "#d33",
+				confirmButtonText: "Yes, delete it!",
+			}).then(async (result) => {
+				if (result.isConfirmed) {
+					await immediatelyApplyChange();
+					Swal.fire("Link is Saved", "Your link has been save.", "success");
+				}
+			});
+		}
 		setLoading(true);
 		if (title !== null && title !== "") {
 			const data = {

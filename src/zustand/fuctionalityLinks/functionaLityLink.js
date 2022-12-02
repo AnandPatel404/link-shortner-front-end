@@ -275,6 +275,9 @@ const userFunctionalityLink = create((set, get) => ({
 		messageToast(`Changes are applied`, "Success");
 		set({ SingleLink: {} });
 	},
+	immediatelyApplyChange: async () => {
+		set({ SingleLink: {} });
+	},
 }));
 
 export default userFunctionalityLink;
