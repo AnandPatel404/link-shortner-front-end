@@ -4,21 +4,21 @@ import Head from "../../../layout/head/Head";
 import { Row, Col, Carousel, CarouselItem, CarouselControl, CarouselIndicators } from "reactstrap";
 import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetween } from "../../../components/Component";
 import "./style.css";
-import firstPng from "../../assets/img/first.png";
 import secondPng from "../../assets/img/second.png";
-import thirdPng from "../../assets/img/third.png";
+import qrWithLogoPng from "../../assets/img/qrwithlogo.png";
+import qrWithLogoTwoPng from "../../assets/img/qrwithlogotwo.png";
 function QRWithLogo({ sm, updateSm }) {
 	const items = [
 		{
-			src: firstPng,
+			src: secondPng,
 			key: 1,
 		},
 		{
-			src: secondPng,
+			src: qrWithLogoPng,
 			key: 2,
 		},
 		{
-			src: thirdPng,
+			src: qrWithLogoTwoPng,
 			key: 3,
 		},
 	];
