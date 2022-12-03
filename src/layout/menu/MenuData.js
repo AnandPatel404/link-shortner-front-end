@@ -9,7 +9,7 @@ const menu = [
 	},
 	{
 		icon: "tranx",
-		text: "Transaction",
+		text: "Transaction List",
 		link: "/transaction-list",
 	},
 
@@ -17,18 +17,18 @@ const menu = [
 		heading: "Link Work",
 	},
 	{
-		text: "All links",
+		text: "All links List",
 		link: "/all-links",
 		icon: "link",
 	},
 	{
 		icon: "qr",
-		text: "QR list",
+		text: "All QR list",
 		link: "/qr-list",
 	},
 	{
 		icon: "puzzle",
-		text: "Create link",
+		text: "Create link with privilege",
 		link: "/create-or-find-link",
 	},
 
@@ -43,12 +43,17 @@ const menu = [
 	},
 	{
 		icon: "link-group",
-		text: "Api credentials",
+		text: "Create api credentials",
 		link: "/api-credentials",
 	},
 	{
 		icon: "book",
 		text: "Api docs",
+		link: "/api-credentials",
+	},
+	{
+		icon: "book-read",
+		text: "Feature docs",
 		link: "/api-credentials",
 	},
 ];
