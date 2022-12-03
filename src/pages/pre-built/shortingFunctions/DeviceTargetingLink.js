@@ -8,6 +8,7 @@ import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetw
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
 import userSubStore from "../../../zustand/Subscription/sub";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 function DeviceTargetingLink({ sm, updateSm }) {
 	let newData = [];
 	const colourData = [
@@ -26,6 +27,9 @@ function DeviceTargetingLink({ sm, updateSm }) {
 		sub: state.subscription,
 	}));
 	const s = async () => {
+		if (newData.length === 0) {
+			Swal.fire("Error", "Please Select The Device First", "error");
+		}
 		const data = {
 			linkId: SingleLink.id,
 			deviceTargetingData: newData,

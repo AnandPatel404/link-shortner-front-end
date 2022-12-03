@@ -8,6 +8,7 @@ import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetw
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
 import userSubStore from "../../../zustand/Subscription/sub";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 function BrowserTargetingLink({ sm, updateSm }) {
 	let newData = [];
 
@@ -16,6 +17,7 @@ function BrowserTargetingLink({ sm, updateSm }) {
 		{ value: "Firefox", label: "Firefox" },
 		{ value: "Safari", label: "Safari" },
 		{ value: "Opera", label: "Opera" },
+		{ value: "Ie", label: "Ie" },
 		{ value: "Seamonkey", label: "Seamonkey" },
 	];
 	const animatedComponents = makeAnimated();
@@ -29,6 +31,9 @@ function BrowserTargetingLink({ sm, updateSm }) {
 		sub: state.subscription,
 	}));
 	const s = async () => {
+		if (newData.length === 0) {
+			Swal.fire("Error", "Please Select The Browser First", "error");
+		}
 		const data = {
 			linkId: SingleLink.id,
 			deviceTargetingData: newData,

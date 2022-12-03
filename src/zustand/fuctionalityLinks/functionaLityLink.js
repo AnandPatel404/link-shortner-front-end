@@ -245,6 +245,25 @@ const userFunctionalityLink = create((set, get) => ({
 				errorToast(err.response.data.message, "Error");
 			});
 	},
+
+	createBrowserTargetingLink: async (data, setLoading) => {
+		await axios({
+			url: "short/browser-targeting-link",
+			method: "post",
+			data,
+		})
+			.then((res) => {
+				if (res.data.status === "Success") {
+					setLoading(false);
+					messageToast(res.data.message, res.data.status);
+				}
+			})
+			.catch((err) => {
+				setLoading(false);
+				errorToast(err.response.data.message, "Error");
+			});
+	},
+
 	createLinkReDirectionPage: async (data, setLoading) => {
 		await axios({
 			url: "short/create-redirection-link-with-page",
