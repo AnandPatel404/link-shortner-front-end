@@ -1,7 +1,6 @@
 import React, { Suspense, useLayoutEffect, lazy } from "react";
 import { Switch, Route } from "react-router-dom";
 import { RedirectAs404 } from "../utils/Utils";
-import Loader from "../pages/Loader/Loader";
 
 const Blank = lazy(() => import("../pages/others/Blank"));
 
@@ -32,7 +31,7 @@ const Pages = () => {
 	});
 
 	return (
-		<Suspense fallback={<Loader />}>
+		<Suspense fallback={<div></div>}>
 			<Switch>
 				{/*Dashboards and used route*/}
 				<Route exact path={`${process.env.PUBLIC_URL}/`} component={Invest}></Route>
