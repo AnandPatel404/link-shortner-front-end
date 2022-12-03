@@ -53,6 +53,7 @@ const Pages = () => {
 
 				{/* custom page */}
 				<Route exact path={`${process.env.PUBLIC_URL}/create-full-link`} component={FullShort}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/browser-targeting`} component={FullShort}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/create-with-custom-domain`} component={FullShort}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/create-expiration-link`} component={FullShort}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/password-protected-link`} component={FullShort}></Route>

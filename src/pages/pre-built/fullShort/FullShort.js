@@ -1,21 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy } from "react";
 import Content from "../../../layout/content/Content";
-import CoustomDomain from "../shortingFunctions/shortingFuncationality";
-import PasswordProtectedLink from "../shortingFunctions/PasswordProtectedLink";
-import Expirationlink from "../shortingFunctions/Expirationlink";
-import ProjectCardPage from "../projects/ProjectCard";
-import ShortLink from "../shortingFunctions/shortLink";
 import Head from "../../../layout/head/Head";
-import BrandedLink from "../shortingFunctions/BrandedLink";
-import LimitedLink from "../shortingFunctions/LimitedLink";
-import QrWithLogo from "../projects/QrWithLogo";
-import DeviceTargetingLink from "../shortingFunctions/DeviceTargetingLink";
-import ReDirectionPage from "../shortingFunctions/ReDirectionPage";
 import { Route, Switch, Link } from "react-router-dom";
 import { Icon, BlockTitle, Button } from "../../../components/Component";
 import { Card } from "reactstrap";
 import WorkSvg from "../../../images/svg/www.svg";
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
+
+const CoustomDomain = lazy(() => import("../shortingFunctions/shortingFuncationality"));
+const PasswordProtectedLink = lazy(() => import("../shortingFunctions/PasswordProtectedLink"));
+const Expirationlink = lazy(() => import("../shortingFunctions/Expirationlink"));
+const ProjectCardPage = lazy(() => import("../projects/ProjectCard"));
+const ShortLink = lazy(() => import("../shortingFunctions/shortLink"));
+const LimitedLink = lazy(() => import("../shortingFunctions/LimitedLink"));
+const BrandedLink = lazy(() => import("../shortingFunctions/BrandedLink"));
+const QrWithLogo = lazy(() => import("../projects/QrWithLogo"));
+const DeviceTargetingLink = lazy(() => import("../shortingFunctions/DeviceTargetingLink"));
+const ReDirectionPage = lazy(() => import("../shortingFunctions/ReDirectionPage"));
+const BrowserTargetingLink = lazy(() => import("../shortingFunctions/BrowserTargetingLink"));
+
 const FullShort = () => {
 	const { SingleLink, applyChanges } = userFunctionalityLink((state) => ({
 		SingleLink: state.SingleLink,
@@ -151,8 +154,17 @@ const FullShort = () => {
 												to={`${process.env.PUBLIC_URL}/device-targeting`}
 												className={window.location.pathname === `${process.env.PUBLIC_URL}/device-targeting` ? "active" : ""}
 											>
-												<Icon name="target"></Icon>
+												<Icon name="android"></Icon>
 												<span>Device & Os targeting</span>
+											</Link>
+										</li>
+										<li onClick={() => updateSm(false)}>
+											<Link
+												to={`${process.env.PUBLIC_URL}/browser-targeting`}
+												className={window.location.pathname === `${process.env.PUBLIC_URL}/browser-targeting` ? "active" : ""}
+											>
+												<Icon name="b-chrome"></Icon>
+												<span>Browser targeting</span>
 											</Link>
 										</li>
 										<li onClick={() => updateSm(false)}>
@@ -236,6 +248,11 @@ const FullShort = () => {
 									exact
 									path={`${process.env.PUBLIC_URL}/device-targeting`}
 									render={() => <DeviceTargetingLink updateSm={updateSm} sm={sm} />}
+								></Route>
+								<Route
+									exact
+									path={`${process.env.PUBLIC_URL}/browser-targeting`}
+									render={() => <BrowserTargetingLink updateSm={updateSm} sm={sm} />}
 								></Route>
 
 								<Route

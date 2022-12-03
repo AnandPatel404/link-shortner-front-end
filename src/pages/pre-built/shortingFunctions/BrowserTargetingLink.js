@@ -8,12 +8,15 @@ import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetw
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
 import userSubStore from "../../../zustand/Subscription/sub";
 import { Link } from "react-router-dom";
-function DeviceTargetingLink({ sm, updateSm }) {
+function BrowserTargetingLink({ sm, updateSm }) {
 	let newData = [];
+
 	const colourData = [
-		{ value: "Android", label: "Android" },
-		{ value: "Windows", label: "Windows" },
-		{ value: "Mac OS", label: "Mac OS" },
+		{ value: "Chrome", label: "Chrome" },
+		{ value: "Firefox", label: "Firefox" },
+		{ value: "Safari", label: "Safari" },
+		{ value: "Opera", label: "Opera" },
+		{ value: "Seamonkey", label: "Seamonkey" },
 	];
 	const animatedComponents = makeAnimated();
 	const [loading, setLoading] = useState(false);
@@ -50,7 +53,7 @@ function DeviceTargetingLink({ sm, updateSm }) {
 					<BlockBetween>
 						<BlockHeadContent>
 							<BlockTitle tag="h2" className="fw-normal">
-								Create a Link with Device Targeting
+								Create a Link with Browser Targeting
 							</BlockTitle>
 						</BlockHeadContent>
 						<BlockHeadContent className="align-self-start d-lg-none">
@@ -110,4 +113,4 @@ function DeviceTargetingLink({ sm, updateSm }) {
 	);
 }
 
-export default DeviceTargetingLink;
+export default BrowserTargetingLink;
