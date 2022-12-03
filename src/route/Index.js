@@ -6,19 +6,33 @@ import userSubStore from "../zustand/Subscription/sub";
 const Blank = lazy(() => import("../pages/others/Blank"));
 
 const QrList = lazy(() => import("../pages/pre-built/projects/QrList"));
+
 const UserProfileLayout = lazy(() => import("../pages/pre-built/user-manage/UserProfileLayout"));
+
 const KycDetailsRegular = lazy(() => import("../pages/pre-built/kyc-list-regular/kycDetailsRegular"));
+
 const TransListBasic = lazy(() => import("../pages/pre-built/trans-list/TransListBasic"));
+
 const AllLinks = lazy(() => import("../pages/pre-built/products/ProductList"));
+
 const PricingTable = lazy(() => import("../pages/pre-built/pricing-table/PricingTable"));
+
 const ChangePassword = lazy(() => import("../pages/auth/changePassword"));
+
 const Editlink = lazy(() => import("../pages/pre-built/editLink/editlink"));
+
 const AddDomain = lazy(() => import("../pages/pre-built/domain/addDomain"));
+
 const SetErrorPage = lazy(() => import("../pages/pre-built/errorPage/SetErrorPage"));
+
 const ClientDetails = lazy(() => import("../pages/pre-built/products/ClientDetails"));
+
 const FullShort = lazy(() => import("../pages/pre-built/fullShort/FullShort"));
+
 const ApiCred = lazy(() => import("../pages/pre-built/apiCred/apiCred"));
+
 const Invest = lazy(() => import("../pages/Invest"));
+
 const Pages = () => {
 	const { subscription } = userSubStore((state) => ({
 		subscription: state.subscription,

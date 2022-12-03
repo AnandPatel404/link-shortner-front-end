@@ -1,21 +1,34 @@
 import Head from "../../../layout/head/Head";
+
 import Content from "../../../layout/content/Content";
+
 import React, { useEffect, useState, useCallback } from "react";
+
 import { FormGroup, Row, Col, Form } from "reactstrap";
+
 import { Block, BlockHead, BlockHeadContent, BlockTitle, PreviewCard, Button, InputSwitch } from "../../../components/Component";
+
 import { useForm } from "react-hook-form";
+
 import userDashBoard from "../../../zustand/DashBoard/userDashBoard";
+
 import Loader from "../../Loader/Loader";
 
 function Editlink({ match, history }) {
 	const [loading, setLoading] = useState(true);
+
 	const [data, SetData] = useState({});
+
 	const [status, setStatus] = useState("");
+
 	const [isPasswordProtected, setIsPasswordProtected] = useState(null);
+
 	const { updateLink, getLinkById } = userDashBoard((state) => ({
 		getLinkById: state.getLinkById,
+
 		updateLink: state.updateLink,
 	}));
+
 	const getLink = useCallback(async () => {
 		const id = match.params.id;
 
@@ -68,7 +81,7 @@ function Editlink({ match, history }) {
 
 	return (
 		<React.Fragment>
-			<Head title="Form Elements" />
+			<Head title={data.link_title ? data.link_title : "update link"} />
 			{loading ? (
 				<div className="d-flex justify-content-center align-items-center" style={{ height: 100 + "vh" }}>
 					<Loader />
