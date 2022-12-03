@@ -78,6 +78,9 @@ export const QrList = () => {
 									<span className="d-none d-md-inline-block">Time & Date</span>
 								</DataTableRow>
 								<DataTableRow>
+									<span className="d-none d-md-inline-block">Download</span>
+								</DataTableRow>
+								<DataTableRow>
 									<span className="d-none d-md-inline-block"></span>
 								</DataTableRow>
 							</DataTableHead>
@@ -119,6 +122,19 @@ export const QrList = () => {
 												<DataTableRow>
 													<span className="tb-sub d-none d-md-inline-block">
 														{new Date(item.linkId?.createdAt).toLocaleString()}
+													</span>
+												</DataTableRow>
+												<DataTableRow>
+													<span className="tb-sub d-none d-md-inline-block">
+														<a
+															download={`download-${Date.now()}-${item.id}.png`}
+															href={item.QRdata}
+															target="_blank"
+															rel="noreferrer"
+															className="btn btn-primary"
+														>
+															Download Qr
+														</a>
 													</span>
 												</DataTableRow>
 												<DataTableRow className="nk-tb-col-tools">
