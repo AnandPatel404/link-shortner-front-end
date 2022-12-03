@@ -1,32 +1,49 @@
 import React, { useEffect, useState, useCallback } from "react";
+
 import Content from "../../../layout/content/Content";
+
 import Head from "../../../layout/head/Head";
+
 import { useForm } from "react-hook-form";
+
 import { FormGroup, Input, Row, Col, Form, Spinner } from "reactstrap";
+
 import { Block, BlockHead, BlockHeadContent, BlockTitle, BlockDes, Button, Icon, BlockBetween } from "../../../components/Component";
+
 import userDomain from "../../../zustand/domainStuff/domain";
+
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
-import { errorToast } from "../../../pages/components/misc/ReactToastify";
+
+import Swal from "sweetalert2";
+
 import userSubStore from "../../../zustand/Subscription/sub";
+
 import { Link } from "react-router-dom";
+
 function ShortingFuncationality({ sm, updateSm }) {
 	const [domain, setDomains] = useState([]);
+
 	const [domainForData, setDomainForData] = useState("");
+
 	const [loading, setLoading] = useState(false);
+
 	const { getAllDomain } = userDomain((state) => ({
 		getAllDomain: state.getAllDomain,
 	}));
 
 	const { SingleLink, customDomain } = userFunctionalityLink((state) => ({
 		SingleLink: state.SingleLink,
+
 		customDomain: state.customDomain,
 	}));
 
 	const { sub } = userSubStore((state) => ({
 		sub: state.subscription,
 	}));
+
 	const getDomains = useCallback(async () => {
 		const data = await getAllDomain();
+
 		setDomains(data.data.data);
 	}, [getAllDomain]);
 
@@ -36,12 +53,16 @@ function ShortingFuncationality({ sm, updateSm }) {
 
 	const s = async () => {
 		setLoading(true);
-		if (!SingleLink || SingleLink.length === 0 || !SingleLink.id) {
+
+		if (!SingleLink.id) {
 			setLoading(false);
-			return errorToast("Please select link first", "Error");
+
+			return Swal.fire("Error", "Please select link first", "error");
 		}
+
 		const data = {
 			linkId: SingleLink.id,
+
 			domain: domainForData,
 		};
 		customDomain(data, setLoading);

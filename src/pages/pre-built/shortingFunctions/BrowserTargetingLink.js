@@ -1,44 +1,73 @@
 import React, { useState } from "react";
+
 import makeAnimated from "react-select/animated";
+
 import Content from "../../../layout/content/Content";
+
 import Head from "../../../layout/head/Head";
+
 import { useForm } from "react-hook-form";
+
 import { FormGroup, Row, Col, Form, Spinner } from "reactstrap";
+
 import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetween, RSelect } from "../../../components/Component";
+
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
+
 import userSubStore from "../../../zustand/Subscription/sub";
+
 import { Link } from "react-router-dom";
+
 import Swal from "sweetalert2";
+
 function BrowserTargetingLink({ sm, updateSm }) {
 	let newData = [];
 
 	const colourData = [
 		{ value: "Chrome", label: "Chrome" },
+
 		{ value: "Firefox", label: "Firefox" },
+
 		{ value: "Safari", label: "Safari" },
+
 		{ value: "Opera", label: "Opera" },
+
 		{ value: "Ie", label: "Ie" },
+
 		{ value: "Seamonkey", label: "Seamonkey" },
 	];
+
 	const animatedComponents = makeAnimated();
+
 	const [loading, setLoading] = useState(false);
+
 	const { SingleLink, createDeviceTargetingLink } = userFunctionalityLink((state) => ({
 		SingleLink: state.SingleLink,
+
 		createDeviceTargetingLink: state.createDeviceTargetingLink,
 	}));
 
 	const { sub } = userSubStore((state) => ({
 		sub: state.subscription,
 	}));
+
 	const s = async () => {
 		if (newData.length === 0) {
-			Swal.fire("Error", "Please Select The Browser First", "error");
+			return Swal.fire("Error", "Please Select The Browser First", "error");
 		}
+
+		if (!SingleLink.id) {
+			return Swal.fire("Error", "Please select link first", "error");
+		}
+
 		const data = {
 			linkId: SingleLink.id,
+
 			deviceTargetingData: newData,
 		};
+
 		await createDeviceTargetingLink(data, setLoading);
+
 		newData = [];
 	};
 	const changeOs = (e) => {
@@ -50,6 +79,7 @@ function BrowserTargetingLink({ sm, updateSm }) {
 	};
 
 	const { handleSubmit } = useForm();
+
 	return (
 		<React.Fragment>
 			<Head title="Device Targeting Link" />

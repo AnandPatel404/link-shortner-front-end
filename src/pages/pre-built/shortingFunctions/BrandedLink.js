@@ -1,21 +1,34 @@
 import React, { useState } from "react";
+
 import Content from "../../../layout/content/Content";
+
 import Head from "../../../layout/head/Head";
+
 import { useForm } from "react-hook-form";
+
 import { FormGroup, Row, Col, Form, Alert, Spinner } from "reactstrap";
+
 import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetween } from "../../../components/Component";
+
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
-import { errorToast } from "../../../pages/components/misc/ReactToastify";
+
 import userSubStore from "../../../zustand/Subscription/sub";
+
 import { Link } from "react-router-dom";
+
+import Swal from "sweetalert2";
 
 function BrandedLink({ sm, updateSm }) {
 	const { SingleLink, checkBrandedLinkIsExist, checkForBrandedLink, createBrandedLink } = userFunctionalityLink((state) => ({
 		SingleLink: state.SingleLink,
+
 		checkBrandedLinkIsExist: state.checkBrandedLinkIsExist,
+
 		checkForBrandedLink: state.checkForBrandedLink,
+
 		createBrandedLink: state.createBrandedLink,
 	}));
+
 	const [loading, setLoading] = useState(false);
 
 	const { sub } = userSubStore((state) => ({
@@ -23,15 +36,20 @@ function BrandedLink({ sm, updateSm }) {
 	}));
 
 	const [targetValue, setTargetValue] = useState("");
+
 	const s = async () => {
 		setLoading(true);
-		if (!SingleLink || SingleLink.length === 0 || !SingleLink.id) {
-			return errorToast("Please select link first", "Error");
+
+		if (!SingleLink.id) {
+			return Swal.fire("Error", "Please select link first", "error");
 		}
+
 		let data = {
 			backlink: targetValue,
+
 			linkId: SingleLink.id,
 		};
+
 		createBrandedLink(data, setLoading);
 	};
 
@@ -39,6 +57,7 @@ function BrandedLink({ sm, updateSm }) {
 		let data = {
 			backlink: targetValue,
 		};
+
 		checkBrandedLinkIsExist(data);
 	};
 

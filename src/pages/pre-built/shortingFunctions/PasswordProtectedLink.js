@@ -1,17 +1,29 @@
 import React, { useState } from "react";
+
 import Content from "../../../layout/content/Content";
+
 import Head from "../../../layout/head/Head";
+
 import { useForm } from "react-hook-form";
+
 import { FormGroup, Row, Col, Form, Spinner } from "reactstrap";
+
 import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetween } from "../../../components/Component";
+
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
-import { errorToast } from "../../../pages/components/misc/ReactToastify";
+
+import Swal from "sweetalert2";
+
 import userSubStore from "../../../zustand/Subscription/sub";
+
 import { Link } from "react-router-dom";
+
 function PasswordProtectedLink({ sm, updateSm }) {
 	const [loading, setLoading] = useState(false);
+
 	const { SingleLink, passwordProtectedLink } = userFunctionalityLink((state) => ({
 		SingleLink: state.SingleLink,
+
 		passwordProtectedLink: state.passwordProtectedLink,
 	}));
 
@@ -21,18 +33,23 @@ function PasswordProtectedLink({ sm, updateSm }) {
 
 	const s = async (sData) => {
 		setLoading(true);
+
 		if (!SingleLink || SingleLink.length === 0 || !SingleLink.id) {
 			setLoading(false);
-			return errorToast("Please select link first", "Error");
+
+			return Swal.fire("Error", "Please select link first", "error");
 		}
 		const data = {
 			linkId: SingleLink.id,
+
 			password: sData.password,
 		};
+
 		passwordProtectedLink(data, setLoading);
 	};
 
 	const { handleSubmit, register } = useForm();
+
 	return (
 		<React.Fragment>
 			<Head title="Password Protected Link" />

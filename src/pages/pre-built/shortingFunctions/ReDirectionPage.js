@@ -1,28 +1,42 @@
 import React, { useState } from "react";
+
 import Content from "../../../layout/content/Content";
+
 import Head from "../../../layout/head/Head";
+
 import { useForm } from "react-hook-form";
+
 import { FormGroup, Row, Col, Form, Spinner } from "reactstrap";
+
 import { Block, BlockHead, BlockHeadContent, BlockTitle, BlockDes, Button, Icon, BlockBetween } from "../../../components/Component";
+
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
-import { errorToast } from "../../../pages/components/misc/ReactToastify";
+
+import Swal from "sweetalert2";
+
 import userSubStore from "../../../zustand/Subscription/sub";
+
 import { Link } from "react-router-dom";
 
 function ReDirectionPage({ sm, updateSm }) {
 	const [loading, setLoading] = useState(false);
+
 	const [colorCodes, setColorsCode] = useState("#000000");
+
 	const [colorCodesTwo, setColorsCodeTwo] = useState("#000000");
+
 	const [title, setTitle] = useState("");
 
 	const { SingleLink, createLinkReDirectionPage } = userFunctionalityLink((state) => ({
 		SingleLink: state.SingleLink,
+
 		createLinkReDirectionPage: state.createLinkReDirectionPage,
 	}));
 
 	const colorCode = (e) => {
 		setColorsCode(e);
 	};
+
 	const colorCodeTwo = (e) => {
 		setColorsCodeTwo(e);
 	};
@@ -37,33 +51,47 @@ function ReDirectionPage({ sm, updateSm }) {
 
 	const s = async (formData) => {
 		setLoading(true);
-		if (!SingleLink || SingleLink.length === 0 || !SingleLink.id) {
+
+		if (!SingleLink.id) {
 			setLoading(false);
-			return errorToast("Please select link first", "Error");
+
+			return Swal.fire("Error", "Please select link first", "error");
 		}
+
 		let data;
+
 		if (title) {
 			data = {
 				linkId: SingleLink.id,
+
 				pageLinkTitle: title,
+
 				pageLink: formData.pageLink,
+
 				pageButton: formData.pageButton,
+
 				PageButtonColor: colorCodes,
+
 				verificationButton: formData.verificationButton,
+
 				verificationButtonColor: colorCodesTwo,
 			};
 		} else {
 			data = {
 				linkId: SingleLink.id,
+
 				pageLink: formData.pageLink,
+
 				pageButton: formData.pageButton,
+
 				PageButtonColor: colorCodes,
+
 				verificationButton: formData.verificationButton,
+
 				verificationButtonColor: colorCodesTwo,
 			};
 		}
 		await createLinkReDirectionPage(data, setLoading);
-		console.log(data);
 	};
 
 	const { handleSubmit, register } = useForm();

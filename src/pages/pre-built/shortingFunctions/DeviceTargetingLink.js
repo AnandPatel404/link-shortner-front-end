@@ -1,42 +1,69 @@
 import React, { useState } from "react";
+
 import makeAnimated from "react-select/animated";
+
 import Content from "../../../layout/content/Content";
+
 import Head from "../../../layout/head/Head";
+
 import { useForm } from "react-hook-form";
+
 import { FormGroup, Row, Col, Form, Spinner } from "reactstrap";
+
 import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetween, RSelect } from "../../../components/Component";
+
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
+
 import userSubStore from "../../../zustand/Subscription/sub";
+
 import { Link } from "react-router-dom";
+
 import Swal from "sweetalert2";
+
 function DeviceTargetingLink({ sm, updateSm }) {
 	let newData = [];
+
 	const colourData = [
 		{ value: "Android", label: "Android" },
+
 		{ value: "Windows", label: "Windows" },
+
 		{ value: "Mac OS", label: "Mac OS" },
 	];
+
 	const animatedComponents = makeAnimated();
+
 	const [loading, setLoading] = useState(false);
+
 	const { SingleLink, createDeviceTargetingLink } = userFunctionalityLink((state) => ({
 		SingleLink: state.SingleLink,
+
 		createDeviceTargetingLink: state.createDeviceTargetingLink,
 	}));
 
 	const { sub } = userSubStore((state) => ({
 		sub: state.subscription,
 	}));
+
 	const s = async () => {
-		if (newData.length === 0) {
-			Swal.fire("Error", "Please Select The Device First", "error");
+		if (!SingleLink.id) {
+			return Swal.fire("Error", "Please select link first", "error");
 		}
+
+		if (newData.length === 0) {
+			return Swal.fire("Error", "Please Select The Device First", "error");
+		}
+
 		const data = {
 			linkId: SingleLink.id,
 			deviceTargetingData: newData,
 		};
+
 		await createDeviceTargetingLink(data, setLoading);
+
 		newData = [];
 	};
+
 	const changeOs = (e) => {
 		e.forEach((item) => {
 			if (newData.indexOf(item.value) === -1) {

@@ -1,47 +1,75 @@
 import React, { useState } from "react";
+
 import Content from "../../../layout/content/Content";
+
 import Head from "../../../layout/head/Head";
+
 import Swal from "sweetalert2";
+
 import { useForm } from "react-hook-form";
+
 import { FormGroup, Row, Col, Form, Spinner } from "reactstrap";
+
 import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetween } from "../../../components/Component";
+
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
+
 function ShortLink({ sm, updateSm }) {
 	const [linkStatus, setLinkStatus] = useState("Enable");
+
 	const [loading, setLoading] = useState(false);
+
 	const [title, setTitle] = useState(null);
+
 	const { createLink, SingleLink, immediatelyApplyChange } = userFunctionalityLink((state) => ({
 		createLink: state.createLink,
+
 		SingleLink: state.SingleLink,
+
 		immediatelyApplyChange: state.immediatelyApplyChange,
 	}));
+
 	const s = async (sData) => {
 		setLoading(true);
+
 		if (SingleLink.id !== undefined) {
 			Swal.fire({
 				title: "Are you sure?",
+
 				text: "You are currently working on another link, do you want to shorten the new link?",
+
 				icon: "warning",
+
 				showCancelButton: true,
+
 				confirmButtonColor: "#3085d6",
+
 				cancelButtonColor: "#d33",
+
 				confirmButtonText: "Yes!",
 			}).then(async (result) => {
 				if (result.isConfirmed) {
 					await immediatelyApplyChange();
+
 					Swal.fire("Link is Saved", "Your link has been save.", "success");
+
 					if (title !== null && title !== "") {
 						const data = {
 							link: sData.link,
+
 							link_title: sData.title,
+
 							link_status: linkStatus,
 						};
+
 						await createLink(data, setLoading);
 					} else {
 						const data = {
 							link: sData.link,
+
 							link_status: linkStatus,
 						};
+
 						await createLink(data, setLoading);
 					}
 				} else {
@@ -52,19 +80,25 @@ function ShortLink({ sm, updateSm }) {
 			if (title !== null && title !== "") {
 				const data = {
 					link: sData.link,
+
 					link_title: sData.title,
+
 					link_status: linkStatus,
 				};
+
 				await createLink(data, setLoading);
 			} else {
 				const data = {
 					link: sData.link,
+
 					link_status: linkStatus,
 				};
+
 				await createLink(data, setLoading);
 			}
 		}
 	};
+
 	const set = (e) => {
 		if (linkStatus === "Enable") {
 			setLinkStatus("Disable");
