@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Head from "../../../layout/head/Head";
 import Content from "../../../layout/content/Content";
-import { DropdownMenu, DropdownToggle, UncontrolledDropdown, FormGroup, ModalBody, Modal, DropdownItem, Form } from "reactstrap";
+import { DropdownMenu, DropdownToggle, UncontrolledDropdown, ModalBody, Modal, DropdownItem } from "reactstrap";
 import {
 	Block,
 	BlockHead,
@@ -9,8 +9,6 @@ import {
 	BlockHeadContent,
 	BlockTitle,
 	Icon,
-	Button,
-	Col,
 	PaginationComponent,
 	DataTable,
 	DataTableBody,
@@ -23,6 +21,10 @@ import useqrCode from "../../../zustand/qrCode/qrCode";
 export const QrList = () => {
 	const [itemPerPage] = useState(7);
 	const [currentPage, setCurrentPage] = useState(1);
+	const [qrModel, setQrModel] = useState({
+		title: "",
+		qrData: "",
+	});
 	const [data, setData] = useState([]);
 	const { getAllQr, deleteQr } = useqrCode((state) => ({
 		getAllQr: state.getAllQr,
@@ -31,7 +33,6 @@ export const QrList = () => {
 
 	const getData = useCallback(async () => {
 		const data = await getAllQr();
-		console.log(data.data.data);
 		setData(data.data.data);
 	}, [getAllQr]);
 
@@ -39,10 +40,11 @@ export const QrList = () => {
 		getData();
 	}, [getData]);
 
-	const [modal, setModal] = useState({
-		edit: false,
-		add: false,
-	});
+	const [modal, setModal] = useState(false);
+
+	const setmodel = (e) => {
+		setQrModel(e);
+	};
 
 	const deleteProduct = async (id) => {
 		await deleteQr(id);
@@ -90,7 +92,17 @@ export const QrList = () => {
 											<DataTableItem key={item.id}>
 												<DataTableRow sm className="d-flex align-items-center">
 													<img src={item.QRdata} alt="" width={70} className="mx-2" />
-													<span className="tb-product align-items-start d-flex flex-column">
+													<span
+														className="tb-product align-items-start d-flex flex-column"
+														onClick={() => {
+															setmodel({
+																title: item.linkId?.link_title,
+																qrData: item.QRdata,
+															});
+															setModal(true);
+														}}
+														style={{ cursor: "pointer" }}
+													>
 														<span className="title d-lg-none">
 															{item.linkId?.link_title ? item.linkId?.link_title.slice(0, 25) + "..." : "No title"}
 														</span>
@@ -195,85 +207,11 @@ export const QrList = () => {
 					</DataTable>
 				</Block>
 
-				<Modal isOpen={modal.edit} toggle={() => setModal({ edit: false })} className="modal-dialog-centered" size="lg">
+				<Modal isOpen={modal} toggle={() => setModal(false)} className="modal-dialog-centered" size="lg">
 					<ModalBody>
-						<a
-							href="#cancel"
-							onClick={(ev) => {
-								ev.preventDefault();
-							}}
-							className="close"
-						>
-							<Icon name="cross-sm"></Icon>
-						</a>
-						<div className="p-2">
-							<h5 className="title">Update Project</h5>
-							<div className="mt-4">
-								<Form className="row gy-4">
-									<Col md="6">
-										<FormGroup>
-											<label className="form-label">Title</label>
-											<input
-												type="text"
-												name="title"
-												// defaultValue={formData.title}
-												placeholder="Enter Title"
-												// onChange={(e) => onInputChange(e)}
-												className="form-control"
-											/>
-										</FormGroup>
-									</Col>
-									<Col md="6">
-										<FormGroup>
-											<label className="form-label">Client</label>
-											<input type="text" name="subtitle" placeholder="Enter client Name" className="form-control" />
-										</FormGroup>
-									</Col>
-									<Col size="12">
-										<FormGroup>
-											<label className="form-label">Description</label>
-											<textarea
-												name="description"
-												// defaultValue={formData.description}
-												placeholder="Your description"
-												className="form-control no-resize"
-											/>
-										</FormGroup>
-									</Col>
-									<Col md="6">
-										<FormGroup>
-											<label className="form-label">Number of Tasks</label>
-											<input type="number" name="tasks" className="form-control" />
-										</FormGroup>
-									</Col>
-									<Col md="6">
-										<FormGroup>
-											<label className="form-label">Total Tasks</label>
-											<input type="number" name="totalTask" className="form-control" />
-										</FormGroup>
-									</Col>
-
-									<Col size="12">
-										<ul className="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-											<li>
-												<Button color="primary" size="md" type="submit">
-													Update Project
-												</Button>
-											</li>
-											<li>
-												<Button
-													onClick={(ev) => {
-														ev.preventDefault();
-													}}
-													className="link link-light"
-												>
-													Cancel
-												</Button>
-											</li>
-										</ul>
-									</Col>
-								</Form>
-							</div>
+						<div className="d-flex justify-content-center flex-column align-items-center">
+							<BlockTitle>{qrModel.title}</BlockTitle>
+							<img src={qrModel.qrData} alt="" width={200} />
 						</div>
 					</ModalBody>
 				</Modal>
