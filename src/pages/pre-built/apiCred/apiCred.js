@@ -92,7 +92,7 @@ const ApiCred = () => {
 	const { errors, register, handleSubmit } = useForm();
 	return (
 		<React.Fragment>
-			<Head title="Invoice List"></Head>
+			<Head title="Api Credentials"></Head>
 			{loading ? (
 				<div className="d-flex justify-content-center align-items-center" style={{ height: 100 + "vh" }}>
 					<Loader />
