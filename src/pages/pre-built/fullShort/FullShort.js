@@ -80,6 +80,17 @@ const FullShort = () => {
 										</li>
 										<li onClick={() => updateSm(false)}>
 											<Link
+												to={`${process.env.PUBLIC_URL}/add-error-redirection`}
+												className={
+													window.location.pathname === `${process.env.PUBLIC_URL}/add-error-redirection` ? "active" : ""
+												}
+											>
+												<Icon name="trend-down"></Icon>
+												<span>Add Error Redirection</span>
+											</Link>
+										</li>
+										<li onClick={() => updateSm(false)}>
+											<Link
 												to={`${process.env.PUBLIC_URL}/create-with-custom-domain`}
 												className={
 													window.location.pathname === `${process.env.PUBLIC_URL}/create-with-custom-domain` ? "active" : ""
