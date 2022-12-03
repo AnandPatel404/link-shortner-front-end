@@ -6,6 +6,24 @@ import { messageToast, errorToast } from "../../pages/components/misc/ReactToast
 const userFunctionalityLink = create((set, get) => ({
 	SingleLink: {},
 	checkForBrandedLink: "",
+
+	findLinkWithBackLink: async (data, setLoadingTwo) => {
+		await axios({
+			method: "get",
+			url: `short/find-link-with-back-link/${data.shortedLink}`,
+		})
+			.then((res) => {
+				if (res.data.status === "Success") {
+					setLoadingTwo(false);
+					messageToast(res.data.message, res.data.status);
+					set({ SingleLink: res.data.data });
+				}
+			})
+			.catch((err) => {
+				setLoadingTwo(false);
+				errorToast(err.response.data.message, "Error");
+			});
+	},
 	createLink: async (data, setLoading) => {
 		await axios({
 			method: "post",

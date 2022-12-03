@@ -78,7 +78,7 @@ function Expirationlink({ sm, updateSm }) {
 					<BlockBetween>
 						<BlockHeadContent>
 							<BlockTitle tag="h2" className="fw-normal">
-								Create a Link with your time and expiration
+								Create a Expiration Link
 							</BlockTitle>
 						</BlockHeadContent>
 						<BlockHeadContent className="align-self-start d-lg-none">

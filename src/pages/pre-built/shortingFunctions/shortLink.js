@@ -15,18 +15,24 @@ import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetw
 import userFunctionalityLink from "../../../zustand/fuctionalityLinks/functionaLityLink";
 
 function ShortLink({ sm, updateSm }) {
+	const [findLink, setFindLink] = useState("");
+
 	const [linkStatus, setLinkStatus] = useState("Enable");
 
 	const [loading, setLoading] = useState(false);
 
+	const [loadingTwo, setLoadingTwo] = useState(false);
+
 	const [title, setTitle] = useState(null);
 
-	const { createLink, SingleLink, immediatelyApplyChange } = userFunctionalityLink((state) => ({
+	const { createLink, SingleLink, immediatelyApplyChange, findLinkWithBackLink } = userFunctionalityLink((state) => ({
 		createLink: state.createLink,
 
 		SingleLink: state.SingleLink,
 
 		immediatelyApplyChange: state.immediatelyApplyChange,
+
+		findLinkWithBackLink: state.findLinkWithBackLink,
 	}));
 
 	const s = async (sData) => {
@@ -109,6 +115,23 @@ function ShortLink({ sm, updateSm }) {
 
 	const tt = (e) => {
 		setTitle(e);
+	};
+
+	const findLinkSet = (e) => {
+		setFindLink(e);
+	};
+
+	const f = async () => {
+		setLoadingTwo(true);
+		if (findLink.length === 0) {
+			setLoadingTwo(false);
+			return Swal.fire("Error", "Please Enter Back Link", "error");
+		}
+
+		const data = {
+			shortedLink: findLink,
+		};
+		await findLinkWithBackLink(data, setLoadingTwo);
 	};
 
 	const { handleSubmit, register } = useForm();
@@ -234,6 +257,51 @@ function ShortLink({ sm, updateSm }) {
 							</Col>
 						</Row>
 					</Form>
+				</Block>
+				<hr />
+				<Block size="lg">
+					<Row className="g-3 align-center">
+						<Col lg="5">
+							<FormGroup>
+								<label className="form-label" htmlFor="site-name">
+									Find existing link by back-link
+								</label>
+								<span className="form-note">Specify the existing link's back-link</span>
+								<p>example:-</p>
+								<span>
+									shortedurl.link/
+									<strong>
+										<u>1234</u>
+									</strong>
+								</span>
+							</FormGroup>
+						</Col>
+						<Col lg="7">
+							<FormGroup>
+								<div className="form-control-wrap">
+									<input
+										type="text"
+										id="link"
+										name="findlink"
+										className="form-control"
+										onChange={(e) => {
+											findLinkSet(e.target.value);
+										}}
+									/>
+								</div>
+							</FormGroup>
+						</Col>
+					</Row>
+
+					<Row className="g-3">
+						<Col lg="7" className="offset-lg-5">
+							<FormGroup className="mt-2">
+								<Button color="primary" size="lg" type="button" onClick={f}>
+									{loadingTwo ? <Spinner /> : "Find"}
+								</Button>
+							</FormGroup>
+						</Col>
+					</Row>
 				</Block>
 			</Content>
 		</React.Fragment>
