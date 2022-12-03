@@ -84,6 +84,7 @@ const FullShort = () => {
 												className={
 													window.location.pathname === `${process.env.PUBLIC_URL}/add-error-redirection` ? "active" : ""
 												}
+												style={{ pointerEvents: "none" }}
 											>
 												<Icon name="trend-down"></Icon>
 												<span>Add Error Redirection</span>

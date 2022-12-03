@@ -1,6 +1,7 @@
 import React, { Suspense, useLayoutEffect, lazy } from "react";
 import { Switch, Route } from "react-router-dom";
 import { RedirectAs404 } from "../utils/Utils";
+import userSubStore from "../zustand/Subscription/sub";
 
 const Blank = lazy(() => import("../pages/others/Blank"));
 
@@ -26,6 +27,10 @@ const FullShort = lazy(() => import("../pages/pre-built/fullShort/FullShort"));
 const ApiCred = lazy(() => import("../pages/pre-built/apiCred/apiCred"));
 const Invest = lazy(() => import("../pages/Invest"));
 const Pages = () => {
+	const { subscription } = userSubStore((state) => ({
+		subscription: state.subscription,
+	}));
+
 	useLayoutEffect(() => {
 		window.scrollTo(0, 0);
 	});
@@ -52,18 +57,48 @@ const Pages = () => {
 
 				{/* custom page */}
 				<Route exact path={`${process.env.PUBLIC_URL}/create-full-link`} component={FullShort}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/browser-targeting`} component={FullShort}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/create-with-custom-domain`} component={FullShort}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/create-expiration-link`} component={FullShort}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/password-protected-link`} component={FullShort}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/add-error-redirection`} component={FullShort}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/create-qr-link`} component={FullShort}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/create-qr-link-with-logo`} component={FullShort}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/create-or-find-link`} component={FullShort}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/branded-link`} component={FullShort}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/limited-link`} component={FullShort}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/device-targeting`} component={FullShort}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/re-direction-link`} component={FullShort}></Route>
+
+				{subscription.planId?.browser_targeting_link === true ? (
+					<Route exact path={`${process.env.PUBLIC_URL}/browser-targeting`} component={FullShort}></Route>
+				) : null}
+
+				{subscription.planId?.custom_domain === true ? (
+					<Route exact path={`${process.env.PUBLIC_URL}/create-with-custom-domain`} component={FullShort}></Route>
+				) : null}
+
+				{subscription.planId?.expiration_link === true ? (
+					<Route exact path={`${process.env.PUBLIC_URL}/create-expiration-link`} component={FullShort}></Route>
+				) : null}
+
+				{subscription.planId?.password_protected_link === true ? (
+					<Route exact path={`${process.env.PUBLIC_URL}/password-protected-link`} component={FullShort}></Route>
+				) : null}
+
+				{subscription.planId?.qr_link === true ? (
+					<Route exact path={`${process.env.PUBLIC_URL}/create-qr-link`} component={FullShort}></Route>
+				) : null}
+
+				{subscription.planId?.custom_qr_link === true ? (
+					<Route exact path={`${process.env.PUBLIC_URL}/create-qr-link-with-logo`} component={FullShort}></Route>
+				) : null}
+
+				{subscription.planId?.unique_link === true ? (
+					<Route exact path={`${process.env.PUBLIC_URL}/branded-link`} component={FullShort}></Route>
+				) : null}
+
+				{subscription.planId?.limited_click_link === true ? (
+					<Route exact path={`${process.env.PUBLIC_URL}/limited-link`} component={FullShort}></Route>
+				) : null}
+
+				{subscription.planId?.device_targeting_link === true ? (
+					<Route exact path={`${process.env.PUBLIC_URL}/device-targeting`} component={FullShort}></Route>
+				) : null}
+
+				{subscription.planId?.custom_link_redirection_page === true ? (
+					<Route exact path={`${process.env.PUBLIC_URL}/re-direction-link`} component={FullShort}></Route>
+				) : null}
 
 				{/*Pre-built Pages*/}
 				<Route exact path={`${process.env.PUBLIC_URL}/transaction-list`} component={TransListBasic}></Route>
