@@ -28,6 +28,9 @@ function footer() {
 									<a href="/">Our Story</a>
 								</li>
 								<li>
+									<a href="/">Solutions</a>
+								</li>
+								<li>
 									<a href="/">Projects</a>
 								</li>
 							</ul>
@@ -39,6 +42,12 @@ function footer() {
 							<ul className="list-unstyled text-reset mb-0">
 								<li>
 									<Link to={`${process.env.PUBLIC_URL}/contact-us`}>Contact Us</Link>
+								</li>
+								<li>
+									<Link to={`${process.env.PUBLIC_URL}/pricing`}>Pricing</Link>
+								</li>
+								<li>
+									<Link to={`${process.env.PUBLIC_URL}/password-protected-link-features`}>Feature</Link>
 								</li>
 								<li>
 									<a href="/">About Us</a>
