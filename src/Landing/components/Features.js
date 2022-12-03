@@ -39,7 +39,7 @@ function Features() {
 		<div style={{ backgroundColor: "#ffffff" }}>
 			<Head title="Features And Tutorials" />
 			<NavBar />
-			<section class="">
+			<section className="container">
 				<Content>
 					<Card className="card-bordered">
 						<div className="card-aside-wrap">
