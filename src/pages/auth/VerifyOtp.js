@@ -10,6 +10,7 @@ import fevIcon from "../../images/svg/fevicon-and-logo.svg";
 import useUserAuth from "../../zustand/auth/userAuth";
 import o from "../../images/svg/otpTwo.svg";
 import Footer from "../../layout/footer/Footer";
+import HocCom from "../../Hoc/Hoc";
 
 function VerifyOtp({ history }) {
 	const [loading, setLoading] = useState(false);
@@ -114,4 +115,4 @@ function VerifyOtp({ history }) {
 	);
 }
 
-export default VerifyOtp;
+export default HocCom(VerifyOtp);
