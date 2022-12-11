@@ -159,6 +159,21 @@ const useUserAuth = create((set) => ({
 				errorToast(err.response.data.message);
 			});
 	},
+	verifyHoc: async (data) => {
+		await axios({
+			method: "get",
+			url: "auth/check-for-hoc",
+			data,
+		})
+			.then((res) => {
+				if (res.data.status === "Success") {
+					localStorage.removeItem("email");
+				}
+			})
+			.catch((err) => {
+				errorToast(err.response.data.message);
+			});
+	},
 }));
 
 export default useUserAuth;

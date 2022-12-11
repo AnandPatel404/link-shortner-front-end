@@ -10,6 +10,7 @@ import fevIcon from "../../images/svg/fevicon-and-logo.svg";
 import useUserAuth from "../../zustand/auth/userAuth";
 import o from "../../images/svg/otpTwo.svg";
 import Footer from "../../layout/footer/Footer";
+import HocCom from "../../Hoc/Hoc";
 
 function VerifyOtpForResetPassword({ history }) {
 	const [loading] = useState(false);
@@ -118,4 +119,4 @@ function VerifyOtpForResetPassword({ history }) {
 	);
 }
 
-export default VerifyOtpForResetPassword;
+export default HocCom(VerifyOtpForResetPassword);

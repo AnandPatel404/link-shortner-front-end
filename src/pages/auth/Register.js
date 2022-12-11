@@ -11,6 +11,7 @@ import useUserAuth from "../../zustand/auth/userAuth";
 import fevIcon from "../../images/svg/fevicon-and-logo.svg";
 import { errorToast } from "../../pages/components/misc/ReactToastify";
 import Footer from "../../layout/footer/Footer";
+import HocCom from "../../Hoc/Hoc";
 
 const Register = ({ history }) => {
 	const [loading, setLoading] = useState(false);
@@ -146,4 +147,4 @@ const Register = ({ history }) => {
 		</React.Fragment>
 	);
 };
-export default Register;
+export default HocCom(Register);
