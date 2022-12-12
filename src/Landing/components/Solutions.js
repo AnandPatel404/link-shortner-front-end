@@ -19,15 +19,32 @@ function Solutions() {
 					<div className="row mb-5 align-items-center">
 						<div className="col-md-10 offset-md-1 offset-lg-0 col-lg-6 text-center text-lg-start order-2 order-lg-0">
 							<h2 className="mb-5 mx-md-n5 mx-lg-0">⭐ QR link and Qr With Logo</h2>
-							<p className="my-4">✅ in shorterme you can create a any color QR and that not all you can create a QR with your logo</p>
-							<p className="my-4">✅ with qr link you can connect with your client directly</p>
+							<h5 className="my-10">Color QR</h5>
 							<p className="my-4">
-								✅ The client just has to scan the QR link, then the client will directly go to the link destination
+								in shorterme you can create a any color QR Link and share anywhere you want this QR is contain shorted link and sent
+								client to link destination and you can download qr in png form
 							</p>
+							<p className="my-4">This QR Used Like :-</p>
+							<p className="my-4">
+								1️⃣ You can create your particular e-commerce product QR and send to client and users that can redirect directly to
+								destination
+							</p>
+							<p className="my-4">
+								2️⃣ Create your facebook or instagram profile and page QR link that your friend and user can redirect directly to
+								destination
+							</p>
+							<h5 className="my-10">Color QR Link With Logo</h5>
+							<p className="my-4">
+								in shorterme you can create a any color and with logo QR Link and share anywhere you want this QR is contain shorted
+								link and sent client to link destination and you can download qr in png form
+							</p>
+							<p className="my-4">This QR Used Like :-</p>
+							<p className="my-4">1️⃣ You can create with logo QR link that specify which brand qr is</p>
+							<p className="my-4">2️⃣ You can set your profile photo as QR link and share anywhere</p>
 						</div>
 
 						<div className="col-lg-6 d-flex justify-content-center">
-							<img src={qrFeature} alt="heroOne" width={500} />
+							<img src={qrFeature} alt="heroOne" width={600} />
 						</div>
 					</div>
 					<div className="row mb-5 align-items-center">
