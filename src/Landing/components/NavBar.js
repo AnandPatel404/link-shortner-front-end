@@ -20,13 +20,13 @@ function NavBar() {
 						</div>
 						<ul className="d-none d-md-flex g-5 py-md-5">
 							<li className="dropdown dropdown-submenu dropend">
-								<Link className="nav-link" to={`${process.env.PUBLIC_URL}/contact-us`}>
+								<Link className="nav-link" to={`${process.env.PUBLIC_URL}/solutions`}>
 									Solutions
 								</Link>
 							</li>
 							<li className="dropdown dropdown-submenu dropend">
 								<Link className="nav-link" to={`${process.env.PUBLIC_URL}/password-protected-link-features`}>
-									Features
+									Feature docs
 								</Link>
 							</li>
 							<li className="dropdown dropdown-submenu dropend">
@@ -56,13 +56,13 @@ function NavBar() {
 					<div className={`${ShowNavBar ? "d-flex" : "d-none"} justify-content-center w-100`}>
 						<ul className="navbar-nav">
 							<li className="dropdown dropdown-submenu dropend">
-								<Link className="nav-link" to={`${process.env.PUBLIC_URL}/contact-us`}>
+								<Link className="nav-link" to={`${process.env.PUBLIC_URL}/solutions`}>
 									Solutions
 								</Link>
 							</li>
 							<li className="dropdown dropdown-submenu dropend">
 								<Link className="nav-link" to={`${process.env.PUBLIC_URL}/password-protected-link-features`}>
-									Features
+									Feature docs
 								</Link>
 							</li>
 							<li className="dropdown dropdown-submenu dropend">

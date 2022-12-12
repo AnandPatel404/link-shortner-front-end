@@ -24,12 +24,14 @@ const Credits = lazy(() => import("./Landing/components/SectionSix"));
 const LinkVerification = lazy(() => import("./pages/linkVerification/linkVerification"));
 const ContectUs = lazy(() => import("./Landing/components/ContectUs"));
 const Layout = lazy(() => import("./layout/Index"));
+const Solutions = lazy(() => import("./Landing/components/Solutions"));
 
 const App = () => {
 	return (
 		<React.Fragment>
 			<Switch>
 				<Route exact path={`${process.env.PUBLIC_URL}/pricing`} component={Pricing}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/solutions`} component={Solutions}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/credits`} component={Credits}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/contact-us`} component={ContectUs}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/features`} component={Features}></Route>
