@@ -1,34 +1,26 @@
-import axios from "../axios/axiosconfig";
 import { Route, Redirect } from "react-router-dom";
-import React, { useEffect } from "react";
-// TODO : Hoc is not done yet
-// const HocCom = async (Component) => {
-// 	console.log("hoc is running");
+import React from "react";
+const checkForHexRegExp = new RegExp("^[0-9a-fA-F]{24}$");
 
-// 	const data = {
-// 		createdId: localStorage.getItem("newId"),
-// 	};
-// 	if (!data.createdId) {
-// 		return <Redirect to={`${process.env.PUBLIC_URL}/auth-send-otp`}></Redirect>;
-// 	}
-// 	await axios({
-// 		method: "get",
-// 		url: "auth/check-for-hoc",
-// 		data,
-// 	})
-// 		.then((res) => {
-// 			if (res.data.status === "Success") {
-// 				return ({ history, ...props }) => {
-// 					return <Route rest render={() => <Component {...props}></Component>}></Route>;
-// 				};
-// 			} else {
-// 				return <Redirect to={`${process.env.PUBLIC_URL}/auth-send-otp`}></Redirect>;
-// 			}
-// 		})
-// 		.catch((err) => {
-// 			return <Redirect to={`${process.env.PUBLIC_URL}/auth-send-otp`}></Redirect>;
-// 		});
-// };
+const verifying = async (id) => {
+	const s = id.split("_");
+	if (s[0] === "s" && s[2] === "me" && checkForHexRegExp.test(id)) {
+		return true;
+	}
+	return false;
+};
 
-const HocCom = (Component) => {};
+const HocCom =
+	(Component) =>
+	({ ...props }) => {
+		const id = localStorage.getItem("newId");
+		return (
+			<Route
+				rest
+				render={() =>
+					verifying(id) === true ? <Component {...props}></Component> : <Redirect to={`${process.env.PUBLIC_URL}/auth-send-otp`}></Redirect>
+				}
+			></Route>
+		);
+	};
 export default HocCom;
