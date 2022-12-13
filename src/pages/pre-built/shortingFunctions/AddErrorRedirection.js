@@ -114,7 +114,13 @@ function AddErrorRedirection({ sm, updateSm }) {
 								<Col lg="7">
 									<FormGroup>
 										<div className="form-control-wrap">
-											<input type="text" id="text" name="error_301_redirection" className="form-control" />
+											<input
+												type="text"
+												id="text"
+												name="error_301_redirection"
+												className="form-control"
+												ref={register({ required: "This field is required" })}
+											/>
 										</div>
 									</FormGroup>
 								</Col>
