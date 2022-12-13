@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import a from "../assets/img/svg/youtube.svg";
+// import { Link } from "react-router-dom";
+import a from "../assets/img/soon.jpg";
 function SectionFive() {
 	return (
 		<div>
@@ -14,18 +14,18 @@ function SectionFive() {
 								Easily Achieve Your Saving Goals And Grow Your Business From Our Link Solution For More Information Click To This
 								Button
 							</p>
-							<div className="d-flex justify-content-center mt-10">
+							{/* <div className="d-flex justify-content-center mt-10">
 								<Link className="btn btn-primary rounded mx-1" to="/">
 									See Our Link Solution's Tutorials
 								</Link>
-							</div>
+							</div> */}
 						</div>
 					</div>
 				</div>
 			</section>
 			<div className="container">
-				<div className="row mb-16 mt-10 mb-mb-20">
-					<div className="col-9 col-sm-10 col-lg-9 mx-auto mt-n15 mt-md-n20">
+				<div className="row">
+					<div className="col-9 col-sm-10 col-lg-9 mx-auto mb-10">
 						<img className="img-fluid mx-auto" src={a} alt="" />
 					</div>
 				</div>

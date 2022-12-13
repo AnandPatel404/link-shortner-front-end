@@ -75,7 +75,7 @@ function AddErrorRedirection({ sm, updateSm }) {
 						</BlockHeadContent>
 					</BlockBetween>
 				</BlockHead>
-				{sub.planId?.password_protected_link ? (
+				{sub.planId?.error_redirect ? (
 					<Block size="lg">
 						<Form className="gy-3" onSubmit={handleSubmit(s)}>
 							<Row className="g-3 align-center">

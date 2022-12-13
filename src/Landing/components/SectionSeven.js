@@ -14,7 +14,7 @@ function SectionSeven() {
 						<div className="container">
 							<div className="row gx-lg-8 gx-xl-12 gy-10 gy-lg-0">
 								<div className="col-lg-4 text-center text-lg-start">
-									<h3 className="display-4 mb-3 pe-xxl-15">We are proud of our works</h3>
+									<h3 className="display-4 mb-3 pe-xxl-15">Engage with your customer with our link solution</h3>
 									<p className="lead fs-lg mb-0 pe-xxl-10">We bring solutions to make life easier for our customers.</p>
 								</div>
 
@@ -159,13 +159,6 @@ function SectionSeven() {
 									<Link to={`${process.env.PUBLIC_URL}/all-features`}>Read More</Link>
 								</div>
 							</PreviewCard>
-						</div>
-						<div className="item col-md-6 col-xl-3">
-							<div className="icon mb-0">
-								<Link to={`${process.env.PUBLIC_URL}/all-features`} className="btn btn-primary">
-									See Features
-								</Link>
-							</div>
 						</div>
 					</div>
 				</div>
