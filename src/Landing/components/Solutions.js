@@ -39,8 +39,10 @@ function Solutions() {
 								link and sent client to link destination and you can download qr in png form
 							</p>
 							<p className="my-4">This QR Used Like :-</p>
-							<p className="my-4">1️⃣ You can create with logo QR link that specify which brand qr is</p>
-							<p className="my-4">2️⃣ You can set your profile photo as QR link and share anywhere</p>
+							<p className="my-4">1️⃣ You can create QR with logo that specify which brand qr is</p>
+							<p className="my-4">
+								2️⃣ You can set your profile photo as QR link and share anywhere that you easily interact with your client
+							</p>
 						</div>
 
 						<div className="col-lg-6 d-flex justify-content-center">
@@ -53,20 +55,36 @@ function Solutions() {
 						</div>
 						<div className="col-md-10 offset-md-1 offset-lg-0 col-lg-6 text-center text-lg-start order-2 order-lg-0">
 							<h2 className="mb-5 mx-md-n5 mx-lg-0">⭐ Password Protected Link</h2>
-							<p className="my-4">✅ Create a Password Protected link lock the your shorted link</p>
-							<p className="my-4">✅ Anyone who knows this password will be able to open that link.</p>
+							<h5 className="my-10">Lock the link</h5>
+							<p className="my-4">
+								1️⃣ create a password protected link and share anywhere, Anyone who knows this password will be able to open that link.
+							</p>
+							<p className="my-4">
+								2️⃣ You can share your client by putting a password in your link, so that only those who have this password can see
+								this link.
+							</p>
+							<p className="my-4">3️⃣ This link may be useful for sharing your confidential information.</p>
+							<p className="my-4">
+								4️⃣ Either you want to sell a product to a few people, then create password protect link and share this password to a
+								few people
+							</p>
 							<p className="my-4">✅ Your link's password will save in encrypt form so other can not see your link password</p>
 						</div>
 					</div>
 					<div className="row mb-5 align-items-center">
 						<div className="col-md-10 offset-md-1 offset-lg-0 col-lg-6 text-center text-lg-start order-2 order-lg-0">
 							<h2 className="mb-5 mx-md-n5 mx-lg-0">⭐ Link Analysis</h2>
-							<p className="my-4">✅ You can Analysis your link in shorterme</p>
-							<p className="my-4">✅ like which mobile and version is using when client click on link</p>
-							<p className="my-4">✅ where the click come from client location</p>
-							<p className="my-4">✅ average of mobile user and desktop user on click</p>
-							<p className="my-4">✅ last 7 day click chart </p>
-							<p className="my-4">✅ client ip and much more</p>
+							<h5 className="my-10">Track the link footprint</h5>
+							<p className="my-4">
+								in shorterme we provide full link analysis and link footprint that you can understand your link and track your all
+								client
+							</p>
+							<p className="my-4">1️⃣ You can full Analysis your link in shorterme</p>
+							<p className="my-4">2️⃣ like which mobile and version is using when client click on link</p>
+							<p className="my-4">3️⃣ where the click come from client location</p>
+							<p className="my-4">4️⃣ average of mobile user and desktop user on click</p>
+							<p className="my-4">5️⃣ last 7 day click chart </p>
+							<p className="my-4">6️⃣ client ip and much more</p>
 						</div>
 						<div className="col-lg-6 d-flex justify-content-center">
 							<img src={analitics} alt="heroOne" width={500} />
@@ -78,15 +96,17 @@ function Solutions() {
 						</div>
 						<div className="col-md-10 offset-md-1 offset-lg-0 col-lg-6 text-center text-lg-start order-2 order-lg-0">
 							<h2 className="mb-5 mx-md-n5 mx-lg-0">⭐ Browser Targeting Link</h2>
-							<p className="my-4">✅ You can specify the which browser can access the link and which not</p>
-							<p className="my-4">✅ Here the feature is for this people, which is specially create link for some browsers.</p>
+							<h5 className="my-10">Specific Browser Can access this link</h5>
+							<p className="my-4">1️⃣ You can specify the which browser can access the link and which not</p>
+							<p className="my-4">2️⃣ Here the feature is for this people, which is specially create link for some browsers.</p>
 						</div>
 					</div>
 					<div className="row mb-5 align-items-center">
 						<div className="col-md-10 offset-md-1 offset-lg-0 col-lg-6 text-center text-lg-start order-2 order-lg-0">
 							<h2 className="mb-5 mx-md-n5 mx-lg-0">⭐ Device Targeting Link</h2>
-							<p className="my-4">✅ You can also specify the which device can access the link and which not</p>
-							<p className="my-4">✅ Here the feature is for this people, which is specially create link for some device.</p>
+							<h5 className="my-10">Specific Device Can access this link</h5>
+							<p className="my-4">1️⃣ You can also specify the which device can access the link and which not</p>
+							<p className="my-4">2️⃣ Here the feature is for this people, which is specially create link for some device.</p>
 						</div>
 						<div className="col-lg-6 d-flex justify-content-center">
 							<img src={mobile} alt="heroOne" width={500} />

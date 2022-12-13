@@ -31,7 +31,7 @@ const App = () => {
 		<React.Fragment>
 			<Switch>
 				<Route exact path={`${process.env.PUBLIC_URL}/pricing`} component={Pricing}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/solutions`} component={Solutions}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/all-features`} component={Solutions}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/credits`} component={Credits}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/contact-us`} component={ContectUs}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/features`} component={Features}></Route>

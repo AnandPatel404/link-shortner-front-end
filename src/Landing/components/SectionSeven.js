@@ -58,7 +58,7 @@ function SectionSeven() {
 										</div>
 									</div>
 									<p>Buy your name domain and configure with our site and create YourName/Link.</p>
-									<Link to="/">Read More</Link>
+									<Link to={`${process.env.PUBLIC_URL}/all-features`}>Read More</Link>
 								</div>
 							</PreviewCard>
 						</div>
@@ -72,7 +72,7 @@ function SectionSeven() {
 										</div>
 									</div>
 									<p>Create Your Automation For Link And Much More All Dashboard Features Available In Api.</p>
-									<Link to="/">Read More</Link>
+									<Link to={`${process.env.PUBLIC_URL}/all-features`}>Read More</Link>
 								</div>
 							</PreviewCard>
 						</div>
@@ -86,7 +86,7 @@ function SectionSeven() {
 										</div>
 									</div>
 									<p>Create Your Link As QR Link And With Your Logo And Color Of Your Choice.</p>
-									<Link to="/">Read More</Link>
+									<Link to={`${process.env.PUBLIC_URL}/all-features`}>Read More</Link>
 								</div>
 							</PreviewCard>
 						</div>
@@ -100,7 +100,7 @@ function SectionSeven() {
 										</div>
 									</div>
 									<p>Create Link With Your Choice Back-Link Link YourDomain/Your-choice-back-link.</p>
-									<Link to="/">Read More</Link>
+									<Link to={`${process.env.PUBLIC_URL}/all-features`}>Read More</Link>
 								</div>
 							</PreviewCard>
 						</div>
@@ -114,7 +114,7 @@ function SectionSeven() {
 										</div>
 									</div>
 									<p>One Of The Best Features We Provide Is Click Limit Link That You Can Set On Your Link.</p>
-									<Link to="/">Read More</Link>
+									<Link to={`${process.env.PUBLIC_URL}/all-features`}>Read More</Link>
 								</div>
 							</PreviewCard>
 						</div>
@@ -128,7 +128,7 @@ function SectionSeven() {
 										</div>
 									</div>
 									<p>You Can Also Control That Which Device Can Access Your Link Or Which Not.</p>
-									<Link to="/">Read More</Link>
+									<Link to={`${process.env.PUBLIC_URL}/all-features`}>Read More</Link>
 								</div>
 							</PreviewCard>
 						</div>
@@ -142,7 +142,7 @@ function SectionSeven() {
 										</div>
 									</div>
 									<p>You Can Also Control That Which Browser Can Access Your Link Or Which Not.</p>
-									<Link to="/">Read More</Link>
+									<Link to={`${process.env.PUBLIC_URL}/all-features`}>Read More</Link>
 								</div>
 							</PreviewCard>
 						</div>
@@ -156,13 +156,13 @@ function SectionSeven() {
 										</div>
 									</div>
 									<p>You Can Set Your Password To Link For Security</p>
-									<Link to="/">Read More</Link>
+									<Link to={`${process.env.PUBLIC_URL}/all-features`}>Read More</Link>
 								</div>
 							</PreviewCard>
 						</div>
 						<div className="item col-md-6 col-xl-3">
 							<div className="icon mb-0">
-								<Link to={`${process.env.PUBLIC_URL}/features`} className="btn btn-primary">
+								<Link to={`${process.env.PUBLIC_URL}/all-features`} className="btn btn-primary">
 									See Features
 								</Link>
 							</div>
