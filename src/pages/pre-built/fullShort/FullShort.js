@@ -18,6 +18,7 @@ const QrWithLogo = lazy(() => import("../projects/QrWithLogo"));
 const DeviceTargetingLink = lazy(() => import("../shortingFunctions/DeviceTargetingLink"));
 const ReDirectionPage = lazy(() => import("../shortingFunctions/ReDirectionPage"));
 const BrowserTargetingLink = lazy(() => import("../shortingFunctions/BrowserTargetingLink"));
+const ErrorRedirection = lazy(() => import("../shortingFunctions/AddErrorRedirection"));
 
 const FullShort = () => {
 	const { SingleLink, applyChanges } = userFunctionalityLink((state) => ({
@@ -84,7 +85,6 @@ const FullShort = () => {
 												className={
 													window.location.pathname === `${process.env.PUBLIC_URL}/add-error-redirection` ? "active" : ""
 												}
-												style={{ pointerEvents: "none" }}
 											>
 												<Icon name="trend-down"></Icon>
 												<span>Add Error Redirection</span>
@@ -265,6 +265,11 @@ const FullShort = () => {
 									exact
 									path={`${process.env.PUBLIC_URL}/browser-targeting`}
 									render={() => <BrowserTargetingLink updateSm={updateSm} sm={sm} />}
+								></Route>
+								<Route
+									exact
+									path={`${process.env.PUBLIC_URL}/add-error-redirection`}
+									render={() => <ErrorRedirection updateSm={updateSm} sm={sm} />}
 								></Route>
 
 								<Route
