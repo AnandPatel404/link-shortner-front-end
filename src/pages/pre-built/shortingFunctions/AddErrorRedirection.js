@@ -21,10 +21,10 @@ import { Link } from "react-router-dom";
 function AddErrorRedirection({ sm, updateSm }) {
 	const [loading, setLoading] = useState(false);
 
-	const { SingleLink, passwordProtectedLink } = userFunctionalityLink((state) => ({
+	const { SingleLink, create404Redirection } = userFunctionalityLink((state) => ({
 		SingleLink: state.SingleLink,
 
-		passwordProtectedLink: state.passwordProtectedLink,
+		create404Redirection: state.create404Redirection,
 	}));
 
 	const { sub } = userSubStore((state) => ({
@@ -41,18 +41,24 @@ function AddErrorRedirection({ sm, updateSm }) {
 		}
 		const data = {
 			linkId: SingleLink.id,
-
-			password: sData.password,
+			...sData,
 		};
 
-		passwordProtectedLink(data, setLoading);
+		if (sData.error_404_redirection) {
+			data.is_404_enable = true;
+		}
+		if (sData.error_301_redirection) {
+			data.is_301_enable = true;
+		}
+
+		create404Redirection(data, setLoading);
 	};
 
 	const { handleSubmit, register } = useForm();
 
 	return (
 		<React.Fragment>
-			<Head title="Password Protected Link" />
+			<Head title="Error Redirection Link" />
 			<Content page="component">
 				<BlockHead size="lg" wide="sm">
 					<BlockBetween>
@@ -95,7 +101,7 @@ function AddErrorRedirection({ sm, updateSm }) {
 									</FormGroup>
 								</Col>
 							</Row>
-
+							{/* TODO : this is accept all two if client need to enter only one so fixed it in feature */}
 							<Row className="g-3 align-center">
 								<Col lg="5">
 									<FormGroup>
@@ -108,13 +114,7 @@ function AddErrorRedirection({ sm, updateSm }) {
 								<Col lg="7">
 									<FormGroup>
 										<div className="form-control-wrap">
-											<input
-												type="text"
-												id="text"
-												name="error_301_redirection"
-												className="form-control"
-												ref={register({ required: "This field is required" })}
-											/>
+											<input type="text" id="text" name="error_301_redirection" className="form-control" />
 										</div>
 									</FormGroup>
 								</Col>

@@ -308,6 +308,24 @@ const userFunctionalityLink = create((set, get) => ({
 		return data.data;
 	},
 
+	create404Redirection: async (data, setLoading) => {
+		await axios({
+			url: "short/create-404-redirection",
+			method: "post",
+			data,
+		})
+			.then((res) => {
+				if (res.data.status === "Success") {
+					setLoading(false);
+					messageToast(res.data.message, res.data.status);
+				}
+			})
+			.catch((err) => {
+				setLoading(false);
+				errorToast(err.response.data.message, "Error");
+			});
+	},
+
 	applyChanges: async () => {
 		messageToast(`Changes are applied`, "Success");
 		set({ SingleLink: {} });

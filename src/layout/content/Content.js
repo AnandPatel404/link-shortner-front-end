@@ -3,7 +3,6 @@ import React from "react";
 const Content = ({ ...props }) => {
 	return (
 		<div className="nk-content">
-			{/* TODO : if ui need container so add */}
 			<div className="nk-content-inner">
 				<div className="nk-content-body">
 					{!props.page ? props.children : null}

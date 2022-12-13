@@ -79,8 +79,6 @@ const Pages = () => {
 				{/* custom page */}
 				<Route exact path={`${process.env.PUBLIC_URL}/create-full-link`} component={FullShort}></Route>
 
-				<Route exact path={`${process.env.PUBLIC_URL}/add-error-redirection`} component={FullShort}></Route>
-
 				<Route exact path={`${process.env.PUBLIC_URL}/create-or-find-link`} component={FullShort}></Route>
 
 				{subscription.planId?.browser_targeting_link === true ? (
@@ -121,6 +119,10 @@ const Pages = () => {
 
 				{subscription.planId?.custom_link_redirection_page === true ? (
 					<Route exact path={`${process.env.PUBLIC_URL}/re-direction-link`} component={FullShort}></Route>
+				) : null}
+
+				{subscription.planId?.error_redirect === true ? (
+					<Route exact path={`${process.env.PUBLIC_URL}/add-error-redirection`} component={FullShort}></Route>
 				) : null}
 
 				{/*Pre-built Pages*/}
