@@ -33,6 +33,8 @@ const ApiCred = lazy(() => import("../pages/pre-built/apiCred/apiCred"));
 
 const Invest = lazy(() => import("../pages/Invest"));
 
+const ApiDocsLayOut = lazy(() => import("../pages/pre-built/apiDocs/ApiDocsLayOut"));
+
 const Pages = () => {
 	const { subscription } = userSubStore((state) => ({
 		subscription: state.subscription,
@@ -75,6 +77,9 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/client-details/:id/:page`} component={ClientDetails}></Route>
 
 				<Route exact path={`${process.env.PUBLIC_URL}/api-credentials`} component={ApiCred}></Route>
+
+				{/* TODO : create restriction for this api docs routes */}
+				<Route exact path={`${process.env.PUBLIC_URL}/create-normal-link`} component={ApiDocsLayOut}></Route>
 
 				{/* custom page */}
 				<Route exact path={`${process.env.PUBLIC_URL}/create-full-link`} component={FullShort}></Route>

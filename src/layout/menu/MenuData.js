@@ -49,7 +49,7 @@ const menu = [
 	{
 		icon: "book",
 		text: "Api docs",
-		link: "/api-credentials",
+		link: "/create-normal-link",
 	},
 	{
 		icon: "book-read",
