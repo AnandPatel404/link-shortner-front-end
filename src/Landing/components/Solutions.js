@@ -6,6 +6,9 @@ import analitics from "../assets/img/svg/analitics.svg";
 import browser from "../assets/img/svg/browser.svg";
 import mobile from "../assets/img/svg/mobile.svg";
 import calendar from "../assets/img/svg/calendar.svg";
+import fourZeroFour from "../assets/img/svg/fourzerofour.svg";
+import customDomain from "../assets/img/svg/domainname.svg";
+import brandedLink from "../assets/img/svg/brandedLink.svg";
 const NavBar = lazy(() => import("./NavBar"));
 const Footer = lazy(() => import("./footer"));
 
@@ -118,7 +121,56 @@ function Solutions() {
 						</div>
 						<div className="col-md-10 offset-md-1 offset-lg-0 col-lg-6 text-center text-lg-start order-2 order-lg-0">
 							<h2 className="mb-5 mx-md-n5 mx-lg-0">⭐ Expiration Link</h2>
-							<p className="my-4">✅ You can specify the date that link will expire</p>
+							<h5 className="my-10">This link is automatically expire in your date time</h5>
+							<p className="my-4">
+								1️⃣ if you organize a event or like some time offer so create a expiration link and stay free this link is
+								automatically expire in your given date.
+							</p>
+							<p className="my-4">
+								2️⃣ After the time is over, your link will not go waste, you can restart it and you can change its redirection anytime.
+							</p>
+						</div>
+					</div>
+					<div className="row mb-5 align-items-center">
+						<div className="col-md-10 offset-md-1 offset-lg-0 col-lg-6 text-center text-lg-start order-2 order-lg-0">
+							<h2 className="mb-5 mx-md-n5 mx-lg-0">⭐ Error Redirection</h2>
+							<p>
+								in shorterme you can create your shorted link but you can also create a error page and in case you destination link is
+								down or not responding so shorted link redirect to another page so in future you don't worry about your link
+							</p>
+							<p className="my-4">1️⃣ if your destination link is down so it redirect to another page</p>
+							<p className="my-4">2️⃣ this error page work on this errors like 400 error , 404 error , 500 error , 401 error</p>
+						</div>
+						<div className="col-lg-6 d-flex justify-content-center">
+							<img src={fourZeroFour} alt="heroOne" width={500} />
+						</div>
+					</div>
+					<div className="row mb-5 align-items-center">
+						<div className="col-lg-6 d-flex justify-content-center">
+							<img src={customDomain} alt="heroOne" width={500} />
+						</div>
+						<div className="col-md-10 offset-md-1 offset-lg-0 col-lg-6 text-center text-lg-start order-2 order-lg-0">
+							<h2 className="mb-5 mx-md-n5 mx-lg-0">⭐ Custom Domain</h2>
+							<p>
+								in shorterme you can create your shorted link with brand name domain name simply connect your domain with our ip and
+								that's all now you can create your shorted link
+							</p>
+							<p className="my-4">1️⃣ if your brand domain has no back link so it redirect to domain root link</p>
+							<p className="my-4">2️⃣ you also enable and disable custom domain</p>
+						</div>
+					</div>
+					<div className="row mb-5 align-items-center">
+						<div className="col-md-10 offset-md-1 offset-lg-0 col-lg-6 text-center text-lg-start order-2 order-lg-0">
+							<h2 className="mb-5 mx-md-n5 mx-lg-0">⭐ Custom Branded Link</h2>
+							<p>
+								in shorterme you can create your shorted link with brand name domain name simply connect your domain with our ip and
+								that's all now you can create your shorted link
+							</p>
+							<p className="my-4">1️⃣ if your brand domain has no back link so it redirect to domain root link</p>
+							<p className="my-4">2️⃣ you also enable and disable custom domain</p>
+						</div>
+						<div className="col-lg-6 d-flex justify-content-center">
+							<img src={brandedLink} alt="heroOne" width={500} />
 						</div>
 					</div>
 				</div>
