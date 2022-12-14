@@ -10,10 +10,7 @@ function SectionFive() {
 						<div className="col-md-10 col-lg-8 col-xl-8 col-xxl-6 mx-auto mb-13">
 							<h3 className="mb-4">See Our Link Solution's Tutorials For Stay On Top Of Your Business.</h3>
 							<hr />
-							<p className=" px-xl-12 px-xxl-6 mb-7">
-								Easily Achieve Your Saving Goals And Grow Your Business From Our Link Solution For More Information Click To This
-								Button
-							</p>
+							<p className=" px-xl-12 px-xxl-6 mb-7">Easily Achieve Your Saving Goals And Grow Your Business From Our Link Solution.</p>
 							{/* <div className="d-flex justify-content-center mt-10">
 								<Link className="btn btn-primary rounded mx-1" to="/">
 									See Our Link Solution's Tutorials
