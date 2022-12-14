@@ -18,7 +18,6 @@ const verifyOtpForResetPassword = lazy(() => import("./pages/auth/verifyOtpForRe
 const ResetPassword = lazy(() => import("./pages/auth/reSetPassword"));
 const PasswordProtected = lazy(() => import("./pages/passwordProtectedLinkPage/PasswordProtectedLink"));
 const Pricing = lazy(() => import("./Landing/components/Pricing"));
-const Features = lazy(() => import("./Landing/components/Features"));
 const SectionOne = lazy(() => import("./Landing/components/SectionOne"));
 const Credits = lazy(() => import("./Landing/components/SectionSix"));
 const LinkVerification = lazy(() => import("./pages/linkVerification/linkVerification"));
@@ -34,11 +33,6 @@ const App = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/all-features`} component={Solutions}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/credits`} component={Credits}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/contact-us`} component={ContectUs}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/features`} component={Features}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/password-protected-link-features`} component={Features}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/qr-link-features`} component={Features}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/qr-with-logo-link-features`} component={Features}></Route>
-				<Route exact path={`${process.env.PUBLIC_URL}/branded-link-features`} component={Features}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/home`} component={SectionOne}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/auth-reset`} component={ForgotPassword}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/auth-register`} component={Register}></Route>

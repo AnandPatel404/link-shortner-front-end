@@ -34,11 +34,6 @@ function NavBar() {
 									Contact Us
 								</Link>
 							</li>
-							<li className="dropdown dropdown-submenu dropend">
-								<Link className="nav-link" to={`${process.env.PUBLIC_URL}/password-protected-link-features`}>
-									Feature docs
-								</Link>
-							</li>
 						</ul>
 						<div className="d-flex">
 							<div className="mx-2">
@@ -57,12 +52,7 @@ function NavBar() {
 						<ul className="navbar-nav">
 							<li className="dropdown dropdown-submenu dropend">
 								<Link className="nav-link" to={`${process.env.PUBLIC_URL}/all-features`}>
-									Solutions
-								</Link>
-							</li>
-							<li className="dropdown dropdown-submenu dropend">
-								<Link className="nav-link" to={`${process.env.PUBLIC_URL}/password-protected-link-features`}>
-									Feature docs
+									Feature
 								</Link>
 							</li>
 							<li className="dropdown dropdown-submenu dropend">
