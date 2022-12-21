@@ -2,7 +2,7 @@
 ////////     CORE DASHLITE VARIABLES    ///// //////////
 ////////////////////////////////////////////////////////
 
-$font-url: '../../../fonts';
+$font-url: '../fonts';
 
 /////////    COLORS    ///////////
 //////////////////////////////////////
@@ -826,5 +826,5 @@ $gd_investment:         true;
 /////////    THIRD-PARTY VARIABLE    //////////
 ///////////////////////////////////////////////
 $nk-dashlite-font: "Nioicon";
-$nk-dashlite-font-url: "../../../fonts";
+$nk-dashlite-font-url: "../fonts";
 @import "vendors/nioicon/variables";
