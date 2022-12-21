@@ -66,7 +66,10 @@
     "compile:css": "sass --no-source-map src/assets/scss/dashlite.scss:src/assets/styles/custom.css --style expanded",
     "prefix:css": "postcss src/assets/styles/custom.css -u autoprefixer -b \"last 10 versions\" -o src/assets/styles/custom.prefixed.css",
     "compress:css": "sass --no-source-map src/assets/styles/custom.prefixed.css:src/assets/styles/custom.min.css --style compressed",
-    "allRun": "npm-run-all compile:css prefix:css compress:css"
+    "allRun": "npm-run-all compile:css prefix:css compress:css",
+    "prefixForLanding:css": "postcss src/Landing/style.css -u autoprefixer -b \"last 10 versions\" -o src/Landing/custom.prefixed.css",
+    "compressForLanding:css": "sass --no-source-map src/Landing/custom.prefixed.css:src/Landing/custom.min.css --style compressed",
+    "allRunForLanding": "npm-run-all prefixForLanding:css compressForLanding:css"
   },
   "eslintConfig": {
     "extends": [
