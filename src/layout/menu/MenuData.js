@@ -51,10 +51,5 @@ const menu = [
 		text: "Api docs",
 		link: "/create-normal-link",
 	},
-	{
-		icon: "book-read",
-		text: "Feature docs",
-		link: "/api-credentials",
-	},
 ];
 export default menu;

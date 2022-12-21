@@ -10,6 +10,8 @@ import carbon from "../../../Landing/assets/img/carbon.png";
 
 import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetween } from "../../../components/Component";
 
+import linkOutPut from "../../../images/linkouteput.png";
+
 function CreateNormalLink({ sm, updateSm }) {
 	return (
 		<React.Fragment>
@@ -21,13 +23,14 @@ function CreateNormalLink({ sm, updateSm }) {
 							<BlockTitle tag="h2" className="fw-normal align-items-center">
 								Create a Normal Link With Api
 							</BlockTitle>
+							<p> Create A Link using Shorterme API key and secret key.</p>
 						</BlockHeadContent>
-						<div>
+						<BlockHeadContent>
 							<p>API Method</p>
-							<Button type="button" className="btn btn-primary btn-dim">
+							<Button type="button" className="btn btn-primary" size="md">
 								Post
 							</Button>
-						</div>
+						</BlockHeadContent>
 						<BlockHeadContent className="align-self-start d-lg-none">
 							<Button className={`toggle btn btn-icon btn-trigger mt-n1 ${sm ? "active" : ""}`} onClick={() => updateSm(!sm)}>
 								<Icon name="menu-alt-r"></Icon>
@@ -35,24 +38,37 @@ function CreateNormalLink({ sm, updateSm }) {
 						</BlockHeadContent>
 					</BlockBetween>
 				</BlockHead>
-
+				<hr />
 				<Block size="lg">
 					<Row className="g-3 d-flex justify-content-center align-items-center">
 						<Col lg="12">
-							<div className="d-flex flex-row justify-content-between">
-								<div className="w-100">
-									<p>URL</p>
-									<div className="font-weight-bold p-3" style={{ backgroundColor: "#fef8e4" }}>
-										https://shorterme.in/v1/api/links
-									</div>
+							<div className="w-100">
+								<div className="d-flex align-items-center justify-content-between">
+									<p className="h4">URL</p>
+									<Icon
+										name="check-round-cut"
+										className="h3"
+										style={{ cursor: "pointer" }}
+										onClick={() => {
+											navigator.clipboard.writeText("https://shorterme.in/v1/api/links");
+										}}
+									></Icon>
 								</div>
-								<div style={{ cursor: "pointer" }}>
-									<Icon name="check-round-cut" className="h4"></Icon>
+								<div className="font-weight-bold p-3" style={{ backgroundColor: "#fef8e4", cursor: "pointer" }}>
+									https://shorterme.in/v1/api/links
 								</div>
 							</div>
 						</Col>
 						<Col lg="10">
 							<img src={carbon} alt="" />
+						</Col>
+						<Col lg="10">
+							<div className="w-100">
+								<div className="d-flex align-items-center justify-content-between">
+									<p className="h4">Output</p>
+								</div>
+							</div>
+							<img src={linkOutPut} alt="" />
 						</Col>
 					</Row>
 				</Block>
