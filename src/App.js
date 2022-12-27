@@ -55,7 +55,7 @@ const App = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/errors/504-classic`} component={Error504Classic}></Route>
 
 				{/*Main Routes*/}
-				<PrivateRoute exact path={`${process.env.PUBLIC_URL}/`} component={Layout}></PrivateRoute>
+				<PrivateRoute exact path="" component={Layout}></PrivateRoute>
 
 				<Route component={RedirectAs404}></Route>
 			</Switch>
