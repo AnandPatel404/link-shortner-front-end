@@ -26,7 +26,7 @@ const RecentInvest = ({ links }) => {
 					<DataTableRow>
 						<span>Real Link</span>{" "}
 					</DataTableRow>
-					<DataTableRow size="sm">
+					<DataTableRow>
 						<span>Shorten Link</span>
 					</DataTableRow>
 					<DataTableRow size="sm">
@@ -46,9 +46,9 @@ const RecentInvest = ({ links }) => {
 									</div>
 								</Link>
 							</DataTableRow>
-							<DataTableRow size="sm">
+							<DataTableRow>
 								<div className="user-card">
-									<div className="user-name d-flex align-items-center">
+									<div className="user-name d-flex flex-column flex-md-row align-items-center">
 										<spam className="tb-lead">{`${item.coustomDomain?.domain ? item.coustomDomain?.domain : "shortedurl.link"}/${
 											item.shorterLink
 										}`}</spam>
