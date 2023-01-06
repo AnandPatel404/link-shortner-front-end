@@ -80,6 +80,7 @@ const Pages = () => {
 
 				{/* TODO : create restriction for this api docs routes */}
 				<Route exact path={`${process.env.PUBLIC_URL}/create-normal-link`} component={ApiDocsLayOut}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/get-all-link`} component={ApiDocsLayOut}></Route>
 
 				{/* custom page */}
 				<Route exact path={`${process.env.PUBLIC_URL}/create-full-link`} component={FullShort}></Route>

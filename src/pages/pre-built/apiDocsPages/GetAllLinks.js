@@ -6,11 +6,11 @@ import Head from "../../../layout/head/Head";
 
 import { Row, Col } from "reactstrap";
 
-import carbon from "../../../Landing/assets/img/carbon.png";
+import carbon from "../../../Landing/assets/img/get.png";
 
 import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetween } from "../../../components/Component";
 
-import linkOutPut from "../../../images/linkouteput.png";
+import linkOutPut from "../../../Landing/assets/img/gets.png";
 
 import Swal from "sweetalert2";
 
@@ -21,20 +21,20 @@ function CreateNormalLink({ sm, updateSm }) {
 	};
 	return (
 		<React.Fragment>
-			<Head title="Create Link With Api" />
+			<Head title="Device Targeting Link" />
 			<Content page="component">
 				<BlockHead size="lg" wide="sm">
 					<BlockBetween>
 						<BlockHeadContent>
 							<BlockTitle tag="h2" className="fw-normal align-items-center">
-								Create a Normal Link With Api
+								Get All Link With Api
 							</BlockTitle>
-							<p> Create A Link using Shorterme API key and secret key.</p>
+							<p> Get ALl Link using Shorterme API key and secret key.</p>
 						</BlockHeadContent>
 						<BlockHeadContent>
 							<p>API Method</p>
 							<Button type="button" className="btn btn-primary" size="md">
-								Post
+								GET
 							</Button>
 						</BlockHeadContent>
 						<BlockHeadContent className="align-self-start d-lg-none">

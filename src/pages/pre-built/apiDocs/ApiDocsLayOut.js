@@ -6,6 +6,7 @@ import { Icon } from "../../../components/Component";
 import { Card } from "reactstrap";
 import WorkSvg from "../../../images/svg/robot.svg";
 const CreateNormalLink = lazy(() => import("../apiDocsPages/CreateNormalLink"));
+const GetallLinks = lazy(() => import("../apiDocsPages/GetAllLinks"));
 
 const ApiDocsLayOut = () => {
 	const [sm, updateSm] = useState(false);
@@ -58,6 +59,15 @@ const ApiDocsLayOut = () => {
 												<span>Create Normal Link</span>
 											</Link>
 										</li>
+										<li onClick={() => updateSm(false)}>
+											<Link
+												to={`${process.env.PUBLIC_URL}/get-all-link`}
+												className={window.location.pathname === `${process.env.PUBLIC_URL}/get-all-link` ? "active" : ""}
+											>
+												<Icon name="link-alt"></Icon>
+												<span>Get All Link</span>
+											</Link>
+										</li>
 									</ul>
 								</div>
 								<div className="d-flex justify-content-center mt-5 pt-5">
@@ -72,6 +82,11 @@ const ApiDocsLayOut = () => {
 									exact
 									path={`${process.env.PUBLIC_URL}/create-normal-link`}
 									render={() => <CreateNormalLink updateSm={updateSm} sm={sm} />}
+								></Route>
+								<Route
+									exact
+									path={`${process.env.PUBLIC_URL}/get-all-link`}
+									render={() => <GetallLinks updateSm={updateSm} sm={sm} />}
 								></Route>
 							</Switch>
 						</div>
