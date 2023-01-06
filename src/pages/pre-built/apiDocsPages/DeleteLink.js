@@ -6,11 +6,11 @@ import Head from "../../../layout/head/Head";
 
 import { Row, Col } from "reactstrap";
 
-import carbon from "../../../Landing/assets/img/get.png";
+import carbon from "../../../Landing/assets/img/delete.png";
 
 import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetween } from "../../../components/Component";
 
-import linkOutPut from "../../../Landing/assets/img/gets.png";
+import linkOutPut from "../../../Landing/assets/img/deleteo.png";
 
 import Swal from "sweetalert2";
 
@@ -21,20 +21,20 @@ function CreateNormalLink({ sm, updateSm }) {
 	};
 	return (
 		<React.Fragment>
-			<Head title="Get All Link With Api" />
+			<Head title="Delete Link With Api" />
 			<Content page="component">
 				<BlockHead size="lg" wide="sm">
 					<BlockBetween>
 						<BlockHeadContent>
 							<BlockTitle tag="h2" className="fw-normal align-items-center">
-								Get All Link With Api
+								Delete Link With Api
 							</BlockTitle>
-							<p> Get ALl Link using Shorterme API key and secret key.</p>
+							<p> Delete Link using Shorterme API key and secret key.</p>
 						</BlockHeadContent>
 						<BlockHeadContent>
 							<p>API Method</p>
 							<Button type="button" className="btn btn-primary" size="md">
-								GET
+								DELETE
 							</Button>
 						</BlockHeadContent>
 						<BlockHeadContent className="align-self-start d-lg-none">
@@ -81,13 +81,6 @@ function CreateNormalLink({ sm, updateSm }) {
 								</div>
 							</div>
 							<img src={linkOutPut} alt="" />
-						</Col>
-						<Col lg="10">
-							<div className="w-100">
-								<div className="d-flex align-items-center justify-content-between">
-									<p> 1️⃣ This Output come in array formate</p>
-								</div>
-							</div>
 						</Col>
 					</Row>
 				</Block>
