@@ -6,30 +6,30 @@ import Head from "../../../layout/head/Head";
 
 import { Row, Col } from "reactstrap";
 
-import carbon from "../../../Landing/assets/img/clickLimitLink.png";
+import carbon from "../../../Landing/assets/img/brandedLink.png";
 
 import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetween } from "../../../components/Component";
 
-import linkOutPut from "../../../Landing/assets/img/clickLimitOutPut.png";
+import linkOutPut from "../../../Landing/assets/img/brandedLinkOutPut.png";
 
 import Swal from "sweetalert2";
 
-function ClickLimitLink({ sm, updateSm }) {
+function BrandedLink({ sm, updateSm }) {
 	const succ = (link) => {
 		Swal.fire("Link is copied", "", "success");
 		navigator.clipboard.writeText(link);
 	};
 	return (
 		<React.Fragment>
-			<Head title="Create Click Limit Link With Api" />
+			<Head title="Create Branded Link With Api" />
 			<Content page="component">
 				<BlockHead size="lg" wide="sm">
 					<BlockBetween>
 						<BlockHeadContent>
 							<BlockTitle tag="h2" className="fw-normal align-items-center">
-								Create Click Limit Link With Api
+								Create Branded Link With Api
 							</BlockTitle>
-							<p> Create Click Limit Link using Shorterme API key and secret key.</p>
+							<p> Create Branded Link using Shorterme API key and secret key.</p>
 						</BlockHeadContent>
 						<BlockHeadContent>
 							<p>API Method</p>
@@ -56,7 +56,7 @@ function ClickLimitLink({ sm, updateSm }) {
 										className="h3"
 										style={{ cursor: "pointer" }}
 										onClick={() => {
-											succ("https://shorterme.in/v1/api/links/click-limit-link");
+											succ("https://shorterme.in/v1/api/links/branded-link");
 										}}
 									></Icon>
 								</div>
@@ -64,10 +64,10 @@ function ClickLimitLink({ sm, updateSm }) {
 									className="font-weight-bold p-3"
 									style={{ backgroundColor: "#fef8e4", cursor: "pointer" }}
 									onClick={() => {
-										succ("https://shorterme.in/v1/api/links/click-limit-link");
+										succ("https://shorterme.in/v1/api/links/branded-link");
 									}}
 								>
-									https://shorterme.in/v1/api/links/click-limit-link
+									https://shorterme.in/v1/api/links/branded-link
 								</div>
 							</div>
 						</Col>
@@ -89,4 +89,4 @@ function ClickLimitLink({ sm, updateSm }) {
 	);
 }
 
-export default ClickLimitLink;
+export default BrandedLink;

@@ -91,6 +91,8 @@ const Pages = () => {
 
 				<Route exact path={`${process.env.PUBLIC_URL}/api-click-limit-link`} component={ApiDocsLayOut}></Route>
 
+				<Route exact path={`${process.env.PUBLIC_URL}/api-branded-link`} component={ApiDocsLayOut}></Route>
+
 				{/* custom page */}
 				<Route exact path={`${process.env.PUBLIC_URL}/create-full-link`} component={FullShort}></Route>
 
