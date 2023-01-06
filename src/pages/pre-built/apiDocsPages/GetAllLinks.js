@@ -16,7 +16,7 @@ import Swal from "sweetalert2";
 
 function CreateNormalLink({ sm, updateSm }) {
 	const succ = (link) => {
-		Swal.fire("Link is copied", "success", "success");
+		Swal.fire("Link is copied", "", "success");
 		navigator.clipboard.writeText(link);
 	};
 	return (
@@ -60,7 +60,13 @@ function CreateNormalLink({ sm, updateSm }) {
 										}}
 									></Icon>
 								</div>
-								<div className="font-weight-bold p-3" style={{ backgroundColor: "#fef8e4", cursor: "pointer" }}>
+								<div
+									className="font-weight-bold p-3"
+									style={{ backgroundColor: "#fef8e4", cursor: "pointer" }}
+									onClick={() => {
+										succ("https://shorterme.in/v1/api/links");
+									}}
+								>
 									https://shorterme.in/v1/api/links
 								</div>
 							</div>
@@ -75,6 +81,13 @@ function CreateNormalLink({ sm, updateSm }) {
 								</div>
 							</div>
 							<img src={linkOutPut} alt="" />
+						</Col>
+						<Col lg="10">
+							<div className="w-100">
+								<div className="d-flex align-items-center justify-content-between">
+									<p> 1️⃣ This Output come in array formate</p>
+								</div>
+							</div>
 						</Col>
 					</Row>
 				</Block>
