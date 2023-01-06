@@ -8,6 +8,7 @@ import WorkSvg from "../../../images/svg/robot.svg";
 const CreateNormalLink = lazy(() => import("../apiDocsPages/CreateNormalLink"));
 const GetallLinks = lazy(() => import("../apiDocsPages/GetAllLinks"));
 const DeleteLinks = lazy(() => import("../apiDocsPages/DeleteLink"));
+const PasswordProtectedLink = lazy(() => import("../apiDocsPages/PasswordProtectedLink"));
 
 const ApiDocsLayOut = () => {
 	const [sm, updateSm] = useState(false);
@@ -78,6 +79,19 @@ const ApiDocsLayOut = () => {
 												<span>Delete Link</span>
 											</Link>
 										</li>
+										<li onClick={() => updateSm(false)}>
+											<Link
+												to={`${process.env.PUBLIC_URL}/api-password-protected-link`}
+												className={
+													window.location.pathname === `${process.env.PUBLIC_URL}/api-password-protected-link`
+														? "active"
+														: ""
+												}
+											>
+												<Icon name="link-alt"></Icon>
+												<span>Password Protected Link</span>
+											</Link>
+										</li>
 									</ul>
 								</div>
 								<div className="d-flex justify-content-center mt-5 pt-5">
@@ -102,6 +116,11 @@ const ApiDocsLayOut = () => {
 									exact
 									path={`${process.env.PUBLIC_URL}/delete-link`}
 									render={() => <DeleteLinks updateSm={updateSm} sm={sm} />}
+								></Route>
+								<Route
+									exact
+									path={`${process.env.PUBLIC_URL}/api-password-protected-link`}
+									render={() => <PasswordProtectedLink updateSm={updateSm} sm={sm} />}
 								></Route>
 							</Switch>
 						</div>

@@ -82,6 +82,7 @@ const Pages = () => {
 				<Route exact path={`${process.env.PUBLIC_URL}/create-normal-link`} component={ApiDocsLayOut}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/get-all-link`} component={ApiDocsLayOut}></Route>
 				<Route exact path={`${process.env.PUBLIC_URL}/delete-link`} component={ApiDocsLayOut}></Route>
+				<Route exact path={`${process.env.PUBLIC_URL}/api-password-protected-link`} component={ApiDocsLayOut}></Route>
 
 				{/* custom page */}
 				<Route exact path={`${process.env.PUBLIC_URL}/create-full-link`} component={FullShort}></Route>

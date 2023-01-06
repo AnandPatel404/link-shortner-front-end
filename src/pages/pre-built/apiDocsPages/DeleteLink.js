@@ -14,7 +14,7 @@ import linkOutPut from "../../../Landing/assets/img/deleteo.png";
 
 import Swal from "sweetalert2";
 
-function CreateNormalLink({ sm, updateSm }) {
+function DeleteLink({ sm, updateSm }) {
 	const succ = (link) => {
 		Swal.fire("Link is copied", "", "success");
 		navigator.clipboard.writeText(link);
@@ -89,4 +89,4 @@ function CreateNormalLink({ sm, updateSm }) {
 	);
 }
 
-export default CreateNormalLink;
+export default DeleteLink;

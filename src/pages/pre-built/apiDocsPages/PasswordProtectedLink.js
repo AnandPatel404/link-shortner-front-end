@@ -6,35 +6,35 @@ import Head from "../../../layout/head/Head";
 
 import { Row, Col } from "reactstrap";
 
-import carbon from "../../../Landing/assets/img/get.png";
+import carbon from "../../../Landing/assets/img/passwordApi.png";
 
 import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetween } from "../../../components/Component";
 
-import linkOutPut from "../../../Landing/assets/img/gets.png";
+import linkOutPut from "../../../Landing/assets/img/passwordprotectedlinkoutput.png";
 
 import Swal from "sweetalert2";
 
-function GetAllLinks({ sm, updateSm }) {
+function PasswordProtectedLink({ sm, updateSm }) {
 	const succ = (link) => {
 		Swal.fire("Link is copied", "", "success");
 		navigator.clipboard.writeText(link);
 	};
 	return (
 		<React.Fragment>
-			<Head title="Get All Link With Api" />
+			<Head title="Create Password Protected Link With Api" />
 			<Content page="component">
 				<BlockHead size="lg" wide="sm">
 					<BlockBetween>
 						<BlockHeadContent>
 							<BlockTitle tag="h2" className="fw-normal align-items-center">
-								Get All Link With Api
+								Create Password Protected Link With Api
 							</BlockTitle>
-							<p> Get ALl Link using Shorterme API key and secret key.</p>
+							<p> Create Password Protected Link using Shorterme API key and secret key.</p>
 						</BlockHeadContent>
 						<BlockHeadContent>
 							<p>API Method</p>
 							<Button type="button" className="btn btn-primary" size="md">
-								GET
+								POST
 							</Button>
 						</BlockHeadContent>
 						<BlockHeadContent className="align-self-start d-lg-none">
@@ -56,7 +56,7 @@ function GetAllLinks({ sm, updateSm }) {
 										className="h3"
 										style={{ cursor: "pointer" }}
 										onClick={() => {
-											succ("https://shorterme.in/v1/api/links");
+											succ("https://shorterme.in/v1/api/links/password-protected-link");
 										}}
 									></Icon>
 								</div>
@@ -64,10 +64,10 @@ function GetAllLinks({ sm, updateSm }) {
 									className="font-weight-bold p-3"
 									style={{ backgroundColor: "#fef8e4", cursor: "pointer" }}
 									onClick={() => {
-										succ("https://shorterme.in/v1/api/links");
+										succ("https://shorterme.in/v1/api/links/password-protected-link");
 									}}
 								>
-									https://shorterme.in/v1/api/links
+									https://shorterme.in/v1/api/links/password-protected-link
 								</div>
 							</div>
 						</Col>
@@ -96,4 +96,4 @@ function GetAllLinks({ sm, updateSm }) {
 	);
 }
 
-export default GetAllLinks;
+export default PasswordProtectedLink;
