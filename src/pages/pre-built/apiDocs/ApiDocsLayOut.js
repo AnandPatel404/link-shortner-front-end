@@ -10,6 +10,7 @@ const GetallLinks = lazy(() => import("../apiDocsPages/GetAllLinks"));
 const DeleteLinks = lazy(() => import("../apiDocsPages/DeleteLink"));
 const PasswordProtectedLink = lazy(() => import("../apiDocsPages/PasswordProtectedLink"));
 const ExpirationLink = lazy(() => import("../apiDocsPages/ExpirationLink"));
+const ClickLimitLink = lazy(() => import("../apiDocsPages/ClickLimitLink"));
 
 const ApiDocsLayOut = () => {
 	const [sm, updateSm] = useState(false);
@@ -104,6 +105,17 @@ const ApiDocsLayOut = () => {
 												<span>Expiration Link</span>
 											</Link>
 										</li>
+										<li onClick={() => updateSm(false)}>
+											<Link
+												to={`${process.env.PUBLIC_URL}/api-click-limit-link`}
+												className={
+													window.location.pathname === `${process.env.PUBLIC_URL}/api-click-limit-link` ? "active" : ""
+												}
+											>
+												<Icon name="link-alt"></Icon>
+												<span>Click Limit Link</span>
+											</Link>
+										</li>
 									</ul>
 								</div>
 								<div className="d-flex justify-content-center mt-5 pt-5">
@@ -138,6 +150,11 @@ const ApiDocsLayOut = () => {
 									exact
 									path={`${process.env.PUBLIC_URL}/api-expiration-link`}
 									render={() => <ExpirationLink updateSm={updateSm} sm={sm} />}
+								></Route>
+								<Route
+									exact
+									path={`${process.env.PUBLIC_URL}/api-click-limit-link`}
+									render={() => <ClickLimitLink updateSm={updateSm} sm={sm} />}
 								></Route>
 							</Switch>
 						</div>
