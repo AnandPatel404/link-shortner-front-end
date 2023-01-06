@@ -6,30 +6,30 @@ import Head from "../../../layout/head/Head";
 
 import { Row, Col } from "reactstrap";
 
-import carbon from "../../../Landing/assets/img/passwordApi.png";
+import carbon from "../../../Landing/assets/img/expirationLink.png";
 
 import { Block, BlockHead, BlockHeadContent, BlockTitle, Button, Icon, BlockBetween } from "../../../components/Component";
 
-import linkOutPut from "../../../Landing/assets/img/passwordprotectedlinkoutput.png";
+import linkOutPut from "../../../Landing/assets/img/expirationTimeOut.png";
 
 import Swal from "sweetalert2";
 
-function PasswordProtectedLink({ sm, updateSm }) {
+function ExpirationLink({ sm, updateSm }) {
 	const succ = (link) => {
 		Swal.fire("Link is copied", "", "success");
 		navigator.clipboard.writeText(link);
 	};
 	return (
 		<React.Fragment>
-			<Head title="Create Password Protected Link With Api" />
+			<Head title="Create Expiration Link With Api" />
 			<Content page="component">
 				<BlockHead size="lg" wide="sm">
 					<BlockBetween>
 						<BlockHeadContent>
 							<BlockTitle tag="h2" className="fw-normal align-items-center">
-								Create Password Protected Link With Api
+								Create Expiration Link With Api
 							</BlockTitle>
-							<p> Create Password Protected Link using Shorterme API key and secret key.</p>
+							<p> Create Expiration Link using Shorterme API key and secret key.</p>
 						</BlockHeadContent>
 						<BlockHeadContent>
 							<p>API Method</p>
@@ -56,7 +56,7 @@ function PasswordProtectedLink({ sm, updateSm }) {
 										className="h3"
 										style={{ cursor: "pointer" }}
 										onClick={() => {
-											succ("https://shorterme.in/v1/api/links/password-protected-link");
+											succ("https://shorterme.in/v1/api/links/expiration-link");
 										}}
 									></Icon>
 								</div>
@@ -64,10 +64,10 @@ function PasswordProtectedLink({ sm, updateSm }) {
 									className="font-weight-bold p-3"
 									style={{ backgroundColor: "#fef8e4", cursor: "pointer" }}
 									onClick={() => {
-										succ("https://shorterme.in/v1/api/links/password-protected-link");
+										succ("https://shorterme.in/v1/api/links/expiration-link");
 									}}
 								>
-									https://shorterme.in/v1/api/links/password-protected-link
+									https://shorterme.in/v1/api/links/expiration-link
 								</div>
 							</div>
 						</Col>
@@ -89,4 +89,4 @@ function PasswordProtectedLink({ sm, updateSm }) {
 	);
 }
 
-export default PasswordProtectedLink;
+export default ExpirationLink;
